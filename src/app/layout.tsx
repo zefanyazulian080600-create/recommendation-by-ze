@@ -7,6 +7,7 @@ import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
+import { LiveSpillTicker } from "@/components/layout/LiveSpillTicker";
 import { getCategories, getSiteSettings } from "@/lib/data/store";
 
 const playfair = Playfair_Display({
@@ -112,6 +113,7 @@ export default async function RootLayout({
             <main className="flex-1 pb-20 lg:pb-0">{children}</main>
             <Footer />
             <MobileBottomBar />
+            <LiveSpillTicker />
           </WishlistProvider>
         </ToastProvider>
       </body>

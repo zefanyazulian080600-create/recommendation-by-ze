@@ -6,6 +6,8 @@ import { Product } from "@/types";
 import { useWishlist } from "@/context/WishlistContext";
 import { useToast } from "@/context/ToastContext";
 
+import { triggerConfetti } from "@/lib/confetti";
+
 interface WishlistButtonProps {
   product: Product;
   className?: string;
@@ -28,7 +30,8 @@ export function WishlistButton({
     setAnimate(true);
     toggleWishlist(product);
     if (!active) {
-      showToast(`Disimpan ke Wishlist kamu! ❤️`, "wishlist");
+      triggerConfetti(e.clientX, e.clientY);
+      showToast(`Disimpan ke Wishlist kamu! 💅✨`, "wishlist");
     } else {
       showToast(`Dihapus dari Wishlist`, "info");
     }

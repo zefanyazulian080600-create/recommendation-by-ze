@@ -3,12 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Play, Star, Copy, Sparkles } from "lucide-react";
+import { Play, Star, Copy, Sparkles, Flame } from "lucide-react";
 import { Product } from "@/types";
 import { formatRupiah, calculateDiscount, getMarketplaceMeta } from "@/lib/utils";
 import { WishlistButton } from "./WishlistButton";
 import { MarketplaceButton } from "./MarketplaceButton";
 import { useToast } from "@/context/ToastContext";
+import { triggerConfetti } from "@/lib/confetti";
 
 interface ProductCardProps {
   product: Product;
@@ -39,14 +40,15 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       ? `${window.location.origin}/product/${product.slug}`
       : product.affiliate_url;
     navigator.clipboard.writeText(productUrl).then(() => {
+      triggerConfetti(e.clientX, e.clientY);
       showToast(`Tautan ${product.name} disalin! 🔗`, "link");
     });
   };
 
   return (
-    <div className="group relative bg-white rounded-3xl border-2 border-espresso/15 hover:border-espresso overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col h-full tap-bounce">
+    <div className="group relative bg-white rounded-3xl border-2 border-espresso overflow-hidden shadow-brutal hover:shadow-brutal-lg hover:-translate-y-1 hover:-translate-x-1 transition-all duration-300 flex flex-col h-full tap-bounce">
       {/* Media Container with 4:5 aspect ratio */}
-      <div className="relative aspect-[4/5] bg-softgray overflow-hidden w-full border-b-2 border-espresso/10">
+      <div className="relative aspect-[4/5] bg-softgray overflow-hidden w-full border-b-2 border-espresso">
         <Link href={`/product/${product.slug}`} className="block w-full h-full">
           <Image
             src={
@@ -69,18 +71,18 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
           <div className="flex flex-col gap-1 items-start">
             {product.badge_label ? (
-              <span className="px-2.5 py-1 rounded-full bg-espresso text-vanilla text-[10px] sm:text-xs font-bold shadow-md flex items-center gap-1 border border-vanilla/30">
+              <span className="px-2.5 py-1 rounded-full bg-espresso text-vanilla text-[10px] sm:text-xs font-extrabold shadow-sm flex items-center gap-1 border border-vanilla/40 -rotate-2">
                 <Sparkles className="w-3 h-3 text-butter-400" />
                 <span>{product.badge_label}</span>
               </span>
             ) : product.is_featured ? (
-              <span className="px-2.5 py-1 rounded-full bg-butter-400 text-espresso text-[10px] sm:text-xs font-bold shadow-md border border-espresso">
+              <span className="px-2.5 py-1 rounded-full bg-butter-400 text-espresso text-[10px] sm:text-xs font-extrabold shadow-sm border border-espresso -rotate-1">
                 ⭐ Ze&apos;s Pick
               </span>
             ) : null}
 
             {discount && (
-              <span className="px-2 py-0.5 rounded-full bg-matcha-500 text-white text-[10px] font-extrabold shadow-sm border border-matcha-600">
+              <span className="px-2 py-0.5 rounded-full bg-matcha-500 text-white text-[10px] font-extrabold shadow-sm border border-espresso rotate-2">
                 -{discount}%
               </span>
             )}
@@ -91,7 +93,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             <button
               onClick={handleCopySpill}
               title="Salin tautan spill"
-              className="w-8 h-8 rounded-full bg-vanilla/90 backdrop-blur-md shadow-card hover:bg-butter-400 flex items-center justify-center text-espresso transition-all opacity-0 group-hover:opacity-100 hidden sm:flex border border-espresso/20"
+              className="w-8 h-8 rounded-full bg-vanilla/95 backdrop-blur-md shadow-sm hover:bg-butter-400 flex items-center justify-center text-espresso transition-all opacity-0 group-hover:opacity-100 hidden sm:flex border-2 border-espresso"
             >
               <Copy className="w-3.5 h-3.5" />
             </button>
@@ -103,12 +105,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <div className="absolute bottom-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
           {/* Video Indicator Pill */}
           {hasVideo ? (
-            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-white text-[10px] font-medium shadow-sm">
+            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md text-white text-[10px] font-bold shadow-sm border border-white/20">
               <Play className="w-3 h-3 fill-white" />
               <span>Video Try-On</span>
             </div>
           ) : (
-            <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-vanilla/90 backdrop-blur-md text-espresso text-[10px] font-extrabold border border-espresso/20">
+            <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-vanilla/95 backdrop-blur-md text-espresso text-[10px] font-extrabold border border-espresso shadow-sm">
               <Star className="w-3 h-3 text-butter-500 fill-butter-500" />
               <span>4.9 (1.2k+)</span>
             </div>
@@ -116,7 +118,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
           {/* Marketplace Pill with Official Color */}
           <span
-            className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-sm border ${marketplaceMeta.borderClass}`}
+            className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-md shadow-sm border ${marketplaceMeta.borderClass}`}
           >
             {marketplaceMeta.name}
           </span>
@@ -133,7 +135,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           )}
 
           <Link href={`/product/${product.slug}`} className="block group-hover:text-matcha-600 transition-colors">
-            <h3 className="font-editorial text-sm sm:text-base font-semibold text-espresso line-clamp-2 leading-snug">
+            <h3 className="font-editorial text-sm sm:text-base font-bold text-espresso line-clamp-2 leading-snug">
               {product.name}
             </h3>
           </Link>
@@ -170,8 +172,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             affiliateUrl={product.affiliate_url}
             size="sm"
             customText="Spill 🛍️"
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto font-bold"
           />
+        </div>
+
+        {/* Streetwear barcode detail */}
+        <div className="pt-1 flex items-center justify-between text-[10px] text-espresso/40 font-mono select-none border-t border-dashed border-espresso/15">
+          <span className="tracking-widest">||| | |||| | ||</span>
+          <span className="text-[9px] uppercase font-bold text-matcha-600">✦ ZE VERIFIED</span>
         </div>
       </div>
     </div>
