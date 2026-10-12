@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
 import { LiveSpillTicker } from "@/components/layout/LiveSpillTicker";
+import { LofiAmbiencePlayer } from "@/components/layout/LofiAmbiencePlayer";
 import { getCategories, getSiteSettings } from "@/lib/data/store";
 
 const playfair = Playfair_Display({
@@ -114,6 +115,7 @@ export default async function RootLayout({
             <Footer />
             <MobileBottomBar />
             <LiveSpillTicker />
+            <LofiAmbiencePlayer />
           </WishlistProvider>
         </ToastProvider>
       </body>

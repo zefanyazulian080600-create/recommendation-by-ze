@@ -5,8 +5,11 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { AestheticMarquee } from "@/components/home/AestheticMarquee";
 import { StoryHighlights } from "@/components/home/StoryHighlights";
 import { VibeSelector } from "@/components/home/VibeSelector";
+import { OotdMixMatchStudio } from "@/components/home/OotdMixMatchStudio";
 import { HomeFeedInteractive } from "@/components/home/HomeFeedInteractive";
 import { VideoReelsSection } from "@/components/home/VideoReelsSection";
+import { BeliOrSkipPoll } from "@/components/home/BeliOrSkipPoll";
+import { BudgetSliderFilter } from "@/components/home/BudgetSliderFilter";
 import { CategorySlider } from "@/components/home/CategorySlider";
 import { MarketplaceSection } from "@/components/home/MarketplaceSection";
 import { CollectionsSection } from "@/components/home/CollectionsSection";
@@ -41,24 +44,33 @@ export default async function HomePage() {
       {/* 4. Viral Mood Matcher & Gacha Mystery Roll (Cewek Bumi / Mamba / Kue / Clean Girl) */}
       <VibeSelector products={allProducts} />
 
-      {/* 5. Interactive Instant Filter Feed (Tabs for Viral, Holy Grail, Fashion, Decor, etc.) */}
+      {/* 5. Interactive OOTD Mix & Match Studio (Virtual Fitting & Outfit Total Price) */}
+      <OotdMixMatchStudio products={allProducts} />
+
+      {/* 6. Interactive Instant Filter Feed (Tabs for Viral, Holy Grail, Fashion, Decor, etc.) */}
       <HomeFeedInteractive products={allProducts} categories={categories} />
 
-      {/* 6. 9:16 Video Reels Try-On & Spill Section (TikTok/Reels format with foolproof back) */}
+      {/* 7. 9:16 Video Reels Try-On & Spill Section (TikTok/Reels format with foolproof back) */}
       <div id="video-reels">
         <VideoReelsSection products={allProducts} />
       </div>
 
-      {/* 7. Shop by Category with Visual Photos */}
+      {/* 8. Community Spill Polling Widget (Beli or Skip? 🗳️) */}
+      <BeliOrSkipPoll products={allProducts} />
+
+      {/* 9. Smart Budget Slider (Kalkulator Sisa Uang Jajan 💸) */}
+      <BudgetSliderFilter products={allProducts} />
+
+      {/* 10. Shop by Category with Visual Photos */}
       <CategorySlider categories={categories} />
 
-      {/* 8. Marketplace Discovery (Shopee, Tokopedia, TikTok Shop, Lazada) */}
+      {/* 11. Marketplace Discovery (Shopee, Tokopedia, TikTok Shop, Lazada) */}
       <MarketplaceSection />
 
-      {/* 9. Thematic Collections Lookbook */}
+      {/* 12. Thematic Collections Lookbook */}
       <CollectionsSection collections={collections} />
 
-      {/* 10. Gen Z Interactive Request Callout */}
+      {/* 13. Gen Z Interactive Request Callout */}
       <section className="py-16 bg-vanilla border-t-2 border-espresso/15">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-butter-200 via-vanilla to-matcha-100 border-2 border-espresso text-center space-y-4 shadow-brutal-lg">
