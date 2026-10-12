@@ -31,19 +31,19 @@ export function HeroSection({ settings }: HeroSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Text Content (7 cols on lg) */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            {/* Pill Tag with 3D tactile feel */}
+            {/* Pill Tag with Y2K Underground Ticket feel */}
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-espresso text-xs font-bold text-espresso shadow-3d-pill">
-                <span className="w-2.5 h-2.5 rounded-full bg-matcha-500 animate-ping" />
-                <Sparkles className="w-4 h-4 text-butter-500" />
-                <span>Spill Racun Ol Shop • Vibe Skena, Kalcer, Starboy & All Gender 🛹🎸✨</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-espresso text-vanilla text-xs font-mono font-bold shadow-brutal-sm border border-espresso">
+                <span className="text-butter-400">✦</span>
+                <span>ADMIT ONE • ZE UNDERGROUND ARCHIVE • VOL. 2026</span>
+                <span className="text-butter-400">✦</span>
               </div>
 
               {userName ? (
                 <button
                   type="button"
                   onClick={openModal}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-butter-500 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-butter-500 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
                   title="Klik untuk ubah nama atau aesthetic vibe kamu"
                 >
                   <Zap className="w-3.5 h-3.5 fill-espresso" />
@@ -53,12 +53,30 @@ export function HeroSection({ settings }: HeroSectionProps) {
                 <button
                   type="button"
                   onClick={openModal}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-butter-400 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-butter-400 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
                 >
                   <Sparkles className="w-3.5 h-3.5 fill-espresso" />
                   <span>Spill Nama Kamu ✨</span>
                 </button>
               )}
+            </div>
+
+            {/* Fast Bio Numbers Strip in Hero */}
+            <div className="flex items-center gap-2 pt-1 flex-wrap">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-espresso/60">
+                ⚡ Fast Bio Spill:
+              </span>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                {["#01", "#04", "#07", "#12", "#14", "#18"].map((no) => (
+                  <Link
+                    key={no}
+                    href={`/products?search=${encodeURIComponent(no)}`}
+                    className="px-2.5 py-0.5 rounded-md bg-white border border-espresso text-espresso font-mono text-xs font-bold hover:bg-butter-400 hover:scale-105 transition-all shadow-sm"
+                  >
+                    {no}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             {/* Editorial Headline */}
