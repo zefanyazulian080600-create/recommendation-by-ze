@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --background: #FAF7F2;
-  --foreground: #262323;
-  --ivory: #FAF7F2;
-  --blush: #F1DDE0;
-  --rose: #B96F80;
-  --charcoal: #262323;
-  --softgray: #ECE9E5;
+  --background: #FCF0DA;
+  --foreground: #4C4541;
+  --vanilla: #FCF0DA;
+  --matcha: #AEAC78;
+  --butter: #F2C46A;
+  --espresso: #4C4541;
+  --ivory: #FCF0DA;
+  --blush: #F7D591;
+  --rose: #AEAC78;
+  --charcoal: #4C4541;
+  --softgray: #F3EAD7;
 }
 
 body {
@@ -26,23 +30,23 @@ body {
   font-family: var(--font-playfair), Georgia, serif;
 }
 
-/* Custom scrollbar for boutique aesthetic */
+/* Custom scrollbar in warm matcha/vanilla tones */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #FCF0DA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D9D2CA;
+  background: #D1C3A0;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B96F80;
+  background: #AEAC78;
 }
 
 /* Hide scrollbar for clean horizontal swipe containers */
@@ -54,13 +58,41 @@ body {
   scrollbar-width: none;
 }
 
+/* 3D Tactile Buttons (Gen Z Pop Feeling) */
+.btn-3d {
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 0 0 #4C4541;
+}
+.btn-3d:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 #4C4541;
+}
+
+.btn-3d-butter {
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 0 0 #C79127;
+}
+.btn-3d-butter:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 #C79127;
+}
+
+.btn-3d-matcha {
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 0 0 #7A7849;
+}
+.btn-3d-matcha:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 #7A7849;
+}
+
 /* Card hover animation */
 .card-hover-lift {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px -4px rgba(38, 35, 35, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px -4px rgba(76, 69, 65, 0.14);
 }
 
 /* Gen Z active tap micro-feedback */
@@ -71,17 +103,22 @@ body {
   transform: scale(0.96);
 }
 
-/* Story Highlight Avatar Gradient Ring */
+/* Story Highlight Avatar Gradient Ring: Matcha -> Butter -> Espresso */
 .story-ring-gradient {
-  background: linear-gradient(135deg, #B96F80 0%, #EE4D2D 50%, #FFB6C1 100%);
+  background: linear-gradient(135deg, #AEAC78 0%, #F2C46A 50%, #4C4541 100%);
 }
 
-/* Glassmorphism Pill */
+/* Glassmorphism Pill in Warm Vanilla */
 .glass-pill {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(252, 240, 218, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(231, 220, 191, 0.7);
+}
+
+/* 3D floating effect */
+.float-3d {
+  animation: float-3d 4s ease-in-out infinite;
 }
 
 /* Shimmer pulse effect */
@@ -101,10 +138,9 @@ body {
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0,
-    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.4) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   animation: shimmer 2.5s infinite;
   content: '';
 }
-

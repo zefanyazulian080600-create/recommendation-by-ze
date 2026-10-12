@@ -8,9 +8,6 @@ import {
   Heart,
   Menu,
   X,
-  ShoppingBag,
-  Sparkles,
-  SlidersHorizontal,
   Lock,
 } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
@@ -60,8 +57,8 @@ export function Navbar({ categories = [] }: NavbarProps) {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-ivory-50/95 backdrop-blur-md shadow-sm border-b border-softgray-border py-2.5"
-            : "bg-ivory border-b border-softgray py-3.5"
+            ? "bg-vanilla/95 backdrop-blur-md shadow-sm border-b-2 border-espresso/15 py-2.5"
+            : "bg-vanilla border-b-2 border-espresso/15 py-3.5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +68,7 @@ export function Navbar({ categories = [] }: NavbarProps) {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="p-2 -ml-2 rounded-lg text-charcoal hover:bg-blush-100 transition-colors"
+                className="p-2 -ml-2 rounded-xl text-espresso hover:bg-butter-300 transition-colors"
                 aria-label="Buka menu navigasi"
               >
                 <Menu className="w-6 h-6" />
@@ -81,30 +78,30 @@ export function Navbar({ categories = [] }: NavbarProps) {
             {/* Center-Left: Brand Wordmark */}
             <div className="flex items-center">
               <Link href="/" className="group flex flex-col items-start leading-none">
-                <span className="font-editorial text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-charcoal group-hover:text-rose transition-colors">
+                <span className="font-editorial text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-espresso group-hover:text-matcha-600 transition-colors">
                   Recommendation
                 </span>
-                <span className="font-sans text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-rose mt-0.5">
+                <span className="font-sans text-[10px] sm:text-xs font-extrabold tracking-[0.25em] uppercase text-matcha-600 mt-0.5">
                   by Ze
                 </span>
               </Link>
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-semibold">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`transition-colors hover:text-rose relative py-1 ${
-                      isActive ? "text-rose font-semibold" : "text-charcoal-200"
+                    className={`transition-colors hover:text-matcha-600 relative py-1 ${
+                      isActive ? "text-espresso font-extrabold" : "text-espresso-100"
                     }`}
                   >
                     {link.label}
                     {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-rose rounded-full" />
+                      <span className="absolute bottom-0 left-0 right-0 h-1 bg-butter-400 rounded-full" />
                     )}
                   </Link>
                 );
@@ -117,7 +114,7 @@ export function Navbar({ categories = [] }: NavbarProps) {
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="p-2 rounded-full text-charcoal hover:bg-blush-100 transition-colors"
+                className="p-2 rounded-full text-espresso hover:bg-butter-300 transition-colors"
                 aria-label="Cari produk"
               >
                 <Search className="w-5 h-5" />
@@ -126,12 +123,12 @@ export function Navbar({ categories = [] }: NavbarProps) {
               {/* Wishlist Link */}
               <Link
                 href="/wishlist"
-                className="p-2 rounded-full text-charcoal hover:bg-blush-100 transition-colors relative"
+                className="p-2 rounded-full text-espresso hover:bg-butter-300 transition-colors relative"
                 aria-label={`Wishlist (${wishlistCount} item)`}
               >
-                <Heart className="w-5 h-5 text-charcoal hover:text-rose transition-colors" />
+                <Heart className="w-5 h-5 text-espresso hover:text-matcha-600 transition-colors" />
                 {wishlistCount > 0 && (
-                  <span className="absolute top-1 right-1 bg-rose text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-ivory">
+                  <span className="absolute top-1 right-1 bg-butter-400 text-espresso text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-vanilla border border-espresso">
                     {wishlistCount}
                   </span>
                 )}
@@ -140,10 +137,10 @@ export function Navbar({ categories = [] }: NavbarProps) {
               {/* Admin Portal Shortcut */}
               <Link
                 href="/admin"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-softgray-border bg-white text-xs font-medium text-charcoal-200 hover:text-charcoal hover:border-charcoal transition-all shadow-sm"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 border-espresso bg-white text-xs font-bold text-espresso hover:bg-butter-400 transition-all shadow-sm"
                 title="Admin Dashboard"
               >
-                <Lock className="w-3.5 h-3.5 text-rose" />
+                <Lock className="w-3.5 h-3.5 text-matcha-600" />
                 <span>Admin</span>
               </Link>
             </div>
@@ -151,28 +148,28 @@ export function Navbar({ categories = [] }: NavbarProps) {
 
           {/* Expandable Search Input Bar */}
           {isSearchOpen && (
-            <div className="mt-3 pt-3 border-t border-softgray animate-fadeIn">
+            <div className="mt-3 pt-3 border-t border-espresso/15 animate-fadeIn">
               <form onSubmit={handleSearchSubmit} className="relative flex items-center max-w-2xl mx-auto">
-                <Search className="absolute left-3.5 w-4 h-4 text-charcoal-50" />
+                <Search className="absolute left-3.5 w-4 h-4 text-espresso-100" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Cari outfit, skincare, perintilan aesthetic, keyboard..."
-                  className="w-full pl-10 pr-24 py-2.5 rounded-full bg-white border border-softgray-border text-sm text-charcoal placeholder:text-charcoal-50 focus:outline-none focus:ring-2 focus:ring-rose/30 focus:border-rose transition-all shadow-sm"
+                  className="w-full pl-10 pr-24 py-2.5 rounded-full bg-white border-2 border-espresso text-sm text-espresso placeholder:text-espresso-50 focus:outline-none focus:ring-2 focus:ring-butter-400 transition-all shadow-sm"
                   autoFocus
                 />
                 <div className="absolute right-1.5 flex items-center gap-1">
                   <button
                     type="submit"
-                    className="px-3.5 py-1.5 rounded-full bg-charcoal text-white text-xs font-medium hover:bg-rose transition-colors"
+                    className="px-4 py-1.5 rounded-full bg-espresso text-vanilla text-xs font-bold hover:bg-butter-400 hover:text-espresso transition-colors"
                   >
                     Cari
                   </button>
                   <button
                     type="button"
                     onClick={() => setIsSearchOpen(false)}
-                    className="p-1.5 text-charcoal-50 hover:text-charcoal"
+                    className="p-1.5 text-espresso-100 hover:text-espresso"
                     aria-label="Tutup pencarian"
                   >
                     <X className="w-4 h-4" />

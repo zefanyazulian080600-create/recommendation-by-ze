@@ -83,41 +83,41 @@ export function StoryHighlights() {
     },
     {
       id: "picks",
-      label: "Holy Grail Ze",
-      tag: "⭐ Rekomendasi",
+      label: "Pilihan Ze",
+      tag: "⭐ Best Curated",
       href: "#zes-picks",
       imageUrl: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=400&auto=format&fit=crop",
     },
   ];
 
   return (
-    <section className="py-4 border-b border-softgray bg-ivory-50/60 overflow-hidden">
+    <section className="py-4 border-b-2 border-espresso/15 bg-vanilla overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-rose animate-ping" />
-            <h3 className="text-xs font-bold uppercase tracking-wider text-charcoal">
+            <span className="w-2.5 h-2.5 rounded-full bg-butter-500 animate-ping" />
+            <h3 className="text-xs font-extrabold uppercase tracking-wider text-espresso">
               Stories & Highlight Racun Ol Shop
             </h3>
           </div>
-          <span className="text-[11px] text-charcoal-50 font-medium hidden sm:inline">
+          <span className="text-[11px] text-espresso-100 font-semibold hidden sm:inline">
             Geser untuk kategori lainnya 👉
           </span>
         </div>
 
         {/* Stories Horizontal Container */}
-        <div className="flex items-center gap-3 sm:gap-5 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div className="flex items-center gap-3.5 sm:gap-5 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
           {highlights.map((item) => (
             <Link
               key={item.id}
               href={item.href}
               className="flex flex-col items-center flex-shrink-0 group tap-bounce"
             >
-              {/* Outer Ring with Story Gradient */}
-              <div className="relative p-[2.5px] rounded-full story-ring-gradient shadow-sm group-hover:scale-105 group-hover:shadow-md transition-all duration-300">
+              {/* Outer Ring with Matcha-Butter-Espresso Story Gradient */}
+              <div className="relative p-[3px] rounded-full story-ring-gradient shadow-md group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
                 {/* White border cushion */}
-                <div className="p-0.5 bg-white rounded-full">
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-softgray">
+                <div className="p-0.5 bg-vanilla rounded-full">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-softgray border border-espresso/20">
                     <Image
                       src={item.imageUrl}
                       alt={item.label}
@@ -130,17 +130,17 @@ export function StoryHighlights() {
 
                 {/* 'New' or Hot Badge */}
                 {item.isNew && (
-                  <span className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full bg-rose text-[9px] font-bold text-white shadow-sm ring-1 ring-white">
+                  <span className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full bg-butter-400 text-espresso text-[9px] font-extrabold shadow-sm border border-espresso">
                     NEW
                   </span>
                 )}
               </div>
 
               {/* Title & Micro Tag */}
-              <span className="mt-1.5 text-xs font-semibold text-charcoal group-hover:text-rose transition-colors max-w-[72px] truncate text-center">
+              <span className="mt-1.5 text-xs font-bold text-espresso group-hover:text-matcha-600 transition-colors max-w-[74px] truncate text-center">
                 {item.label}
               </span>
-              <span className="text-[9px] text-charcoal-50 font-medium max-w-[72px] truncate text-center -mt-0.5">
+              <span className="text-[9px] text-espresso-100 font-medium max-w-[74px] truncate text-center -mt-0.5">
                 {item.tag}
               </span>
             </Link>

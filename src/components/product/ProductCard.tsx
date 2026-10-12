@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Play, Star, Copy, Check, ExternalLink, Sparkles } from "lucide-react";
+import { Play, Star, Copy, Sparkles } from "lucide-react";
 import { Product } from "@/types";
 import { formatRupiah, calculateDiscount, getMarketplaceMeta } from "@/lib/utils";
 import { WishlistButton } from "./WishlistButton";
@@ -44,9 +44,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   };
 
   return (
-    <div className="group relative bg-white rounded-3xl border border-softgray-border overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col h-full tap-bounce">
+    <div className="group relative bg-white rounded-3xl border-2 border-espresso/15 hover:border-espresso overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col h-full tap-bounce">
       {/* Media Container with 4:5 aspect ratio */}
-      <div className="relative aspect-[4/5] bg-softgray overflow-hidden w-full">
+      <div className="relative aspect-[4/5] bg-softgray overflow-hidden w-full border-b-2 border-espresso/10">
         <Link href={`/product/${product.slug}`} className="block w-full h-full">
           <Image
             src={
@@ -63,35 +63,35 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </Link>
 
         {/* Soft hover gradient vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
         {/* Top Badges Row */}
         <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
           <div className="flex flex-col gap-1 items-start">
             {product.badge_label ? (
-              <span className="px-2.5 py-1 rounded-full bg-charcoal/90 text-white text-[10px] sm:text-xs font-semibold backdrop-blur-md shadow-sm flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-blush-300" />
+              <span className="px-2.5 py-1 rounded-full bg-espresso text-vanilla text-[10px] sm:text-xs font-bold shadow-md flex items-center gap-1 border border-vanilla/30">
+                <Sparkles className="w-3 h-3 text-butter-400" />
                 <span>{product.badge_label}</span>
               </span>
             ) : product.is_featured ? (
-              <span className="px-2.5 py-1 rounded-full bg-rose text-white text-[10px] sm:text-xs font-semibold backdrop-blur-md shadow-sm">
+              <span className="px-2.5 py-1 rounded-full bg-butter-400 text-espresso text-[10px] sm:text-xs font-bold shadow-md border border-espresso">
                 ⭐ Ze&apos;s Pick
               </span>
             ) : null}
 
             {discount && (
-              <span className="px-2 py-0.5 rounded-full bg-rose text-white text-[10px] font-bold shadow-sm">
+              <span className="px-2 py-0.5 rounded-full bg-matcha-500 text-white text-[10px] font-extrabold shadow-sm border border-matcha-600">
                 -{discount}%
               </span>
             )}
           </div>
 
-          {/* Top Right Action: Wishlist */}
+          {/* Top Right Action: Wishlist + Copy */}
           <div className="pointer-events-auto flex items-center gap-1.5">
             <button
               onClick={handleCopySpill}
               title="Salin tautan spill"
-              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 backdrop-blur-md shadow-card hover:bg-white flex items-center justify-center text-charcoal-100 hover:text-charcoal transition-all opacity-0 group-hover:opacity-100 hidden sm:flex"
+              className="w-8 h-8 rounded-full bg-vanilla/90 backdrop-blur-md shadow-card hover:bg-butter-400 flex items-center justify-center text-espresso transition-all opacity-0 group-hover:opacity-100 hidden sm:flex border border-espresso/20"
             >
               <Copy className="w-3.5 h-3.5" />
             </button>
@@ -108,8 +108,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               <span>Video Try-On</span>
             </div>
           ) : (
-            <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/85 backdrop-blur-md text-charcoal text-[9px] font-semibold">
-              <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+            <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-vanilla/90 backdrop-blur-md text-espresso text-[10px] font-extrabold border border-espresso/20">
+              <Star className="w-3 h-3 text-butter-500 fill-butter-500" />
               <span>4.9 (1.2k+)</span>
             </div>
           )}
@@ -124,40 +124,40 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       </div>
 
       {/* Info Container */}
-      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
         <div className="space-y-1.5">
           {product.category && (
-            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-rose">
+            <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-matcha-600">
               {product.category.name}
             </span>
           )}
 
-          <Link href={`/product/${product.slug}`} className="block group-hover:text-rose transition-colors">
-            <h3 className="font-editorial text-sm sm:text-base font-medium text-charcoal line-clamp-2 leading-snug">
+          <Link href={`/product/${product.slug}`} className="block group-hover:text-matcha-600 transition-colors">
+            <h3 className="font-editorial text-sm sm:text-base font-semibold text-espresso line-clamp-2 leading-snug">
               {product.name}
             </h3>
           </Link>
 
-          <p className="text-xs text-charcoal-50 line-clamp-1">
+          <p className="text-xs text-espresso-100 line-clamp-1">
             {product.short_description}
           </p>
         </div>
 
         {/* Price & Actions Row */}
-        <div className="pt-2.5 border-t border-softgray flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="pt-2.5 border-t border-softgray-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-baseline gap-2">
-              <span className="text-sm sm:text-base font-bold text-charcoal">
+              <span className="text-sm sm:text-base font-extrabold text-espresso">
                 {formatRupiah(product.price)}
               </span>
               {product.original_price && product.original_price > product.price && (
-                <span className="text-xs text-charcoal-50 line-through">
+                <span className="text-xs text-espresso-50 line-through">
                   {formatRupiah(product.original_price)}
                 </span>
               )}
             </div>
             {product.price_note && (
-              <span className="text-[10px] text-charcoal-50 block truncate max-w-[150px]">
+              <span className="text-[10px] text-espresso-50 block truncate max-w-[150px]">
                 {product.price_note}
               </span>
             )}

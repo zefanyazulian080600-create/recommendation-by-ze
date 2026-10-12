@@ -137,22 +137,22 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             </p>
 
             {/* Price Box */}
-            <div className="p-5 rounded-2xl bg-white border border-softgray-border/80 shadow-soft space-y-2">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-charcoal-50">
+            <div className="p-6 rounded-3xl bg-white border-2 border-espresso/15 shadow-card space-y-2">
+              <span className="text-[11px] font-extrabold uppercase tracking-wider text-matcha-600">
                 Harga Rekomendasi
               </span>
               <div className="flex items-baseline gap-3">
-                <span className="text-2xl sm:text-3xl font-bold text-charcoal">
+                <span className="text-2xl sm:text-3xl font-extrabold text-espresso">
                   {formatRupiah(product.price)}
                 </span>
                 {product.original_price && product.original_price > product.price && (
-                  <span className="text-base text-charcoal-50 line-through">
+                  <span className="text-base text-espresso-50 line-through">
                     {formatRupiah(product.original_price)}
                   </span>
                 )}
               </div>
-              <div className="pt-1 flex items-center gap-1.5 text-xs text-charcoal-50">
-                <Clock className="w-3.5 h-3.5 text-rose" />
+              <div className="pt-1 flex items-center gap-1.5 text-xs text-espresso-100">
+                <Clock className="w-3.5 h-3.5 text-butter-500" />
                 <span>
                   {product.price_note ||
                     "Harga saat terakhir diperiksa. Dapat berubah sewaktu-waktu sesuai promo toko."}
@@ -168,12 +168,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   marketplace={product.marketplace}
                   affiliateUrl={product.affiliate_url}
                   size="lg"
-                  className="flex-1 py-4 text-base shadow-md hover:shadow-lg"
+                  className="btn-3d flex-1 py-4 text-base font-bold shadow-md hover:shadow-lg"
                 />
                 <WishlistButton product={product} size="lg" />
                 <ShareButton title={product.name} />
               </div>
-              <p className="text-[11px] text-center text-charcoal-50">
+              <p className="text-[11px] text-center text-espresso-100">
                 Transaksi aman & pembayaran langsung di aplikasi {marketplaceMeta.name}.
               </p>
             </div>

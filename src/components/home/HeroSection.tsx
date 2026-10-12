@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkles, ArrowRight, Play, Heart, Star, CheckCircle, ShieldCheck } from "lucide-react";
+import { Sparkles, ArrowRight, Play, Heart, Star, ShieldCheck, Flame, Tag } from "lucide-react";
 import { SiteSettings } from "@/types";
 
 interface HeroSectionProps {
@@ -20,87 +20,87 @@ export function HeroSection({ settings }: HeroSectionProps) {
     "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop";
 
   return (
-    <section className="relative overflow-hidden pt-6 pb-14 md:pt-10 md:pb-20">
-      {/* Soft gradient background accents */}
-      <div className="absolute top-0 right-0 -z-10 w-96 h-96 bg-blush-200/50 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 -z-10 w-80 h-80 bg-rose-50/40 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden pt-6 pb-14 md:pt-12 md:pb-20 bg-vanilla">
+      {/* 3D background subtle glow shapes */}
+      <div className="absolute top-0 right-10 -z-10 w-96 h-96 bg-butter-200/60 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-5 -z-10 w-80 h-80 bg-matcha-100/70 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Text Content (7 cols on lg) */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            {/* Pill Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-softgray-border shadow-sm text-xs font-semibold text-charcoal">
-              <span className="w-2 h-2 rounded-full bg-rose animate-ping" />
-              <Sparkles className="w-3.5 h-3.5 text-rose" />
-              <span>Spill Racun Ol Shop & OOTD 2026 • Curated by Ze</span>
+            {/* Pill Tag with 3D tactile feel */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-espresso text-xs font-bold text-espresso shadow-3d-pill">
+              <span className="w-2.5 h-2.5 rounded-full bg-matcha-500 animate-ping" />
+              <Sparkles className="w-4 h-4 text-butter-500" />
+              <span>Spill Racun Ol Shop & OOTD 2026 • Curated by Ze ✨</span>
             </div>
 
             {/* Editorial Headline */}
-            <h1 className="font-editorial text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-charcoal leading-[1.14]">
+            <h1 className="font-editorial text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-espresso leading-[1.12]">
               {headline}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-charcoal-200 leading-relaxed max-w-xl font-normal">
+            <p className="text-base sm:text-lg text-espresso-100 leading-relaxed max-w-xl font-normal">
               {subheadline}
             </p>
 
-            {/* CTAs Row */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            {/* 3D Interactive CTAs Row */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link
                 href="/products"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-charcoal text-white text-sm font-semibold hover:bg-rose transition-all shadow-md hover:shadow-lg tap-bounce"
+                className="btn-3d inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-espresso text-vanilla text-sm font-bold border-2 border-espresso hover:bg-espresso-400 transition-all"
               >
-                <span>Mulai Eksplorasi Racun</span>
+                <span>Mulai Cari Rekomendasi 🛍️</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="#video-reels"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white border border-softgray-border text-charcoal text-sm font-semibold hover:bg-softgray hover:border-charcoal-50 transition-all shadow-sm tap-bounce"
+                className="btn-3d-butter inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-butter-400 border-2 border-espresso text-espresso text-sm font-bold hover:bg-butter-500 transition-all"
               >
-                <Play className="w-4 h-4 text-rose fill-rose" />
+                <Play className="w-4 h-4 text-espresso fill-espresso" />
                 <span>Tonton Video Spill</span>
               </Link>
             </div>
 
-            {/* Social Proof & Metrics Strip */}
-            <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-charcoal-200 border-t border-softgray">
+            {/* Social Proof & Metrics Strip in Vanilla/Espresso Box */}
+            <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-espresso-100 border-t-2 border-espresso/15">
               {/* Star Rating */}
               <div className="flex items-center gap-2">
-                <div className="flex items-center text-amber-500">
+                <div className="flex items-center text-butter-500">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                    <Star key={i} className="w-4 h-4 fill-butter-500 text-butter-500" />
                   ))}
                 </div>
-                <span className="font-bold text-charcoal">4.9 / 5.0</span>
-                <span className="text-charcoal-50">(10k+ readers)</span>
+                <span className="font-extrabold text-espresso">4.9 / 5.0</span>
+                <span className="text-espresso-50">(10k+ Gen Z readers)</span>
               </div>
 
               {/* Verified Badge */}
-              <div className="flex items-center gap-1.5 text-charcoal font-medium">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>100% Link Toko Asli & Terverifikasi</span>
+              <div className="flex items-center gap-1.5 text-espresso font-semibold">
+                <ShieldCheck className="w-4 h-4 text-matcha-600" />
+                <span>100% Toko Asli & Terpercaya</span>
               </div>
             </div>
 
             {/* Marketplace badges mini-strip */}
-            <div className="flex items-center gap-2.5 text-xs text-charcoal-50 flex-wrap">
-              <span className="font-semibold text-charcoal">Tersedia di:</span>
-              <div className="flex items-center gap-2 font-medium flex-wrap">
-                <span className="px-2.5 py-1 rounded-full bg-[#EE4D2D]/10 text-[#EE4D2D] font-bold">Shopee</span>
-                <span className="px-2.5 py-1 rounded-full bg-[#03AC0E]/10 text-[#03AC0E] font-bold">Tokopedia</span>
-                <span className="px-2.5 py-1 rounded-full bg-black/10 text-black font-bold">TikTok Shop</span>
-                <span className="px-2.5 py-1 rounded-full bg-[#0F146D]/10 text-[#0F146D] font-bold">Lazada</span>
+            <div className="flex items-center gap-2.5 text-xs text-espresso-100 flex-wrap">
+              <span className="font-bold text-espresso">Marketplace:</span>
+              <div className="flex items-center gap-2 font-semibold flex-wrap">
+                <span className="px-3 py-1 rounded-full bg-[#EE4D2D] text-white text-[11px] font-bold shadow-sm">Shopee</span>
+                <span className="px-3 py-1 rounded-full bg-[#03AC0E] text-white text-[11px] font-bold shadow-sm">Tokopedia</span>
+                <span className="px-3 py-1 rounded-full bg-black text-white text-[11px] font-bold shadow-sm">TikTok Shop</span>
+                <span className="px-3 py-1 rounded-full bg-[#0F146D] text-white text-[11px] font-bold shadow-sm">Lazada</span>
               </div>
             </div>
           </div>
 
-          {/* Right Editorial Image Grid (5 cols on lg) */}
+          {/* Right Editorial 3D Showcase Frame (5 cols on lg) */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Main Fashion Editorial Frame */}
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              {/* Main Fashion Editorial Frame with 3D Card Shadow */}
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border-4 border-espresso shadow-3d-card bg-vanilla">
                 <Image
                   src={heroImage}
                   alt="Inspirasi kurasi Recommendation by Ze"
@@ -109,43 +109,43 @@ export function HeroSection({ settings }: HeroSectionProps) {
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent" />
 
                 {/* Floating Bottom Card Inside Photo */}
-                <div className="absolute bottom-5 inset-x-5 p-4 rounded-2xl glass-pill shadow-lg border border-white/50 text-charcoal">
+                <div className="absolute bottom-5 inset-x-5 p-4 rounded-2xl bg-vanilla/95 backdrop-blur-md shadow-lg border-2 border-espresso text-espresso">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-rose">
-                        Koleksi Baru 2026
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-matcha-600">
+                        KOLEKSI PILIHAN ZE
                       </span>
-                      <h4 className="font-editorial text-sm font-semibold text-charcoal">
-                        Aesthetic Mood & Daily Looks
+                      <h4 className="font-editorial text-sm font-bold text-espresso">
+                        Daily Aesthetic & Lookbook
                       </h4>
                     </div>
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blush-200 text-charcoal">
-                      100% Curated ✨
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-butter-400 text-espresso border border-espresso">
+                      100% Real ✨
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Decorative Floating Pill Top Right */}
-              <div className="absolute -top-3 -right-3 sm:-right-4 bg-white p-3 rounded-2xl shadow-float border border-softgray-border flex items-center gap-2.5 animate-bounce-slow">
-                <div className="w-8 h-8 rounded-full bg-blush-200 flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 text-rose" />
+              {/* 3D Floating Sticker Top Right */}
+              <div className="absolute -top-4 -right-4 sm:-right-5 bg-vanilla p-3 rounded-2xl shadow-float border-2 border-espresso flex items-center gap-2.5 float-3d">
+                <div className="w-9 h-9 rounded-full bg-matcha-400 flex items-center justify-center border border-espresso">
+                  <Sparkles className="w-5 h-5 text-espresso" />
                 </div>
                 <div className="text-left">
-                  <p className="text-[10px] text-charcoal-50 font-medium">Kurasi Pilihan</p>
-                  <p className="text-xs font-bold text-charcoal">Anti Gagal ✨</p>
+                  <p className="text-[10px] text-espresso-100 font-bold">Kurasi Pilihan</p>
+                  <p className="text-xs font-extrabold text-espresso">Anti Gagal ✨</p>
                 </div>
               </div>
 
-              {/* Decorative Floating Pill Bottom Left */}
-              <div className="absolute -bottom-3 -left-3 sm:-left-4 bg-white p-2.5 rounded-2xl shadow-float border border-softgray-border flex items-center gap-2">
-                <span className="text-lg">👗</span>
+              {/* 3D Floating Sticker Bottom Left */}
+              <div className="absolute -bottom-4 -left-4 sm:-left-5 bg-butter-400 p-3 rounded-2xl shadow-float border-2 border-espresso flex items-center gap-2.5 float-3d">
+                <span className="text-xl">👗</span>
                 <div className="text-left">
-                  <p className="text-[10px] text-charcoal-50 font-medium">Outfit Cewek</p>
-                  <p className="text-xs font-bold text-rose">Under 150k 🔥</p>
+                  <p className="text-[10px] text-espresso font-bold">Spill Outfit</p>
+                  <p className="text-xs font-extrabold text-espresso">Under 150k 🔥</p>
                 </div>
               </div>
             </div>

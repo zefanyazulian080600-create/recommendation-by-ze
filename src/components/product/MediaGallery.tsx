@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Play, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, ZoomIn, X, ChevronLeft, ChevronRight, Image as ImageIcon, ArrowLeft } from "lucide-react";
 import { ProductMedia } from "@/types";
 import { VideoPlayer } from "./VideoPlayer";
 
@@ -14,33 +14,52 @@ interface MediaGalleryProps {
 export function MediaGallery({ media = [], productName }: MediaGalleryProps) {
   // Sort media by sort_order
   const sortedMedia = [...media].sort((a, b) => a.sort_order - b.sort_order);
-  const initialIndex = sortedMedia.findIndex((m) => m.is_cover) !== -1
-    ? sortedMedia.findIndex((m) => m.is_cover)
-    : 0;
+  const initialIndex =
+    sortedMedia.findIndex((m) => m.is_cover) !== -1
+      ? sortedMedia.findIndex((m) => m.is_cover)
+      : 0;
 
   const [currentIndex, setCurrentIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   if (sortedMedia.length === 0) {
     return (
-      <div className="relative aspect-[4/5] bg-softgray rounded-3xl flex items-center justify-center text-charcoal-50 text-sm">
+      <div className="relative aspect-[4/5] bg-softgray rounded-3xl flex items-center justify-center text-espresso-50 text-sm">
         Foto tidak tersedia
       </div>
     );
   }
 
   const currentMedia = sortedMedia[currentIndex] || sortedMedia[0];
+  const isCurrentVideo = currentMedia.media_type === "video";
+
+  const handleReturnToPhoto = () => {
+    const photoIdx = sortedMedia.findIndex((m) => m.media_type !== "video");
+    setCurrentIndex(photoIdx !== -1 ? photoIdx : 0);
+  };
 
   return (
     <div className="space-y-4">
       {/* Main Display Container */}
-      <div className="relative rounded-3xl overflow-hidden bg-white shadow-soft border border-softgray-border aspect-[4/5] sm:aspect-square flex items-center justify-center group">
-        {currentMedia.media_type === "video" ? (
-          <VideoPlayer
-            src={currentMedia.public_url}
-            poster={currentMedia.thumbnail_url}
-            className="w-full h-full"
-          />
+      <div className="relative rounded-3xl overflow-hidden bg-white shadow-soft border-2 border-espresso/10 aspect-[4/5] sm:aspect-square flex items-center justify-center group">
+        {isCurrentVideo ? (
+          <div className="relative w-full h-full">
+            <VideoPlayer
+              src={currentMedia.public_url}
+              poster={currentMedia.thumbnail_url}
+              className="w-full h-full"
+            />
+
+            {/* Quick Return to Photo Floating Button */}
+            <button
+              type="button"
+              onClick={handleReturnToPhoto}
+              className="absolute top-4 left-4 z-30 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-vanilla text-espresso text-xs font-bold shadow-lg border border-espresso hover:bg-butter-400 active:scale-95 transition-all"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Kembali ke Foto</span>
+            </button>
+          </div>
         ) : (
           <div className="relative w-full h-full">
             <Image
@@ -56,7 +75,7 @@ export function MediaGallery({ media = [], productName }: MediaGalleryProps) {
             <button
               type="button"
               onClick={() => setIsLightboxOpen(true)}
-              className="absolute bottom-4 right-4 p-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-card text-charcoal hover:bg-white hover:text-rose transition-all opacity-0 group-hover:opacity-100"
+              className="absolute bottom-4 right-4 p-2.5 rounded-full bg-vanilla/95 backdrop-blur-md shadow-card text-espresso hover:bg-butter-400 transition-all border border-espresso/20"
               aria-label="Perbesar gambar"
             >
               <ZoomIn className="w-4 h-4" />
@@ -72,20 +91,20 @@ export function MediaGallery({ media = [], productName }: MediaGalleryProps) {
               onClick={() =>
                 setCurrentIndex((prev) => (prev > 0 ? prev - 1 : sortedMedia.length - 1))
               }
-              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 backdrop-blur-md shadow-card text-charcoal hover:bg-white hover:text-rose transition-all opacity-0 group-hover:opacity-100"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-vanilla/90 backdrop-blur-md shadow-card text-espresso hover:bg-butter-400 border border-espresso/20 transition-all active:scale-90"
               aria-label="Media sebelumnya"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               type="button"
               onClick={() =>
                 setCurrentIndex((prev) => (prev < sortedMedia.length - 1 ? prev + 1 : 0))
               }
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 backdrop-blur-md shadow-card text-charcoal hover:bg-white hover:text-rose transition-all opacity-0 group-hover:opacity-100"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-vanilla/90 backdrop-blur-md shadow-card text-espresso hover:bg-butter-400 border border-espresso/20 transition-all active:scale-90"
               aria-label="Media berikutnya"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </button>
           </>
         )}
@@ -96,6 +115,7 @@ export function MediaGallery({ media = [], productName }: MediaGalleryProps) {
         <div className="flex items-center gap-3 overflow-x-auto pb-2 no-scrollbar">
           {sortedMedia.map((item, idx) => {
             const isSelected = idx === currentIndex;
+            const isVideo = item.media_type === "video";
             return (
               <button
                 key={item.id || idx}
@@ -103,13 +123,13 @@ export function MediaGallery({ media = [], productName }: MediaGalleryProps) {
                 onClick={() => setCurrentIndex(idx)}
                 className={`relative flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden border-2 transition-all ${
                   isSelected
-                    ? "border-rose ring-2 ring-rose/20 scale-105"
-                    : "border-softgray-border hover:border-charcoal-50 opacity-70 hover:opacity-100"
+                    ? "border-matcha-600 ring-2 ring-matcha-400 scale-105"
+                    : "border-softgray-border hover:border-espresso/40 opacity-70 hover:opacity-100"
                 }`}
               >
                 <Image
                   src={
-                    item.media_type === "video"
+                    isVideo
                       ? item.thumbnail_url || item.public_url
                       : item.public_url
                   }
@@ -118,9 +138,10 @@ export function MediaGallery({ media = [], productName }: MediaGalleryProps) {
                   sizes="80px"
                   className="object-cover"
                 />
-                {item.media_type === "video" && (
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <Play className="w-5 h-5 fill-white text-white" />
+                {isVideo && (
+                  <div className="absolute inset-0 bg-espresso/50 flex flex-col items-center justify-center text-white">
+                    <Play className="w-4 h-4 fill-white" />
+                    <span className="text-[9px] font-bold mt-0.5">VIDEO</span>
                   </div>
                 )}
               </button>
@@ -131,14 +152,19 @@ export function MediaGallery({ media = [], productName }: MediaGalleryProps) {
 
       {/* Lightbox Modal */}
       {isLightboxOpen && currentMedia.media_type === "image" && (
-        <div className="fixed inset-0 z-50 bg-charcoal/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div
+          className="fixed inset-0 z-50 bg-espresso/90 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setIsLightboxOpen(false);
+          }}
+        >
           <button
             type="button"
             onClick={() => setIsLightboxOpen(false)}
-            className="absolute top-5 right-5 p-3 rounded-full bg-white/20 text-white hover:bg-white hover:text-charcoal transition-all"
+            className="absolute top-5 right-5 p-3 rounded-full bg-vanilla text-espresso hover:bg-butter-400 transition-all shadow-lg border border-espresso"
             aria-label="Tutup preview"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
           <div className="relative max-w-4xl max-h-[85vh] w-full h-full flex items-center justify-center">
             <Image
