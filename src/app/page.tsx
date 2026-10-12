@@ -5,7 +5,15 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { AestheticMarquee } from "@/components/home/AestheticMarquee";
 import { StoryHighlights } from "@/components/home/StoryHighlights";
 import { VibeSelector } from "@/components/home/VibeSelector";
+import { DupeVsGrailSection } from "@/components/home/DupeVsGrailSection";
 import { OotdMixMatchStudio } from "@/components/home/OotdMixMatchStudio";
+import { StarboyDripMatcher } from "@/components/home/StarboyDripMatcher";
+import { OutfitOccasionSection } from "@/components/home/OutfitOccasionSection";
+import { BodyProportionAdvisor } from "@/components/home/BodyProportionAdvisor";
+import { SpotNongkrongSection } from "@/components/home/SpotNongkrongSection";
+import { WeatherOutfitSection } from "@/components/home/WeatherOutfitSection";
+import { FragranceMatcherSection } from "@/components/home/FragranceMatcherSection";
+import { CapsuleWardrobeSection } from "@/components/home/CapsuleWardrobeSection";
 import { HomeFeedInteractive } from "@/components/home/HomeFeedInteractive";
 import { VideoReelsSection } from "@/components/home/VideoReelsSection";
 import { BeliOrSkipPoll } from "@/components/home/BeliOrSkipPoll";
@@ -13,7 +21,6 @@ import { BudgetSliderFilter } from "@/components/home/BudgetSliderFilter";
 import { CategorySlider } from "@/components/home/CategorySlider";
 import { MarketplaceSection } from "@/components/home/MarketplaceSection";
 import { CollectionsSection } from "@/components/home/CollectionsSection";
-import { StarboyDripMatcher } from "@/components/home/StarboyDripMatcher";
 import {
   getCategories,
   getCollections,
@@ -42,39 +49,60 @@ export default async function HomePage() {
       {/* 3. Instagram/TikTok Story Highlights with Matcha-Butter-Espresso Gradient Ring */}
       <StoryHighlights />
 
-      {/* 4. Viral Mood Matcher & Gacha Mystery Roll (Cewek Bumi / Mamba / Kue / Clean Girl) */}
+      {/* 4. Viral Mood Matcher & Gacha Mystery Roll (Skena, Kalcer, Starboy, Gorpcore, dll) */}
       <VibeSelector products={allProducts} />
 
-      {/* 5. Interactive OOTD Mix & Match Studio (Virtual Fitting & Outfit Total Price) */}
+      {/* 5. SMART SHOPPING: Dupe vs. Grail (Alternatif Murah Brand Jutaan) */}
+      <DupeVsGrailSection />
+
+      {/* 6. Interactive OOTD Mix & Match Studio (With "Cetak Struk OOTD Aesthetic" Feature) */}
       <OotdMixMatchStudio products={allProducts} />
 
-      {/* 5.1 Starboy & Stargirl Drip Archive (5-Piece Complete Fit & Scent Pairing) */}
+      {/* 7. Starboy, Skena & Kalcer Drip Archive (5-Piece Complete Fit & Scent Pairing) */}
       <StarboyDripMatcher />
 
-      {/* 6. Interactive Instant Filter Feed (Tabs for Viral, Holy Grail, Fashion, Decor, etc.) */}
+      {/* 8. MAU KE MANA HARI INI? Outfit by Occasion (Cafe WFC, First Date, Konser, Ngampus) */}
+      <OutfitOccasionSection />
+
+      {/* 9. ANTI SALAH UKURAN: Body Silhouette & Proportion Advisor (Formula 1:2 & Cutting) */}
+      <BodyProportionAdvisor />
+
+      {/* 10. Interactive Instant Filter Feed (Tabs for Skena, Viral, Fashion, Decor, etc.) */}
       <HomeFeedInteractive products={allProducts} categories={categories} />
 
-      {/* 7. 9:16 Video Reels Try-On & Spill Section (TikTok/Reels format with foolproof back) */}
+      {/* 11. SPOT NONGKRONG MATCH: Blok M, Senopati, Panglima Polim & PIK */}
+      <SpotNongkrongSection />
+
+      {/* 12. WEATHER & TEMP ADVISOR: Siang Panas vs Malam Dingin & Hujan */}
+      <WeatherOutfitSection />
+
+      {/* 13. 9:16 Video Reels Try-On & Spill Section (TikTok/Reels format with foolproof back) */}
       <div id="video-reels">
         <VideoReelsSection products={allProducts} />
       </div>
 
-      {/* 8. Community Spill Polling Widget (Beli or Skip? 🗳️) */}
+      {/* 14. SIGNATURE SCENT MATCHER: Aroma Parfum Viral Tahan 8-10 Jam */}
+      <FragranceMatcherSection />
+
+      {/* 15. CAPSULE WARDROBE SIMULATOR: 7 Baju Esensial untuk 7 Hari Penuh */}
+      <CapsuleWardrobeSection />
+
+      {/* 16. Community Spill Polling Widget (Beli or Skip? 🗳️) */}
       <BeliOrSkipPoll products={allProducts} />
 
-      {/* 9. Smart Budget Slider (Kalkulator Sisa Uang Jajan 💸) */}
+      {/* 17. Smart Budget Slider (Kalkulator Sisa Uang Jajan 💸) */}
       <BudgetSliderFilter products={allProducts} />
 
-      {/* 10. Shop by Category with Visual Photos */}
+      {/* 18. Shop by Category with Visual Photos */}
       <CategorySlider categories={categories} />
 
-      {/* 11. Marketplace Discovery (Shopee, Tokopedia, TikTok Shop, Lazada) */}
+      {/* 19. Marketplace Discovery (Shopee, Tokopedia, TikTok Shop, Lazada) */}
       <MarketplaceSection />
 
-      {/* 12. Thematic Collections Lookbook */}
+      {/* 20. Thematic Collections Lookbook */}
       <CollectionsSection collections={collections} />
 
-      {/* 13. Gen Z Interactive Request Callout */}
+      {/* 21. Gen Z Interactive Request Callout */}
       <section className="py-16 bg-vanilla border-t-2 border-espresso/15">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-butter-200 via-vanilla to-matcha-100 border-2 border-espresso text-center space-y-4 shadow-brutal-lg">

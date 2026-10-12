@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, Dices, ArrowRight, ShoppingBag, Heart, Check, RefreshCw } from "lucide-react";
+import { Sparkles, Dices, ArrowRight, ShoppingBag, Heart, Check, RefreshCw, Receipt } from "lucide-react";
 import { Product } from "@/types";
 import { formatRupiah } from "@/lib/utils";
 import { triggerConfetti } from "@/lib/confetti";
 import { useToast } from "@/context/ToastContext";
 import { useWishlist } from "@/context/WishlistContext";
+import { AestheticReceiptModal } from "./AestheticReceiptModal";
 
 interface OotdMixMatchStudioProps {
   products: Product[];
@@ -20,6 +21,7 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
   const { showToast } = useToast();
   const { toggleWishlist } = useWishlist();
   const [genderMode, setGenderMode] = useState<GenderMode>("men");
+  const [isReceiptOpen, setIsReceiptOpen] = useState(false);
 
   // Curated lists per gender mode
   const outfitPresets = {
@@ -631,10 +633,33 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
                 <Heart className="w-4 h-4 text-espresso fill-espresso/20" />
                 <span>Simpan 1 Set ke Wishlist ❤️</span>
               </button>
+
+              <button
+                type="button"
+                onClick={() => setIsReceiptOpen(true)}
+                className="btn-3d flex items-center justify-center gap-2 w-full py-3 rounded-full bg-vanilla border-2 border-espresso text-espresso text-xs font-black hover:bg-white transition-all shadow-brutal-sm"
+              >
+                <Receipt className="w-4 h-4 text-cobalt" />
+                <span>Cetak Struk OOTD Aesthetic 🧾</span>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Aesthetic Thermal Receipt Modal */}
+      <AestheticReceiptModal
+        isOpen={isReceiptOpen}
+        onClose={() => setIsReceiptOpen(false)}
+        lookTitle={`OOTD Set • ${activePreset.label}`}
+        items={[
+          { name: currentTop?.name || "Atasan", price: currentTop?.price || 0 },
+          { name: currentBottom?.name || "Bawahan", price: currentBottom?.price || 0 },
+          { name: currentShoe?.name || "Sepatu", price: currentShoe?.price || 0 },
+          { name: currentAcc?.name || "Aksesori", price: currentAcc?.price || 0 },
+        ]}
+        customTotal={totalPrice}
+      />
     </section>
   );
 }
