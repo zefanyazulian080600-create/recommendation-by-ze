@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Share2, Check, Copy } from "lucide-react";
+import { useToast } from "@/context/ToastContext";
 
 interface ShareButtonProps {
   title: string;
@@ -11,6 +12,7 @@ interface ShareButtonProps {
 
 export function ShareButton({ title, url, className = "" }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
+  const { showToast } = useToast();
 
   const handleShare = async () => {
     const shareUrl = url || (typeof window !== "undefined" ? window.location.href : "");
@@ -22,6 +24,7 @@ export function ShareButton({ title, url, className = "" }: ShareButtonProps) {
           text: `Cek rekomendasi ${title} di Recommendation by Ze!`,
           url: shareUrl,
         });
+        showToast("Tautan berhasil dibagikan! ✨", "success");
         return;
       } catch (err) {
         // Fallback to clipboard if user dismissed or cancelled share sheet
@@ -32,6 +35,7 @@ export function ShareButton({ title, url, className = "" }: ShareButtonProps) {
     try {
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
+      showToast("Tautan spill disalin ke clipboard! 🔗", "link");
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Fallback alert

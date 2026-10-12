@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Heart } from "lucide-react";
 import { Product } from "@/types";
 import { useWishlist } from "@/context/WishlistContext";
+import { useToast } from "@/context/ToastContext";
 
 interface WishlistButtonProps {
   product: Product;
@@ -17,6 +18,7 @@ export function WishlistButton({
   size = "md",
 }: WishlistButtonProps) {
   const { isInWishlist, toggleWishlist } = useWishlist();
+  const { showToast } = useToast();
   const active = isInWishlist(product.id);
   const [animate, setAnimate] = useState(false);
 
@@ -25,6 +27,11 @@ export function WishlistButton({
     e.stopPropagation();
     setAnimate(true);
     toggleWishlist(product);
+    if (!active) {
+      showToast(`Disimpan ke Wishlist kamu! ❤️`, "wishlist");
+    } else {
+      showToast(`Dihapus dari Wishlist`, "info");
+    }
     setTimeout(() => setAnimate(false), 300);
   };
 

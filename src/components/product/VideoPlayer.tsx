@@ -7,14 +7,28 @@ interface VideoPlayerProps {
   src: string;
   poster?: string;
   className?: string;
+  title?: string;
+  autoPlay?: boolean;
 }
 
-export function VideoPlayer({ src, poster, className = "" }: VideoPlayerProps) {
+export function VideoPlayer({
+  src,
+  poster,
+  className = "",
+  title,
+  autoPlay = false,
+}: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (autoPlay && videoRef.current) {
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+    }
+  }, [autoPlay]);
 
   const togglePlay = () => {
     if (!videoRef.current) return;

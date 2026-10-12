@@ -62,6 +62,27 @@ const config: Config = {
         card: "0 2px 12px rgba(38, 35, 35, 0.04)",
         "card-hover": "0 12px 30px -4px rgba(38, 35, 35, 0.12)",
         float: "0 10px 40px -10px rgba(185, 111, 128, 0.2)",
+        glow: "0 0 25px -5px rgba(185, 111, 128, 0.35)",
+        glass: "0 8px 32px 0 rgba(38, 35, 35, 0.08)",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "bounce-slow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
+        "pulse-subtle": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" },
+        },
+      },
+      animation: {
+        marquee: "marquee 28s linear infinite",
+        "bounce-slow": "bounce-slow 3s ease-in-out infinite",
+        "pulse-subtle": "pulse-subtle 2s ease-in-out infinite",
       },
     },
   },

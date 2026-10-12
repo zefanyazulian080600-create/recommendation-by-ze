@@ -2,9 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { WishlistProvider } from "@/context/WishlistContext";
+import { ToastProvider } from "@/context/ToastContext";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
 import { getCategories, getSiteSettings } from "@/lib/data/store";
 
 const playfair = Playfair_Display({
@@ -101,14 +103,17 @@ export default async function RootLayout({
   return (
     <html lang="id" className={`${playfair.variable} ${jakarta.variable}`}>
       <body className="min-h-screen flex flex-col bg-ivory text-charcoal font-sans antialiased selection:bg-blush-300 selection:text-charcoal">
-        <WishlistProvider>
-          {settings.announcement_active && (
-            <AnnouncementBar message={settings.announcement_text} />
-          )}
-          <Navbar categories={categories} />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </WishlistProvider>
+        <ToastProvider>
+          <WishlistProvider>
+            {settings.announcement_active && (
+              <AnnouncementBar message={settings.announcement_text} />
+            )}
+            <Navbar categories={categories} />
+            <main className="flex-1 pb-20 lg:pb-0">{children}</main>
+            <Footer />
+            <MobileBottomBar />
+          </WishlistProvider>
+        </ToastProvider>
       </body>
     </html>
   );

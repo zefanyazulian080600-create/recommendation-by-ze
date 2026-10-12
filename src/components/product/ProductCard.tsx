@@ -3,11 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Play, ExternalLink } from "lucide-react";
+import { Play, Star, Copy, Check, ExternalLink, Sparkles } from "lucide-react";
 import { Product } from "@/types";
 import { formatRupiah, calculateDiscount, getMarketplaceMeta } from "@/lib/utils";
 import { WishlistButton } from "./WishlistButton";
 import { MarketplaceButton } from "./MarketplaceButton";
+import { useToast } from "@/context/ToastContext";
 
 interface ProductCardProps {
   product: Product;
@@ -15,6 +16,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, priority = false }: ProductCardProps) {
+  const { showToast } = useToast();
+
   // Find cover media or first media item
   const coverMedia =
     product.media?.find((m) => m.is_cover) ||
@@ -29,8 +32,19 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const discount = calculateDiscount(product.original_price, product.price);
   const marketplaceMeta = getMarketplaceMeta(product.marketplace);
 
+  const handleCopySpill = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const productUrl = typeof window !== "undefined"
+      ? `${window.location.origin}/product/${product.slug}`
+      : product.affiliate_url;
+    navigator.clipboard.writeText(productUrl).then(() => {
+      showToast(`Tautan ${product.name} disalin! 🔗`, "link");
+    });
+  };
+
   return (
-    <div className="group relative bg-white rounded-3xl border border-softgray-border/80 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col h-full">
+    <div className="group relative bg-white rounded-3xl border border-softgray-border overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col h-full tap-bounce">
       {/* Media Container with 4:5 aspect ratio */}
       <div className="relative aspect-[4/5] bg-softgray overflow-hidden w-full">
         <Link href={`/product/${product.slug}`} className="block w-full h-full">
@@ -48,14 +62,23 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           />
         </Link>
 
+        {/* Soft hover gradient vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
         {/* Top Badges Row */}
         <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
           <div className="flex flex-col gap-1 items-start">
-            {product.badge_label && (
-              <span className="px-2.5 py-1 rounded-full bg-charcoal/90 text-white text-[10px] sm:text-xs font-semibold backdrop-blur-md shadow-sm">
-                {product.badge_label}
+            {product.badge_label ? (
+              <span className="px-2.5 py-1 rounded-full bg-charcoal/90 text-white text-[10px] sm:text-xs font-semibold backdrop-blur-md shadow-sm flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-blush-300" />
+                <span>{product.badge_label}</span>
               </span>
-            )}
+            ) : product.is_featured ? (
+              <span className="px-2.5 py-1 rounded-full bg-rose text-white text-[10px] sm:text-xs font-semibold backdrop-blur-md shadow-sm">
+                ⭐ Ze&apos;s Pick
+              </span>
+            ) : null}
+
             {discount && (
               <span className="px-2 py-0.5 rounded-full bg-rose text-white text-[10px] font-bold shadow-sm">
                 -{discount}%
@@ -63,22 +86,35 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             )}
           </div>
 
-          {/* Wishlist Button (pointer events enabled) */}
-          <div className="pointer-events-auto">
+          {/* Top Right Action: Wishlist */}
+          <div className="pointer-events-auto flex items-center gap-1.5">
+            <button
+              onClick={handleCopySpill}
+              title="Salin tautan spill"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 backdrop-blur-md shadow-card hover:bg-white flex items-center justify-center text-charcoal-100 hover:text-charcoal transition-all opacity-0 group-hover:opacity-100 hidden sm:flex"
+            >
+              <Copy className="w-3.5 h-3.5" />
+            </button>
             <WishlistButton product={product} size="sm" />
           </div>
         </div>
 
-        {/* Video Indicator Pill */}
-        {hasVideo && (
-          <div className="absolute bottom-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md text-white text-[10px] font-medium shadow-sm">
-            <Play className="w-3 h-3 fill-white" />
-            <span>Video</span>
-          </div>
-        )}
+        {/* Bottom Floating Info Over Media */}
+        <div className="absolute bottom-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
+          {/* Video Indicator Pill */}
+          {hasVideo ? (
+            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-white text-[10px] font-medium shadow-sm">
+              <Play className="w-3 h-3 fill-white" />
+              <span>Video Try-On</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/85 backdrop-blur-md text-charcoal text-[9px] font-semibold">
+              <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+              <span>4.9 (1.2k+)</span>
+            </div>
+          )}
 
-        {/* Marketplace Pill */}
-        <div className="absolute bottom-3 right-3">
+          {/* Marketplace Pill with Official Color */}
           <span
             className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-sm border ${marketplaceMeta.borderClass}`}
           >
@@ -91,7 +127,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3">
         <div className="space-y-1.5">
           {product.category && (
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-charcoal-50">
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-rose">
               {product.category.name}
             </span>
           )}
@@ -108,7 +144,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </div>
 
         {/* Price & Actions Row */}
-        <div className="pt-2 border-t border-softgray flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="pt-2.5 border-t border-softgray flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-baseline gap-2">
               <span className="text-sm sm:text-base font-bold text-charcoal">
@@ -133,7 +169,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             marketplace={product.marketplace}
             affiliateUrl={product.affiliate_url}
             size="sm"
-            customText="Beli"
+            customText="Spill 🛍️"
             className="w-full sm:w-auto"
           />
         </div>
