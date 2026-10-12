@@ -78,16 +78,16 @@ export function FilterSidebar({
   const content = (
     <div className="space-y-6">
       {/* Header with Reset */}
-      <div className="flex items-center justify-between pb-4 border-b border-softgray">
+      <div className="flex items-center justify-between pb-4 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="w-4 h-4 text-rose" />
-          <h3 className="font-editorial text-lg font-medium text-charcoal">Filter Produk</h3>
+          <SlidersHorizontal className="w-4 h-4 text-emerald-400" />
+          <h3 className="font-mono text-sm font-bold uppercase tracking-wider text-white">Filter Produk</h3>
         </div>
         {(currentCategory || currentMarketplace || currentSearch || currentPriceRange || currentSort !== "newest") && (
           <button
             type="button"
             onClick={resetFilters}
-            className="flex items-center gap-1 text-xs text-rose hover:text-rose-700 font-medium"
+            className="flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 font-medium"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset</span>
@@ -97,7 +97,7 @@ export function FilterSidebar({
 
       {/* Keyword Search */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-50 mb-2">
+        <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
           Pencarian
         </label>
         <form onSubmit={handleSearchSubmit} className="relative">
@@ -106,24 +106,24 @@ export function FilterSidebar({
             value={localSearch}
             onChange={(e) => setLocalSearch(e.target.value)}
             placeholder="Cari item..."
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-softgray-border text-xs text-charcoal placeholder:text-charcoal-50 focus:outline-none focus:ring-2 focus:ring-rose/30 focus:border-rose"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#090A0F] border border-white/10 text-xs text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/30"
           />
-          <Search className="w-3.5 h-3.5 text-charcoal-50 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
         </form>
       </div>
 
       {/* Sort By */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-50 mb-2">
+        <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
           Urutan Tampil
         </label>
         <select
           value={currentSort}
           onChange={(e) => updateParam("sort", e.target.value)}
-          className="w-full py-2.5 px-3 rounded-xl bg-white border border-softgray-border text-xs font-medium text-charcoal focus:outline-none focus:ring-2 focus:ring-rose/30"
+          className="w-full py-2 px-3 rounded-xl bg-[#090A0F] border border-white/10 text-xs font-medium text-white focus:outline-none focus:border-white/30"
         >
           {sortOptions.map((opt) => (
-            <option key={opt.id} value={opt.id}>
+            <option key={opt.id} value={opt.id} className="bg-[#12131A] text-white">
               {opt.label}
             </option>
           ))}
@@ -132,7 +132,7 @@ export function FilterSidebar({
 
       {/* Target Gender */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-100 mb-2">
+        <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
           Target Gender
         </label>
         <div className="space-y-1">
@@ -150,12 +150,12 @@ export function FilterSidebar({
                 onClick={() => updateParam("gender", g.id)}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs text-left transition-all ${
                   isSelected
-                    ? "bg-butter-400 text-espresso font-extrabold border-2 border-espresso shadow-sm"
-                    : "text-espresso-100 hover:bg-softgray"
+                    ? "bg-white text-black font-bold shadow-md"
+                    : "text-zinc-400 hover:text-white hover:bg-white/5"
                 }`}
               >
                 <span>{g.label}</span>
-                {isSelected && <Check className="w-3.5 h-3.5 text-espresso" />}
+                {isSelected && <Check className="w-3.5 h-3.5 text-black" />}
               </button>
             );
           })}
@@ -164,21 +164,21 @@ export function FilterSidebar({
 
       {/* Category Filter */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-50 mb-2">
+        <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
           Kategori
         </label>
         <div className="space-y-1 max-h-56 overflow-y-auto pr-1 no-scrollbar">
           <button
             type="button"
             onClick={() => updateParam("category", "")}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
               !currentCategory
-                ? "bg-rose text-white font-semibold"
-                : "text-charcoal hover:bg-softgray"
+                ? "bg-white text-black font-bold shadow-md"
+                : "text-zinc-400 hover:text-white hover:bg-white/5"
             }`}
           >
             <span>Semua Kategori</span>
-            {!currentCategory && <Check className="w-3.5 h-3.5" />}
+            {!currentCategory && <Check className="w-3.5 h-3.5 text-black" />}
           </button>
           {categories.map((cat) => {
             const isActive = currentCategory.toLowerCase() === cat.slug.toLowerCase();
@@ -187,15 +187,15 @@ export function FilterSidebar({
                 key={cat.id}
                 type="button"
                 onClick={() => updateParam("category", cat.slug)}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
                   isActive
-                    ? "bg-rose text-white font-semibold"
-                    : "text-charcoal hover:bg-softgray"
+                    ? "bg-white text-black font-bold shadow-md"
+                    : "text-zinc-400 hover:text-white hover:bg-white/5"
                 }`}
               >
                 <span>{cat.name}</span>
                 {cat.product_count !== undefined && (
-                  <span className={`text-[10px] ${isActive ? "text-white/80" : "text-charcoal-50"}`}>
+                  <span className={`text-[10px] font-mono ${isActive ? "text-black/70" : "text-zinc-500"}`}>
                     ({cat.product_count})
                   </span>
                 )}
@@ -207,7 +207,7 @@ export function FilterSidebar({
 
       {/* Marketplace Filter */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-50 mb-2">
+        <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
           Marketplace
         </label>
         <div className="grid grid-cols-1 gap-1.5">
@@ -220,14 +220,14 @@ export function FilterSidebar({
                 key={mp.id}
                 type="button"
                 onClick={() => updateParam("marketplace", mp.id === "all" ? "" : mp.id)}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors border ${
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors border ${
                   isActive
-                    ? "bg-charcoal text-white border-charcoal font-semibold"
-                    : "bg-white text-charcoal border-softgray-border hover:bg-softgray"
+                    ? "bg-white text-black border-white font-bold shadow-md"
+                    : "bg-[#090A0F] text-zinc-400 border-white/10 hover:border-white/20 hover:text-white"
                 }`}
               >
                 <span>{mp.label}</span>
-                {isActive && <Check className="w-3.5 h-3.5" />}
+                {isActive && <Check className="w-3.5 h-3.5 text-black" />}
               </button>
             );
           })}
@@ -236,7 +236,7 @@ export function FilterSidebar({
 
       {/* Price Range Filter */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-50 mb-2">
+        <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
           Kisaran Budget
         </label>
         <div className="space-y-1">
@@ -247,14 +247,14 @@ export function FilterSidebar({
                 key={pr.id}
                 type="button"
                 onClick={() => updateParam("price", pr.id)}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
                   isActive
-                    ? "bg-blush-200 text-charcoal font-semibold border border-blush-300"
-                    : "text-charcoal hover:bg-softgray"
+                    ? "bg-white text-black font-bold shadow-md"
+                    : "text-zinc-400 hover:text-white hover:bg-white/5"
                 }`}
               >
                 <span>{pr.label}</span>
-                {isActive && <Check className="w-3.5 h-3.5 text-rose" />}
+                {isActive && <Check className="w-3.5 h-3.5 text-black" />}
               </button>
             );
           })}
@@ -268,13 +268,13 @@ export function FilterSidebar({
     if (!isOpen) return null;
     return (
       <div className="fixed inset-0 z-50 lg:hidden">
-        <div className="fixed inset-0 bg-charcoal/50 backdrop-blur-sm" onClick={onClose} />
-        <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-ivory shadow-xl p-5 overflow-y-auto animate-slideLeft z-10">
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+        <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#090A0F] border-l border-white/10 shadow-2xl p-5 overflow-y-auto animate-slideLeft z-10">
           <div className="flex justify-end pb-2">
             <button
               type="button"
               onClick={onClose}
-              className="p-2 text-charcoal hover:bg-blush-100 rounded-lg"
+              className="p-2 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg"
               aria-label="Tutup filter"
             >
               <X className="w-5 h-5" />
@@ -285,7 +285,7 @@ export function FilterSidebar({
             <button
               type="button"
               onClick={onClose}
-              className="w-full py-3 rounded-full bg-charcoal text-white text-sm font-semibold hover:bg-rose transition-colors shadow-md"
+              className="w-full py-3 rounded-full bg-white text-black text-sm font-bold hover:bg-zinc-200 transition-colors shadow-lg"
             >
               Terapkan Filter
             </button>
@@ -297,7 +297,7 @@ export function FilterSidebar({
 
   // Desktop sidebar mode
   return (
-    <aside className="w-64 flex-shrink-0 bg-white/70 backdrop-blur-sm rounded-3xl p-5 border border-softgray-border/80 shadow-soft h-fit sticky top-24">
+    <aside className="w-64 flex-shrink-0 bg-[#12131A] rounded-2xl p-5 border border-white/10 shadow-2xl h-fit sticky top-24">
       {content}
     </aside>
   );

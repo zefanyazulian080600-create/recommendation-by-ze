@@ -15,7 +15,7 @@ export function AestheticMarquee() {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden bg-espresso text-vanilla py-3 select-none border-y-2 border-espresso-800">
+    <div className="relative w-full overflow-hidden bg-[#0C0D14] text-zinc-300 py-3 select-none border-y border-white/10">
       <div className="flex w-[200%] animate-marquee">
         {/* Track 1 */}
         <div className="flex items-center gap-8 px-4 flex-shrink-0">
@@ -23,9 +23,9 @@ export function AestheticMarquee() {
             const Icon = item.icon;
             return (
               <div key={idx} className="flex items-center gap-2.5 text-xs font-bold tracking-widest uppercase">
-                <Icon className={`w-4 h-4 ${item.color} flex-shrink-0`} />
-                <span>{item.text}</span>
-                <span className="text-butter-400/50 text-sm ml-4">•</span>
+                <Icon className={`w-3.5 h-3.5 ${item.color} flex-shrink-0`} />
+                <span className="text-zinc-200">{item.text}</span>
+                <span className="text-white/20 text-xs ml-4">✦</span>
               </div>
             );
           })}
@@ -37,9 +37,9 @@ export function AestheticMarquee() {
             const Icon = item.icon;
             return (
               <div key={`dup-${idx}`} className="flex items-center gap-2.5 text-xs font-bold tracking-widest uppercase">
-                <Icon className={`w-4 h-4 ${item.color} flex-shrink-0`} />
-                <span>{item.text}</span>
-                <span className="text-butter-400/50 text-sm ml-4">•</span>
+                <Icon className={`w-3.5 h-3.5 ${item.color} flex-shrink-0`} />
+                <span className="text-zinc-200">{item.text}</span>
+                <span className="text-white/20 text-xs ml-4">✦</span>
               </div>
             );
           })}

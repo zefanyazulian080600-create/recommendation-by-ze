@@ -70,13 +70,13 @@ export default function AdminCategoriesPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-rose">
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
             Taksonomi
           </span>
-          <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-charcoal">
+          <h1 className="font-editorial text-2xl sm:text-4xl font-semibold text-white tracking-tight">
             Kelola Kategori
           </h1>
-          <p className="text-xs sm:text-sm text-charcoal-50 mt-1">
+          <p className="text-xs sm:text-sm text-white/50 mt-1">
             Kategori membagi katalog menjadi bagian yang terstruktur di seluruh website.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function AdminCategoriesPage() {
         <button
           type="button"
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-charcoal text-white text-xs sm:text-sm font-semibold hover:bg-rose transition-colors shadow-md self-start sm:self-auto"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-black text-xs sm:text-sm font-bold hover:bg-emerald-400 hover:text-black transition-all shadow-md self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Kategori</span>
@@ -96,10 +96,10 @@ export default function AdminCategoriesPage() {
         {categories.map((c) => (
           <div
             key={c.id}
-            className="p-5 rounded-3xl bg-white border border-softgray-border shadow-card flex flex-col justify-between space-y-4"
+            className="p-5 rounded-2xl bg-[#12131A] border border-white/10 shadow-xl flex flex-col justify-between space-y-4 hover:border-white/20 transition-all"
           >
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-softgray overflow-hidden relative flex-shrink-0">
+              <div className="w-14 h-14 rounded-xl bg-white/5 overflow-hidden relative flex-shrink-0 border border-white/10">
                 {c.cover_image && (
                   <Image
                     src={c.cover_image}
@@ -111,28 +111,28 @@ export default function AdminCategoriesPage() {
                 )}
               </div>
               <div>
-                <h3 className="font-editorial text-base font-semibold text-charcoal">
+                <h3 className="font-editorial text-base font-semibold text-white">
                   {c.name}
                 </h3>
-                <span className="text-[10px] text-charcoal-50 block">/{c.slug}</span>
-                <span className="text-[11px] font-medium text-rose mt-1 block">
+                <span className="text-[10px] text-white/40 block font-mono">/{c.slug}</span>
+                <span className="text-[11px] font-mono font-medium text-emerald-400 mt-1 block">
                   {c.product_count || 0} produk aktif
                 </span>
               </div>
             </div>
 
             {c.description && (
-              <p className="text-xs text-charcoal-200 line-clamp-2">{c.description}</p>
+              <p className="text-xs text-white/60 line-clamp-2">{c.description}</p>
             )}
 
-            <div className="pt-3 border-t border-softgray flex items-center justify-between text-xs">
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+            <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">
                 Aktif
               </span>
               <button
                 type="button"
                 onClick={() => handleDelete(c.id)}
-                className="text-red-500 hover:text-red-700 p-1"
+                className="text-red-400 hover:text-red-300 p-1 hover:bg-red-500/10 rounded-lg transition-colors"
                 title="Hapus"
               >
                 <Trash2 className="w-4 h-4" />
@@ -144,19 +144,19 @@ export default function AdminCategoriesPage() {
 
       {/* Add Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 bg-charcoal/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <form
             onSubmit={handleSave}
-            className="bg-white rounded-3xl p-6 max-w-md w-full space-y-4 shadow-xl border border-softgray-border"
+            className="bg-[#12131A] rounded-2xl p-6 max-w-md w-full space-y-4 shadow-2xl border border-white/15 text-white"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-softgray">
-              <h3 className="font-editorial text-lg font-semibold text-charcoal">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <h3 className="font-editorial text-lg font-bold text-white">
                 Tambah Kategori Baru
               </h3>
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="text-charcoal-50 hover:text-charcoal"
+                className="text-white/40 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -164,47 +164,47 @@ export default function AdminCategoriesPage() {
 
             <div className="space-y-3 text-xs">
               <div className="space-y-1">
-                <label className="font-semibold text-charcoal">Nama Kategori</label>
+                <label className="font-mono uppercase text-[11px] font-bold text-white/80">Nama Kategori</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => handleNameChange(e.target.value)}
                   placeholder="misal: Aksesoris & Perhiasan"
-                  className="w-full px-3 py-2 rounded-xl bg-ivory-50 border border-softgray-border"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="font-semibold text-charcoal">Slug URL</label>
+                <label className="font-mono uppercase text-[11px] font-bold text-white/80">Slug URL</label>
                 <input
                   type="text"
                   required
                   value={slug}
                   onChange={(e) => setSlug(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-ivory-50 border border-softgray-border"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50 font-mono"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="font-semibold text-charcoal">Deskripsi Singkat</label>
+                <label className="font-mono uppercase text-[11px] font-bold text-white/80">Deskripsi Singkat</label>
                 <input
                   type="text"
                   value={desc}
                   onChange={(e) => setDesc(e.target.value)}
                   placeholder="Koleksi perhiasan dan aksesoris harian..."
-                  className="w-full px-3 py-2 rounded-xl bg-ivory-50 border border-softgray-border"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="font-semibold text-charcoal">URL Gambar Cover</label>
+                <label className="font-mono uppercase text-[11px] font-bold text-white/80">URL Gambar Cover</label>
                 <input
                   type="url"
                   value={cover}
                   onChange={(e) => setCover(e.target.value)}
                   placeholder="https://images.unsplash.com/..."
-                  className="w-full px-3 py-2 rounded-xl bg-ivory-50 border border-softgray-border"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                 />
               </div>
             </div>
@@ -213,13 +213,13 @@ export default function AdminCategoriesPage() {
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="flex-1 py-2.5 rounded-full border border-softgray-border text-xs font-semibold text-charcoal hover:bg-softgray"
+                className="flex-1 py-2.5 rounded-full border border-white/15 text-xs font-semibold text-white/70 hover:bg-white/10"
               >
                 Batal
               </button>
               <button
                 type="submit"
-                className="flex-1 py-2.5 rounded-full bg-charcoal text-white text-xs font-semibold hover:bg-rose"
+                className="flex-1 py-2.5 rounded-full bg-white text-black text-xs font-bold hover:bg-emerald-400 hover:text-black transition-colors"
               >
                 Simpan
               </button>

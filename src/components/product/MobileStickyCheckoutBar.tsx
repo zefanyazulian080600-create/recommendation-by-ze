@@ -39,12 +39,12 @@ export function MobileStickyCheckoutBar({ product }: MobileStickyCheckoutBarProp
   return (
     <aside
       aria-label="Checkout langsung di marketplace"
-      className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-vanilla/95 backdrop-blur-md border-t-2 border-espresso px-3 py-2.5 shadow-[0_-8px_30px_rgba(65,51,51,0.18)] transition-all duration-300 animate-slide-up"
+      className="md:hidden fixed bottom-0 inset-x-0 z-50 bg-[#090A0F]/95 backdrop-blur-md border-t border-white/10 px-3.5 py-3 shadow-[0_-10px_35px_rgba(0,0,0,0.8)] transition-all duration-300 animate-slide-up"
     >
       <div className="max-w-md mx-auto flex items-center justify-between gap-3">
         {/* Left: Thumbnail & Price Info */}
         <div className="flex items-center gap-2.5 min-w-0 flex-1">
-          <div className="relative w-12 h-12 rounded-xl overflow-hidden border-2 border-espresso flex-shrink-0 bg-softgray">
+          <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-white/20 flex-shrink-0 bg-[#12131A]">
             <Image
               src={coverMedia.public_url}
               alt={product.name}
@@ -53,7 +53,7 @@ export function MobileStickyCheckoutBar({ product }: MobileStickyCheckoutBarProp
               className="object-cover"
             />
             {product.spill_number && (
-              <span className="absolute bottom-0 inset-x-0 bg-espresso text-vanilla text-[8px] font-mono font-bold text-center py-0.2 leading-tight">
+              <span className="absolute bottom-0 inset-x-0 bg-white text-black text-[8px] font-mono font-bold text-center py-0.2 leading-tight">
                 #{String(product.spill_number).padStart(2, "0")}
               </span>
             )}
@@ -61,18 +61,18 @@ export function MobileStickyCheckoutBar({ product }: MobileStickyCheckoutBarProp
 
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] font-mono font-bold text-matcha-600 uppercase tracking-wider truncate">
+              <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-wider truncate">
                 {product.category?.name || "Rekomendasi"}
               </span>
-              <span className="w-1 h-1 rounded-full bg-espresso/30" />
-              <span className="text-[9px] font-bold text-espresso/60 uppercase">
+              <span className="w-1 h-1 rounded-full bg-white/20" />
+              <span className="text-[9px] font-mono text-zinc-400 uppercase">
                 {marketplaceMeta.name}
               </span>
             </div>
-            <p className="text-xs font-bold text-espresso truncate leading-tight">
+            <p className="text-xs font-bold text-white truncate leading-tight mt-0.5">
               {product.name}
             </p>
-            <p className="text-xs font-extrabold text-espresso font-editorial mt-0.5">
+            <p className="text-xs font-extrabold text-white font-mono mt-0.5">
               {formatRupiah(product.price)}
             </p>
           </div>
@@ -85,8 +85,8 @@ export function MobileStickyCheckoutBar({ product }: MobileStickyCheckoutBarProp
             marketplace={product.marketplace}
             affiliateUrl={product.affiliate_url}
             size="sm"
-            customText={`Beli di ${marketplaceMeta.name} ↗`}
-            className="btn-3d py-2.5 px-3.5 text-xs font-bold shadow-md active:scale-95 whitespace-nowrap"
+            customText={`Beli ↗`}
+            className="py-2.5 px-4 text-xs font-bold shadow-lg active:scale-95 whitespace-nowrap"
           />
         </div>
       </div>

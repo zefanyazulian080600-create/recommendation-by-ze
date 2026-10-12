@@ -72,15 +72,15 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const marketplaceMeta = getMarketplaceMeta(product.marketplace);
 
   return (
-    <div className="py-8 md:py-14 pb-28 md:pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+    <div className="min-h-screen bg-[#090A0F] text-white py-8 md:py-14 pb-28 md:pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-charcoal-50 overflow-x-auto whitespace-nowrap">
-          <Link href="/" className="hover:text-charcoal transition-colors">
+        <nav className="flex items-center gap-2 text-xs text-zinc-500 overflow-x-auto whitespace-nowrap">
+          <Link href="/" className="hover:text-white transition-colors">
             Beranda
           </Link>
           <span>/</span>
-          <Link href="/products" className="hover:text-charcoal transition-colors">
+          <Link href="/products" className="hover:text-white transition-colors">
             Katalog
           </Link>
           {product.category && (
@@ -88,14 +88,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               <span>/</span>
               <Link
                 href={`/products?category=${product.category.slug}`}
-                className="hover:text-charcoal transition-colors"
+                className="hover:text-white transition-colors"
               >
                 {product.category.name}
               </Link>
             </>
           )}
           <span>/</span>
-          <span className="text-charcoal font-medium truncate max-w-[200px]">
+          <span className="text-zinc-300 font-medium truncate max-w-[200px]">
             {product.name}
           </span>
         </nav>
@@ -115,66 +115,66 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 {product.spill_number && (
                   <span
                     title={`Nomor Spill TikTok/IG: #${product.spill_number}`}
-                    className="px-3 py-1 rounded-xl bg-espresso text-vanilla font-mono text-xs font-bold tracking-wider shadow-sm border border-espresso flex items-center gap-1.5"
+                    className="px-3 py-1 rounded-xl bg-white/10 text-white font-mono text-xs font-bold tracking-wider shadow-sm border border-white/20 flex items-center gap-1.5"
                   >
-                    <span className="text-butter-400 font-editorial">№</span>
+                    <span className="text-emerald-400 font-mono">№</span>
                     <span>KODE BIO #{String(product.spill_number).padStart(2, "0")}</span>
                   </span>
                 )}
                 <span
-                  className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${marketplaceMeta.badgeBg} text-white shadow-sm`}
+                  className={`px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider ${marketplaceMeta.badgeBg} text-white shadow-sm`}
                 >
                   Tersedia di {marketplaceMeta.name}
                 </span>
                 {product.badge_label && (
-                  <span className="px-3 py-1 rounded-full bg-butter-300 text-espresso text-xs font-bold shadow-sm border border-espresso">
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold border border-emerald-500/30">
                     {product.badge_label}
                   </span>
                 )}
                 {discount && (
-                  <span className="px-2.5 py-1 rounded-full bg-matcha-500 text-white text-xs font-bold shadow-sm border border-espresso">
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-500 text-black text-xs font-mono font-bold shadow-md">
                     Hemat {discount}%
                   </span>
                 )}
               </div>
 
               {/* Real-time social proof & urgency badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-butter-200/60 border border-espresso/20 text-xs font-medium text-espresso">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-rose"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                 </span>
                 <span>⚡ <strong>32 orang</strong> lagi kepoin rekomendasi ini hari ini</span>
               </div>
             </div>
 
             {/* Product Title */}
-            <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-charcoal leading-tight">
+            <h1 className="font-sans text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
               {product.name}
             </h1>
 
             {/* Short Description */}
-            <p className="text-sm sm:text-base text-charcoal-200 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
               {product.short_description}
             </p>
 
             {/* Price Box */}
-            <div className="p-6 rounded-3xl bg-white border-2 border-espresso/15 shadow-card space-y-2">
-              <span className="text-[11px] font-extrabold uppercase tracking-wider text-matcha-600">
+            <div className="p-6 rounded-2xl bg-[#12131A] border border-white/10 shadow-2xl space-y-2">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                 Harga Rekomendasi
               </span>
               <div className="flex items-baseline gap-3">
-                <span className="text-2xl sm:text-3xl font-extrabold text-espresso">
+                <span className="text-2xl sm:text-3xl font-mono font-extrabold text-white">
                   {formatRupiah(product.price)}
                 </span>
                 {product.original_price && product.original_price > product.price && (
-                  <span className="text-base text-espresso-50 line-through">
+                  <span className="text-base font-mono text-zinc-500 line-through">
                     {formatRupiah(product.original_price)}
                   </span>
                 )}
               </div>
-              <div className="pt-1 flex items-center gap-1.5 text-xs text-espresso-100">
-                <Clock className="w-3.5 h-3.5 text-butter-500" />
+              <div className="pt-1 flex items-center gap-1.5 text-xs text-zinc-400">
+                <Clock className="w-3.5 h-3.5 text-emerald-400" />
                 <span>
                   {product.price_note ||
                     "Harga saat terakhir diperiksa. Dapat berubah sewaktu-waktu sesuai promo toko."}
@@ -190,33 +190,33 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   marketplace={product.marketplace}
                   affiliateUrl={product.affiliate_url}
                   size="lg"
-                  className="btn-3d flex-1 py-4 text-base font-bold shadow-md hover:shadow-lg"
+                  className="flex-1 py-4 text-base font-bold shadow-lg hover:brightness-110 active:scale-95"
                 />
                 <WishlistButton product={product} size="lg" />
                 <ShareButton title={product.name} />
               </div>
               <AskBestieButton product={product} className="w-full" />
-              <p className="text-[11px] text-center text-espresso-100">
+              <p className="text-[11px] text-center text-zinc-500">
                 Transaksi aman & pembayaran langsung di aplikasi {marketplaceMeta.name}. Ze hanya mengurasi official atau seller terpercaya.
               </p>
             </div>
 
             {/* Variants if present */}
             {product.variants && product.variants.length > 0 && (
-              <div className="p-5 rounded-2xl bg-white border border-softgray-border space-y-3">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-charcoal">
-                  <Layers className="w-4 h-4 text-rose" />
+              <div className="p-5 rounded-2xl bg-[#12131A] border border-white/10 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-white">
+                  <Layers className="w-4 h-4 text-emerald-400" />
                   <span>Pilihan Varian & Warna</span>
                 </div>
                 <div className="space-y-3">
                   {product.variants.map((v, i) => (
                     <div key={i} className="space-y-1.5">
-                      <span className="text-xs text-charcoal-50">{v.name}:</span>
+                      <span className="text-xs text-zinc-400">{v.name}:</span>
                       <div className="flex flex-wrap gap-2">
                         {v.options.map((opt, optIdx) => (
                           <span
                             key={optIdx}
-                            className="px-3 py-1 rounded-full bg-softgray text-xs text-charcoal font-medium border border-softgray-border"
+                            className="px-3 py-1 rounded-lg bg-[#090A0F] text-xs text-zinc-200 font-medium border border-white/10"
                           >
                             {opt}
                           </span>
@@ -230,23 +230,23 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
             {/* Size / Dimensions Note if present */}
             {product.size_notes && (
-              <div className="p-5 rounded-2xl bg-white border border-softgray-border space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-charcoal">
-                  <Ruler className="w-4 h-4 text-rose" />
+              <div className="p-5 rounded-2xl bg-[#12131A] border border-white/10 space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-white">
+                  <Ruler className="w-4 h-4 text-emerald-400" />
                   <span>Panduan Ukuran & Dimensi</span>
                 </div>
-                <p className="text-xs sm:text-sm text-charcoal-200 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
                   {product.size_notes}
                 </p>
               </div>
             )}
 
             {/* Full Editorial Description */}
-            <div className="pt-4 space-y-3 border-t border-softgray">
-              <h3 className="font-editorial text-lg font-semibold text-charcoal">
+            <div className="pt-4 space-y-3 border-t border-white/10">
+              <h3 className="font-sans text-lg font-bold text-white">
                 Ulasan & Catatan Kurasi Ze
               </h3>
-              <div className="text-xs sm:text-sm text-charcoal-200 leading-relaxed whitespace-pre-line">
+              <div className="text-xs sm:text-sm text-zinc-300 leading-relaxed whitespace-pre-line">
                 {product.description}
               </div>
             </div>
@@ -258,7 +258,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   <Link
                     key={i}
                     href={`/products?search=${encodeURIComponent(tag)}`}
-                    className="px-3 py-1 rounded-full bg-white text-[11px] text-charcoal-100 hover:text-rose border border-softgray-border hover:border-rose transition-colors"
+                    className="px-3 py-1 rounded-lg bg-[#12131A] text-[11px] text-zinc-400 hover:text-white border border-white/10 hover:border-white/30 transition-colors"
                   >
                     #{tag}
                   </Link>
@@ -267,10 +267,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             )}
 
             {/* Affiliate transparency badge */}
-            <div className="p-4 rounded-2xl bg-blush-50 border border-blush-200 flex items-start gap-3 text-xs text-charcoal-200">
-              <ShieldCheck className="w-5 h-5 text-rose flex-shrink-0 mt-0.5" />
+            <div className="p-4 rounded-xl bg-[#12131A] border border-white/10 flex items-start gap-3 text-xs text-zinc-400">
+              <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
               <p>
-                <strong>Catatan Belanja:</strong> Tautan di atas diarahkan ke official atau star
+                <strong className="text-white">Catatan Belanja:</strong> Tautan di atas diarahkan ke official atau star
                 seller terverifikasi di {marketplaceMeta.name}. Ze dapat memperoleh komisi affiliate
                 tanpa biaya tambahan bagi kamu.
               </p>
@@ -280,19 +280,19 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
         {/* Related Products Section */}
         {relatedProducts.length > 0 && (
-          <section className="pt-10 border-t border-softgray">
+          <section className="pt-10 border-t border-white/10">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-rose">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
                   Rekomendasi Terkait
                 </span>
-                <h2 className="font-editorial text-2xl sm:text-3xl font-medium text-charcoal mt-1">
+                <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-white mt-1 tracking-tight">
                   Kamu Mungkin Juga Suka
                 </h2>
               </div>
               <Link
                 href="/products"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-charcoal hover:text-rose transition-colors group"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-zinc-400 hover:text-white transition-colors group"
               >
                 <span>Lihat Katalog</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkles, ArrowRight, Play, Heart, Star, ShieldCheck, Flame, Tag, Zap } from "lucide-react";
+import { Sparkles, ArrowRight, Play, Star, ShieldCheck, Zap } from "lucide-react";
 import { SiteSettings } from "@/types";
 import { useUser } from "@/context/UserContext";
 
@@ -16,54 +16,63 @@ export function HeroSection({ settings }: HeroSectionProps) {
   const headline = settings?.hero_headline || "Curated Finds for Your Everyday Aesthetic.";
   const subheadline =
     settings?.hero_subheadline ||
-    "Rekomendasi terbaik belanja online shop pilihan Ze: outfit kece, skincare viral, perintilan aesthetic, sampai gadget setup favorit yang beneran worth it dibeli.";
+    "Rekomendasi terbaik belanja online shop pilihan Ze: outfit streetwear, kalcer, starboy, skincare viral, dan perintilan aesthetic yang terkurasi 100% independen.";
   const heroImage =
     settings?.hero_image ||
     "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop";
 
   return (
-    <section className="relative overflow-hidden pt-6 pb-14 md:pt-12 md:pb-20 bg-vanilla">
-      {/* 3D background subtle glow shapes */}
-      <div className="absolute top-0 right-10 -z-10 w-96 h-96 bg-butter-200/60 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-5 -z-10 w-80 h-80 bg-matcha-100/70 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24 bg-[#090A0F] text-white">
+      {/* Subtle ambient lighting effects */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -z-10 w-[600px] h-[350px] bg-gradient-to-tr from-emerald-500/10 via-sky-500/10 to-purple-500/5 blur-3xl pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Text Content (7 cols on lg) */}
           <div className="lg:col-span-7 space-y-6 text-left">
-            {/* Pill Tag with Y2K Underground Ticket feel */}
+            {/* Pill Tag */}
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-espresso text-vanilla text-xs font-mono font-bold shadow-brutal-sm border border-espresso">
-                <span className="text-butter-400">✦</span>
-                <span>ADMIT ONE • ZE UNDERGROUND ARCHIVE • VOL. 2026</span>
-                <span className="text-butter-400">✦</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-medium text-emerald-400">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>CURATED ARCHIVE • SKENA, KALCER & ALL GENDER ✦</span>
               </div>
 
               {userName ? (
                 <button
                   type="button"
                   onClick={openModal}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-butter-500 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-xs font-bold text-emerald-300 hover:bg-emerald-500/25 transition-all"
                   title="Klik untuk ubah nama atau aesthetic vibe kamu"
                 >
-                  <Zap className="w-3.5 h-3.5 fill-espresso" />
-                  <span>VIP Pass: {userName} ⚡ ({userVibe}) ✏️</span>
+                  <Zap className="w-3.5 h-3.5 fill-emerald-400 text-emerald-400" />
+                  <span>VIP Pass: {userName} ({userVibe})</span>
                 </button>
               ) : (
                 <button
                   type="button"
                   onClick={openModal}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-butter-400 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/10 transition-all"
                 >
-                  <Sparkles className="w-3.5 h-3.5 fill-espresso" />
-                  <span>Spill Nama Kamu ✨</span>
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Personalisasi Nama ✨</span>
                 </button>
               )}
             </div>
 
-            {/* Fast Bio Numbers Strip in Hero */}
+            {/* Editorial Headline */}
+            <h1 className="font-editorial text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.12]">
+              {userName ? `Yo ${userName}, ` : ""}
+              {headline}
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl font-normal">
+              {subheadline}
+            </p>
+
+            {/* Fast Bio Numbers Strip */}
             <div className="flex items-center gap-2 pt-1 flex-wrap">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-espresso/60">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-500">
                 ⚡ Fast Bio Spill:
               </span>
               <div className="flex items-center gap-1.5 flex-wrap">
@@ -71,7 +80,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
                   <Link
                     key={no}
                     href={`/products?search=${encodeURIComponent(no)}`}
-                    className="px-2.5 py-0.5 rounded-md bg-white border border-espresso text-espresso font-mono text-xs font-bold hover:bg-butter-400 hover:scale-105 transition-all shadow-sm"
+                    className="px-2.5 py-1 rounded-md bg-[#12131A] border border-white/10 text-white font-mono text-xs font-bold hover:border-emerald-400 hover:text-emerald-400 transition-all"
                   >
                     {no}
                   </Link>
@@ -79,72 +88,47 @@ export function HeroSection({ settings }: HeroSectionProps) {
               </div>
             </div>
 
-            {/* Editorial Headline */}
-            <h1 className="font-editorial text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-espresso leading-[1.12]">
-              {userName ? `Yo ${userName}! ` : ""}
-              {headline}
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg text-espresso-100 leading-relaxed max-w-xl font-normal">
-              {subheadline}
-            </p>
-
-            {/* 3D Interactive CTAs Row */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            {/* Clean Action Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Link
                 href="/products"
-                className="btn-3d inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-espresso text-vanilla text-sm font-bold border-2 border-espresso hover:bg-espresso-400 transition-all"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-black text-sm font-bold hover:bg-zinc-200 transition-all shadow-xl hover:scale-[1.02]"
               >
-                <span>Mulai Cari Rekomendasi 🛍️</span>
+                <span>Mulai Eksplorasi Katalog 🛍️</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="#video-reels"
-                className="btn-3d-butter inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-butter-400 border-2 border-espresso text-espresso text-sm font-bold hover:bg-butter-500 transition-all"
+                href="#archive-labs"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#12131A] border border-white/10 text-white text-sm font-semibold hover:bg-white/10 transition-all"
               >
-                <Play className="w-4 h-4 text-espresso fill-espresso" />
-                <span>Tonton Video Spill</span>
+                <Play className="w-4 h-4 text-emerald-400 fill-emerald-400" />
+                <span>Styling Studio Hub</span>
               </Link>
             </div>
 
-            {/* Social Proof & Metrics Strip in Vanilla/Espresso Box */}
-            <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-espresso-100 border-t-2 border-espresso/15">
-              {/* Star Rating */}
+            {/* Social Proof Strip */}
+            <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-zinc-400 border-t border-white/10">
               <div className="flex items-center gap-2">
-                <div className="flex items-center text-butter-500">
+                <div className="flex items-center text-amber-400">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-butter-500 text-butter-500" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <span className="font-extrabold text-espresso">4.9 / 5.0</span>
-                <span className="text-espresso-50">(10k+ Gen Z readers)</span>
+                <span className="font-bold text-white">4.9 / 5.0</span>
+                <span className="text-zinc-500">(10k+ Gen Z readers)</span>
               </div>
 
-              {/* Verified Badge */}
-              <div className="flex items-center gap-1.5 text-espresso font-semibold">
-                <ShieldCheck className="w-4 h-4 text-matcha-600" />
-                <span>100% Toko Asli & Terpercaya</span>
-              </div>
-            </div>
-
-            {/* Marketplace badges mini-strip */}
-            <div className="flex items-center gap-2.5 text-xs text-espresso-100 flex-wrap">
-              <span className="font-bold text-espresso">Marketplace:</span>
-              <div className="flex items-center gap-2 font-semibold flex-wrap">
-                <span className="px-3 py-1 rounded-full bg-[#EE4D2D] text-white text-[11px] font-bold shadow-sm">Shopee</span>
-                <span className="px-3 py-1 rounded-full bg-[#03AC0E] text-white text-[11px] font-bold shadow-sm">Tokopedia</span>
-                <span className="px-3 py-1 rounded-full bg-black text-white text-[11px] font-bold shadow-sm">TikTok Shop</span>
-                <span className="px-3 py-1 rounded-full bg-[#0F146D] text-white text-[11px] font-bold shadow-sm">Lazada</span>
+              <div className="flex items-center gap-1.5 text-zinc-300 font-medium">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>100% Toko Terverifikasi</span>
               </div>
             </div>
           </div>
 
-          {/* Right Editorial 3D Showcase Frame (5 cols on lg) */}
+          {/* Right Editorial Showcase Frame (5 cols on lg) */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Main Fashion Editorial Frame with 3D Card Shadow */}
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border-4 border-espresso shadow-3d-card bg-vanilla">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-[#12131A]">
                 <Image
                   src={heroImage}
                   alt="Inspirasi kurasi Recommendation by Ze"
@@ -153,43 +137,43 @@ export function HeroSection({ settings }: HeroSectionProps) {
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-espresso/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                 {/* Floating Bottom Card Inside Photo */}
-                <div className="absolute bottom-5 inset-x-5 p-4 rounded-2xl bg-vanilla/95 backdrop-blur-md shadow-lg border-2 border-espresso text-espresso">
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-xl bg-[#090A0F]/85 backdrop-blur-md border border-white/15 text-white">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-matcha-600">
-                        KOLEKSI PILIHAN ZE
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">
+                        CURATED SELECTION
                       </span>
-                      <h4 className="font-editorial text-sm font-bold text-espresso">
-                        Daily Aesthetic & Lookbook
+                      <h4 className="font-sans text-sm font-bold text-white">
+                        Daily Aesthetic Archive
                       </h4>
                     </div>
-                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-butter-400 text-espresso border border-espresso">
-                      100% Real ✨
+                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-white/10 text-white border border-white/20">
+                      Real Spill ✨
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* 3D Floating Sticker Top Right */}
-              <div className="absolute -top-4 -right-4 sm:-right-5 bg-vanilla p-3 rounded-2xl shadow-float border-2 border-espresso flex items-center gap-2.5 float-3d">
-                <div className="w-9 h-9 rounded-full bg-matcha-400 flex items-center justify-center border border-espresso">
-                  <Sparkles className="w-5 h-5 text-espresso" />
+              {/* Floating Badge Top Right */}
+              <div className="absolute -top-3 -right-3 bg-[#12131A] p-3 rounded-xl shadow-2xl border border-white/15 flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+                  <Sparkles className="w-4 h-4" />
                 </div>
                 <div className="text-left">
-                  <p className="text-[10px] text-espresso-100 font-bold">Kurasi Pilihan</p>
-                  <p className="text-xs font-extrabold text-espresso">Anti Gagal ✨</p>
+                  <p className="text-[10px] text-zinc-400">Kurasi Pilihan</p>
+                  <p className="text-xs font-bold text-white">Anti Gagal ✦</p>
                 </div>
               </div>
 
-              {/* 3D Floating Sticker Bottom Left */}
-              <div className="absolute -bottom-4 -left-4 sm:-left-5 bg-butter-400 p-3 rounded-2xl shadow-float border-2 border-espresso flex items-center gap-2.5 float-3d">
+              {/* Floating Badge Bottom Left */}
+              <div className="absolute -bottom-3 -left-3 bg-[#12131A] p-3 rounded-xl shadow-2xl border border-white/15 flex items-center gap-2.5">
                 <span className="text-xl">🛹</span>
                 <div className="text-left">
-                  <p className="text-[10px] text-espresso font-bold">All-Gender Fit</p>
-                  <p className="text-xs font-extrabold text-espresso">Streetwear & Clean 🔥</p>
+                  <p className="text-[10px] text-zinc-400">All-Gender Fit</p>
+                  <p className="text-xs font-bold text-white">Streetwear & Clean</p>
                 </div>
               </div>
             </div>

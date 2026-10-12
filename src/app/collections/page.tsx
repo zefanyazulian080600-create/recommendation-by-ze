@@ -17,16 +17,16 @@ export default async function CollectionsPage() {
   const allProducts = await getProducts({});
 
   return (
-    <div className="py-8 md:py-14 space-y-12">
+    <div className="min-h-screen bg-[#090A0F] text-white py-8 md:py-14 space-y-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-xl mx-auto space-y-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-rose">
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
             Editorial Curations
           </span>
-          <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-charcoal">
+          <h1 className="font-sans text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
             Koleksi Tematik Pilihan
           </h1>
-          <p className="text-xs sm:text-sm text-charcoal-50">
+          <p className="text-xs sm:text-sm text-zinc-400">
             Daftar paket inspirasi kurasi Ze untuk berbagai momen: dari gaya hidup clean minimalis
             hingga racun hemat under 100k.
           </p>
@@ -42,29 +42,29 @@ export default async function CollectionsPage() {
               <div
                 key={col.id}
                 id={col.slug}
-                className="space-y-6 pt-6 border-t border-softgray first:border-0"
+                className="space-y-6 pt-6 border-t border-white/10 first:border-0"
               >
                 {/* Collection Feature Card Banner */}
-                <div className="relative rounded-3xl overflow-hidden bg-charcoal text-white aspect-[21/9] min-h-[220px] flex items-end p-6 sm:p-10 shadow-lg">
+                <div className="relative rounded-2xl overflow-hidden bg-[#12131A] border border-white/10 text-white aspect-[21/9] min-h-[220px] flex items-end p-6 sm:p-10 shadow-2xl">
                   <Image
                     src={col.cover_image}
                     alt={col.title}
                     fill
                     sizes="100vw"
-                    className="object-cover opacity-60"
+                    className="object-cover opacity-50"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090A0F] via-[#090A0F]/50 to-transparent" />
 
                   <div className="relative z-10 space-y-2 max-w-2xl">
                     {col.badge_text && (
-                      <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-charcoal">
+                      <span className="px-3 py-1 rounded-full bg-white text-black text-[10px] font-mono font-bold shadow-md">
                         {col.badge_text}
                       </span>
                     )}
-                    <h2 className="font-editorial text-2xl sm:text-4xl font-semibold leading-tight">
+                    <h2 className="font-sans text-2xl sm:text-4xl font-extrabold text-white leading-tight">
                       {col.title}
                     </h2>
-                    <p className="text-xs sm:text-sm text-softgray-dark leading-relaxed">
+                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
                       {col.description}
                     </p>
                   </div>
@@ -73,7 +73,7 @@ export default async function CollectionsPage() {
                 {/* Associated Products Grid */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-semibold uppercase tracking-wider text-charcoal-100">
+                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
                       Item Dalam Koleksi Ini:
                     </h3>
                   </div>

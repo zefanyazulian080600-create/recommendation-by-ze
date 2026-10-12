@@ -61,16 +61,16 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   );
 
   return (
-    <div className="py-8 md:py-12">
+    <div className="min-h-screen bg-[#090A0F] text-white py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Breadcrumb / Title */}
         <div className="mb-8 space-y-2">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-matcha-600">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
                 Katalog Rekomendasi
               </span>
-              <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-espresso">
+              <h1 className="font-sans text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
                 {activeCategoryObj
                   ? activeCategoryObj.name
                   : params.gender === "men"
@@ -93,13 +93,13 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             </Suspense>
           </div>
 
-          <p className="text-xs sm:text-sm text-charcoal-50">
-            Menampilkan <strong className="text-charcoal">{products.length}</strong> produk pilihan
+          <p className="text-xs sm:text-sm text-zinc-400">
+            Menampilkan <strong className="text-white font-mono">{products.length}</strong> produk pilihan
             {params.search ? ` untuk kata kunci "${params.search}"` : ""}.
           </p>
         </div>
 
-        {/* Quick Gender Pill Tabs & Bio Spill Search (Retro Style) */}
+        {/* Quick Gender Pill Tabs & Bio Spill Search */}
         <Suspense fallback={null}>
           <RetroCatalogHeader
             currentGender={params.gender}
@@ -112,7 +112,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Desktop Filter Sidebar */}
           <div className="hidden lg:block">
-            <Suspense fallback={<div className="w-64 h-96 bg-white/50 rounded-3xl" />}>
+            <Suspense fallback={<div className="w-64 h-96 bg-[#12131A] rounded-2xl border border-white/10" />}>
               <FilterSidebar categories={categories} />
             </Suspense>
           </div>
@@ -120,21 +120,21 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           {/* Product Grid Area */}
           <div className="flex-1 w-full">
             {products.length === 0 ? (
-              <div className="p-12 text-center bg-white rounded-3xl border border-softgray-border space-y-4">
-                <div className="w-16 h-16 rounded-full bg-blush-100 text-rose flex items-center justify-center mx-auto text-2xl">
+              <div className="p-12 text-center bg-[#12131A] rounded-2xl border border-white/10 space-y-4 shadow-2xl">
+                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center mx-auto text-2xl">
                   🔍
                 </div>
-                <h3 className="font-editorial text-xl font-semibold text-charcoal">
+                <h3 className="font-sans text-xl font-bold text-white">
                   Tidak Ada Produk Yang Cocok
                 </h3>
-                <p className="text-xs sm:text-sm text-charcoal-50 max-w-sm mx-auto">
+                <p className="text-xs sm:text-sm text-zinc-400 max-w-sm mx-auto">
                   Coba ubah kata kunci pencarian atau sesuaikan filter marketplace dan kategori yang
                   kamu pilih.
                 </p>
                 <div className="pt-2">
                   <a
                     href="/products"
-                    className="inline-block px-5 py-2.5 rounded-full bg-charcoal text-white text-xs font-semibold hover:bg-rose transition-colors"
+                    className="inline-block px-6 py-2.5 rounded-full bg-white text-black text-xs font-bold hover:bg-zinc-200 transition-colors shadow-md"
                   >
                     Reset Semua Filter
                   </a>

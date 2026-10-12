@@ -55,19 +55,19 @@ export default async function AdminDashboardPage() {
 
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
-      {/* Top Banner Header - Retro Editorial Style */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 sm:p-8 rounded-3xl border-2 border-espresso shadow-brutal">
+      {/* Top Banner Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#12131A] p-6 sm:p-8 rounded-2xl border border-white/10 shadow-2xl">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-md bg-espresso text-vanilla text-[10px] font-mono font-bold tracking-widest uppercase">
+            <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[10px] font-mono font-bold tracking-widest uppercase border border-white/20">
               ✦ ZE CMS ARCHIVE ✦
             </span>
-            <span className="text-xs font-mono font-bold text-matcha-600">v2.4 READY</span>
+            <span className="text-xs font-mono font-bold text-emerald-400">v2.4 READY</span>
           </div>
-          <h1 className="font-editorial text-2xl sm:text-4xl font-extrabold text-espresso">
+          <h1 className="font-sans text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Dashboard Manajemen Toko
           </h1>
-          <p className="text-xs sm:text-sm text-espresso/70">
+          <p className="text-xs sm:text-sm text-zinc-400">
             Kelola link affiliate, nomor racun bio, dan pantau produk yang paling banyak diklik followers.
           </p>
         </div>
@@ -75,15 +75,15 @@ export default async function AdminDashboardPage() {
         <div className="flex items-center gap-2.5 flex-wrap">
           <Link
             href="/admin/products/new"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-espresso text-vanilla text-xs sm:text-sm font-extrabold hover:bg-rose transition-all shadow-brutal hover:translate-y-[-1px] tap-bounce"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black text-xs sm:text-sm font-bold hover:bg-zinc-200 transition-all shadow-md active:scale-95"
           >
-            <PlusCircle className="w-4 h-4 text-butter-400" />
+            <PlusCircle className="w-4 h-4 text-emerald-600" />
             <span>+ Tambah Produk Baru</span>
           </Link>
           <Link
             href="/"
             target="_blank"
-            className="inline-flex items-center gap-1.5 px-4 py-3 rounded-2xl border-2 border-espresso bg-vanilla text-xs sm:text-sm font-bold text-espresso hover:bg-butter-300 transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-white/20 bg-[#090A0F] text-xs sm:text-sm font-bold text-white hover:bg-white/10 transition-colors shadow-sm"
           >
             <ExternalLink className="w-4 h-4" />
             <span>Lihat Toko Live</span>
@@ -98,24 +98,24 @@ export default async function AdminDashboardPage() {
           return (
             <div
               key={idx}
-              className="p-5 rounded-3xl bg-white border-2 border-espresso shadow-brutal-sm space-y-2 flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-[#12131A] border border-white/10 shadow-2xl space-y-2 flex flex-col justify-between"
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-matcha-600">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                   {s.badge}
                 </span>
-                <div className="w-7 h-7 rounded-lg bg-vanilla border border-espresso flex items-center justify-center text-espresso">
+                <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300">
                   <Icon className="w-3.5 h-3.5" />
                 </div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-espresso font-editorial">
+                <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
                   {s.value}
                 </div>
-                <div className="text-[11px] font-bold text-espresso/80 mt-0.5">
+                <div className="text-[11px] font-bold text-zinc-200 mt-0.5">
                   {s.label}
                 </div>
-                <div className="text-[10px] text-espresso/50">
+                <div className="text-[10px] text-zinc-500">
                   {s.desc}
                 </div>
               </div>
@@ -128,18 +128,18 @@ export default async function AdminDashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Link
           href="/admin/products/new"
-          className="p-5 sm:p-6 rounded-3xl bg-white border-2 border-espresso hover:border-espresso hover:bg-butter-200/40 shadow-brutal transition-all group flex items-start gap-4"
+          className="p-5 sm:p-6 rounded-2xl bg-[#12131A] border border-white/10 hover:border-white/30 shadow-2xl transition-all group flex items-start gap-4"
         >
-          <div className="w-12 h-12 rounded-2xl bg-espresso text-butter-400 flex items-center justify-center flex-shrink-0 border border-espresso group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-xl bg-white/5 text-emerald-400 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:scale-105 transition-transform">
             <PlusCircle className="w-6 h-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-editorial text-base sm:text-lg font-bold text-espresso group-hover:text-matcha-600 transition-colors">
+              <h3 className="font-sans text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
                 Mode Cepat: Tambah Produk Baru ⚡
               </h3>
             </div>
-            <p className="text-xs text-espresso/70 mt-1 leading-relaxed">
+            <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
               Hanya butuh nama produk & link affiliate Shopee/TikTok. Deskripsi dan ulasan stylist akan diisi otomatis oleh AI!
             </p>
           </div>
@@ -147,16 +147,16 @@ export default async function AdminDashboardPage() {
 
         <Link
           href="/admin/settings"
-          className="p-5 sm:p-6 rounded-3xl bg-white border-2 border-espresso hover:border-espresso hover:bg-butter-200/40 shadow-brutal transition-all group flex items-start gap-4"
+          className="p-5 sm:p-6 rounded-2xl bg-[#12131A] border border-white/10 hover:border-white/30 shadow-2xl transition-all group flex items-start gap-4"
         >
-          <div className="w-12 h-12 rounded-2xl bg-vanilla text-espresso flex items-center justify-center flex-shrink-0 border-2 border-espresso group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-xl bg-white/5 text-emerald-400 flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:scale-105 transition-transform">
             <Settings className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="font-editorial text-base sm:text-lg font-bold text-espresso group-hover:text-matcha-600 transition-colors">
+            <h3 className="font-sans text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
               Pengaturan Bio & Media Sosial ⚙️
             </h3>
-            <p className="text-xs text-espresso/70 mt-1 leading-relaxed">
+            <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
               Ubah link Instagram, TikTok bio, banner pengumuman atas, teks headline hero, dan footer website.
             </p>
           </div>
@@ -164,23 +164,23 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Top Clicked Products Table with Bio Spill Numbers */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-espresso shadow-brutal space-y-5">
+      <div className="p-6 sm:p-8 rounded-2xl bg-[#12131A] border border-white/10 shadow-2xl space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-rose" />
-              <h2 className="font-editorial text-lg sm:text-xl font-bold text-espresso">
+              <TrendingUp className="w-4 h-4 text-emerald-400" />
+              <h2 className="font-sans text-lg sm:text-xl font-bold text-white">
                 Daftar Produk & Ranking Minat Followers
               </h2>
             </div>
-            <p className="text-xs text-espresso/70 mt-0.5">
+            <p className="text-xs text-zinc-400 mt-0.5">
               Urutan berdasarkan klik affiliate keluar ke aplikasi Shopee/TikTok.
             </p>
           </div>
 
           <Link
             href="/admin/products"
-            className="text-xs font-bold text-espresso hover:text-matcha-600 flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-espresso/30 bg-vanilla hover:bg-butter-300 transition-colors w-fit"
+            className="text-xs font-mono font-bold text-zinc-300 hover:text-white flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-[#090A0F] hover:bg-white/10 transition-colors w-fit"
           >
             <span>Semua Produk ({allProducts.length})</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -190,7 +190,7 @@ export default async function AdminDashboardPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b-2 border-espresso text-espresso font-mono font-bold uppercase tracking-wider">
+              <tr className="border-b border-white/10 text-zinc-400 font-mono font-bold uppercase tracking-wider">
                 <th className="pb-3 pl-2">No. Bio</th>
                 <th className="pb-3">Produk</th>
                 <th className="pb-3">Marketplace</th>
@@ -200,21 +200,21 @@ export default async function AdminDashboardPage() {
                 <th className="pb-3 text-right pr-2">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-espresso/15">
+            <tbody className="divide-y divide-white/5">
               {analytics.topProducts.map((p, idx) => {
                 const mpMeta = getMarketplaceMeta(p.marketplace);
                 const cover = p.media?.find((m) => m.is_cover) || p.media?.[0];
                 return (
-                  <tr key={p.id} className="hover:bg-vanilla/50 transition-colors">
-                    <td className="py-3.5 pl-2 font-mono font-bold text-espresso">
-                      <span className="px-2 py-0.5 rounded-md bg-espresso text-vanilla text-[10px]">
+                  <tr key={p.id} className="hover:bg-white/5 transition-colors">
+                    <td className="py-3.5 pl-2 font-mono font-bold text-white">
+                      <span className="px-2 py-0.5 rounded-md bg-white/10 border border-white/20 text-white text-[10px]">
                         #{String(p.spill_number || idx + 1).padStart(2, "0")}
                       </span>
                     </td>
-                    <td className="py-3.5 font-bold text-espresso">
+                    <td className="py-3.5 font-bold text-white">
                       <div className="flex items-center gap-2.5 max-w-xs">
                         {cover && (
-                          <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-espresso flex-shrink-0 bg-softgray">
+                          <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-white/10 flex-shrink-0 bg-[#090A0F]">
                             <Image
                               src={cover.public_url}
                               alt={p.name}
@@ -234,27 +234,27 @@ export default async function AdminDashboardPage() {
                         {mpMeta.name}
                       </span>
                     </td>
-                    <td className="py-3.5 font-bold text-espresso">
+                    <td className="py-3.5 font-bold font-mono text-zinc-200">
                       {formatRupiah(p.price)}
                     </td>
                     <td className="py-3.5">
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border ${
                           p.status === "published"
-                            ? "bg-matcha-500/15 text-matcha-700 border-matcha-500"
-                            : "bg-amber-100 text-amber-800 border-amber-300"
+                            ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+                            : "bg-amber-500/10 text-amber-400 border-amber-500/30"
                         }`}
                       >
                         {p.status}
                       </span>
                     </td>
-                    <td className="py-3.5 text-right font-mono font-extrabold text-espresso text-sm">
+                    <td className="py-3.5 text-right font-mono font-extrabold text-white text-sm">
                       {p.click_count}x
                     </td>
                     <td className="py-3.5 text-right pr-2">
                       <Link
                         href={`/admin/products/${p.id}/edit`}
-                        className="px-2.5 py-1 rounded-lg bg-vanilla border border-espresso hover:bg-butter-300 font-bold text-[11px] text-espresso transition-colors"
+                        className="px-2.5 py-1 rounded-lg bg-white/10 border border-white/20 hover:bg-white hover:text-black font-bold text-[11px] text-white transition-colors"
                       >
                         Edit ✏️
                       </Link>
@@ -268,46 +268,46 @@ export default async function AdminDashboardPage() {
       </div>
 
       {/* Checklist Siap Publikasi (Go-Live Guide Box) */}
-      <div className="p-6 sm:p-7 rounded-3xl bg-matcha-500/10 border-2 border-espresso shadow-brutal space-y-4">
+      <div className="p-6 sm:p-7 rounded-2xl bg-[#12131A] border border-white/10 shadow-2xl space-y-4">
         <div className="flex items-center gap-2.5">
-          <Rocket className="w-5 h-5 text-matcha-600" />
-          <h3 className="font-editorial text-lg font-bold text-espresso">
+          <Rocket className="w-5 h-5 text-emerald-400" />
+          <h3 className="font-sans text-base sm:text-lg font-bold text-white">
             Panduan Cepat Publikasi ke Bio TikTok & Instagram (Go-Live)
           </h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <div className="p-4 rounded-2xl bg-white border border-espresso/20 space-y-1.5">
-            <div className="flex items-center gap-1.5 font-bold text-espresso">
-              <span className="w-5 h-5 rounded-full bg-espresso text-vanilla flex items-center justify-center text-[10px]">
+          <div className="p-4 rounded-xl bg-[#090A0F] border border-white/10 space-y-1.5">
+            <div className="flex items-center gap-1.5 font-bold text-white">
+              <span className="w-5 h-5 rounded-full bg-emerald-500 text-black flex items-center justify-center text-[10px] font-mono font-bold">
                 1
               </span>
               <span>Ganti Link Affiliate</span>
             </div>
-            <p className="text-espresso/70 leading-relaxed">
+            <p className="text-zinc-400 leading-relaxed">
               Edit produk di atas dan ganti dengan link affiliate Shopee/TikTok akun kamu sendiri.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white border border-espresso/20 space-y-1.5">
-            <div className="flex items-center gap-1.5 font-bold text-espresso">
-              <span className="w-5 h-5 rounded-full bg-espresso text-vanilla flex items-center justify-center text-[10px]">
+          <div className="p-4 rounded-xl bg-[#090A0F] border border-white/10 space-y-1.5">
+            <div className="flex items-center gap-1.5 font-bold text-white">
+              <span className="w-5 h-5 rounded-full bg-emerald-500 text-black flex items-center justify-center text-[10px] font-mono font-bold">
                 2
               </span>
               <span>Deploy ke Vercel</span>
             </div>
-            <p className="text-espresso/70 leading-relaxed">
+            <p className="text-zinc-400 leading-relaxed">
               Push kode ke GitHub lalu sambungkan ke Vercel.com (gratis & aktif 24 jam).
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white border border-espresso/20 space-y-1.5">
-            <div className="flex items-center gap-1.5 font-bold text-espresso">
-              <span className="w-5 h-5 rounded-full bg-espresso text-vanilla flex items-center justify-center text-[10px]">
+          <div className="p-4 rounded-xl bg-[#090A0F] border border-white/10 space-y-1.5">
+            <div className="flex items-center gap-1.5 font-bold text-white">
+              <span className="w-5 h-5 rounded-full bg-emerald-500 text-black flex items-center justify-center text-[10px] font-mono font-bold">
                 3
               </span>
               <span>Pasang di Link Bio</span>
             </div>
-            <p className="text-espresso/70 leading-relaxed">
+            <p className="text-zinc-400 leading-relaxed">
               Taruh domain di bio TikTok/IG kamu dan sebutkan <em>&ldquo;Link no. [XX] di bio&rdquo;</em> di video konten!
             </p>
           </div>

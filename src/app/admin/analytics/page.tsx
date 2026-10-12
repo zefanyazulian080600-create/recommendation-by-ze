@@ -10,71 +10,71 @@ export default async function AdminAnalyticsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <span className="text-xs font-bold uppercase tracking-wider text-rose">
+        <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
           Metrik & Performa
         </span>
-        <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-charcoal">
+        <h1 className="font-editorial text-2xl sm:text-4xl font-semibold text-white tracking-tight">
           Analitik Klik Outbound
         </h1>
-        <p className="text-xs sm:text-sm text-charcoal-50 mt-1">
+        <p className="text-xs sm:text-sm text-white/50 mt-1">
           Pantau produk dan marketplace yang paling banyak memicu rasa penasaran pengunjung.
         </p>
       </div>
 
       {/* Overview Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl bg-white border border-softgray-border shadow-card space-y-1">
-          <span className="text-[11px] font-semibold text-charcoal-50">Total Klik Keluar</span>
-          <div className="text-3xl font-bold font-editorial text-charcoal">
+        <div className="p-5 rounded-2xl bg-[#12131A] border border-white/10 shadow-xl space-y-1">
+          <span className="text-[11px] font-mono font-semibold text-white/50">Total Klik Keluar</span>
+          <div className="text-3xl font-bold font-editorial text-white">
             {analytics.totalClicks}
           </div>
-          <p className="text-[10px] text-charcoal-50">Menuju Shopee, Tokopedia, Lazada, & TikTok</p>
+          <p className="text-[10px] text-white/40">Menuju Shopee, Tokopedia, Lazada, & TikTok</p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white border border-softgray-border shadow-card space-y-1">
-          <span className="text-[11px] font-semibold text-charcoal-50">Produk Terpopuler</span>
-          <div className="text-base font-bold text-rose truncate">
+        <div className="p-5 rounded-2xl bg-[#12131A] border border-white/10 shadow-xl space-y-1">
+          <span className="text-[11px] font-mono font-semibold text-white/50">Produk Terpopuler</span>
+          <div className="text-base font-bold text-emerald-400 truncate">
             {analytics.topProducts[0]?.name || "-"}
           </div>
-          <p className="text-[10px] text-charcoal-50">
+          <p className="text-[10px] text-white/40 font-mono">
             {analytics.topProducts[0]?.click_count || 0}x klik tercatat
           </p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white border border-softgray-border shadow-card space-y-1">
-          <span className="text-[11px] font-semibold text-charcoal-50">Status Katalog</span>
-          <div className="text-base font-bold text-charcoal">
+        <div className="p-5 rounded-2xl bg-[#12131A] border border-white/10 shadow-xl space-y-1">
+          <span className="text-[11px] font-mono font-semibold text-white/50">Status Katalog</span>
+          <div className="text-base font-bold text-white">
             {analytics.publishedProducts} Terbit / {analytics.draftProducts} Draft
           </div>
-          <p className="text-[10px] text-charcoal-50">Siap dieksplorasi pembeli</p>
+          <p className="text-[10px] text-white/40">Siap dieksplorasi pembeli</p>
         </div>
       </div>
 
       {/* Table */}
-      <div className="p-6 rounded-3xl bg-white border border-softgray-border shadow-soft space-y-4">
-        <h2 className="font-editorial text-lg font-semibold text-charcoal">
+      <div className="p-6 rounded-2xl bg-[#12131A] border border-white/10 shadow-xl space-y-4">
+        <h2 className="font-editorial text-lg font-semibold text-white">
           Daftar Minat Produk Berdasarkan Klik
         </h2>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-softgray text-charcoal-50 font-semibold uppercase tracking-wider">
+              <tr className="border-b border-white/10 text-white/50 font-mono uppercase tracking-wider text-[11px]">
                 <th className="pb-3 pl-1">Produk</th>
                 <th className="pb-3">Marketplace</th>
                 <th className="pb-3">Harga</th>
                 <th className="pb-3 text-right pr-1">Total Klik</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-softgray">
+            <tbody className="divide-y divide-white/5">
               {analytics.topProducts.map((p) => {
                 const mpMeta = getMarketplaceMeta(p.marketplace);
                 return (
-                  <tr key={p.id} className="hover:bg-ivory-50/50 transition-colors">
-                    <td className="py-3 pl-1 font-medium text-charcoal">
+                  <tr key={p.id} className="hover:bg-white/[0.03] transition-colors">
+                    <td className="py-3 pl-1 font-medium text-white">
                       <Link
                         href={`/admin/products/${p.id}/edit`}
-                        className="hover:text-rose hover:underline"
+                        className="hover:text-emerald-400 hover:underline"
                       >
                         {p.name}
                       </Link>
@@ -84,10 +84,10 @@ export default async function AdminAnalyticsPage() {
                         {mpMeta.name}
                       </span>
                     </td>
-                    <td className="py-3 font-semibold text-charcoal">
+                    <td className="py-3 font-semibold text-white font-mono">
                       {formatRupiah(p.price)}
                     </td>
-                    <td className="py-3 text-right pr-1 font-bold text-rose text-sm">
+                    <td className="py-3 text-right pr-1 font-bold text-emerald-400 text-sm font-mono">
                       {p.click_count}x
                     </td>
                   </tr>
@@ -99,10 +99,10 @@ export default async function AdminAnalyticsPage() {
       </div>
 
       {/* Transparency Note */}
-      <div className="p-4 rounded-2xl bg-ivory-100 border border-softgray-border flex items-start gap-3 text-xs text-charcoal-200">
-        <ShieldCheck className="w-5 h-5 text-rose flex-shrink-0 mt-0.5" />
+      <div className="p-4 rounded-2xl bg-[#090A0F] border border-white/10 flex items-start gap-3 text-xs text-white/60">
+        <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
         <p>
-          <strong>Catatan Analitik:</strong> Angka klik di atas merupakan indikator aktivitas minat
+          <strong className="text-white">Catatan Analitik:</strong> Angka klik di atas merupakan indikator aktivitas minat
           pengunjung yang membuka tautan marketplace, bukan konfirmasi transaksi pembelian atau
           nominal komisi yang diterima.
         </p>

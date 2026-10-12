@@ -19,15 +19,15 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   }, [isLoading, isAuthenticated, isLoginPage, router]);
 
   if (isLoginPage) {
-    return <div className="min-h-screen bg-ivory">{children}</div>;
+    return <div className="min-h-screen bg-[#090A0F] text-white">{children}</div>;
   }
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-ivory flex items-center justify-center">
+      <div className="min-h-screen bg-[#090A0F] text-white flex items-center justify-center">
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-3 border-rose border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-xs text-charcoal-50 font-medium">Memuat Admin CMS...</p>
+          <div className="w-10 h-10 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-xs text-zinc-400 font-medium">Memuat Admin CMS...</p>
         </div>
       </div>
     );
@@ -38,9 +38,9 @@ function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-ivory flex flex-col lg:flex-row">
+    <div className="min-h-screen bg-[#090A0F] text-white flex flex-col lg:flex-row">
       <AdminSidebar />
-      <main className="flex-1 p-4 sm:p-8 lg:p-10 overflow-y-auto">
+      <main className="flex-1 p-4 sm:p-8 lg:10 overflow-y-auto">
         <div className="max-w-6xl mx-auto">{children}</div>
       </main>
     </div>

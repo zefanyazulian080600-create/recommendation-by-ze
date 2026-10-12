@@ -115,33 +115,33 @@ export function StoryHighlights() {
   ];
 
   return (
-    <section className="py-4 border-b-2 border-espresso/15 bg-vanilla overflow-hidden">
+    <section className="py-5 border-b border-white/10 bg-[#090A0F] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3.5">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-butter-500 animate-ping" />
-            <h3 className="text-xs font-extrabold uppercase tracking-wider text-espresso">
-              Stories & Highlight Racun Ol Shop
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-300">
+              Stories & Highlight Drops
             </h3>
           </div>
-          <span className="text-[11px] text-espresso-100 font-semibold hidden sm:inline">
-            Geser untuk kategori lainnya 👉
+          <span className="text-[11px] text-zinc-500 font-medium hidden sm:inline">
+            Scroll untuk kategori lainnya →
           </span>
         </div>
 
         {/* Stories Horizontal Container */}
-        <div className="flex items-center gap-3.5 sm:gap-5 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 sm:mx-0 sm:px-0">
           {highlights.map((item) => (
             <Link
               key={item.id}
               href={item.href}
               className="flex flex-col items-center flex-shrink-0 group tap-bounce"
             >
-              {/* Outer Ring with Matcha-Butter-Espresso Story Gradient */}
-              <div className="relative p-[3px] rounded-full story-ring-gradient shadow-md group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
-                {/* White border cushion */}
-                <div className="p-0.5 bg-vanilla rounded-full">
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-softgray border border-espresso/20">
+              {/* Outer Ring with emerald & white subtle glow */}
+              <div className="relative p-[2px] rounded-full bg-gradient-to-tr from-white/20 via-emerald-400/50 to-white/30 group-hover:from-emerald-400 group-hover:to-sky-400 transition-all duration-300">
+                {/* Dark cushion */}
+                <div className="p-0.5 bg-[#090A0F] rounded-full">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-[#12131A] border border-white/10">
                     <Image
                       src={item.imageUrl}
                       alt={item.label}
@@ -154,17 +154,17 @@ export function StoryHighlights() {
 
                 {/* 'New' or Hot Badge */}
                 {item.isNew && (
-                  <span className="absolute -top-1 -right-1 px-1.5 py-0.5 rounded-full bg-butter-400 text-espresso text-[9px] font-extrabold shadow-sm border border-espresso">
+                  <span className="absolute -top-0.5 -right-0.5 px-1.5 py-0.2 rounded-full bg-emerald-500 text-black text-[8px] font-mono font-bold tracking-tight shadow-md">
                     NEW
                   </span>
                 )}
               </div>
 
               {/* Title & Micro Tag */}
-              <span className="mt-1.5 text-xs font-bold text-espresso group-hover:text-matcha-600 transition-colors max-w-[74px] truncate text-center">
+              <span className="mt-2 text-xs font-semibold text-zinc-200 group-hover:text-white transition-colors max-w-[76px] truncate text-center">
                 {item.label}
               </span>
-              <span className="text-[9px] text-espresso-100 font-medium max-w-[74px] truncate text-center -mt-0.5">
+              <span className="text-[10px] text-zinc-500 font-medium max-w-[76px] truncate text-center">
                 {item.tag}
               </span>
             </Link>

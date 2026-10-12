@@ -6,20 +6,20 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-charcoal text-white pt-14 pb-10 border-t border-charcoal-800">
+    <footer className="bg-[#06070B] text-zinc-300 pt-14 pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-charcoal-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           {/* Brand Column (2 cols wide on lg) */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="inline-block group">
-              <span className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-white group-hover:text-blush transition-colors">
+              <span className="font-editorial text-2xl sm:text-3xl font-medium tracking-tight text-white group-hover:text-emerald-400 transition-colors">
                 Recommendation
               </span>
-              <span className="block font-sans text-xs font-semibold tracking-[0.25em] uppercase text-rose mt-0.5">
-                by Ze
+              <span className="block font-mono text-xs font-bold tracking-[0.25em] uppercase text-emerald-400 mt-0.5">
+                by Ze • Archive
               </span>
             </Link>
-            <p className="text-sm text-softgray-dark leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm">
               Kurasi online shop terpercaya & inspirasi harian. Menemukan fashion outfit kece,
               skincare viral, perintilan aesthetic, dan gadget setup idaman langsung di marketplace
               favoritmu.
@@ -29,38 +29,38 @@ export function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-charcoal-800 flex items-center justify-center text-softgray-dark hover:text-white hover:bg-rose transition-colors"
+                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-black hover:bg-white transition-all"
                 aria-label="Instagram Ze"
               >
-                <span className="text-xs font-bold">IG</span>
+                <span className="text-xs font-mono font-bold">IG</span>
               </a>
               <a
                 href="https://tiktok.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-charcoal-800 flex items-center justify-center text-softgray-dark hover:text-white hover:bg-rose transition-colors"
+                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-black hover:bg-white transition-all"
                 aria-label="TikTok Ze"
               >
-                <span className="text-xs font-bold">TT</span>
+                <span className="text-xs font-mono font-bold">TT</span>
               </a>
               <a
                 href="https://telegram.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-charcoal-800 flex items-center justify-center text-softgray-dark hover:text-white hover:bg-rose transition-colors"
+                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-black hover:bg-white transition-all"
                 aria-label="Telegram Channel Racun Ze"
               >
-                <span className="text-xs font-bold">TG</span>
+                <span className="text-xs font-mono font-bold">TG</span>
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-rose">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
               Navigasi Cepat
             </h4>
-            <ul className="space-y-2 text-sm text-softgray-dark">
+            <ul className="space-y-2 text-xs sm:text-sm text-zinc-400">
               <li>
                 <Link href="/products" className="hover:text-white transition-colors">
                   Semua Produk
@@ -91,10 +91,10 @@ export function Footer() {
 
           {/* Categories */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-rose">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
               Kategori Populer
             </h4>
-            <ul className="space-y-2 text-sm text-softgray-dark">
+            <ul className="space-y-2 text-xs sm:text-sm text-zinc-400">
               <li>
                 <Link
                   href="/products?category=outfit-wanita"
@@ -140,10 +140,10 @@ export function Footer() {
 
           {/* Marketplaces Supported */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-rose">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-white">
               Marketplace
             </h4>
-            <ul className="space-y-2 text-sm text-softgray-dark">
+            <ul className="space-y-2 text-xs sm:text-sm text-zinc-400">
               <li>
                 <Link
                   href="/products?marketplace=shopee"
@@ -171,7 +171,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/products?marketplace=lazada"
-                  className="hover:text-[#0F146D] transition-colors"
+                  className="hover:text-[#38BDF8] transition-colors"
                 >
                   Lazada Finds
                 </Link>
@@ -179,7 +179,7 @@ export function Footer() {
               <li className="pt-2">
                 <Link
                   href="/admin"
-                  className="inline-flex items-center gap-1.5 text-xs text-rose hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:underline"
                 >
                   <span>Admin CMS</span>
                 </Link>
@@ -189,9 +189,9 @@ export function Footer() {
         </div>
 
         {/* Affiliate Disclosure Note */}
-        <div className="py-6 border-b border-charcoal-800">
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-charcoal-900 border border-charcoal-800 text-xs text-softgray-dark leading-relaxed">
-            <ShieldCheck className="w-5 h-5 text-rose flex-shrink-0 mt-0.5" />
+        <div className="py-6 border-b border-white/10">
+          <div className="flex items-start gap-3 p-4 rounded-xl bg-[#12131A] border border-white/10 text-xs text-zinc-400 leading-relaxed">
+            <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
             <div>
               <strong className="text-white block mb-0.5">Transparansi Affiliate:</strong>
               Beberapa tautan di website ini merupakan tautan affiliate resmi. Ze dapat menerima
@@ -204,16 +204,16 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright and Legal */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-charcoal-50">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <p>© {currentYear} Recommendation by Ze. Seluruh hak cipta dilindungi.</p>
           <div className="flex items-center gap-5">
-            <Link href="/privacy" className="hover:text-softgray transition-colors">
+            <Link href="/privacy" className="hover:text-zinc-300 transition-colors">
               Kebijakan Privasi
             </Link>
-            <Link href="/terms" className="hover:text-softgray transition-colors">
+            <Link href="/terms" className="hover:text-zinc-300 transition-colors">
               Kebijakan & Syarat
             </Link>
-            <Link href="/about" className="hover:text-softgray transition-colors">
+            <Link href="/about" className="hover:text-zinc-300 transition-colors">
               Tentang Kami
             </Link>
           </div>

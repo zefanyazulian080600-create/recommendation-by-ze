@@ -48,11 +48,11 @@ export function Navbar({ categories = [] }: NavbarProps) {
   };
 
   const navLinks = [
-    { label: "Semua Rekomendasi", href: "/products" },
+    { label: "Semua", href: "/products" },
     { label: "Outfit Cowok", href: "/products?category=outfit-pria" },
     { label: "Outfit Cewek", href: "/products?category=outfit-wanita" },
     { label: "Unisex Streetwear", href: "/products?category=outfit-unisex" },
-    { label: "Skincare & Grooming", href: "/products?category=skincare-grooming" },
+    { label: "Skincare", href: "/products?category=skincare-grooming" },
     { label: "Desk & Room", href: "/products?category=desk-setup-gadget" },
     { label: "Koleksi Tematik", href: "/collections" },
   ];
@@ -62,8 +62,8 @@ export function Navbar({ categories = [] }: NavbarProps) {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-vanilla/95 backdrop-blur-md shadow-sm border-b-2 border-espresso/15 py-2.5"
-            : "bg-vanilla border-b-2 border-espresso/15 py-3.5"
+            ? "bg-[#090A0F]/95 backdrop-blur-md shadow-2xl border-b border-white/10 py-3"
+            : "bg-[#090A0F] border-b border-white/10 py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,7 +73,7 @@ export function Navbar({ categories = [] }: NavbarProps) {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="p-2 -ml-2 rounded-xl text-espresso hover:bg-butter-300 transition-colors"
+                className="p-2 -ml-2 rounded-xl text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"
                 aria-label="Buka menu navigasi"
               >
                 <Menu className="w-6 h-6" />
@@ -83,43 +83,43 @@ export function Navbar({ categories = [] }: NavbarProps) {
             {/* Center-Left: Brand Wordmark */}
             <div className="flex items-center">
               <Link href="/" className="group flex flex-col items-start leading-none">
-                <span className="font-editorial text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-espresso group-hover:text-matcha-600 transition-colors">
+                <span className="font-editorial text-xl sm:text-2xl font-medium tracking-tight text-white group-hover:text-emerald-400 transition-colors">
                   Recommendation
                 </span>
-                <span className="font-sans text-[10px] sm:text-xs font-extrabold tracking-[0.25em] uppercase text-matcha-600 mt-0.5">
-                  by Ze
+                <span className="font-mono text-[9px] sm:text-[10px] font-bold tracking-[0.25em] uppercase text-emerald-400 mt-0.5">
+                  by Ze • Curated Archive
                 </span>
               </Link>
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-semibold">
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase tracking-wider font-semibold">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`transition-colors hover:text-matcha-600 relative py-1 ${
-                      isActive ? "text-espresso font-extrabold" : "text-espresso-100"
+                    className={`transition-colors relative py-1 ${
+                      isActive ? "text-white font-bold" : "text-zinc-400 hover:text-white"
                     }`}
                   >
                     {link.label}
                     {isActive && (
-                      <span className="absolute bottom-0 left-0 right-0 h-1 bg-butter-400 rounded-full" />
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-400 rounded-full" />
                     )}
                   </Link>
                 );
               })}
             </nav>
 
-            {/* Right: Actions (Search, Wishlist, Admin Login) */}
+            {/* Right: Actions (Search, Wishlist, User VIP, Admin) */}
             <div className="flex items-center gap-2 sm:gap-3">
               {/* Search Toggle Button */}
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="p-2 rounded-full text-espresso hover:bg-butter-300 transition-colors"
+                className="p-2 rounded-full text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"
                 aria-label="Cari produk"
               >
                 <Search className="w-5 h-5" />
@@ -128,12 +128,12 @@ export function Navbar({ categories = [] }: NavbarProps) {
               {/* Wishlist Link */}
               <Link
                 href="/wishlist"
-                className="p-2 rounded-full text-espresso hover:bg-butter-300 transition-colors relative"
+                className="p-2 rounded-full text-zinc-300 hover:text-white hover:bg-white/10 transition-colors relative"
                 aria-label={`Wishlist (${wishlistCount} item)`}
               >
-                <Heart className="w-5 h-5 text-espresso hover:text-matcha-600 transition-colors" />
+                <Heart className="w-5 h-5" />
                 {wishlistCount > 0 && (
-                  <span className="absolute top-1 right-1 bg-butter-400 text-espresso text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-vanilla border border-espresso">
+                  <span className="absolute top-1 right-1 bg-emerald-400 text-black text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-[#090A0F]">
                     {wishlistCount}
                   </span>
                 )}
@@ -143,10 +143,10 @@ export function Navbar({ categories = [] }: NavbarProps) {
               <button
                 type="button"
                 onClick={openModal}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 border-espresso bg-butter-500 hover:bg-butter-400 text-espresso text-xs font-black transition-all shadow-brutal-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all"
                 title="Ganti nama atau vibe kamu"
               >
-                <Sparkles className="w-3.5 h-3.5 fill-espresso" />
+                <Sparkles className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
                 <span className="max-w-[85px] sm:max-w-[120px] truncate">
                   {userName ? userName : "Spill Nama"}
                 </span>
@@ -155,10 +155,10 @@ export function Navbar({ categories = [] }: NavbarProps) {
               {/* Admin Portal Shortcut */}
               <Link
                 href="/admin"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 border-espresso bg-white text-xs font-bold text-espresso hover:bg-butter-400 transition-all shadow-sm"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/15 transition-all"
                 title="Admin Dashboard"
               >
-                <Lock className="w-3.5 h-3.5 text-matcha-600" />
+                <Lock className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Admin</span>
               </Link>
             </div>
@@ -166,28 +166,28 @@ export function Navbar({ categories = [] }: NavbarProps) {
 
           {/* Expandable Search Input Bar */}
           {isSearchOpen && (
-            <div className="mt-3 pt-3 border-t border-espresso/15 animate-fadeIn">
+            <div className="mt-3 pt-3 border-t border-white/10 animate-fadeIn">
               <form onSubmit={handleSearchSubmit} className="relative flex items-center max-w-2xl mx-auto">
-                <Search className="absolute left-3.5 w-4 h-4 text-espresso-100" />
+                <Search className="absolute left-3.5 w-4 h-4 text-zinc-400" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Cari outfit, kategori, atau No. Racun Bio (misal: #14 atau 07)..."
-                  className="w-full pl-10 pr-24 py-2.5 rounded-full bg-white border-2 border-espresso text-sm text-espresso placeholder:text-espresso-50 focus:outline-none focus:ring-2 focus:ring-butter-400 transition-all shadow-sm"
+                  className="w-full pl-10 pr-24 py-2.5 rounded-full bg-[#12131A] border border-white/20 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-400 transition-all"
                   autoFocus
                 />
                 <div className="absolute right-1.5 flex items-center gap-1">
                   <button
                     type="submit"
-                    className="px-4 py-1.5 rounded-full bg-espresso text-vanilla text-xs font-bold hover:bg-butter-400 hover:text-espresso transition-colors"
+                    className="px-4 py-1.5 rounded-full bg-white text-black text-xs font-bold hover:bg-zinc-200 transition-colors"
                   >
                     Cari
                   </button>
                   <button
                     type="button"
                     onClick={() => setIsSearchOpen(false)}
-                    className="p-1.5 text-espresso-100 hover:text-espresso"
+                    className="p-1.5 text-zinc-400 hover:text-white"
                     aria-label="Tutup pencarian"
                   >
                     <X className="w-4 h-4" />

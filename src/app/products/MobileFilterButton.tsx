@@ -25,12 +25,12 @@ export function MobileFilterButton({ categories }: MobileFilterButtonProps) {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-softgray-border bg-white text-xs font-semibold text-charcoal hover:bg-softgray transition-all shadow-sm"
+        className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/10 bg-[#12131A] text-xs font-bold text-white hover:bg-white/10 transition-all shadow-md"
       >
-        <SlidersHorizontal className="w-3.5 h-3.5 text-rose" />
+        <SlidersHorizontal className="w-3.5 h-3.5 text-emerald-400" />
         <span>Filter & Urutkan</span>
         {activeCount > 0 && (
-          <span className="w-4 h-4 rounded-full bg-rose text-white text-[10px] font-bold flex items-center justify-center">
+          <span className="w-4 h-4 rounded-full bg-emerald-500 text-black text-[10px] font-mono font-bold flex items-center justify-center">
             {activeCount}
           </span>
         )}

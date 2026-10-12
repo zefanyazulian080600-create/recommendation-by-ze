@@ -109,24 +109,24 @@ export function AiFormAssistant({
   };
 
   return (
-    <div className="rounded-3xl border-2 border-[#F2765E]/30 bg-gradient-to-br from-[#F5EBDD] via-white to-[#F5EBDD]/60 p-5 sm:p-6 shadow-sm space-y-4">
+    <div className="rounded-3xl border border-white/10 bg-[#12131A] p-5 sm:p-6 shadow-2xl space-y-4">
       {/* Header Bar */}
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-[#F2765E] to-[#315B8C] text-white flex items-center justify-center shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shadow-sm">
             <Sparkles className="w-5 h-5 animate-pulse" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-editorial text-base sm:text-lg font-bold text-[#413333]">
+              <h3 className="font-editorial text-base sm:text-lg font-bold text-white">
                 Ze&apos;s AI Local Co-Pilot
               </h3>
-              <span className="px-2 py-0.5 rounded-full bg-[#315B8C]/10 text-[#315B8C] font-mono text-[10px] font-bold border border-[#315B8C]/20">
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-mono text-[10px] font-bold border border-emerald-500/20">
                 100% Offline & Gratis
               </span>
             </div>
-            <p className="text-[11px] text-[#413333]/70">
-              Ketik nama/ide barang, AI otomatis menulis judul gaul, ulasan stylist, tags, & panduan ukuran.
+            <p className="text-[11px] text-white/50">
+              Ketik nama/ide barang, AI otomatis menulis ulasan stylist, tags viral, & panduan ukuran.
             </p>
           </div>
         </div>
@@ -135,18 +135,18 @@ export function AiFormAssistant({
           <button
             type="button"
             onClick={handleOpenCaptions}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#315B8C]/30 text-[#315B8C] hover:bg-[#315B8C] hover:text-white transition-all text-xs font-semibold shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#090A0F] border border-white/10 text-white/80 hover:text-white hover:bg-white/10 transition-all text-xs font-semibold"
           >
-            <Share2 className="w-3.5 h-3.5" />
+            <Share2 className="w-3.5 h-3.5 text-sky-400" />
             <span>Generator Caption Medsos</span>
           </button>
 
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="px-3 py-1.5 rounded-xl border border-softgray-border bg-white text-[#413333] hover:bg-softgray text-xs font-bold flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-xl border border-white/10 bg-[#090A0F] text-white hover:bg-white/10 text-xs font-bold flex items-center gap-1.5 transition-colors"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#F2765E]" />
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
             <span>{isExpanded ? "Tutup AI" : "Buka AI Auto-Fill ⚡"}</span>
             {isExpanded ? (
               <ChevronUp className="w-3.5 h-3.5" />
@@ -158,11 +158,11 @@ export function AiFormAssistant({
       </div>
 
       {isExpanded && (
-        <div className="space-y-4 pt-2 border-t border-softgray-border/60">
+        <div className="space-y-4 pt-2 border-t border-white/10">
           {/* Status Message */}
           {statusMessage && (
-            <div className="p-3 rounded-2xl bg-[#315B8C]/10 border border-[#315B8C]/30 text-xs text-[#315B8C] font-medium flex items-center gap-2 animate-fadeIn">
-              <Zap className="w-4 h-4 flex-shrink-0 text-[#F2765E]" />
+            <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 font-medium flex items-center gap-2 animate-fadeIn">
+              <Zap className="w-4 h-4 flex-shrink-0 text-emerald-400" />
               <span>{statusMessage}</span>
             </div>
           )}
@@ -176,7 +176,7 @@ export function AiFormAssistant({
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
                   placeholder="Ketik ide: misal 'kemeja linen crop santai' atau link produk..."
-                  className="w-full px-4 py-2.5 rounded-2xl bg-white border border-[#413333]/20 text-xs sm:text-sm text-[#413333] placeholder:text-[#413333]/40 focus:outline-none focus:ring-2 focus:ring-[#F2765E]/40"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-xs sm:text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                 />
               </div>
 
@@ -184,14 +184,14 @@ export function AiFormAssistant({
                 <select
                   value={vibe}
                   onChange={(e) => setVibe(e.target.value as AiVibeTone)}
-                  className="w-full px-3 py-2.5 rounded-2xl bg-white border border-[#413333]/20 text-xs text-[#413333] focus:outline-none focus:ring-2 focus:ring-[#F2765E]/40"
+                  className="w-full px-3 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-xs text-white focus:outline-none focus:border-emerald-500/50"
                 >
-                  <option value="skena">Gaya: Skena Blok M</option>
-                  <option value="starboy">Gaya: Starboy / SCBD</option>
-                  <option value="kalcer">Gaya: Kalcer Santa</option>
-                  <option value="dupe">Gaya: Dupe Alert (Hemat)</option>
-                  <option value="clean">Gaya: Clean Minimalist</option>
-                  <option value="viral">Gaya: Viral TikTok</option>
+                  <option value="skena" className="bg-[#12131A] text-white">Gaya: Skena Blok M</option>
+                  <option value="starboy" className="bg-[#12131A] text-white">Gaya: Starboy / SCBD</option>
+                  <option value="kalcer" className="bg-[#12131A] text-white">Gaya: Kalcer Santa</option>
+                  <option value="dupe" className="bg-[#12131A] text-white">Gaya: Dupe Alert (Hemat)</option>
+                  <option value="clean" className="bg-[#12131A] text-white">Gaya: Clean Minimalist</option>
+                  <option value="viral" className="bg-[#12131A] text-white">Gaya: Viral TikTok</option>
                 </select>
               </div>
 
@@ -199,7 +199,7 @@ export function AiFormAssistant({
                 <button
                   type="submit"
                   disabled={isGenerating}
-                  className="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-[#F2765E] to-[#e0624a] hover:from-[#e0624a] hover:to-[#c85038] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-2.5 px-4 rounded-xl bg-white text-black hover:bg-emerald-400 hover:text-black text-xs sm:text-sm font-bold shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   <Wand2 className="w-4 h-4" />
                   <span>{isGenerating ? "Meracik Kata..." : "Auto-Fill Form ⚡"}</span>
@@ -210,8 +210,8 @@ export function AiFormAssistant({
 
           {/* Quick 1-Click Templates */}
           <div className="space-y-2 pt-1">
-            <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#413333]/70">
-              <Flame className="w-3.5 h-3.5 text-[#F2765E]" />
+            <div className="flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-white/50">
+              <Flame className="w-3.5 h-3.5 text-amber-400" />
               <span>Atau Pilih Template Rekomendasi Siap Rilis (1-Klik):</span>
             </div>
 
@@ -221,7 +221,7 @@ export function AiFormAssistant({
                   key={preset.id}
                   type="button"
                   onClick={() => handleApplyPreset(preset.id)}
-                  className="px-3 py-1.5 rounded-full bg-white hover:bg-[#F2765E]/10 border border-[#413333]/15 hover:border-[#F2765E]/40 text-[11px] font-semibold text-[#413333] transition-all flex items-center gap-1.5 hover:scale-[1.02]"
+                  className="px-3 py-1.5 rounded-full bg-[#090A0F] hover:bg-white/10 border border-white/10 hover:border-emerald-400/40 text-[11px] font-semibold text-white/80 transition-all flex items-center gap-1.5"
                 >
                   <span>{preset.label}</span>
                 </button>
@@ -233,39 +233,39 @@ export function AiFormAssistant({
 
       {/* Social Media Captions Modal */}
       {showCaptionModal && captions && (
-        <div className="fixed inset-0 z-50 bg-[#413333]/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#F5EBDD] border-2 border-[#413333] rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl space-y-5 animate-scaleUp">
-            <div className="flex items-center justify-between pb-3 border-b border-[#413333]/20">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-[#12131A] border border-white/15 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl space-y-5 animate-scaleUp text-white">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <Share2 className="w-5 h-5 text-[#F2765E]" />
-                <h3 className="font-editorial text-xl font-bold text-[#413333]">
+                <Share2 className="w-5 h-5 text-emerald-400" />
+                <h3 className="font-editorial text-xl font-bold text-white">
                   Generator Caption Medsos Ze
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setShowCaptionModal(false)}
-                className="w-8 h-8 rounded-full bg-white border border-[#413333]/20 text-[#413333] hover:bg-[#F2765E] hover:text-white flex items-center justify-center font-bold"
+                className="w-8 h-8 rounded-full bg-[#090A0F] border border-white/10 text-white hover:bg-white/10 flex items-center justify-center font-bold"
               >
                 ✕
               </button>
             </div>
 
-            <p className="text-xs text-[#413333]/80">
+            <p className="text-xs text-white/60">
               Salin langsung script video atau teks promosi affiliate ini ke TikTok, Instagram Story, Telegram, atau Twitter:
             </p>
 
             <div className="space-y-4">
               {/* TikTok / Reels Script */}
-              <div className="bg-white rounded-2xl border border-[#413333]/20 p-4 space-y-2">
+              <div className="bg-[#090A0F] rounded-2xl border border-white/10 p-4 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-[#315B8C] uppercase tracking-wide">
+                  <span className="font-bold text-xs text-sky-400 font-mono uppercase tracking-wide">
                     📱 TikTok & IG Reels Script
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopyText(captions.tiktokScript, "tiktok")}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#315B8C] text-white text-[11px] font-semibold hover:bg-[#315B8C]/80"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-sky-500/20 border border-sky-500/30 text-sky-400 text-[11px] font-semibold hover:bg-sky-500/30"
                   >
                     {copiedType === "tiktok" ? (
                       <>
@@ -280,21 +280,21 @@ export function AiFormAssistant({
                     )}
                   </button>
                 </div>
-                <pre className="text-xs text-[#413333] whitespace-pre-wrap font-sans bg-[#F5EBDD]/40 p-3 rounded-xl border border-[#413333]/10">
+                <pre className="text-xs text-white/80 whitespace-pre-wrap font-sans bg-black/40 p-3 rounded-xl border border-white/5">
                   {captions.tiktokScript}
                 </pre>
               </div>
 
               {/* Instagram Story Copy */}
-              <div className="bg-white rounded-2xl border border-[#413333]/20 p-4 space-y-2">
+              <div className="bg-[#090A0F] rounded-2xl border border-white/10 p-4 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-[#F2765E] uppercase tracking-wide">
+                  <span className="font-bold text-xs text-rose-400 font-mono uppercase tracking-wide">
                     📸 Instagram Story Copy & Stiker Link
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopyText(captions.igStory, "ig")}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#F2765E] text-white text-[11px] font-semibold hover:bg-[#e0624a]"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/30 text-rose-400 text-[11px] font-semibold hover:bg-rose-500/30"
                   >
                     {copiedType === "ig" ? (
                       <>
@@ -309,21 +309,21 @@ export function AiFormAssistant({
                     )}
                   </button>
                 </div>
-                <pre className="text-xs text-[#413333] whitespace-pre-wrap font-sans bg-[#F5EBDD]/40 p-3 rounded-xl border border-[#413333]/10">
+                <pre className="text-xs text-white/80 whitespace-pre-wrap font-sans bg-black/40 p-3 rounded-xl border border-white/5">
                   {captions.igStory}
                 </pre>
               </div>
 
               {/* Telegram / WA Broadcast */}
-              <div className="bg-white rounded-2xl border border-[#413333]/20 p-4 space-y-2">
+              <div className="bg-[#090A0F] rounded-2xl border border-white/10 p-4 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-emerald-700 uppercase tracking-wide">
+                  <span className="font-bold text-xs text-emerald-400 font-mono uppercase tracking-wide">
                     💬 Telegram Channel / WA Broadcast
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopyText(captions.telegramBroadcast, "tele")}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-700 text-white text-[11px] font-semibold hover:bg-emerald-800"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[11px] font-semibold hover:bg-emerald-500/30"
                   >
                     {copiedType === "tele" ? (
                       <>
@@ -338,21 +338,21 @@ export function AiFormAssistant({
                     )}
                   </button>
                 </div>
-                <pre className="text-xs text-[#413333] whitespace-pre-wrap font-sans bg-[#F5EBDD]/40 p-3 rounded-xl border border-[#413333]/10">
+                <pre className="text-xs text-white/80 whitespace-pre-wrap font-sans bg-black/40 p-3 rounded-xl border border-white/5">
                   {captions.telegramBroadcast}
                 </pre>
               </div>
 
               {/* Twitter / X Thread Starter */}
-              <div className="bg-white rounded-2xl border border-[#413333]/20 p-4 space-y-2">
+              <div className="bg-[#090A0F] rounded-2xl border border-white/10 p-4 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-[#413333] uppercase tracking-wide">
+                  <span className="font-bold text-xs text-white/70 font-mono uppercase tracking-wide">
                     🐦 Twitter / X Racun Belanja
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopyText(captions.twitterHook, "x")}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#413333] text-white text-[11px] font-semibold hover:bg-[#413333]/80"
+                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white text-[11px] font-semibold hover:bg-white/20"
                   >
                     {copiedType === "x" ? (
                       <>
@@ -367,7 +367,7 @@ export function AiFormAssistant({
                     )}
                   </button>
                 </div>
-                <pre className="text-xs text-[#413333] whitespace-pre-wrap font-sans bg-[#F5EBDD]/40 p-3 rounded-xl border border-[#413333]/10">
+                <pre className="text-xs text-white/80 whitespace-pre-wrap font-sans bg-black/40 p-3 rounded-xl border border-white/5">
                   {captions.twitterHook}
                 </pre>
               </div>
@@ -377,7 +377,7 @@ export function AiFormAssistant({
               <button
                 type="button"
                 onClick={() => setShowCaptionModal(false)}
-                className="px-6 py-2.5 rounded-full bg-[#413333] text-white text-xs font-semibold hover:bg-[#F2765E] transition-all"
+                className="px-6 py-2.5 rounded-full bg-white text-black font-bold text-xs hover:bg-emerald-400 transition-all"
               >
                 Tutup Jendela
               </button>

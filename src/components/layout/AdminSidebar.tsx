@@ -38,27 +38,27 @@ export function AdminSidebar() {
   ];
 
   const sidebarContent = (
-    <div className="flex flex-col h-full justify-between p-5">
+    <div className="flex flex-col h-full justify-between p-5 bg-[#12131A] text-white">
       <div className="space-y-6">
         {/* Brand Header */}
-        <div className="space-y-1 pb-4 border-b border-softgray-border">
+        <div className="space-y-1 pb-4 border-b border-white/10">
           <Link href="/admin" className="block">
-            <span className="font-editorial text-xl font-medium tracking-tight text-charcoal">
+            <span className="font-editorial text-xl font-medium tracking-tight text-white">
               Recommendation
             </span>
-            <span className="block font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-rose">
+            <span className="block font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-400">
               by Ze • CMS
             </span>
           </Link>
           <div className="pt-2">
             {isSupabaseConnected ? (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-green-50 text-green-700 text-[10px] font-medium border border-green-200">
-                <Database className="w-3 h-3 text-green-600" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+                <Database className="w-3 h-3 text-emerald-400" />
                 <span>Supabase Live</span>
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[10px] font-medium border border-amber-200">
-                <Database className="w-3 h-3 text-amber-600" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-mono border border-amber-500/20">
+                <Database className="w-3 h-3 text-amber-400" />
                 <span>Mode Offline / Standby</span>
               </span>
             )}
@@ -81,11 +81,11 @@ export function AdminSidebar() {
                 onClick={() => setIsMobileOpen(false)}
                 className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all ${
                   isActive
-                    ? "bg-charcoal text-white shadow-sm font-semibold"
-                    : "text-charcoal-200 hover:text-charcoal hover:bg-softgray"
+                    ? "bg-white text-black shadow-md font-bold"
+                    : "text-zinc-400 hover:text-white hover:bg-white/5"
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? "text-rose" : "text-charcoal-50"}`} />
+                <Icon className={`w-4 h-4 ${isActive ? "text-black" : "text-zinc-500"}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -94,29 +94,29 @@ export function AdminSidebar() {
       </div>
 
       {/* Footer Area: User, Public View, Logout */}
-      <div className="pt-6 border-t border-softgray-border space-y-3">
+      <div className="pt-6 border-t border-white/10 space-y-3">
         {userEmail && (
-          <div className="px-1 text-[11px] text-charcoal-50 truncate">
-            Login sebagai: <strong className="text-charcoal block truncate">{userEmail}</strong>
+          <div className="px-1 text-[11px] text-zinc-500 font-mono truncate">
+            Login sebagai: <strong className="text-zinc-200 block truncate">{userEmail}</strong>
           </div>
         )}
 
         <Link
           href="/"
           target="_blank"
-          className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-charcoal hover:bg-softgray border border-softgray-border transition-colors"
+          className="flex items-center justify-between px-3.5 py-2 rounded-xl text-xs font-medium text-zinc-300 hover:text-white hover:bg-white/5 border border-white/10 transition-colors"
         >
           <div className="flex items-center gap-2">
-            <ExternalLink className="w-3.5 h-3.5 text-rose" />
+            <ExternalLink className="w-3.5 h-3.5 text-emerald-400" />
             <span>Lihat Toko Publik</span>
           </div>
-          <span className="text-[10px] text-charcoal-50">↗</span>
+          <span className="text-[10px] text-zinc-500">↗</span>
         </Link>
 
         <button
           type="button"
           onClick={logout}
-          className="flex items-center gap-2 w-full px-3.5 py-2 rounded-xl text-xs font-medium text-red-600 hover:bg-red-50 transition-colors"
+          className="flex items-center gap-2 w-full px-3.5 py-2 rounded-xl text-xs font-medium text-red-400 hover:bg-red-500/10 transition-colors"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Keluar (Logout)</span>
@@ -128,19 +128,19 @@ export function AdminSidebar() {
   return (
     <>
       {/* Mobile Bar */}
-      <div className="lg:hidden bg-white border-b border-softgray-border p-4 flex items-center justify-between sticky top-0 z-30">
+      <div className="lg:hidden bg-[#12131A] border-b border-white/10 p-4 flex items-center justify-between sticky top-0 z-30">
         <Link href="/admin">
-          <span className="font-editorial text-lg font-medium text-charcoal">
+          <span className="font-editorial text-lg font-medium text-white">
             Recommendation by Ze
           </span>
-          <span className="text-[10px] text-rose font-bold block uppercase tracking-wider">
+          <span className="text-[10px] text-emerald-400 font-mono font-bold block uppercase tracking-wider">
             Admin CMS
           </span>
         </Link>
         <button
           type="button"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="p-2 rounded-lg text-charcoal hover:bg-softgray"
+          className="p-2 rounded-lg text-zinc-300 hover:bg-white/10"
           aria-label="Toggle admin menu"
         >
           {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -151,17 +151,17 @@ export function AdminSidebar() {
       {isMobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div
-            className="fixed inset-0 bg-charcoal/50 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setIsMobileOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-64 bg-white shadow-xl z-10 flex flex-col">
+          <div className="fixed inset-y-0 left-0 w-64 bg-[#12131A] border-r border-white/10 shadow-2xl z-10 flex flex-col">
             {sidebarContent}
           </div>
         </div>
       )}
 
       {/* Desktop Persistent Sidebar */}
-      <aside className="hidden lg:block w-64 bg-white border-r border-softgray-border flex-shrink-0 h-screen sticky top-0 overflow-y-auto">
+      <aside className="hidden lg:block w-64 bg-[#12131A] border-r border-white/10 flex-shrink-0 h-screen sticky top-0 overflow-y-auto">
         {sidebarContent}
       </aside>
     </>

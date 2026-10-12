@@ -28,48 +28,43 @@ export default async function HomePage() {
   ]);
 
   return (
-    <div className="space-y-0 bg-vanilla">
-      {/* 1. Hero Section: Y2K Retro Archive & Underground Skate Aesthetic */}
+    <div className="space-y-0 bg-[#090A0F] text-white">
+      {/* 1. Hero Section: Dark Luxury Streetwear Aesthetic */}
       <HeroSection settings={settings} />
 
-      {/* 2. Running Retro Ticker Marquee */}
+      {/* 2. Running Dark Luxury Ticker Marquee */}
       <AestheticMarquee />
 
-      {/* 3. Instagram/TikTok Story Highlights with Neon/Matcha Gradient Rings */}
+      {/* 3. Story Highlights with Obsidian/Emerald Rings */}
       <StoryHighlights />
 
-      {/* 4. MAIN PRODUCT FEED: Curated Drops & Bio Spill Numbers (Langsung Terlihat!) */}
+      {/* 4. MAIN PRODUCT FEED: Curated Drops & Bio Spill Numbers */}
       <HomeFeedInteractive products={allProducts} categories={categories} />
 
-      {/* 5. ARCHIVE LABS STUDIO HUB: Interactive Modules in Clean Tabs (Zero Clutter!) */}
-      {/* Bundles OOTD Studio & Struk, Spot Nongkrong, Dupe vs Grail, Reels, Occasion & Weather */}
+      {/* 5. ARCHIVE LABS STUDIO HUB: Interactive Modules in Clean Tabs */}
       <ArchiveLabsStudioHub products={allProducts} />
 
-      {/* 6. COMMUNITY & BUDGET CORNER: 2-Column Balanced Section */}
-      <section className="py-14 sm:py-20 border-t-2 border-espresso/15 bg-vanilla">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* 6. COMMUNITY & BUDGET CORNER: Balanced Clean 2-Column Section */}
+      <section className="py-14 sm:py-20 border-t border-white/10 bg-[#090A0F]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="text-center max-w-xl mx-auto space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-espresso text-vanilla text-[10px] font-mono font-bold tracking-widest uppercase">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] font-mono font-bold tracking-widest uppercase">
               ✦ COMMUNITY PICKS & BUDGET SMART ✦
             </div>
-            <h2 className="font-editorial text-2xl sm:text-4xl font-extrabold text-espresso">
+            <h2 className="font-sans text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
               Suara Komunitas & Kalkulator Jajan
             </h2>
-            <p className="text-xs sm:text-sm text-espresso/70">
+            <p className="text-xs sm:text-sm text-zinc-400">
               Ikutan voting outfit dan hitung sisa uang saku sebelum memutuskan checkout.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {/* Voting: Beli or Skip? */}
-            <div className="bg-white rounded-3xl border-2 border-espresso p-2 sm:p-4 shadow-brutal">
-              <BeliOrSkipPoll products={allProducts} />
-            </div>
+            <BeliOrSkipPoll products={allProducts} />
 
             {/* Smart Budget Slider */}
-            <div className="bg-white rounded-3xl border-2 border-espresso p-2 sm:p-4 shadow-brutal">
-              <BudgetSliderFilter products={allProducts} />
-            </div>
+            <BudgetSliderFilter products={allProducts} />
           </div>
         </div>
       </section>
@@ -80,43 +75,35 @@ export default async function HomePage() {
       {/* 8. Thematic Collections Lookbook */}
       <CollectionsSection collections={collections} />
 
-      {/* 9. Retro Concert Ticket Callout Banner */}
-      <section className="py-16 bg-vanilla border-t-2 border-espresso/15">
+      {/* 9. VIP Concierge Request Callout */}
+      <section className="py-16 bg-[#090A0F] border-t border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-r from-butter-200 via-vanilla to-matcha-100 border-2 border-espresso text-center space-y-4 shadow-brutal-lg relative overflow-hidden">
-            {/* Retro Ticket Stamps */}
-            <div className="absolute top-4 left-6 text-espresso/20 font-mono text-xs hidden sm:block select-none">
-              ||| | |||| | ||<br />
-              ZE-ARCHIVE-PASS
-            </div>
-            <div className="absolute top-4 right-6 text-espresso/20 font-mono text-xs hidden sm:block select-none text-right">
-              VOL. 2026<br />
-              ★ VERIFIED
-            </div>
+          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#12131A] via-[#161822] to-[#0D0E15] border border-white/10 text-center space-y-4 shadow-2xl relative overflow-hidden">
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-xs font-extrabold text-espresso shadow-sm border border-espresso">
-              <Sparkles className="w-3.5 h-3.5 text-butter-500" />
-              <span>Gaya Hidup & Belanja Cerdas • Gen Z Approved ✨</span>
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-mono font-bold text-emerald-400">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>DIRECT CURATION CONCIERGE ✨</span>
             </span>
 
-            <h2 className="font-editorial text-2xl sm:text-4xl font-bold text-espresso max-w-xl mx-auto">
+            <h2 className="font-sans text-2xl sm:text-4xl font-extrabold text-white max-w-xl mx-auto tracking-tight">
               Punya Request Spill Barang atau OOTD Tertentu?
             </h2>
 
-            <p className="text-xs sm:text-sm text-espresso-100 max-w-lg mx-auto leading-relaxed">
-              Lagi nyari kaos boxy cowok, outer kemeja corduroy, outfit cewek chic, skincare ramah kantong, atau perintilan setup estetik? Ze siap kurasiin toko yang terpercaya dan terbukti bagus!
+            <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mx-auto leading-relaxed">
+              Lagi nyari kaos boxy cowok, kemeja corduroy, outfit cewek chic, skincare ramah kantong, atau perintilan setup estetik? Ze siap kurasiin toko yang terpercaya dan terbukti bagus!
             </p>
 
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/products"
-                className="btn-3d px-8 py-3.5 rounded-full bg-espresso text-vanilla text-xs sm:text-sm font-bold border-2 border-espresso hover:bg-espresso-400 transition-all shadow-brutal"
+                className="px-8 py-3.5 rounded-full bg-white text-black text-xs sm:text-sm font-bold hover:bg-zinc-200 transition-all active:scale-95 shadow-lg"
               >
                 Cari di Katalog Produk 🛍️
               </Link>
               <Link
                 href="/about"
-                className="btn-3d-butter px-8 py-3.5 rounded-full bg-butter-400 border-2 border-espresso text-espresso text-xs sm:text-sm font-bold hover:bg-butter-500 transition-all shadow-sm"
+                className="px-8 py-3.5 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm font-bold hover:bg-white/20 transition-all"
               >
                 Tentang Kurasi Ze
               </Link>
