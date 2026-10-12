@@ -19,6 +19,7 @@ export function HomeFeedInteractive({
 
   const tabs = [
     { id: "all", label: "✨ Semua Spill" },
+    { id: "skena-kalcer", label: "🎸 Skena & Kalcer" },
     { id: "outfit-pria", label: "🛹 Outfit Cowok" },
     { id: "outfit-wanita", label: "👗 Outfit Cewek" },
     { id: "outfit-unisex", label: "🧢 Unisex Streetwear" },
@@ -31,6 +32,18 @@ export function HomeFeedInteractive({
 
   const filteredProducts = useMemo(() => {
     switch (activeTab) {
+      case "skena-kalcer":
+        return products.filter(
+          (p) =>
+            p.tags?.some((t) =>
+              ["skena", "kalcer", "tote bag", "derby", "corduroy", "workwear"].includes(
+                t.toLowerCase()
+              )
+            ) ||
+            p.name.toLowerCase().includes("tote") ||
+            p.name.toLowerCase().includes("derby") ||
+            p.name.toLowerCase().includes("corduroy")
+        );
       case "trending":
         return products.filter((p) => p.is_trending);
       case "featured":

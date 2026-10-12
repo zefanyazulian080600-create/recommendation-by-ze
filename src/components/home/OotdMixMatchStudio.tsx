@@ -14,7 +14,7 @@ interface OotdMixMatchStudioProps {
   products: Product[];
 }
 
-type GenderMode = "men" | "women" | "unisex";
+type GenderMode = "men" | "women" | "unisex" | "skena";
 
 export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
   const { showToast } = useToast();
@@ -231,6 +231,80 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
         },
       ],
     },
+    skena: {
+      label: "🎸 Skena & Kalcer Look",
+      tops: [
+        {
+          id: "sk-top-1",
+          name: "Heavyweight Boxy Fit Tee 235gsm - Washed Charcoal",
+          price: 119000,
+          image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://shopee.co.id",
+        },
+        {
+          id: "sk-top-2",
+          name: "Vintage Relaxed Corduroy Overshirt - Olive Green",
+          price: 175000,
+          image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://tokopedia.com",
+        },
+      ],
+      bottoms: [
+        {
+          id: "sk-bot-1",
+          name: "Relaxed Parachute Cargo Pants with Toggle - Sand Khaki",
+          price: 145000,
+          image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://shop.tiktok.com",
+        },
+        {
+          id: "sk-bot-2",
+          name: "Baggy Straight Fit Trousers - Deep Charcoal",
+          price: 145000,
+          image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://shopee.co.id",
+        },
+      ],
+      shoes: [
+        {
+          id: "sk-shoe-1",
+          name: "Classic 3-Eyelet Matte Leather Derby Shoes - Deep Noir",
+          price: 219000,
+          image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://tokopedia.com",
+        },
+        {
+          id: "sk-shoe-2",
+          name: "Retro Suede Gumsole Skate Sneakers - Off-White & Forest",
+          price: 239000,
+          image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://shopee.co.id",
+        },
+      ],
+      accessories: [
+        {
+          id: "sk-acc-1",
+          name: "Heavy Canvas 16oz Multi-Pocket Laptop Tote Bag",
+          price: 125000,
+          image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://shopee.co.id",
+        },
+        {
+          id: "sk-acc-2",
+          name: "Vintage Washed Cotton Baseball Dad Cap - Forest Olive",
+          price: 58000,
+          image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://lazada.co.id",
+        },
+        {
+          id: "sk-acc-3",
+          name: "Woody Santal & Smoked Bergamot Unisex EDP 50ml",
+          price: 135000,
+          image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=600&auto=format&fit=crop",
+          affiliate_url: "https://shopee.co.id",
+        },
+      ],
+    },
   };
 
   const activePreset = outfitPresets[genderMode];
@@ -303,6 +377,7 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
         <div className="flex items-center gap-3 mb-8 overflow-x-auto no-scrollbar pb-2">
           {(
             [
+              { id: "skena", label: "🎸 Anak Skena & Kalcer", desc: "Tote Bag, Derby Shoes & Corduroy" },
               { id: "men", label: "🛹 Outfit Cowok (Bro Look)", desc: "Boxy Tee, Cargo & Retro Sneakers" },
               { id: "women", label: "👗 Outfit Cewek (Sis Look)", desc: "Linen, Cardigan & Loafers" },
               { id: "unisex", label: "🧢 Unisex Streetwear", desc: "Heavyweight Hoodie & Parachute Pants" },

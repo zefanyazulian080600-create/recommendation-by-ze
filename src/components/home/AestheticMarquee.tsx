@@ -6,6 +6,7 @@ import { Sparkles, Flame, Heart, ShoppingBag, Tag, CheckCircle2 } from "lucide-r
 export function AestheticMarquee() {
   const items = [
     { text: "SPILL RACUN SHOPEE & TIKTOK SHOP", icon: Flame, color: "text-butter-400" },
+    { text: "VIBE SKENA, KALCER BLOK M, STARBOY & GORPCORE", icon: Sparkles, color: "text-butter-300" },
     { text: "100% REAL CURATION BY ZE", icon: Sparkles, color: "text-matcha-300" },
     { text: "VOUCHER GRATIS ONGKIR & DISKON", icon: Tag, color: "text-butter-300" },
     { text: "OOTD COWOK & CEWEK • STREETWEAR & CLEAN FIT", icon: Heart, color: "text-vanilla" },

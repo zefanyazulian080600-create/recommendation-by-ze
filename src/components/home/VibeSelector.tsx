@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, Dices, ArrowRight, X, Heart, ExternalLink, Check } from "lucide-react";
+import { Sparkles, Dices, ArrowRight, X, Heart, ShoppingBag } from "lucide-react";
 import { Product } from "@/types";
 import { formatRupiah, getMarketplaceMeta } from "@/lib/utils";
 import { triggerConfetti } from "@/lib/confetti";
@@ -21,14 +21,123 @@ export function VibeSelector({ products }: VibeSelectorProps) {
 
   const vibes = [
     { id: "all", label: "✨ Semua Vibe", emoji: "✨", tag: "Semua Rekomendasi" },
-    { id: "bro-streetwear", label: "🛹 Bro Streetwear", emoji: "🛹", tag: "Boxy & Cargo Cowok" },
-    { id: "clean-fit", label: "🕶️ Clean Minimalist", emoji: "🕶️", tag: "Sleek & Uniqlo-Core" },
-    { id: "earthy-tone", label: "🌿 Earth Tone", emoji: "🌿", tag: "Olive, Khaki & Linen" },
-    { id: "dark-monochrome", label: "🖤 Dark Monochrome", emoji: "🖤", tag: "Edgy Charcoal & Loafers" },
-    { id: "korean-aesthetic", label: "🇰🇷 Korean Casual", emoji: "🇰🇷", tag: "Oversized & Neat" },
-    { id: "ngampus", label: "🎒 Ngampus / WFC", emoji: "🎒", tag: "Kuliah & Cafe Fit" },
-    { id: "hemat", label: "💸 Under 100k", emoji: "💸", tag: "Ramah Dompet" },
+    { id: "skena", label: "🎸 Anak Skena", emoji: "🎸", tag: "Tote Bag & Vinyl" },
+    { id: "kalcer", label: "🛹 Anak Kalcer", emoji: "🛹", tag: "Blok M Drip & Workwear" },
+    { id: "starboy", label: "⚡ Starboy", emoji: "⚡", tag: "Loafers & Santal" },
+    { id: "stargirl", label: "✨ Stargirl", emoji: "✨", tag: "Clean Glam & Chic" },
+    { id: "gorpcore", label: "🏕️ Gorpcore", emoji: "🏕️", tag: "Outdoor & Tactical" },
+    { id: "old-money", label: "🍸 Old Money", emoji: "🍸", tag: "Quiet Luxury & Linen" },
+    { id: "cewek-kue", label: "🍰 Cewek Kue", emoji: "🍰", tag: "Pastel Pop & Cute" },
+    { id: "cewek-mamba", label: "🖤 Cewek Mamba", emoji: "🖤", tag: "All Black & Edgy" },
+    { id: "y2k", label: "💿 Cyber Y2K", emoji: "💿", tag: "Parachute & Baggy" },
+    { id: "ngampus", label: "🎒 Ngampus / WFC", emoji: "🎒", tag: "Cafe Fit & Laptop" },
+    { id: "hemat", label: "💸 Under 100k", emoji: "💸", tag: "Ramah Uang Jajan" },
   ];
+
+  // Dynamic products filtering based on Gen Z aesthetic vibes
+  const filteredProducts = useMemo(() => {
+    if (!products || products.length === 0) return [];
+    if (selectedVibe === "all") return products.slice(0, 6);
+
+    const matches = products.filter((p) => {
+      const pName = (p.name || "").toLowerCase();
+      const pDesc = (p.description || "").toLowerCase();
+      const pTags = (p.tags || []).map((t) => t.toLowerCase());
+
+      if (selectedVibe === "skena") {
+        return (
+          pTags.some((t) => ["skena", "tote bag", "derby", "vintage", "santal"].includes(t)) ||
+          pName.includes("tote") ||
+          pName.includes("derby") ||
+          pName.includes("vintage") ||
+          pName.includes("santal") ||
+          pName.includes("corduroy")
+        );
+      }
+      if (selectedVibe === "kalcer") {
+        return (
+          pTags.some((t) => ["kalcer", "workwear", "cargo", "sneakers", "cap"].includes(t)) ||
+          pName.includes("workwear") ||
+          pName.includes("corduroy") ||
+          pName.includes("cargo") ||
+          pName.includes("sneakers") ||
+          pName.includes("cap") ||
+          pName.includes("derby")
+        );
+      }
+      if (selectedVibe === "starboy") {
+        return (
+          pName.includes("loafers") ||
+          pName.includes("santal") ||
+          pName.includes("charcoal") ||
+          pName.includes("cardholder") ||
+          pName.includes("corduroy")
+        );
+      }
+      if (selectedVibe === "stargirl") {
+        return (
+          pName.includes("cardigan") ||
+          pName.includes("trousers") ||
+          pName.includes("loafers") ||
+          p.category_id === "cat-outfit-wanita"
+        );
+      }
+      if (selectedVibe === "gorpcore") {
+        return (
+          pName.includes("parachute") ||
+          pName.includes("cargo") ||
+          pName.includes("sneakers") ||
+          pName.includes("cap")
+        );
+      }
+      if (selectedVibe === "old-money") {
+        return (
+          pName.includes("linen") ||
+          pName.includes("trousers") ||
+          pName.includes("loafers") ||
+          pName.includes("cardholder")
+        );
+      }
+      if (selectedVibe === "cewek-kue") {
+        return (
+          pName.includes("rose") ||
+          pName.includes("cardigan") ||
+          pName.includes("ivory") ||
+          pName.includes("hijab")
+        );
+      }
+      if (selectedVibe === "cewek-mamba") {
+        return (
+          pName.includes("charcoal") ||
+          pName.includes("black") ||
+          pName.includes("loafers") ||
+          pName.includes("noir")
+        );
+      }
+      if (selectedVibe === "y2k") {
+        return (
+          pName.includes("parachute") ||
+          pName.includes("hoodie") ||
+          pName.includes("boxy") ||
+          pName.includes("sneakers")
+        );
+      }
+      if (selectedVibe === "ngampus") {
+        return (
+          pName.includes("tote") ||
+          pName.includes("hoodie") ||
+          pName.includes("linen") ||
+          pName.includes("dad cap")
+        );
+      }
+      if (selectedVibe === "hemat") {
+        return p.price <= 100000;
+      }
+      return true;
+    });
+
+    return matches.length > 0 ? matches.slice(0, 6) : products.slice(0, 4);
+  }, [selectedVibe, products]);
 
   // Random Spill Generator (Gacha Racun)
   const handleRollRandom = (e: React.MouseEvent) => {
@@ -48,6 +157,8 @@ export function VibeSelector({ products }: VibeSelectorProps) {
     }, 700);
   };
 
+  const activeVibeObj = vibes.find((v) => v.id === selectedVibe) || vibes[0];
+
   return (
     <section className="py-12 bg-vanilla border-t-2 border-espresso/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,13 +167,13 @@ export function VibeSelector({ products }: VibeSelectorProps) {
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-butter-400 border-2 border-espresso text-espresso text-xs font-extrabold shadow-brutal-sm -rotate-1 mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>PILIH VIBE & GAYA KAMU 🛹✨</span>
+              <span>PILIH VIBE & GAYA KAMU 🎸🛹✨</span>
             </div>
             <h2 className="font-editorial text-2xl sm:text-4xl font-bold text-espresso">
-              Outfit Archetype & Mood Matcher (All Gender)
+              Outfit Archetype & Mood Matcher (Skena, Kalcer, Starboy & More)
             </h2>
             <p className="text-sm text-espresso-100 mt-1 max-w-xl">
-              Lagi cari gaya Bro Streetwear, Clean Minimalist, Korean Casual, atau Earth Tone? Pilih vibe kamu di bawah:
+              Anak Skena ngopi, Kalcer Blok M, Starboy night-out, Gorpcore, atau Clean Old Money? Klik vibe favoritmu untuk langsung lihat kurasinya:
             </p>
           </div>
 
@@ -79,7 +190,7 @@ export function VibeSelector({ products }: VibeSelectorProps) {
         </div>
 
         {/* Vibe Selection Pills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-3.5 mb-6">
           {vibes.map((vibe) => {
             const isActive = selectedVibe === vibe.id;
             return (
@@ -89,14 +200,14 @@ export function VibeSelector({ products }: VibeSelectorProps) {
                   setSelectedVibe(vibe.id);
                   triggerConfetti(e.clientX, e.clientY);
                 }}
-                className={`p-3.5 rounded-2xl border-2 text-left transition-all tap-bounce flex flex-col justify-between ${
+                className={`p-3 rounded-2xl border-2 text-left transition-all tap-bounce flex flex-col justify-between ${
                   isActive
                     ? "bg-butter-400 border-espresso shadow-brutal scale-105"
                     : "bg-white border-espresso/20 hover:border-espresso hover:shadow-brutal-sm"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl">{vibe.emoji}</span>
+                  <span className="text-xl sm:text-2xl">{vibe.emoji}</span>
                   {isActive && (
                     <span className="w-2.5 h-2.5 rounded-full bg-espresso animate-pulse" />
                   )}
@@ -114,15 +225,15 @@ export function VibeSelector({ products }: VibeSelectorProps) {
           })}
         </div>
 
-        {/* Active Vibe Bar & Fast Catalog Jump */}
-        <div className="p-4 rounded-2xl bg-white border-2 border-espresso/15 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="font-extrabold text-espresso">Mood Aktif:</span>
-            <span className="px-3 py-1 rounded-full bg-matcha-100 text-espresso font-bold border border-matcha-400">
-              {vibes.find((v) => v.id === selectedVibe)?.label || "Semua Look"} ✨
+        {/* Active Vibe Bar */}
+        <div className="p-4 rounded-2xl bg-white border-2 border-espresso/15 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-xs mb-6">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="font-extrabold text-espresso">Vibe Terpilih:</span>
+            <span className="px-3 py-1 rounded-full bg-matcha-100 text-espresso font-black border border-espresso shadow-brutal-sm">
+              {activeVibeObj.label} ✨
             </span>
-            <span className="text-espresso-100 hidden md:inline">
-              (Menampilkan rekomendasi outfit & racun yang cocok dengan vibe ini)
+            <span className="text-espresso-100 hidden sm:inline">
+              • Menampilkan {filteredProducts.length} rekomendasi outfit & gear terkurasi
             </span>
           </div>
 
@@ -133,6 +244,74 @@ export function VibeSelector({ products }: VibeSelectorProps) {
             <span>Buka Katalog Lengkap</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
+        </div>
+
+        {/* Dynamic Vibe Products Showcase Rack */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          {filteredProducts.map((product) => {
+            const meta = getMarketplaceMeta(product.marketplace);
+            const coverImg =
+              product.media?.find((m) => m.is_cover)?.public_url ||
+              product.media?.[0]?.public_url ||
+              "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop";
+
+            return (
+              <div
+                key={product.id}
+                className="group relative rounded-2xl border-2 border-espresso bg-white overflow-hidden flex flex-col justify-between hover:shadow-brutal-sm transition-all"
+              >
+                {/* Photo */}
+                <div className="relative aspect-square w-full overflow-hidden bg-softgray border-b-2 border-espresso">
+                  <Image
+                    src={coverImg}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 640px) 50vw, 20vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  {product.badge_label && (
+                    <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-butter-400 text-espresso text-[9px] font-black border border-espresso shadow-sm">
+                      {product.badge_label}
+                    </span>
+                  )}
+                </div>
+
+                {/* Details */}
+                <div className="p-2.5 sm:p-3 flex flex-col justify-between flex-1 space-y-2">
+                  <div className="space-y-1">
+                    <span
+                      className="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md inline-block uppercase text-white shadow-xs"
+                      style={{ backgroundColor: meta.badgeBg }}
+                    >
+                      {meta.name}
+                    </span>
+                    <Link
+                      href={`/product/${product.slug}`}
+                      className="text-xs font-bold text-espresso line-clamp-2 leading-tight hover:underline block"
+                    >
+                      {product.name}
+                    </Link>
+                  </div>
+
+                  <div>
+                    <p className="text-xs sm:text-sm font-black text-espresso">
+                      {formatRupiah(product.price)}
+                    </p>
+                    <a
+                      href={product.affiliate_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
+                      className="mt-2 w-full py-1.5 px-2 rounded-xl bg-espresso hover:bg-butter-400 text-vanilla hover:text-espresso font-bold text-[10px] sm:text-[11px] text-center border border-espresso transition-all flex items-center justify-center gap-1"
+                    >
+                      <ShoppingBag className="w-3 h-3" />
+                      <span>Beli</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -167,7 +346,10 @@ export function VibeSelector({ products }: VibeSelectorProps) {
             {/* Photo Card */}
             <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-espresso bg-softgray">
               <Image
-                src={randomItem.media?.[0]?.public_url || "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop"}
+                src={
+                  randomItem.media?.[0]?.public_url ||
+                  "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop"
+                }
                 alt={randomItem.name}
                 fill
                 className="object-cover"

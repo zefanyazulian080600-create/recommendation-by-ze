@@ -36,7 +36,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-espresso text-xs font-bold text-espresso shadow-3d-pill">
                 <span className="w-2.5 h-2.5 rounded-full bg-matcha-500 animate-ping" />
                 <Sparkles className="w-4 h-4 text-butter-500" />
-                <span>Spill Racun Ol Shop & OOTD All Gender • Curated by Ze 🛹✨</span>
+                <span>Spill Racun Ol Shop • Vibe Skena, Kalcer, Starboy & All Gender 🛹🎸✨</span>
               </div>
 
               {userName ? (

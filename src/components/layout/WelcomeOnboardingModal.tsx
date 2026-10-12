@@ -6,11 +6,15 @@ import { Sparkles, Zap, Flame, X, ArrowRight, User, ShieldCheck } from "lucide-r
 import { triggerConfetti } from "@/lib/confetti";
 
 const VIBE_OPTIONS = [
-  { id: "Starboy", label: "⚡ Starboy / Drip 🕶️", desc: "Heavy streetwear & night-out fits" },
-  { id: "Stargirl", label: "✨ Stargirl / Clean Chic 💅", desc: "Aesthetic lookbook & feminine glam" },
-  { id: "Streetwear", label: "🛹 Unisex Streetwear 🧢", desc: "Boxy fit, cargo & retro kicks" },
-  { id: "CleanFit", label: "☕ Clean Fit & Quiet Luxury 👔", desc: "Old money, earthy & smart casual" },
-  { id: "CyberY2K", label: "💿 Cyber Y2K & Grunge 🎸", desc: "Parachute pants, chrome & baggy" },
+  { id: "Skena", label: "🎸 Anak Skena & Indie ☕", desc: "Tote bag kanvas, vintage tee, sambas & ngopi" },
+  { id: "Kalcer", label: "🛹 Anak Kalcer & Blok M 🎨", desc: "Workwear Detroit jacket, cargo fatigue & vinyl" },
+  { id: "Starboy", label: "⚡ Starboy / Night Drip 🕶️", desc: "Heavy streetwear, leather, loafers & santal EDP" },
+  { id: "Stargirl", label: "✨ Stargirl / Clean Chic 💅", desc: "European lookbook crop, wide-leg & chic glam" },
+  { id: "Gorpcore", label: "🏕️ Gorpcore & Outdoor ⛰️", desc: "Windbreaker, tactical cargo & hiking kicks" },
+  { id: "CleanFit", label: "☕ Clean Fit & Old Money 🍸", desc: "Soft linen shirt, knit polo & neutral earth tone" },
+  { id: "CewekKue", label: "🍰 Cewek Kue / Pastel Pop 🎀", desc: "Warna pastel playful, crop top & cute accessories" },
+  { id: "CewekMamba", label: "🖤 Cewek Mamba / Dark Edgy 🕷️", desc: "All-black misterius, leather boots & oversize fit" },
+  { id: "CyberY2K", label: "💿 Cyber Y2K & Baggy 🎮", desc: "Parachute cargo pants, chrome chain & retro look" },
 ];
 
 export function WelcomeOnboardingModal() {
@@ -58,13 +62,13 @@ export function WelcomeOnboardingModal() {
     <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-espresso/70 backdrop-blur-md animate-fadeIn">
       {/* Modal Card */}
       <div 
-        className="relative w-full max-w-lg bg-vanilla rounded-3xl border-3 border-espresso shadow-brutal-lg overflow-hidden animate-scaleUp"
+        className="relative w-full max-w-lg max-h-[92vh] flex flex-col bg-vanilla rounded-3xl border-3 border-espresso shadow-brutal-lg overflow-hidden animate-scaleUp"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
       >
         {/* Top Decorative Banner */}
-        <div className="bg-coral text-espresso px-6 py-3.5 border-b-3 border-espresso flex items-center justify-between font-black text-xs uppercase tracking-wider">
+        <div className="bg-coral text-espresso px-6 py-3.5 border-b-3 border-espresso flex items-center justify-between font-black text-xs uppercase tracking-wider flex-shrink-0">
           <div className="flex items-center gap-2">
             <span className="inline-block w-2.5 h-2.5 rounded-full bg-vanilla animate-ping" />
             <span className="flex items-center gap-1.5">
@@ -84,7 +88,7 @@ export function WelcomeOnboardingModal() {
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 md:p-8 space-y-6">
+        <div className="p-6 md:p-8 space-y-6 overflow-y-auto">
           {/* Header */}
           <div className="space-y-2 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-cobalt text-vanilla text-xs font-black uppercase rounded-full border border-espresso tracking-wider mb-1">

@@ -16,6 +16,22 @@ interface HighlightItem {
 export function StoryHighlights() {
   const highlights: HighlightItem[] = [
     {
+      id: "anak-skena",
+      label: "Anak Skena",
+      tag: "🎸 Tote & Kopi",
+      href: "/products?search=skena",
+      imageUrl: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400&auto=format&fit=crop",
+      isNew: true,
+    },
+    {
+      id: "kalcer-blok-m",
+      label: "Kalcer Blok M",
+      tag: "🛹 Workwear",
+      href: "/products?search=kalcer",
+      imageUrl: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=400&auto=format&fit=crop",
+      isNew: true,
+    },
+    {
       id: "outfit-cowok",
       label: "OOTD Cowok",
       tag: "🛹 Bro Look",

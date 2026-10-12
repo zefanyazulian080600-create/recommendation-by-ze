@@ -175,6 +175,82 @@ const STARBOY_ARCHETYPES: DripArchetype[] = [
     },
     affiliateUrl: "https://tokopedia.com",
   },
+  {
+    id: "anak-skena",
+    name: "🎸 Anak Skena Kopi & Vinyl",
+    tagline: "Tote bag kanvas 16oz, boxy tee washed, retro gumsole kicks & aroma woody santal ngopi di cafe indie.",
+    badge: "ANAK SKENA GRAIL ☕",
+    auraScore: "100% Skena Aura 🎸",
+    outerwear: {
+      name: "Heavyweight Boxy Fit Tee 235gsm - Washed Charcoal",
+      price: 119000,
+      image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop",
+      tag: "Atasan",
+    },
+    bottom: {
+      name: "Baggy Straight Fit Trousers - Deep Charcoal",
+      price: 145000,
+      image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
+      tag: "Bawahan",
+    },
+    footwear: {
+      name: "Retro Suede Gumsole Skate Sneakers - Off-White & Forest",
+      price: 239000,
+      image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=600&auto=format&fit=crop",
+      tag: "Footwear",
+    },
+    scent: {
+      name: "Woody Santal & Smoked Bergamot Unisex EDP 50ml",
+      price: 135000,
+      image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=600&auto=format&fit=crop",
+      tag: "Signature Scent",
+    },
+    accessory: {
+      name: "Heavy Canvas 16oz Multi-Pocket Laptop Tote Bag",
+      price: 125000,
+      image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop",
+      tag: "Tas Skena",
+    },
+    affiliateUrl: "https://shopee.co.id",
+  },
+  {
+    id: "kalcer-blok-m",
+    name: "🎨 Kalcer Blok M Workwear",
+    tagline: "Workwear corduroy jacket, relaxed parachute cargo, retro gumsole & dad cap hunting piringan hitam di Blok M.",
+    badge: "KALCER BLOK M 🛹",
+    auraScore: "99% Culture Drip 🎨",
+    outerwear: {
+      name: "Vintage Relaxed Corduroy Overshirt Jacket - Olive Green",
+      price: 175000,
+      image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=600&auto=format&fit=crop",
+      tag: "Workwear Outer",
+    },
+    bottom: {
+      name: "Relaxed Parachute Cargo Pants with Toggle - Sand Khaki",
+      price: 145000,
+      image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=600&auto=format&fit=crop",
+      tag: "Bawahan",
+    },
+    footwear: {
+      name: "Classic Chunky Lug Penny Loafers - Black",
+      price: 198000,
+      image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop",
+      tag: "Footwear",
+    },
+    scent: {
+      name: "Matte Texture Styling Hair Clay 80g",
+      price: 68000,
+      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=600&auto=format&fit=crop",
+      tag: "Grooming",
+    },
+    accessory: {
+      name: "Vintage Washed Cotton Baseball Dad Cap - Forest Olive",
+      price: 58000,
+      image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=600&auto=format&fit=crop",
+      tag: "Aksesori",
+    },
+    affiliateUrl: "https://tokopedia.com",
+  },
 ];
 
 export function StarboyDripMatcher() {
@@ -216,13 +292,13 @@ export function StarboyDripMatcher() {
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-butter-500 border-2 border-espresso text-espresso text-xs font-extrabold shadow-brutal-sm -rotate-1 mb-2">
               <Zap className="w-3.5 h-3.5 fill-espresso" />
-              <span>THE STARBOY & STARGIRL ARCHIVE ⚡</span>
+              <span>THE DRIP ARCHIVE ⚡ • SKENA, KALCER & STARBOY</span>
             </div>
             <h2 className="font-editorial text-2xl sm:text-4xl font-bold text-espresso">
-              Outfit, Kicks & Signature Scent Pairing
+              Outfit, Kicks, Bag & Signature Scent Pairing
             </h2>
             <p className="text-sm text-espresso-100 mt-1 max-w-xl">
-              Ala anak-anak Starboy & Stargirl: outfit kece belum lengkap tanpa sepatu yang statement dan parfum yang wangi mewah. Cek 1 set drip di bawah:
+              Ala anak Skena kopi, Kalcer Blok M, dan Starboy night-out: outfit kece belum lengkap tanpa sneakers/loafers yang statement, tas yang cocok, dan parfum yang wangi mewah. Cek 1 set drip lengkap di bawah:
             </p>
           </div>
 
@@ -233,7 +309,7 @@ export function StarboyDripMatcher() {
         </div>
 
         {/* Archetype Selector Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5 mb-8">
           {STARBOY_ARCHETYPES.map((drip) => {
             const isActive = activeId === drip.id;
             return (
