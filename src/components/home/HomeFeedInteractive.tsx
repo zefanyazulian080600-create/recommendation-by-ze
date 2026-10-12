@@ -19,12 +19,13 @@ export function HomeFeedInteractive({
 
   const tabs = [
     { id: "all", label: "✨ Semua Spill" },
-    { id: "trending", label: "🔥 Viral TikTok" },
-    { id: "featured", label: "⭐ Pilihan Ze" },
+    { id: "outfit-pria", label: "🛹 Outfit Cowok" },
     { id: "outfit-wanita", label: "👗 Outfit Cewek" },
-    { id: "beauty-skincare", label: "💧 Skincare Viral" },
-    { id: "aesthetic-room", label: "🪴 Room Decor" },
+    { id: "outfit-unisex", label: "🧢 Unisex Streetwear" },
+    { id: "skincare-grooming", label: "💧 Skincare & Grooming" },
     { id: "desk-setup-gadget", label: "🎧 Desk & Gadget" },
+    { id: "aesthetic-room", label: "🪴 Room Decor" },
+    { id: "trending", label: "🔥 Viral TikTok" },
     { id: "under-100k", label: "💸 Under 100k" },
   ];
 
@@ -36,6 +37,24 @@ export function HomeFeedInteractive({
         return products.filter((p) => p.is_featured);
       case "under-100k":
         return products.filter((p) => p.price <= 100000);
+      case "outfit-pria":
+        return products.filter(
+          (p) => p.category?.slug === "outfit-pria" || p.gender === "men"
+        );
+      case "outfit-wanita":
+        return products.filter(
+          (p) => p.category?.slug === "outfit-wanita" || p.gender === "women"
+        );
+      case "outfit-unisex":
+        return products.filter(
+          (p) => p.category?.slug === "outfit-unisex" || p.gender === "unisex"
+        );
+      case "skincare-grooming":
+        return products.filter(
+          (p) =>
+            p.category?.slug === "skincare-grooming" ||
+            p.category?.slug === "beauty-skincare"
+        );
       case "all":
         return products;
       default:

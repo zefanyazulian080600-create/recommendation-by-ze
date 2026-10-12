@@ -8,7 +8,7 @@ export function AestheticMarquee() {
     { text: "SPILL RACUN SHOPEE & TIKTOK SHOP", icon: Flame, color: "text-butter-400" },
     { text: "100% REAL CURATION BY ZE", icon: Sparkles, color: "text-matcha-300" },
     { text: "VOUCHER GRATIS ONGKIR & DISKON", icon: Tag, color: "text-butter-300" },
-    { text: "OOTD KOREAN & CLEAN GIRL LOOK", icon: Heart, color: "text-vanilla" },
+    { text: "OOTD COWOK & CEWEK • STREETWEAR & CLEAN FIT", icon: Heart, color: "text-vanilla" },
     { text: "RATING 4.9+ TOKO TERVERIFIKASI", icon: CheckCircle2, color: "text-matcha-400" },
     { text: "ROOM DECOR & GADGET SETUP ESTETIK", icon: ShoppingBag, color: "text-butter-400" },
   ];

@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { Sparkles, X, ShoppingBag, Heart, Flame } from "lucide-react";
+import { useUser } from "@/context/UserContext";
 
 export function LiveSpillTicker() {
+  const { userName } = useUser();
   const [currentNotification, setCurrentNotification] = useState<{
     text: string;
     icon: string;
@@ -13,11 +15,23 @@ export function LiveSpillTicker() {
   const [isDismissed, setIsDismissed] = useState(false);
 
   const notifications = [
-    { text: "Seseorang di Bandung baru saja checkout Linen Shirt di Shopee!", icon: "🛍️", time: "Baru saja" },
+    { 
+      text: userName 
+        ? `Yo ${userName}! Seseorang di Bandung baru saja checkout Heavyweight Boxy Tee!` 
+        : "Seseorang di Bandung baru saja checkout Linen Shirt di Shopee!", 
+      icon: "🛍️", 
+      time: "Baru saja" 
+    },
     { text: "Chunky Platform Loafers baru ditambahkan ke Wishlist! 💅", icon: "❤️", time: "1 mnt lalu" },
-    { text: "Ceruty Pashmina Plisket lagi ramai di-spill di TikTok Shop!", icon: "🔥", time: "2 mnt lalu" },
-    { text: "Multi-Pocket Canvas Tote Bag dilihat 140+ orang hari ini!", icon: "✨", time: "Baru saja" },
-    { text: "Voucher Gratis Ongkir Shopee terverifikasi aktif hari ini! 💸", icon: "⚡", time: "3 mnt lalu" },
+    { text: "Corduroy Overshirt Jacket lagi viral di TikTok Shop! ⚡", icon: "🔥", time: "2 mnt lalu" },
+    { 
+      text: userName 
+        ? `${userName}, 140+ orang lagi browsing set Drip Starboy hari ini!` 
+        : "Multi-Pocket Canvas Tote Bag dilihat 140+ orang hari ini!", 
+      icon: "✨", 
+      time: "Baru saja" 
+    },
+    { text: "Voucher Diskon & Gratis Ongkir Shopee terverifikasi aktif! 💸", icon: "⚡", time: "3 mnt lalu" },
   ];
 
   useEffect(() => {

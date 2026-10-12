@@ -20,13 +20,14 @@ export function VibeSelector({ products }: VibeSelectorProps) {
   const [isRolling, setIsRolling] = useState(false);
 
   const vibes = [
-    { id: "all", label: "✨ Semua Look", emoji: "✨", tag: "Kompilasi Lengkap" },
-    { id: "cewek-bumi", label: "🌿 Cewek Bumi", emoji: "🌿", tag: "Earth Tone & Linen" },
-    { id: "cewek-mamba", label: "🖤 Cewek Mamba", emoji: "🖤", tag: "Edgy & Loafers" },
-    { id: "cewek-kue", label: "🍰 Cewek Kue", emoji: "🍰", tag: "Pastel & Playful" },
-    { id: "clean-girl", label: "💅 Clean Girl", emoji: "💅", tag: "Sleek & Minimal" },
-    { id: "ngampus", label: "☕ Ngampus / WFC", emoji: "☕", tag: "Kuliah & Cafe" },
-    { id: "hemat", label: "💸 Under 100k", emoji: "💸", tag: "Anti Kerepotan" },
+    { id: "all", label: "✨ Semua Vibe", emoji: "✨", tag: "Semua Rekomendasi" },
+    { id: "bro-streetwear", label: "🛹 Bro Streetwear", emoji: "🛹", tag: "Boxy & Cargo Cowok" },
+    { id: "clean-fit", label: "🕶️ Clean Minimalist", emoji: "🕶️", tag: "Sleek & Uniqlo-Core" },
+    { id: "earthy-tone", label: "🌿 Earth Tone", emoji: "🌿", tag: "Olive, Khaki & Linen" },
+    { id: "dark-monochrome", label: "🖤 Dark Monochrome", emoji: "🖤", tag: "Edgy Charcoal & Loafers" },
+    { id: "korean-aesthetic", label: "🇰🇷 Korean Casual", emoji: "🇰🇷", tag: "Oversized & Neat" },
+    { id: "ngampus", label: "🎒 Ngampus / WFC", emoji: "🎒", tag: "Kuliah & Cafe Fit" },
+    { id: "hemat", label: "💸 Under 100k", emoji: "💸", tag: "Ramah Dompet" },
   ];
 
   // Random Spill Generator (Gacha Racun)
@@ -55,13 +56,13 @@ export function VibeSelector({ products }: VibeSelectorProps) {
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-butter-400 border-2 border-espresso text-espresso text-xs font-extrabold shadow-brutal-sm -rotate-1 mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>PILIH VIBE & AESTHETIC KAMU 💅</span>
+              <span>PILIH VIBE & GAYA KAMU 🛹✨</span>
             </div>
             <h2 className="font-editorial text-2xl sm:text-4xl font-bold text-espresso">
-              Outfit Archetype & Mood Matcher
+              Outfit Archetype & Mood Matcher (All Gender)
             </h2>
             <p className="text-sm text-espresso-100 mt-1 max-w-xl">
-              Hari ini lagi pengen jadi Cewek Bumi, Cewek Mamba, atau Clean Girl? Pilih vibe kamu di bawah:
+              Lagi cari gaya Bro Streetwear, Clean Minimalist, Korean Casual, atau Earth Tone? Pilih vibe kamu di bawah:
             </p>
           </div>
 
@@ -78,7 +79,7 @@ export function VibeSelector({ products }: VibeSelectorProps) {
         </div>
 
         {/* Vibe Selection Pills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 mb-6">
           {vibes.map((vibe) => {
             const isActive = selectedVibe === vibe.id;
             return (

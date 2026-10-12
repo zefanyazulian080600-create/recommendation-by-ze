@@ -3,14 +3,16 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkles, ArrowRight, Play, Heart, Star, ShieldCheck, Flame, Tag } from "lucide-react";
+import { Sparkles, ArrowRight, Play, Heart, Star, ShieldCheck, Flame, Tag, Zap } from "lucide-react";
 import { SiteSettings } from "@/types";
+import { useUser } from "@/context/UserContext";
 
 interface HeroSectionProps {
   settings?: SiteSettings;
 }
 
 export function HeroSection({ settings }: HeroSectionProps) {
+  const { userName, userVibe, openModal } = useUser();
   const headline = settings?.hero_headline || "Curated Finds for Your Everyday Aesthetic.";
   const subheadline =
     settings?.hero_subheadline ||
@@ -30,14 +32,38 @@ export function HeroSection({ settings }: HeroSectionProps) {
           {/* Left Text Content (7 cols on lg) */}
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* Pill Tag with 3D tactile feel */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-espresso text-xs font-bold text-espresso shadow-3d-pill">
-              <span className="w-2.5 h-2.5 rounded-full bg-matcha-500 animate-ping" />
-              <Sparkles className="w-4 h-4 text-butter-500" />
-              <span>Spill Racun Ol Shop & OOTD 2026 • Curated by Ze ✨</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-espresso text-xs font-bold text-espresso shadow-3d-pill">
+                <span className="w-2.5 h-2.5 rounded-full bg-matcha-500 animate-ping" />
+                <Sparkles className="w-4 h-4 text-butter-500" />
+                <span>Spill Racun Ol Shop & OOTD All Gender • Curated by Ze 🛹✨</span>
+              </div>
+
+              {userName ? (
+                <button
+                  type="button"
+                  onClick={openModal}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-butter-500 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
+                  title="Klik untuk ubah nama atau aesthetic vibe kamu"
+                >
+                  <Zap className="w-3.5 h-3.5 fill-espresso" />
+                  <span>VIP Pass: {userName} ⚡ ({userVibe}) ✏️</span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={openModal}
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-butter-400 border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm hover:scale-105 transition-all"
+                >
+                  <Sparkles className="w-3.5 h-3.5 fill-espresso" />
+                  <span>Spill Nama Kamu ✨</span>
+                </button>
+              )}
             </div>
 
             {/* Editorial Headline */}
             <h1 className="font-editorial text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-espresso leading-[1.12]">
+              {userName ? `Yo ${userName}! ` : ""}
               {headline}
             </h1>
 
@@ -142,10 +168,10 @@ export function HeroSection({ settings }: HeroSectionProps) {
 
               {/* 3D Floating Sticker Bottom Left */}
               <div className="absolute -bottom-4 -left-4 sm:-left-5 bg-butter-400 p-3 rounded-2xl shadow-float border-2 border-espresso flex items-center gap-2.5 float-3d">
-                <span className="text-xl">👗</span>
+                <span className="text-xl">🛹</span>
                 <div className="text-left">
-                  <p className="text-[10px] text-espresso font-bold">Spill Outfit</p>
-                  <p className="text-xs font-extrabold text-espresso">Under 150k 🔥</p>
+                  <p className="text-[10px] text-espresso font-bold">All-Gender Fit</p>
+                  <p className="text-xs font-extrabold text-espresso">Streetwear & Clean 🔥</p>
                 </div>
               </div>
             </div>

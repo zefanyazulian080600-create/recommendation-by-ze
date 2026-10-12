@@ -3,6 +3,8 @@ import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { WishlistProvider } from "@/context/WishlistContext";
 import { ToastProvider } from "@/context/ToastContext";
+import { UserProvider } from "@/context/UserContext";
+import { WelcomeOnboardingModal } from "@/components/layout/WelcomeOnboardingModal";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -107,15 +109,18 @@ export default async function RootLayout({
       <body className="min-h-screen flex flex-col bg-ivory text-charcoal font-sans antialiased selection:bg-blush-300 selection:text-charcoal">
         <ToastProvider>
           <WishlistProvider>
-            {settings.announcement_active && (
-              <AnnouncementBar message={settings.announcement_text} />
-            )}
-            <Navbar categories={categories} />
-            <main className="flex-1 pb-20 lg:pb-0">{children}</main>
-            <Footer />
-            <MobileBottomBar />
-            <LiveSpillTicker />
-            <LofiAmbiencePlayer />
+            <UserProvider>
+              {settings.announcement_active && (
+                <AnnouncementBar message={settings.announcement_text} />
+              )}
+              <Navbar categories={categories} />
+              <main className="flex-1 pb-20 lg:pb-0">{children}</main>
+              <Footer />
+              <MobileBottomBar />
+              <LiveSpillTicker />
+              <LofiAmbiencePlayer />
+              <WelcomeOnboardingModal />
+            </UserProvider>
           </WishlistProvider>
         </ToastProvider>
       </body>

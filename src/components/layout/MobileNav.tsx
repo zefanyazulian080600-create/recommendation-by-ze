@@ -16,6 +16,7 @@ import {
   Laptop,
 } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
+import { useUser } from "@/context/UserContext";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -25,6 +26,7 @@ interface MobileNavProps {
 
 export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) {
   const { wishlistCount } = useWishlist();
+  const { userName, userVibe, openModal } = useUser();
 
   if (!isOpen) return null;
 
@@ -59,6 +61,28 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
 
         {/* Content */}
         <div className="p-5 space-y-6 flex-1">
+          {/* User VIP Greeting Card */}
+          <div className="p-3.5 rounded-2xl bg-butter-500 border-2 border-espresso flex items-center justify-between shadow-brutal-sm">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-vanilla border border-espresso flex items-center justify-center font-black text-xs text-espresso">
+                {userName ? userName.charAt(0).toUpperCase() : "✨"}
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase text-espresso/70">VIP Member</p>
+                <p className="text-xs font-black text-espresso">{userName || "Spill Nama Kamu"}</p>
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                onClose();
+                openModal();
+              }}
+              className="text-[10px] font-black underline text-espresso hover:text-matcha-600 transition-colors"
+            >
+              {userName ? "Ubah Vibe" : "Isi Nama ✨"}
+            </button>
+          </div>
+
           {/* Quick Wishlist Banner */}
           <Link
             href="/wishlist"
@@ -109,35 +133,35 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
             </h4>
             <div className="space-y-1">
               <Link
+                href="/products?category=outfit-pria"
+                onClick={onClose}
+                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
+              >
+                <span>🛹 Outfit Pria (Bro Look)</span>
+                <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
+              </Link>
+              <Link
                 href="/products?category=outfit-wanita"
                 onClick={onClose}
                 className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
               >
-                <span>Outfit & Fashion</span>
+                <span>👗 Outfit Wanita</span>
                 <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
               </Link>
               <Link
-                href="/products?category=korean-style"
+                href="/products?category=outfit-unisex"
                 onClick={onClose}
                 className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
               >
-                <span>Korean Style</span>
+                <span>🧢 Unisex & Streetwear</span>
                 <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
               </Link>
               <Link
-                href="/products?category=beauty-skincare"
+                href="/products?category=skincare-grooming"
                 onClick={onClose}
                 className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
               >
-                <span>Beauty & Skincare</span>
-                <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
-              </Link>
-              <Link
-                href="/products?category=aesthetic-room"
-                onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
-              >
-                <span>Aesthetic Room & Home</span>
+                <span>💧 Skincare & Grooming</span>
                 <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
               </Link>
               <Link
@@ -145,15 +169,23 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
                 onClick={onClose}
                 className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
               >
-                <span>Desk Setup & Gadget</span>
+                <span>🎧 Desk Setup & Gadget</span>
                 <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
               </Link>
               <Link
-                href="/products?category=viral-tiktok"
+                href="/products?category=aesthetic-room"
                 onClick={onClose}
                 className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
               >
-                <span>Viral TikTok Finds</span>
+                <span>🪴 Aesthetic Room & Home</span>
+                <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
+              </Link>
+              <Link
+                href="/products?category=bags-shoes"
+                onClick={onClose}
+                className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-charcoal-200 hover:text-charcoal hover:bg-softgray transition-colors"
+              >
+                <span>👟 Shoes & Bags</span>
                 <ChevronRight className="w-3.5 h-3.5 text-charcoal-50" />
               </Link>
             </div>

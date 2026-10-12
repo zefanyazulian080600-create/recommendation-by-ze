@@ -9,8 +9,11 @@ import {
   Menu,
   X,
   Lock,
+  Sparkles,
+  User,
 } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
+import { useUser } from "@/context/UserContext";
 import { MobileNav } from "./MobileNav";
 
 interface NavbarProps {
@@ -21,6 +24,7 @@ export function Navbar({ categories = [] }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const { wishlistCount } = useWishlist();
+  const { userName, openModal } = useUser();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -45,10 +49,11 @@ export function Navbar({ categories = [] }: NavbarProps) {
 
   const navLinks = [
     { label: "Semua Rekomendasi", href: "/products" },
-    { label: "Outfit & Fashion", href: "/products?category=outfit-wanita" },
-    { label: "Beauty & Skincare", href: "/products?category=beauty-skincare" },
-    { label: "Aesthetic Room", href: "/products?category=aesthetic-room" },
-    { label: "Desk & Gadget", href: "/products?category=desk-setup-gadget" },
+    { label: "Outfit Cowok", href: "/products?category=outfit-pria" },
+    { label: "Outfit Cewek", href: "/products?category=outfit-wanita" },
+    { label: "Unisex Streetwear", href: "/products?category=outfit-unisex" },
+    { label: "Skincare & Grooming", href: "/products?category=skincare-grooming" },
+    { label: "Desk & Room", href: "/products?category=desk-setup-gadget" },
     { label: "Koleksi Tematik", href: "/collections" },
   ];
 
@@ -133,6 +138,19 @@ export function Navbar({ categories = [] }: NavbarProps) {
                   </span>
                 )}
               </Link>
+
+              {/* User VIP Badge / Name Spill Button */}
+              <button
+                type="button"
+                onClick={openModal}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 border-espresso bg-butter-500 hover:bg-butter-400 text-espresso text-xs font-black transition-all shadow-brutal-sm"
+                title="Ganti nama atau vibe kamu"
+              >
+                <Sparkles className="w-3.5 h-3.5 fill-espresso" />
+                <span className="max-w-[85px] sm:max-w-[120px] truncate">
+                  {userName ? userName : "Spill Nama"}
+                </span>
+              </button>
 
               {/* Admin Portal Shortcut */}
               <Link

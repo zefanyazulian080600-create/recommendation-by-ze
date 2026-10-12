@@ -13,6 +13,7 @@ import { BudgetSliderFilter } from "@/components/home/BudgetSliderFilter";
 import { CategorySlider } from "@/components/home/CategorySlider";
 import { MarketplaceSection } from "@/components/home/MarketplaceSection";
 import { CollectionsSection } from "@/components/home/CollectionsSection";
+import { StarboyDripMatcher } from "@/components/home/StarboyDripMatcher";
 import {
   getCategories,
   getCollections,
@@ -46,6 +47,9 @@ export default async function HomePage() {
 
       {/* 5. Interactive OOTD Mix & Match Studio (Virtual Fitting & Outfit Total Price) */}
       <OotdMixMatchStudio products={allProducts} />
+
+      {/* 5.1 Starboy & Stargirl Drip Archive (5-Piece Complete Fit & Scent Pairing) */}
+      <StarboyDripMatcher />
 
       {/* 6. Interactive Instant Filter Feed (Tabs for Viral, Holy Grail, Fashion, Decor, etc.) */}
       <HomeFeedInteractive products={allProducts} categories={categories} />
@@ -82,7 +86,7 @@ export default async function HomePage() {
               Punya Request Spill Barang atau OOTD Tertentu?
             </h2>
             <p className="text-xs sm:text-sm text-espresso-100 max-w-lg mx-auto leading-relaxed">
-              Lagi nyari blazer kuliah yang adem, skincare ramah kantong, atau perintilan kamar aesthetic warna pastel? Ze siap kurasiin toko yang terpercaya dan terbukti bagus!
+              Lagi nyari kaos boxy cowok, outer kemeja corduroy, outfit cewek chic, skincare ramah kantong, atau perintilan setup estetik? Ze siap kurasiin toko yang terpercaya dan terbukti bagus!
             </p>
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <Link

@@ -17,6 +17,7 @@ interface ProductsPageProps {
     category?: string;
     marketplace?: string;
     search?: string;
+    gender?: string;
     sort?: string;
     price?: string;
   }>;
@@ -45,6 +46,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     category: params.category,
     marketplace: params.marketplace,
     search: params.search,
+    gender: params.gender,
     minPrice,
     maxPrice,
     sort: (params.sort as any) || "newest",
@@ -64,12 +66,18 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         <div className="mb-8 space-y-2">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-rose">
+              <span className="text-xs font-bold uppercase tracking-wider text-matcha-600">
                 Katalog Rekomendasi
               </span>
-              <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-charcoal">
+              <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-espresso">
                 {activeCategoryObj
                   ? activeCategoryObj.name
+                  : params.gender === "men"
+                  ? "Koleksi & Outfit Cowok 🛹"
+                  : params.gender === "women"
+                  ? "Koleksi & Outfit Cewek 👗"
+                  : params.gender === "unisex"
+                  ? "Koleksi Unisex & Streetwear 🧢"
                   : params.marketplace
                   ? `Koleksi ${params.marketplace.toUpperCase()}`
                   : params.search

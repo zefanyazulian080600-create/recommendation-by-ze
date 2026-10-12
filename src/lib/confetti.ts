@@ -7,7 +7,7 @@
 export function triggerConfetti(originX?: number, originY?: number) {
   if (typeof window === "undefined") return;
 
-  const colors = ["#AEAC78", "#F2C46A", "#4C4541", "#FCF0DA", "#EE4D2D", "#FFFDF0"];
+  const colors = ["#F2765E", "#315B8C", "#413333", "#F5EBDD", "#FFFFFF", "#FFA07A"];
   const count = 38;
   const startX = originX ?? window.innerWidth / 2;
   const startY = originY ?? window.innerHeight / 2;

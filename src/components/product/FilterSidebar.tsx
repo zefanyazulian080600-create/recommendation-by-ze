@@ -26,6 +26,7 @@ export function FilterSidebar({
   const currentSort = searchParams.get("sort") || "newest";
   const currentSearch = searchParams.get("search") || "";
   const currentPriceRange = searchParams.get("price") || "";
+  const currentGender = searchParams.get("gender") || "";
 
   const [localSearch, setLocalSearch] = useState(currentSearch);
 
@@ -127,6 +128,38 @@ export function FilterSidebar({
             </option>
           ))}
         </select>
+      </div>
+
+      {/* Target Gender */}
+      <div>
+        <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-100 mb-2">
+          Target Gender
+        </label>
+        <div className="space-y-1">
+          {[
+            { id: "", label: "Semua Gender / Unisex" },
+            { id: "men", label: "🛹 Outfit & Grooming Pria" },
+            { id: "women", label: "👗 Outfit & Beauty Wanita" },
+            { id: "unisex", label: "🧢 Unisex Streetwear" },
+          ].map((g) => {
+            const isSelected = currentGender === g.id;
+            return (
+              <button
+                key={g.id}
+                type="button"
+                onClick={() => updateParam("gender", g.id)}
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs text-left transition-all ${
+                  isSelected
+                    ? "bg-butter-400 text-espresso font-extrabold border-2 border-espresso shadow-sm"
+                    : "text-espresso-100 hover:bg-softgray"
+                }`}
+              >
+                <span>{g.label}</span>
+                {isSelected && <Check className="w-3.5 h-3.5 text-espresso" />}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Category Filter */}

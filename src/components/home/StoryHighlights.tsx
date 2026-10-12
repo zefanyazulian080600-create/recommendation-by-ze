@@ -16,11 +16,19 @@ interface HighlightItem {
 export function StoryHighlights() {
   const highlights: HighlightItem[] = [
     {
-      id: "viral",
-      label: "Viral TikTok",
-      tag: "🔥 FYP",
-      href: "/products?sort=trending",
-      imageUrl: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400&auto=format&fit=crop",
+      id: "outfit-cowok",
+      label: "OOTD Cowok",
+      tag: "🛹 Bro Look",
+      href: "/products?category=outfit-pria",
+      imageUrl: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=400&auto=format&fit=crop",
+      isNew: true,
+    },
+    {
+      id: "unisex",
+      label: "Unisex Fit",
+      tag: "🧢 Streetwear",
+      href: "/products?category=outfit-unisex",
+      imageUrl: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=400&auto=format&fit=crop",
       isNew: true,
     },
     {
@@ -31,18 +39,18 @@ export function StoryHighlights() {
       imageUrl: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=400&auto=format&fit=crop",
     },
     {
-      id: "korean",
-      label: "Korean Vibe",
-      tag: "🌸 Minimalist",
-      href: "/products?category=korean-style",
-      imageUrl: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=400&auto=format&fit=crop",
+      id: "viral",
+      label: "Viral TikTok",
+      tag: "🔥 FYP",
+      href: "/products?sort=trending",
+      imageUrl: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400&auto=format&fit=crop",
     },
     {
       id: "skincare",
-      label: "Skincare Viral",
+      label: "Skin & Grooming",
       tag: "💧 Holy Grail",
-      href: "/products?category=beauty-skincare",
-      imageUrl: "https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=400&auto=format&fit=crop",
+      href: "/products?category=skincare-grooming",
+      imageUrl: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=400&auto=format&fit=crop",
       isNew: true,
     },
     {

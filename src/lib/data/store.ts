@@ -208,6 +208,18 @@ export async function getProducts(
     list = list.filter((p) => p.is_featured);
   }
 
+  // Gender filter
+  if (params.gender && params.gender !== "all") {
+    const targetGender = params.gender.toLowerCase();
+    list = list.filter(
+      (p) =>
+        p.gender === targetGender ||
+        p.gender === "unisex" ||
+        p.gender === "all" ||
+        !p.gender
+    );
+  }
+
   // Sorting
   switch (params.sort) {
     case "price_asc":

@@ -64,6 +64,7 @@ export interface Product {
   is_featured: boolean;
   is_trending: boolean;
   badge_label?: string; // e.g. "Ze's Pick", "Viral TikTok", "Best Budget", "Under 100k"
+  gender?: 'all' | 'men' | 'women' | 'unisex'; // Target gender/style
   status: ProductStatus;
   sort_order: number;
   seo_title?: string;
@@ -101,6 +102,7 @@ export interface ProductFilterParams {
   category?: string;
   marketplace?: string;
   search?: string;
+  gender?: string;
   minPrice?: number;
   maxPrice?: number;
   sort?: 'newest' | 'price_asc' | 'price_desc' | 'featured' | 'trending';
