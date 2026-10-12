@@ -173,7 +173,7 @@ export function Navbar({ categories = [] }: NavbarProps) {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Cari outfit, skincare, perintilan aesthetic, keyboard..."
+                  placeholder="Cari outfit, kategori, atau No. Racun Bio (misal: #14 atau 07)..."
                   className="w-full pl-10 pr-24 py-2.5 rounded-full bg-white border-2 border-espresso text-sm text-espresso placeholder:text-espresso-50 focus:outline-none focus:ring-2 focus:ring-butter-400 transition-all shadow-sm"
                   autoFocus
                 />

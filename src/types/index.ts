@@ -64,6 +64,7 @@ export interface Product {
   is_featured: boolean;
   is_trending: boolean;
   badge_label?: string; // e.g. "Ze's Pick", "Viral TikTok", "Best Budget", "Under 100k"
+  spill_number?: number; // Official creator bio spill code number (e.g. #01, #14)
   gender?: 'all' | 'men' | 'women' | 'unisex'; // Target gender/style
   status: ProductStatus;
   sort_order: number;

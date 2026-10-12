@@ -36,12 +36,16 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const handleCopySpill = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    const productUrl = typeof window !== "undefined"
-      ? `${window.location.origin}/product/${product.slug}`
-      : product.affiliate_url;
+    const productUrl =
+      typeof window !== "undefined"
+        ? `${window.location.origin}/product/${product.slug}`
+        : product.affiliate_url;
     navigator.clipboard.writeText(productUrl).then(() => {
       triggerConfetti(e.clientX, e.clientY);
-      showToast(`Tautan ${product.name} disalin! 🔗`, "link");
+      showToast(
+        `Tautan Spill No. #${product.spill_number || "01"} (${product.name}) disalin! 🔗`,
+        "link"
+      );
     });
   };
 
@@ -68,18 +72,31 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
         {/* Top Badges Row */}
-        <div className="absolute top-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
+        <div className="absolute top-3 inset-x-3 flex items-start justify-between pointer-events-none z-10 gap-2">
+          {/* Retro Creator Spill Number + Badge */}
           <div className="flex flex-col gap-1 items-start">
-            {product.badge_label ? (
-              <span className="px-2.5 py-1 rounded-full bg-espresso text-vanilla text-[10px] sm:text-xs font-extrabold shadow-sm flex items-center gap-1 border border-vanilla/40 -rotate-2">
-                <Sparkles className="w-3 h-3 text-butter-400" />
-                <span>{product.badge_label}</span>
-              </span>
-            ) : product.is_featured ? (
-              <span className="px-2.5 py-1 rounded-full bg-butter-400 text-espresso text-[10px] sm:text-xs font-extrabold shadow-sm border border-espresso -rotate-1">
-                ⭐ Ze&apos;s Pick
-              </span>
-            ) : null}
+            <div className="flex items-center gap-1.5 flex-wrap pointer-events-auto">
+              {product.spill_number && (
+                <span
+                  title={`Kode Racun Bio #${product.spill_number}`}
+                  className="px-2 py-0.5 rounded-md bg-espresso text-vanilla font-mono text-[10px] font-bold tracking-wider shadow-sm border border-espresso flex items-center gap-1"
+                >
+                  <span className="text-butter-400 font-editorial">№</span>
+                  <span>{String(product.spill_number).padStart(2, "0")}</span>
+                </span>
+              )}
+
+              {product.badge_label ? (
+                <span className="px-2 py-0.5 rounded-full bg-butter-300 text-espresso text-[10px] font-extrabold shadow-sm flex items-center gap-1 border border-espresso -rotate-1">
+                  <Sparkles className="w-2.5 h-2.5 text-rose" />
+                  <span>{product.badge_label}</span>
+                </span>
+              ) : product.is_featured ? (
+                <span className="px-2 py-0.5 rounded-full bg-butter-400 text-espresso text-[10px] font-extrabold shadow-sm border border-espresso -rotate-1">
+                  ⭐ Ze&apos;s Pick
+                </span>
+              ) : null}
+            </div>
 
             {discount && (
               <span className="px-2 py-0.5 rounded-full bg-matcha-500 text-white text-[10px] font-extrabold shadow-sm border border-espresso rotate-2">
@@ -92,7 +109,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           <div className="pointer-events-auto flex items-center gap-1.5">
             <button
               onClick={handleCopySpill}
-              title="Salin tautan spill"
+              title={`Salin tautan spill No. #${product.spill_number || ""}`}
               className="w-8 h-8 rounded-full bg-vanilla/95 backdrop-blur-md shadow-sm hover:bg-butter-400 flex items-center justify-center text-espresso transition-all opacity-0 group-hover:opacity-100 hidden sm:flex border-2 border-espresso"
             >
               <Copy className="w-3.5 h-3.5" />
@@ -128,11 +145,18 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       {/* Info Container */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
         <div className="space-y-1.5">
-          {product.category && (
-            <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-matcha-600">
-              {product.category.name}
-            </span>
-          )}
+          <div className="flex items-center justify-between gap-2">
+            {product.category && (
+              <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-matcha-600">
+                {product.category.name}
+              </span>
+            )}
+            {product.spill_number && (
+              <span className="text-[10px] font-mono font-bold text-espresso/50 tracking-wider">
+                SPILL #{String(product.spill_number).padStart(2, "0")}
+              </span>
+            )}
+          </div>
 
           <Link href={`/product/${product.slug}`} className="block group-hover:text-matcha-600 transition-colors">
             <h3 className="font-editorial text-sm sm:text-base font-bold text-espresso line-clamp-2 leading-snug">
@@ -179,7 +203,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         {/* Streetwear barcode detail */}
         <div className="pt-1 flex items-center justify-between text-[10px] text-espresso/40 font-mono select-none border-t border-dashed border-espresso/15">
           <span className="tracking-widest">||| | |||| | ||</span>
-          <span className="text-[9px] uppercase font-bold text-matcha-600">✦ ZE VERIFIED</span>
+          <span className="text-[9px] uppercase font-bold text-matcha-600">
+            ✦ ZE ARCHIVE #{String(product.spill_number || "01").padStart(2, "0")}
+          </span>
         </div>
       </div>
     </div>

@@ -158,11 +158,12 @@ export async function getProducts(
     list = list.filter((p) => p.status === "published");
   }
 
-  // Populate category references
-  list = list.map((prod) => {
+  // Populate category references & ensure sequential spill_number for creator bio spills
+  list = list.map((prod, index) => {
     const category = localCategories.find((c) => c.id === prod.category_id);
     return {
       ...prod,
+      spill_number: prod.spill_number || index + 1,
       category,
       click_count: localClickCounts[prod.id] || prod.click_count || 0,
     };
@@ -182,17 +183,31 @@ export async function getProducts(
     list = list.filter((p) => p.marketplace.toLowerCase() === params.marketplace?.toLowerCase());
   }
 
-  // Search filter
+  // Search filter (supports keywords or bio number codes e.g. #01, #14, no 14, 14)
   if (params.search && params.search.trim() !== "") {
     const term = params.search.toLowerCase().trim();
-    list = list.filter(
-      (p) =>
+    const numberMatch = term.match(/^(?:#|no\.?\s*|spill\s*)?(\d+)$/i);
+    const parsedNumber = numberMatch ? parseInt(numberMatch[1], 10) : null;
+
+    list = list.filter((p) => {
+      if (parsedNumber !== null && p.spill_number === parsedNumber) {
+        return true;
+      }
+      return (
         p.name.toLowerCase().includes(term) ||
         p.short_description.toLowerCase().includes(term) ||
         p.description.toLowerCase().includes(term) ||
         p.tags.some((t) => t.toLowerCase().includes(term)) ||
-        p.marketplace.toLowerCase().includes(term)
-    );
+        p.marketplace.toLowerCase().includes(term) ||
+        (p.spill_number && `#${p.spill_number}`.includes(term))
+      );
+    });
+
+    if (parsedNumber !== null) {
+      list.sort((a, b) =>
+        a.spill_number === parsedNumber ? -1 : b.spill_number === parsedNumber ? 1 : 0
+      );
+    }
   }
 
   // Price range filter
@@ -267,6 +282,7 @@ export async function createProduct(product: Omit<Product, "id" | "created_at" |
   const created: Product = {
     ...product,
     id: newId,
+    spill_number: product.spill_number || (localProducts.length + 1),
     click_count: 0,
     created_at: now,
     updated_at: now,

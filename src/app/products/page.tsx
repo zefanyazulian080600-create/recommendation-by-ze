@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Metadata } from "next";
 import { FilterSidebar } from "@/components/product/FilterSidebar";
 import { ProductCard } from "@/components/product/ProductCard";
+import { RetroCatalogHeader } from "@/components/product/RetroCatalogHeader";
 import { MobileFilterButton } from "./MobileFilterButton";
 import { getCategories, getProducts } from "@/lib/data/store";
 import { ProductFilterParams } from "@/types";
@@ -97,6 +98,15 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             {params.search ? ` untuk kata kunci "${params.search}"` : ""}.
           </p>
         </div>
+
+        {/* Quick Gender Pill Tabs & Bio Spill Search (Retro Style) */}
+        <Suspense fallback={null}>
+          <RetroCatalogHeader
+            currentGender={params.gender}
+            currentSearch={params.search}
+            totalProducts={products.length}
+          />
+        </Suspense>
 
         {/* Layout: Sidebar + Grid */}
         <div className="flex flex-col lg:flex-row gap-8 items-start">
