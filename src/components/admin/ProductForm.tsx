@@ -28,6 +28,13 @@ import {
 import { slugify, formatRupiah, isValidAffiliateUrl } from "@/lib/utils";
 import { createProduct, updateProduct, getCategories } from "@/lib/data/store";
 import { ProductCard } from "@/components/product/ProductCard";
+import { AiFormAssistant } from "@/components/admin/AiFormAssistant";
+import {
+  generateShortHook,
+  generateFullReview,
+  generateViralTagsList,
+  generateSizeAdvice,
+} from "@/lib/ai/local-copywriter";
 
 interface ProductFormProps {
   initialProduct?: Product;
@@ -66,6 +73,9 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
   const [isTrending, setIsTrending] = useState(initialProduct?.is_trending ?? false);
   const [status, setStatus] = useState<ProductStatus>(initialProduct?.status || "published");
   const [sortOrder, setSortOrder] = useState<number>(initialProduct?.sort_order ?? 0);
+  const [gender, setGender] = useState<"all" | "men" | "women" | "unisex">(
+    initialProduct?.gender || "unisex"
+  );
   const [seoTitle, setSeoTitle] = useState(initialProduct?.seo_title || "");
   const [seoDesc, setSeoDesc] = useState(initialProduct?.seo_description || "");
 
@@ -112,6 +122,67 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
       setSeoTitle(`${val} • Recommendation by Ze`);
     }
   };
+
+  // AI Draft Auto-fill Handler
+  const handleApplyAiDraft = (draft: any) => {
+    if (draft.name) {
+      setName(draft.name);
+      if (!isSlugManual) {
+        setSlug(draft.slug || slugify(draft.name));
+      }
+    }
+    if (draft.shortDescription) setShortDesc(draft.shortDescription);
+    if (draft.description) setDesc(draft.description);
+    if (draft.categoryId) setCategoryId(draft.categoryId);
+    if (draft.tags) {
+      setTagsInput(Array.isArray(draft.tags) ? draft.tags.join(", ") : draft.tags);
+    }
+    if (draft.price) setPrice(draft.price);
+    if (draft.originalPrice) setOriginalPrice(draft.originalPrice);
+    if (draft.priceNote) setPriceNote(draft.priceNote);
+    if (draft.sizeNotes) setSizeNotes(draft.sizeNotes);
+    if (draft.badgeLabel) setBadgeLabel(draft.badgeLabel);
+    if (draft.seoTitle) setSeoTitle(draft.seoTitle);
+    if (draft.seoDescription) setSeoDesc(draft.seoDescription);
+    if (draft.suggestedVariants) setVariants(draft.suggestedVariants);
+
+    if (draft.suggestedImageUrl) {
+      const isDefaultOnly =
+        mediaList.length === 1 &&
+        mediaList[0].public_url.includes("photo-1515886657613");
+
+      const newMedia: ProductMedia = {
+        id: `media-ai-${Date.now()}`,
+        media_type: "image",
+        public_url: draft.suggestedImageUrl,
+        alt_text: draft.name || "Foto produk",
+        is_cover: true,
+        sort_order: 1,
+      };
+
+      if (isDefaultOnly || mediaList.length === 0) {
+        setMediaList([newMedia]);
+      } else {
+        setMediaList([newMedia, ...mediaList.map((m) => ({ ...m, is_cover: false }))]);
+      }
+    }
+  };
+
+  // Check if there is an AI draft passed from AI Studio
+  useEffect(() => {
+    if (typeof window !== "undefined" && !initialProduct) {
+      const savedDraft = sessionStorage.getItem("ze_ai_pending_draft");
+      if (savedDraft) {
+        try {
+          const parsed = JSON.parse(savedDraft);
+          handleApplyAiDraft(parsed);
+          sessionStorage.removeItem("ze_ai_pending_draft");
+        } catch (e) {
+          console.error("Failed to parse pending draft", e);
+        }
+      }
+    }
+  }, [initialProduct]);
 
   // File upload simulation & local preview (reader)
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -185,6 +256,7 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
     original_price: originalPrice ? Number(originalPrice) : undefined,
     price_note: priceNote,
     badge_label: badgeLabel,
+    gender,
     is_featured: isFeatured,
     is_trending: isTrending,
     status,
@@ -238,6 +310,7 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
       short_description: shortDesc.trim(),
       description: desc.trim(),
       category_id: categoryId,
+      gender,
       tags: tagsArray,
       marketplace,
       affiliate_url: affiliateUrl.trim(),
@@ -330,6 +403,19 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* LEFT COLUMN: FORM FIELDS (8 cols on lg) */}
         <div className="lg:col-span-8 space-y-6">
+          {/* AI Local Co-Pilot Generator */}
+          <AiFormAssistant
+            onApplyProductDraft={handleApplyAiDraft}
+            currentProductData={{
+              name,
+              price: Number(price) || 0,
+              originalPrice: originalPrice ? Number(originalPrice) : undefined,
+              shortDesc,
+              badgeLabel,
+              affiliateUrl,
+            }}
+          />
+
           {/* Card 1: Informasi Dasar */}
           <div className="p-6 rounded-3xl bg-white border border-softgray-border shadow-soft space-y-4">
             <h2 className="font-editorial text-lg font-semibold text-charcoal">
@@ -338,9 +424,31 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
 
             {/* Nama Produk */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
-                Nama Produk <span className="text-red-500">*</span>
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
+                  Nama Produk <span className="text-red-500">*</span>
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!name.trim()) return;
+                    const styles = [
+                      `${name} (Skena Kalcer Approved)`,
+                      `${name} - Minimalist Luxury Fit`,
+                      `${name} (Smart Budget Alternative)`,
+                      `Vintage Washed ${name} Unisex`,
+                      `${name} - Boxy Streetwear Cut`,
+                    ];
+                    const chosen = styles[Math.floor(Math.random() * styles.length)];
+                    setName(chosen);
+                    if (!isSlugManual) setSlug(slugify(chosen));
+                  }}
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#F2765E] hover:underline"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>✨ AI Polish Nama</span>
+                </button>
+              </div>
               <input
                 type="text"
                 required
@@ -382,8 +490,8 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
               </div>
             </div>
 
-            {/* Kategori & Marketplace */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Kategori, Marketplace, & Target Gender */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-1.5">
                 <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
                   Kategori <span className="text-red-500">*</span>
@@ -418,13 +526,42 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
                   <option value="lazada">Lazada</option>
                 </select>
               </div>
+
+              <div className="space-y-1.5">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
+                  Target Gender
+                </label>
+                <select
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value as any)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-ivory-50 border border-softgray-border text-xs sm:text-sm text-charcoal focus:outline-none focus:ring-2 focus:ring-rose/30"
+                >
+                  <option value="unisex">Unisex (Semua)</option>
+                  <option value="men">Pria / Cowok</option>
+                  <option value="women">Wanita / Cewek</option>
+                  <option value="all">Netral / All</option>
+                </select>
+              </div>
             </div>
 
             {/* Deskripsi Singkat */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
-                Deskripsi Singkat (Ringkasan 1-2 Kalimat)
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
+                  Deskripsi Singkat (Ringkasan 1-2 Kalimat)
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const hook = generateShortHook(name || "Item ini", "skena");
+                    setShortDesc(hook);
+                  }}
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#F2765E] hover:underline"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>✨ AI Bikin Hook</span>
+                </button>
+              </div>
               <input
                 type="text"
                 value={shortDesc}
@@ -436,11 +573,24 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
 
             {/* Deskripsi Lengkap */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
-                Deskripsi Lengkap / Catatan Kurasi Ze
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
+                  Deskripsi Lengkap / Catatan Kurasi Ze
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const rev = generateFullReview(name || "Item Kurasi Ze", categoryId, "skena");
+                    setDesc(rev);
+                  }}
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#F2765E] hover:underline"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>✨ AI Tulis Ulasan Stylist</span>
+                </button>
+              </div>
               <textarea
-                rows={5}
+                rows={6}
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
                 placeholder="Tuliskan ulasan bahan, cara styling, kelebihan, atau tips pemakaian..."
@@ -639,9 +789,22 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
 
             {/* Tags */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
-                Tag Produk (Pisahkan dengan koma)
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
+                  Tag Produk (Pisahkan dengan koma)
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const tags = generateViralTagsList(name || "fashion", categoryId, "skena");
+                    setTagsInput(tags.join(", "));
+                  }}
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#F2765E] hover:underline"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>✨ AI Auto-Tags</span>
+                </button>
+              </div>
               <input
                 type="text"
                 value={tagsInput}
@@ -653,9 +816,22 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
 
             {/* Size notes */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
-                Catatan Ukuran / Dimensi
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal-100">
+                  Catatan Ukuran / Dimensi
+                </label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const advice = generateSizeAdvice(categoryId);
+                    setSizeNotes(advice);
+                  }}
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#F2765E] hover:underline"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  <span>✨ AI Saran TB/BB</span>
+                </button>
+              </div>
               <input
                 type="text"
                 value={sizeNotes}
@@ -697,8 +873,30 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
                   onChange={(e) => setBadgeLabel(e.target.value)}
                   placeholder="Ze's Pick / Viral / Under 50k"
                   className="w-full px-3 py-2.5 rounded-xl bg-ivory-50 border border-softgray-border text-xs sm:text-sm text-charcoal"
-                >
-                </input>
+                />
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {[
+                    "Ze's Pick",
+                    "Skena Approved",
+                    "Starboy Essential",
+                    "Dupe Alert ⚡",
+                    "Viral TikTok 🔥",
+                    "Steal Deal",
+                  ].map((chip) => (
+                    <button
+                      key={chip}
+                      type="button"
+                      onClick={() => setBadgeLabel(chip)}
+                      className={`text-[10px] px-2 py-0.5 rounded-full border transition-colors ${
+                        badgeLabel === chip
+                          ? "bg-[#F2765E] text-white border-[#F2765E]"
+                          : "bg-white text-charcoal border-softgray-border hover:bg-softgray"
+                      }`}
+                    >
+                      {chip}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div className="space-y-1.5">

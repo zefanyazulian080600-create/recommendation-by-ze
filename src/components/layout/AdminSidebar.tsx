@@ -17,6 +17,7 @@ import {
   X,
   Database,
   ShieldAlert,
+  Wand2,
 } from "lucide-react";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 
@@ -29,6 +30,7 @@ export function AdminSidebar() {
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { label: "Semua Produk", href: "/admin/products", icon: Package },
     { label: "Tambah Produk", href: "/admin/products/new", icon: PlusCircle },
+    { label: "AI Copywriter Studio", href: "/admin/ai-assistant", icon: Wand2 },
     { label: "Kategori", href: "/admin/categories", icon: FolderTree },
     { label: "Koleksi Tematik", href: "/admin/collections", icon: Sparkles },
     { label: "Pengaturan Website", href: "/admin/settings", icon: Settings },
