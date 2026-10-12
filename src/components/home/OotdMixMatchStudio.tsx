@@ -567,33 +567,74 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
             </div>
 
             {/* Selected Items List */}
-            <div className="space-y-3 text-xs">
-              <div className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-vanilla/60 border border-espresso/15">
-                <span className="font-bold text-espresso truncate">1. {currentTop?.name}</span>
-                <span className="font-extrabold text-espresso flex-shrink-0">
-                  {formatRupiah(currentTop?.price)}
-                </span>
+            {/* Selected Items List with Individual Checkout Links */}
+            <div className="space-y-2.5 text-xs">
+              <div className="flex items-center justify-between gap-2 p-2.5 rounded-2xl bg-vanilla/60 border border-espresso/15">
+                <div className="min-w-0 flex-1">
+                  <span className="font-bold text-espresso block truncate">1. Atasan: {currentTop?.name}</span>
+                  <span className="font-extrabold text-espresso/70 text-[11px]">{formatRupiah(currentTop?.price)}</span>
+                </div>
+                <a
+                  href={currentTop?.affiliate_url || "https://shopee.co.id"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
+                  className="px-3 py-1.5 rounded-xl bg-espresso text-vanilla hover:bg-coral hover:text-espresso font-bold text-[10px] flex items-center gap-1 flex-shrink-0 transition-colors shadow-xs"
+                >
+                  <ShoppingBag className="w-3 h-3" />
+                  <span>Beli Atasan ↗</span>
+                </a>
               </div>
 
-              <div className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-vanilla/60 border border-espresso/15">
-                <span className="font-bold text-espresso truncate">2. {currentBottom?.name}</span>
-                <span className="font-extrabold text-espresso flex-shrink-0">
-                  {formatRupiah(currentBottom?.price)}
-                </span>
+              <div className="flex items-center justify-between gap-2 p-2.5 rounded-2xl bg-vanilla/60 border border-espresso/15">
+                <div className="min-w-0 flex-1">
+                  <span className="font-bold text-espresso block truncate">2. Bawahan: {currentBottom?.name}</span>
+                  <span className="font-extrabold text-espresso/70 text-[11px]">{formatRupiah(currentBottom?.price)}</span>
+                </div>
+                <a
+                  href={currentBottom?.affiliate_url || "https://shopee.co.id"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
+                  className="px-3 py-1.5 rounded-xl bg-espresso text-vanilla hover:bg-coral hover:text-espresso font-bold text-[10px] flex items-center gap-1 flex-shrink-0 transition-colors shadow-xs"
+                >
+                  <ShoppingBag className="w-3 h-3" />
+                  <span>Beli Celana ↗</span>
+                </a>
               </div>
 
-              <div className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-vanilla/60 border border-espresso/15">
-                <span className="font-bold text-espresso truncate">3. {currentShoe?.name}</span>
-                <span className="font-extrabold text-espresso flex-shrink-0">
-                  {formatRupiah(currentShoe?.price)}
-                </span>
+              <div className="flex items-center justify-between gap-2 p-2.5 rounded-2xl bg-vanilla/60 border border-espresso/15">
+                <div className="min-w-0 flex-1">
+                  <span className="font-bold text-espresso block truncate">3. Sepatu: {currentShoe?.name}</span>
+                  <span className="font-extrabold text-espresso/70 text-[11px]">{formatRupiah(currentShoe?.price)}</span>
+                </div>
+                <a
+                  href={currentShoe?.affiliate_url || "https://shopee.co.id"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
+                  className="px-3 py-1.5 rounded-xl bg-espresso text-vanilla hover:bg-coral hover:text-espresso font-bold text-[10px] flex items-center gap-1 flex-shrink-0 transition-colors shadow-xs"
+                >
+                  <ShoppingBag className="w-3 h-3" />
+                  <span>Beli Sepatu ↗</span>
+                </a>
               </div>
 
-              <div className="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-vanilla/60 border border-espresso/15">
-                <span className="font-bold text-espresso truncate">4. {currentAcc?.name}</span>
-                <span className="font-extrabold text-espresso flex-shrink-0">
-                  {formatRupiah(currentAcc?.price)}
-                </span>
+              <div className="flex items-center justify-between gap-2 p-2.5 rounded-2xl bg-vanilla/60 border border-espresso/15">
+                <div className="min-w-0 flex-1">
+                  <span className="font-bold text-espresso block truncate">4. Aksesori: {currentAcc?.name}</span>
+                  <span className="font-extrabold text-espresso/70 text-[11px]">{formatRupiah(currentAcc?.price)}</span>
+                </div>
+                <a
+                  href={currentAcc?.affiliate_url || "https://shopee.co.id"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
+                  className="px-3 py-1.5 rounded-xl bg-espresso text-vanilla hover:bg-coral hover:text-espresso font-bold text-[10px] flex items-center gap-1 flex-shrink-0 transition-colors shadow-xs"
+                >
+                  <ShoppingBag className="w-3 h-3" />
+                  <span>Beli Aksesori ↗</span>
+                </a>
               </div>
             </div>
 
@@ -607,23 +648,22 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
                   {formatRupiah(totalPrice)}
                 </span>
                 <span className="text-[11px] font-bold text-espresso/80">
-                  (Under 400rb Auto Slay! 🔥)
+                  (Checkout satu per satu via link di atas)
                 </span>
               </div>
             </div>
 
-            {/* Actions: Save 1 Set & Direct Marketplace Outbound */}
+            {/* Actions & Receipt Button */}
             <div className="space-y-2.5 pt-2">
-              <a
-                href={currentTop?.affiliate_url || "https://shopee.co.id"}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
-                className="btn-3d flex items-center justify-center gap-2 w-full py-4 rounded-full bg-espresso text-vanilla text-sm font-bold border-2 border-espresso hover:bg-espresso-400 transition-all"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span>Beli Look Ini di Marketplace 🛍️</span>
-              </a>
+              <div className="p-3 rounded-2xl bg-vanilla/80 border border-espresso/15 text-[11px] text-espresso leading-snug">
+                <p className="font-bold text-cobalt flex items-center gap-1.5 mb-0.5">
+                  <ShoppingBag className="w-3.5 h-3.5 text-coral" />
+                  <span>Aturan Affiliate Marketplace:</span>
+                </p>
+                <p className="text-espresso/75">
+                  Karena link affiliate bersifat per-produk resmi toko, silakan klik tombol <strong>Beli ↗</strong> pada masing-masing barang yang ingin kamu checkout.
+                </p>
+              </div>
 
               <button
                 type="button"
@@ -637,7 +677,7 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
               <button
                 type="button"
                 onClick={() => setIsReceiptOpen(true)}
-                className="btn-3d flex items-center justify-center gap-2 w-full py-3 rounded-full bg-vanilla border-2 border-espresso text-espresso text-xs font-black hover:bg-white transition-all shadow-brutal-sm"
+                className="btn-3d flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-vanilla border-2 border-espresso text-espresso text-xs font-black hover:bg-white transition-all shadow-brutal-sm"
               >
                 <Receipt className="w-4 h-4 text-cobalt" />
                 <span>Cetak Struk OOTD Aesthetic 🧾</span>
@@ -653,10 +693,26 @@ export function OotdMixMatchStudio({ products }: OotdMixMatchStudioProps) {
         onClose={() => setIsReceiptOpen(false)}
         lookTitle={`OOTD Set • ${activePreset.label}`}
         items={[
-          { name: currentTop?.name || "Atasan", price: currentTop?.price || 0 },
-          { name: currentBottom?.name || "Bawahan", price: currentBottom?.price || 0 },
-          { name: currentShoe?.name || "Sepatu", price: currentShoe?.price || 0 },
-          { name: currentAcc?.name || "Aksesori", price: currentAcc?.price || 0 },
+          {
+            name: currentTop?.name || "Atasan",
+            price: currentTop?.price || 0,
+            affiliateUrl: currentTop?.affiliate_url,
+          },
+          {
+            name: currentBottom?.name || "Bawahan",
+            price: currentBottom?.price || 0,
+            affiliateUrl: currentBottom?.affiliate_url,
+          },
+          {
+            name: currentShoe?.name || "Sepatu",
+            price: currentShoe?.price || 0,
+            affiliateUrl: currentShoe?.affiliate_url,
+          },
+          {
+            name: currentAcc?.name || "Aksesori",
+            price: currentAcc?.price || 0,
+            affiliateUrl: currentAcc?.affiliate_url,
+          },
         ]}
         customTotal={totalPrice}
       />

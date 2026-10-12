@@ -275,8 +275,11 @@ export function SpotNongkrongSection() {
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-vanilla border-2 border-espresso text-xs font-bold text-espresso">
+            <div className="p-3 rounded-xl bg-vanilla border-2 border-espresso text-xs font-bold text-espresso text-right">
               Total 1 Set: <span className="text-cobalt font-black">{formatRupiah(setTotal)}</span>
+              <span className="block text-[10px] text-espresso/60 font-medium mt-0.5">
+                (Checkout satuan via link di bawah)
+              </span>
             </div>
           </div>
 
@@ -318,7 +321,7 @@ export function SpotNongkrongSection() {
                     className="w-full py-1.5 rounded-xl bg-espresso hover:bg-coral text-vanilla hover:text-espresso font-bold text-[10px] text-center border border-espresso transition-all flex items-center justify-center gap-1 mt-2"
                   >
                     <ShoppingBag className="w-3 h-3" />
-                    <span>Cek Toko</span>
+                    <span>Beli Item Ini ↗</span>
                   </a>
                 </div>
               </div>

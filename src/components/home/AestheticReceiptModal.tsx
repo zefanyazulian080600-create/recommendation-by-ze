@@ -11,6 +11,7 @@ export interface ReceiptItem {
   name: string;
   price: number;
   category?: string;
+  affiliateUrl?: string;
 }
 
 interface AestheticReceiptModalProps {
@@ -121,17 +122,30 @@ export function AestheticReceiptModal({
           <div className="space-y-2 border-b-2 border-dashed border-espresso/40 pb-4">
             <div className="flex justify-between font-bold text-[10px] uppercase text-espresso/60 pb-1">
               <span>ITEM DESCRIPTION</span>
-              <span>PRICE</span>
+              <span>HARGA & LINK</span>
             </div>
 
             {items.map((item, idx) => (
-              <div key={idx} className="flex justify-between items-baseline gap-2">
-                <span className="truncate max-w-[200px]">
+              <div key={idx} className="flex justify-between items-center gap-2 py-1 border-b border-dashed border-espresso/20 last:border-0">
+                <span className="truncate max-w-[170px] sm:max-w-[210px] text-xs">
                   {idx + 1}. {item.name}
                 </span>
-                <span className="font-bold flex-shrink-0">
-                  {formatRupiah(item.price)}
-                </span>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <span className="font-bold text-xs">
+                    {formatRupiah(item.price)}
+                  </span>
+                  {item.affiliateUrl && (
+                    <a
+                      href={item.affiliateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2 py-0.5 rounded-md bg-espresso text-vanilla text-[9px] font-black hover:bg-coral hover:text-espresso transition-colors"
+                      title={`Beli ${item.name} di marketplace`}
+                    >
+                      Beli ↗
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>

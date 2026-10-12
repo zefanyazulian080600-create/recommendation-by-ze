@@ -39,7 +39,7 @@ export function AiFormAssistant({
   onApplyProductDraft,
   currentProductData,
 }: AiFormAssistantProps) {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [vibe, setVibe] = useState<AiVibeTone>("skena");
   const [gender, setGender] = useState<"unisex" | "men" | "women">("unisex");
@@ -144,12 +144,14 @@ export function AiFormAssistant({
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="p-1.5 rounded-xl border border-softgray-border bg-white text-[#413333] hover:bg-softgray"
+            className="px-3 py-1.5 rounded-xl border border-softgray-border bg-white text-[#413333] hover:bg-softgray text-xs font-bold flex items-center gap-1.5 transition-colors"
           >
+            <Sparkles className="w-3.5 h-3.5 text-[#F2765E]" />
+            <span>{isExpanded ? "Tutup AI" : "Buka AI Auto-Fill ⚡"}</span>
             {isExpanded ? (
-              <ChevronUp className="w-4 h-4" />
+              <ChevronUp className="w-3.5 h-3.5" />
             ) : (
-              <ChevronDown className="w-4 h-4" />
+              <ChevronDown className="w-3.5 h-3.5" />
             )}
           </button>
         </div>

@@ -341,7 +341,7 @@ export function OutfitOccasionSection() {
                     className="w-full py-1.5 rounded-xl bg-espresso hover:bg-coral text-vanilla hover:text-espresso font-bold text-[10px] text-center border border-espresso transition-all flex items-center justify-center gap-1 mt-2"
                   >
                     <ShoppingBag className="w-3 h-3" />
-                    <span>Cek di Toko</span>
+                    <span>Beli Item Ini ↗</span>
                   </a>
                 </div>
               </div>
