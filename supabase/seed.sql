@@ -1,0 +1,11 @@
+-- Seed data for categories
+INSERT INTO public.categories (id, name, slug, description, icon_name, cover_image, sort_order, is_active) VALUES
+('b1111111-1111-1111-1111-111111111111', 'Outfit Wanita', 'outfit-wanita', 'Koleksi atasan, dress, celana, dan knitwear wanita terkini.', 'Shirt', 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop', 1, true),
+('b2222222-2222-2222-2222-222222222222', 'Korean Style', 'korean-style', 'Inspirasi outfit ala cewek dan cowok Korea yang clean & chic.', 'Sparkles', 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop', 2, true),
+('b3333333-3333-3333-3333-333333333333', 'Beauty & Skincare', 'beauty-skincare', 'Produk skincare viral, makeup natural, dan body care yang worth the hype.', 'Heart', 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=800&auto=format&fit=crop', 3, true),
+('b4444444-4444-4444-4444-444444444444', 'Aesthetic Room & Home', 'aesthetic-room', 'Dekorasi kamar tidur, organizer estetik, lampu tidur, & printilan rumah.', 'Home', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop', 4, true),
+('b5555555-5555-5555-5555-555555555555', 'Desk Setup & Gadget', 'desk-setup-gadget', 'Aksesoris meja kerja, keyboard pastel, phone case, & kabel organizer.', 'Laptop', 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=800&auto=format&fit=crop', 5, true),
+('b6666666-6666-6666-6666-666666666666', 'Bags & Shoes', 'bags-shoes', 'Tas selempang, tote bag kanvas, sneakers comfy, dan platform loafers.', 'ShoppingBag', 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800&auto=format&fit=crop', 6, true),
+('b7777777-7777-7777-7777-777777777777', 'Hijab Friendly', 'hijab-friendly', 'Pilihan outfit sopan, modest, long tunik, & jilbab pashmina nyaman.', 'Smile', 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=800&auto=format&fit=crop', 7, true),
+('b8888888-8888-8888-8888-888888888888', 'Viral TikTok Finds', 'viral-tiktok', 'Barang-barang unik dan viral di FYP yang ternyata sangat berguna.', 'Flame', 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop', 8, true)
+ON CONFLICT (slug) DO NOTHING;
