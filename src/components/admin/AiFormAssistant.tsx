@@ -126,7 +126,7 @@ export function AiFormAssistant({
               </span>
             </div>
             <p className="text-[11px] text-white/50">
-              Ketik nama/ide barang, AI otomatis menulis ulasan stylist, tags viral, & panduan ukuran.
+              Ketik nama/ide barang ol shop, AI otomatis menulis ulasan kurasi, tags viral, & spesifikasi.
             </p>
           </div>
         </div>
@@ -175,7 +175,7 @@ export function AiFormAssistant({
                   type="text"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
-                  placeholder="Ketik ide: misal 'kemeja linen crop santai' atau link produk..."
+                  placeholder="Ketik ide: misal 'TWS noise cancelling', 'lampu sunset kamar kost', 'sunscreen'..."
                   className="w-full px-4 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-xs sm:text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                 />
               </div>

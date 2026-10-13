@@ -17,21 +17,21 @@ export function LiveSpillTicker() {
   const notifications = [
     { 
       text: userName 
-        ? `Yo ${userName}! Seseorang di Bandung baru saja checkout Heavyweight Boxy Tee!` 
-        : "Seseorang di Bandung baru saja checkout Linen Shirt di Shopee!", 
-      icon: "🛍️", 
+        ? `Yo ${userName}! Seseorang di Bandung baru saja checkout Mechanical Keyboard 75%!` 
+        : "Seseorang di Bandung baru saja checkout TWS Low Latency di Shopee!", 
+      icon: "🎧", 
       time: "Baru saja" 
     },
-    { text: "Chunky Platform Loafers baru ditambahkan ke Wishlist! 💅", icon: "❤️", time: "1 mnt lalu" },
-    { text: "Corduroy Overshirt Jacket lagi viral di TikTok Shop! ⚡", icon: "🔥", time: "2 mnt lalu" },
+    { text: "Lampu Meja Sunset Aesthetic baru ditambahkan ke Wishlist! 🪴", icon: "✨", time: "1 mnt lalu" },
+    { text: "Tumbler Vacuum Tahan 24 Jam lagi viral di TikTok Shop! ⚡", icon: "🔥", time: "2 mnt lalu" },
     { 
       text: userName 
-        ? `${userName}, 140+ orang lagi browsing set Drip Starboy hari ini!` 
-        : "Multi-Pocket Canvas Tote Bag dilihat 140+ orang hari ini!", 
-      icon: "✨", 
+        ? `${userName}, 140+ orang lagi kepoin Sunscreen Barrier Viral hari ini!` 
+        : "Sunscreen Serum SPF 50 dilihat 140+ orang hari ini!", 
+      icon: "🧴", 
       time: "Baru saja" 
     },
-    { text: "Voucher Diskon & Gratis Ongkir Shopee terverifikasi aktif! 💸", icon: "⚡", time: "3 mnt lalu" },
+    { text: "Heavyweight Boxy Tee diskon 30% di Tokopedia hari ini! 🛹", icon: "👕", time: "3 mnt lalu" },
   ];
 
   useEffect(() => {
@@ -65,20 +65,20 @@ export function LiveSpillTicker() {
   if (isDismissed || !currentNotification || !isVisible) return null;
 
   return (
-    <div className="fixed bottom-20 left-4 z-40 hidden sm:flex items-center gap-2.5 p-3 rounded-2xl bg-vanilla/95 backdrop-blur-md border-2 border-espresso shadow-brutal text-espresso animate-slideUp max-w-xs pointer-events-auto">
+    <div className="fixed bottom-20 left-4 z-40 hidden sm:flex items-center gap-3 p-3.5 rounded-2xl bg-[#12131A]/95 backdrop-blur-md border border-white/15 shadow-2xl text-white animate-slideUp max-w-xs pointer-events-auto">
       <span className="text-xl flex-shrink-0">{currentNotification.icon}</span>
       <div className="min-w-0 flex-1">
-        <p className="text-[11px] font-bold text-espresso leading-snug">
+        <p className="text-xs font-bold text-white leading-snug">
           {currentNotification.text}
         </p>
-        <span className="text-[9px] text-espresso-100 font-semibold block mt-0.5">
+        <span className="text-[10px] text-zinc-400 font-mono block mt-0.5">
           {currentNotification.time} • Community Activity
         </span>
       </div>
       <button
         type="button"
         onClick={() => setIsDismissed(true)}
-        className="p-1 rounded-md text-espresso-100 hover:text-espresso"
+        className="p-1 rounded-md text-zinc-500 hover:text-white"
         aria-label="Tutup notifikasi aktivitas"
       >
         <X className="w-3.5 h-3.5" />

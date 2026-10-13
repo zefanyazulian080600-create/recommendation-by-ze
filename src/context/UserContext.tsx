@@ -3,12 +3,15 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { triggerConfetti } from "@/lib/confetti";
 
+export type UserVibe = string;
+
 interface UserContextType {
   userName: string;
   userVibe: string;
   isRegistered: boolean;
   isModalOpen: boolean;
   saveUser: (name: string, vibe?: string) => void;
+  setProfile: (name: string, vibe: string) => void;
   openModal: () => void;
   closeModal: () => void;
 }
@@ -74,6 +77,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         isRegistered,
         isModalOpen,
         saveUser,
+        setProfile: saveUser,
         openModal,
         closeModal,
       }}

@@ -1,44 +1,50 @@
 "use client";
 
 import React, { useRef } from "react";
-import { X, Sparkles, Download, Share2, Check, Flame } from "lucide-react";
+import { Sparkles, X, Share2, ExternalLink } from "lucide-react";
 import { formatRupiah } from "@/lib/utils";
 import { useUser } from "@/context/UserContext";
-import { triggerConfetti } from "@/lib/confetti";
 import { useToast } from "@/context/ToastContext";
 
-export interface ReceiptItem {
+interface ReceiptItem {
   name: string;
   price: number;
-  category?: string;
+  marketplace?: string;
   affiliateUrl?: string;
 }
 
 interface AestheticReceiptModalProps {
   isOpen: boolean;
   onClose: () => void;
-  lookTitle?: string;
   items: ReceiptItem[];
+  total?: number;
   customTotal?: number;
+  lookTitle?: string;
 }
 
 export function AestheticReceiptModal({
   isOpen,
   onClose,
-  lookTitle = "OOTD Lookbook Set",
   items,
+  total,
   customTotal,
+  lookTitle,
 }: AestheticReceiptModalProps) {
   const { userName, userVibe } = useUser();
   const { showToast } = useToast();
   const receiptRef = useRef<HTMLDivElement>(null);
 
+  const effectiveTotal =
+    customTotal !== undefined
+      ? customTotal
+      : total !== undefined
+      ? total
+      : items.reduce((acc, it) => acc + (it.price || 0), 0);
+
   if (!isOpen) return null;
 
-  const total = customTotal ?? items.reduce((acc, curr) => acc + curr.price, 0);
   const now = new Date();
   const formattedDate = now.toLocaleDateString("id-ID", {
-    weekday: "long",
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -49,89 +55,94 @@ export function AestheticReceiptModal({
   });
   const receiptId = `ZE-${Math.floor(100000 + Math.random() * 900000)}`;
 
-  const handleShare = () => {
-    triggerConfetti();
-    showToast("📸 Screenshot struk ini & tag @recommendationbyze di IG Story ya! ✨", "success");
+  const handleShare = async () => {
+    showToast("📸 Screenshot struk ini untuk share ke IG Story / TikTok!", "info");
   };
 
   return (
     <div
-      className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-espresso/80 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative w-full max-w-sm max-h-[92vh] flex flex-col bg-white text-espresso rounded-3xl border-4 border-espresso shadow-brutal-lg overflow-hidden animate-scaleUp">
+      <div className="relative w-full max-w-sm max-h-[92vh] flex flex-col bg-[#12131A] text-white rounded-2xl border border-white/20 shadow-2xl overflow-hidden animate-scaleUp">
         {/* Top Action Bar */}
-        <div className="bg-coral text-espresso px-5 py-3 border-b-3 border-espresso flex items-center justify-between font-black text-xs uppercase tracking-wider flex-shrink-0">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 fill-espresso" />
-            <span>AESTHETIC THERMAL RECEIPT 🧾</span>
+        <div className="bg-[#12131A] text-white px-5 py-3 border-b border-white/10 flex items-center justify-between font-bold text-xs uppercase tracking-wider flex-shrink-0">
+          <div className="flex items-center gap-2 text-emerald-400">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span>THERMAL RECEIPT 🧾</span>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-full bg-vanilla/40 hover:bg-vanilla text-espresso transition-all border border-espresso/30"
+            className="p-1 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all"
             aria-label="Tutup struk"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Scrollable Receipt Body */}
-        <div className="p-6 overflow-y-auto space-y-4 font-mono text-xs select-text bg-[#FAF8F5]" ref={receiptRef}>
+        {/* Scrollable Receipt Body (Thermal Receipt Style) */}
+        <div className="p-6 overflow-y-auto space-y-4 font-mono text-xs select-text bg-[#FAF8F5] text-zinc-950" ref={receiptRef}>
           {/* Header */}
-          <div className="text-center space-y-1 border-b-2 border-dashed border-espresso/40 pb-4">
-            <h3 className="font-editorial text-xl font-bold tracking-tight text-espresso font-serif">
+          <div className="text-center space-y-1 border-b-2 border-dashed border-zinc-400 pb-4">
+            <h3 className="font-editorial text-xl font-bold tracking-tight text-zinc-950 font-serif">
               RECOMMENDATION BY ZE
             </h3>
-            <p className="text-[10px] uppercase tracking-widest text-espresso/70 font-sans font-bold">
-              Curated Fashion & Lifestyle Archive
+            <p className="text-[10px] uppercase tracking-widest text-zinc-600 font-sans font-bold">
+              Curated Online Shop Archive
             </p>
-            <p className="text-[9px] text-espresso/60">
+            <p className="text-[9px] text-zinc-500">
               www.recommendationbyze.com • Jakarta, ID
             </p>
           </div>
 
           {/* Meta Info */}
-          <div className="space-y-1 text-[11px] border-b-2 border-dashed border-espresso/40 pb-3">
+          <div className="space-y-1 text-[11px] border-b-2 border-dashed border-zinc-400 pb-3">
             <div className="flex justify-between">
-              <span className="text-espresso/70">Receipt ID:</span>
-              <span className="font-bold">{receiptId}</span>
+              <span className="text-zinc-600">Receipt ID:</span>
+              <span className="font-bold text-zinc-950">{receiptId}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-espresso/70">Date:</span>
-              <span>{formattedDate}, {formattedTime}</span>
+              <span className="text-zinc-600">Date:</span>
+              <span className="text-zinc-900">{formattedDate}, {formattedTime}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-espresso/70">Customer:</span>
-              <span className="font-black text-cobalt underline uppercase">
+              <span className="text-zinc-600">Customer:</span>
+              <span className="font-black text-sky-700 underline uppercase">
                 {userName || "Bestie VIP"}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-espresso/70">Aesthetic Vibe:</span>
-              <span className="font-bold">{userVibe}</span>
+              <span className="text-zinc-600">Category/Vibe:</span>
+              <span className="font-bold text-zinc-900">{userVibe}</span>
             </div>
+            {lookTitle && (
+              <div className="flex justify-between">
+                <span className="text-zinc-600">Preset / Look:</span>
+                <span className="font-bold text-zinc-900">{lookTitle}</span>
+              </div>
+            )}
             <div className="flex justify-between">
-              <span className="text-espresso/70">Stylist:</span>
-              <span>Ze Official Kurasi</span>
+              <span className="text-zinc-600">Curator:</span>
+              <span className="text-zinc-900 font-medium">Ze Official Kurasi</span>
             </div>
           </div>
 
           {/* Items Table */}
-          <div className="space-y-2 border-b-2 border-dashed border-espresso/40 pb-4">
-            <div className="flex justify-between font-bold text-[10px] uppercase text-espresso/60 pb-1">
+          <div className="space-y-2 border-b-2 border-dashed border-zinc-400 pb-4">
+            <div className="flex justify-between font-bold text-[10px] uppercase text-zinc-600 pb-1">
               <span>ITEM DESCRIPTION</span>
               <span>HARGA & LINK</span>
             </div>
 
             {items.map((item, idx) => (
-              <div key={idx} className="flex justify-between items-center gap-2 py-1 border-b border-dashed border-espresso/20 last:border-0">
-                <span className="truncate max-w-[170px] sm:max-w-[210px] text-xs">
+              <div key={idx} className="flex justify-between items-center gap-2 py-1 border-b border-dashed border-zinc-300 last:border-0">
+                <span className="truncate max-w-[170px] sm:max-w-[210px] text-xs font-semibold text-zinc-900">
                   {idx + 1}. {item.name}
                 </span>
                 <div className="flex items-center gap-2 flex-shrink-0">
-                  <span className="font-bold text-xs">
+                  <span className="font-bold text-xs text-zinc-950">
                     {formatRupiah(item.price)}
                   </span>
                   {item.affiliateUrl && (
@@ -139,7 +150,7 @@ export function AestheticReceiptModal({
                       href={item.affiliateUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-2 py-0.5 rounded-md bg-espresso text-vanilla text-[9px] font-black hover:bg-coral hover:text-espresso transition-colors"
+                      className="px-2 py-0.5 rounded-md bg-zinc-950 text-white text-[9px] font-bold hover:bg-emerald-600 transition-colors"
                       title={`Beli ${item.name} di marketplace`}
                     >
                       Beli ↗
@@ -151,41 +162,41 @@ export function AestheticReceiptModal({
           </div>
 
           {/* Totals */}
-          <div className="space-y-1.5 border-b-2 border-dashed border-espresso/40 pb-3 text-[11px]">
+          <div className="space-y-1.5 border-b-2 border-dashed border-zinc-400 pb-3 text-[11px]">
             <div className="flex justify-between">
-              <span className="text-espresso/70">Subtotal ({items.length} items):</span>
-              <span>{formatRupiah(total)}</span>
+              <span className="text-zinc-600">Subtotal ({items.length} items):</span>
+              <span className="font-bold text-zinc-950">{formatRupiah(effectiveTotal)}</span>
             </div>
-            <div className="flex justify-between text-green-700 font-bold">
+            <div className="flex justify-between text-emerald-700 font-bold">
               <span>Biaya Kurasi Ze:</span>
               <span>GRATIS (Rp 0)</span>
             </div>
-            <div className="flex justify-between text-base font-black pt-1 border-t border-espresso/20">
+            <div className="flex justify-between text-base font-black pt-1 border-t border-zinc-400 text-zinc-950">
               <span>TOTAL DAMAGE:</span>
-              <span>{formatRupiah(total)}</span>
+              <span>{formatRupiah(effectiveTotal)}</span>
             </div>
           </div>
 
           {/* Witty Footnote & Barcode */}
           <div className="text-center space-y-3 pt-2">
-            <p className="text-[10px] text-espresso/80 italic leading-snug px-2">
-              &quot;Status dompet kamu: Masih aman buat nongkrong kopi susu sampai akhir bulan! Jangan lupa checkout sebelum kehabisan size. 💸✨&quot;
+            <p className="text-[10px] text-zinc-600 italic leading-snug px-2">
+              &quot;Status dompet kamu: Masih aman buat nongkrong kopi susu sampai akhir bulan! Jangan lupa checkout sebelum kehabisan stock. 💸✨&quot;
             </p>
 
             {/* Fake Thermal Barcode */}
             <div className="py-1 flex flex-col items-center">
-              <div className="w-full h-9 flex items-center justify-center gap-0.5 overflow-hidden opacity-85">
+              <div className="w-full h-8 flex items-center justify-center gap-0.5 overflow-hidden opacity-90">
                 {[4, 2, 6, 1, 3, 5, 2, 7, 1, 4, 3, 6, 2, 5, 1, 8, 3, 4, 2, 6, 1, 5, 3, 7, 2, 4, 1, 6, 3].map(
                   (width, i) => (
                     <span
                       key={i}
-                      className="bg-espresso h-full inline-block"
+                      className="bg-zinc-950 h-full inline-block"
                       style={{ width: `${width * 1.5}px` }}
                     />
                   )
                 )}
               </div>
-              <span className="text-[9px] tracking-[0.3em] font-bold text-espresso/70 mt-1">
+              <span className="text-[9px] tracking-[0.3em] font-bold text-zinc-600 mt-1">
                 *THANK YOU FOR SLAYING*
               </span>
             </div>
@@ -193,14 +204,14 @@ export function AestheticReceiptModal({
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 bg-vanilla border-t-3 border-espresso flex items-center gap-2 flex-shrink-0">
+        <div className="p-4 bg-[#12131A] border-t border-white/10 flex items-center gap-2 flex-shrink-0">
           <button
             type="button"
             onClick={handleShare}
-            className="btn-3d flex-1 py-3 px-4 bg-coral hover:bg-coral-dark text-espresso font-black text-xs uppercase tracking-wider rounded-2xl border-2 border-espresso shadow-brutal hover:shadow-brutal-sm flex items-center justify-center gap-2 transition-all"
+            className="flex-1 py-3 px-4 bg-white text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:bg-zinc-200 flex items-center justify-center gap-2 transition-all shadow-md active:scale-95"
           >
-            <Share2 className="w-4 h-4" />
-            <span>Screenshot & Share IG Story 📸</span>
+            <Share2 className="w-4 h-4 text-black" />
+            <span>Screenshot & Share Story 📸</span>
           </button>
         </div>
       </div>

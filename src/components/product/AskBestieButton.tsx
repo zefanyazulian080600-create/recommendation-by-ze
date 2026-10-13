@@ -36,7 +36,7 @@ export function AskBestieButton({ product, className = "" }: AskBestieButtonProp
     <button
       type="button"
       onClick={handleShareToWhatsApp}
-      className={`inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border-2 border-espresso bg-[#25D366]/10 text-espresso hover:bg-[#25D366]/20 transition-all font-bold text-xs sm:text-sm tap-bounce shadow-sm hover:shadow-md ${className}`}
+      className={`inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border border-[#25D366]/40 bg-[#25D366]/15 text-emerald-300 hover:bg-[#25D366]/25 transition-all font-bold text-xs sm:text-sm tap-bounce shadow-sm hover:shadow-md ${className}`}
       title="Tanya pendapat teman atau pasangan di WhatsApp"
     >
       <MessageCircle className="w-4 h-4 text-[#25D366] fill-[#25D366]/20" />

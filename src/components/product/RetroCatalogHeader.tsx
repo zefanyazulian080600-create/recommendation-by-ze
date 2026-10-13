@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Search, Sparkles, Flame, Check } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 
 interface RetroCatalogHeaderProps {
   currentGender?: string;
@@ -19,14 +19,62 @@ export function RetroCatalogHeader({
   const searchParams = useSearchParams();
   const [searchInput, setSearchInput] = useState(currentSearch);
 
-  const handleGenderChange = (genderValue: string) => {
+  const activeCategory = searchParams.get("category") || "";
+  const activeGender = searchParams.get("gender") || "";
+  const activePrice = searchParams.get("price") || "";
+  const activeSort = searchParams.get("sort") || "";
+
+  // Universal Filter Pills
+  const filterPills = [
+    { id: "all", label: "Semua Produk", icon: "✦", type: "all" },
+    { id: "desk-setup-gadget", label: "Tech & Setup", icon: "🎧", type: "category", value: "desk-setup-gadget" },
+    { id: "aesthetic-room", label: "Kamar & Kost", icon: "🏠", type: "category", value: "aesthetic-room" },
+    { id: "skincare-grooming", label: "Skincare", icon: "🧴", type: "category", value: "skincare-grooming" },
+    { id: "men", label: "Fashion Cowok", icon: "🛹", type: "gender", value: "men" },
+    { id: "women", label: "Fashion Cewek", icon: "👗", type: "gender", value: "women" },
+    { id: "unisex", label: "Streetwear", icon: "🧢", type: "gender", value: "unisex" },
+    { id: "under-50k", label: "Under 50k", icon: "💸", type: "price", value: "under-50k" },
+    { id: "trending", label: "Viral TikTok", icon: "🔥", type: "sort", value: "trending" },
+  ];
+
+  const handlePillClick = (pill: typeof filterPills[0]) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (genderValue === "all") {
+
+    if (pill.type === "all") {
+      params.delete("category");
       params.delete("gender");
-    } else {
-      params.set("gender", genderValue);
+      params.delete("price");
+      params.delete("sort");
+    } else if (pill.type === "category") {
+      if (params.get("category") === pill.value) {
+        params.delete("category");
+      } else {
+        params.set("category", pill.value!);
+        params.delete("gender");
+      }
+    } else if (pill.type === "gender") {
+      if (params.get("gender") === pill.value) {
+        params.delete("gender");
+      } else {
+        params.set("gender", pill.value!);
+        params.delete("category");
+      }
+    } else if (pill.type === "price") {
+      if (params.get("price") === pill.value) {
+        params.delete("price");
+      } else {
+        params.set("price", pill.value!);
+      }
+    } else if (pill.type === "sort") {
+      if (params.get("sort") === pill.value) {
+        params.delete("sort");
+      } else {
+        params.set("sort", pill.value!);
+      }
     }
-    router.push(`/products?${params.toString()}`);
+
+    const queryStr = params.toString();
+    router.push(queryStr ? `/products?${queryStr}` : "/products");
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -37,7 +85,8 @@ export function RetroCatalogHeader({
     } else {
       params.delete("search");
     }
-    router.push(`/products?${params.toString()}`);
+    const queryStr = params.toString();
+    router.push(queryStr ? `/products?${queryStr}` : "/products");
   };
 
   const handleQuickNumberClick = (numStr: string) => {
@@ -47,14 +96,16 @@ export function RetroCatalogHeader({
     router.push(`/products?${params.toString()}`);
   };
 
-  const genderOptions = [
-    { label: "Semua Look", value: "all", icon: "✦" },
-    { label: "Outfit Cowok", value: "men", icon: "🛹" },
-    { label: "Outfit Cewek", value: "women", icon: "👗" },
-    { label: "Unisex & Streetwear", value: "unisex", icon: "🧢" },
-  ];
-
-  const activeGender = currentGender || "all";
+  const isPillActive = (pill: typeof filterPills[0]) => {
+    if (pill.type === "all") {
+      return !activeCategory && !activeGender && !activePrice && !activeSort;
+    }
+    if (pill.type === "category") return activeCategory === pill.value;
+    if (pill.type === "gender") return activeGender === pill.value;
+    if (pill.type === "price") return activePrice === pill.value;
+    if (pill.type === "sort") return activeSort === pill.value;
+    return false;
+  };
 
   return (
     <div className="space-y-4 mb-6">
@@ -67,7 +118,7 @@ export function RetroCatalogHeader({
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Cari kata kunci atau No. Racun Bio (contoh: 14 atau #07)..."
+            placeholder="Cari gadget, kamar kost, skincare, fashion, atau No. Bio (#07)..."
             className="w-full pl-10 pr-24 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-xs sm:text-sm font-medium text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/30 transition-colors"
           />
           <button
@@ -96,24 +147,24 @@ export function RetroCatalogHeader({
         </div>
       </div>
 
-      {/* Quick Gender Pill Tabs */}
+      {/* Universal Category & Filter Pills */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-        {genderOptions.map((opt) => {
-          const isActive = activeGender === opt.value;
+        {filterPills.map((pill) => {
+          const active = isPillActive(pill);
           return (
             <button
-              key={opt.value}
+              key={pill.id}
               type="button"
-              onClick={() => handleGenderChange(opt.value)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap border ${
-                isActive
-                  ? "bg-white text-black border-white shadow-md"
-                  : "bg-[#12131A] text-zinc-400 border-white/10 hover:border-white/20 hover:text-white"
+              onClick={() => handlePillClick(pill)}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap border ${
+                active
+                  ? "bg-white text-black border-white shadow-md font-extrabold"
+                  : "bg-[#12131A] text-zinc-300 border-white/10 hover:border-white/20 hover:text-white"
               }`}
             >
-              <span>{opt.icon}</span>
-              <span>{opt.label}</span>
-              {isActive && (
+              <span>{pill.icon}</span>
+              <span>{pill.label}</span>
+              {active && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5" />
               )}
             </button>

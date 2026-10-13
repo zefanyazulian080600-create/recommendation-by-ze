@@ -204,132 +204,131 @@ export function SpotNongkrongSection() {
   const setTotal = spot.curatedLook.items.reduce((acc, curr) => acc + curr.price, 0);
 
   return (
-    <section className="py-16 bg-vanilla border-t-3 border-espresso overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+    <div className="space-y-8 text-white">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold mb-2">
+            <MapPin className="w-3.5 h-3.5" />
+            <span>SPOT NONGKRONG & WFC • JAKARTA & SEKITARNYA 📍</span>
+          </div>
+          <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Outfit & Gear Sesuai Vibe Tempat Nongkrong
+          </h3>
+          <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl leading-relaxed">
+            Mau ke Blok M, Senopati, Panglima Polim, atau PIK? Ini rekomendasi perpaduan look & aksesoris yang pas:
+          </p>
+        </div>
+
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/15 text-xs font-mono font-bold text-emerald-400 self-start md:self-auto">
+          <Camera className="w-3.5 h-3.5 text-emerald-400" />
+          <span>Foto OOTD Auto Masuk Feed ✨</span>
+        </div>
+      </div>
+
+      {/* Spot Buttons Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+        {HANGOUT_SPOTS.map((s) => {
+          const isActive = activeSpotId === s.id;
+          return (
+            <button
+              key={s.id}
+              type="button"
+              onClick={(e) => {
+                setActiveSpotId(s.id);
+                triggerConfetti(e.clientX, e.clientY);
+              }}
+              className={`p-3.5 rounded-xl border text-left transition-all tap-bounce flex flex-col justify-between ${
+                isActive
+                  ? "bg-white text-black border-white shadow-xl font-bold"
+                  : "bg-[#090A0F] text-zinc-300 border-white/10 hover:border-white/20 hover:text-white"
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-2xl">{s.emoji}</span>
+                {isActive && <span className="w-2 h-2 rounded-full bg-emerald-500" />}
+              </div>
+              <div className="mt-2">
+                <h4 className="font-bold text-sm truncate">{s.name}</h4>
+                <span className={`text-[10px] font-mono block truncate mt-0.5 ${isActive ? "text-zinc-600 font-semibold" : "text-zinc-500"}`}>
+                  {s.area}
+                </span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Spot Content Details Box */}
+      <div className="p-5 sm:p-7 rounded-2xl bg-[#090A0F] border border-white/10 shadow-2xl space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cobalt text-vanilla text-xs font-black shadow-brutal-sm -rotate-1 mb-2 border-2 border-espresso">
-              <MapPin className="w-4 h-4 text-coral" />
-              <span>SPOT NONGKRONG MATCH • JAKARTA & SEKITARNYA 📍</span>
-            </div>
-            <h2 className="font-editorial text-2xl sm:text-4xl font-bold text-espresso">
-              Outfit Sesuai Vibe Tempat Nongkrong Favorit
-            </h2>
-            <p className="text-sm text-espresso-100 mt-1 max-w-xl">
-              Mau ke Blok M, Senopati, Panglima Polim, atau PIK? Setiap tempat punya dresscode estetika tak tertulis. Ini rumus outfit biar nyatu sempurna sama tempatnya:
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-400">
+              VIBE LOOK: {spot.name}
+            </span>
+            <h4 className="font-sans text-lg sm:text-xl font-bold text-white mt-0.5">
+              {spot.curatedLook.title}
+            </h4>
+            <p className="text-xs text-zinc-400 mt-1 max-w-xl">
+              📍 <strong>Spot Foto:</strong> {spot.photoSpot}
             </p>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border-2 border-espresso text-xs font-black text-espresso shadow-brutal-sm self-start md:self-auto">
-            <Camera className="w-4 h-4 text-coral" />
-            <span>Foto OOTD Auto Masuk Feed ✨</span>
+          <div className="p-3 rounded-xl bg-[#12131A] border border-white/10 text-xs text-right">
+            <span className="text-zinc-400">Total 1 Set: </span>
+            <span className="text-emerald-400 font-mono font-extrabold">{formatRupiah(setTotal)}</span>
+            <span className="block text-[10px] text-zinc-500 font-mono mt-0.5">
+              (Checkout via tombol spill di bawah)
+            </span>
           </div>
         </div>
 
-        {/* Spot Buttons Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-          {HANGOUT_SPOTS.map((s) => {
-            const isActive = activeSpotId === s.id;
-            return (
-              <button
-                key={s.id}
-                type="button"
-                onClick={(e) => {
-                  setActiveSpotId(s.id);
-                  triggerConfetti(e.clientX, e.clientY);
-                }}
-                className={`p-4 rounded-2xl border-2 text-left transition-all tap-bounce flex flex-col justify-between ${
-                  isActive
-                    ? "bg-cobalt text-vanilla border-espresso shadow-brutal scale-105"
-                    : "bg-white text-espresso border-espresso/20 hover:border-espresso hover:shadow-brutal-sm"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl">{s.emoji}</span>
-                  {isActive && <span className="w-2.5 h-2.5 rounded-full bg-coral animate-pulse" />}
-                </div>
-                <div className="mt-2">
-                  <h4 className="font-black text-sm">{s.name}</h4>
-                  <span className={`text-[10px] font-semibold block truncate mt-0.5 ${isActive ? "text-coral" : "text-espresso/60"}`}>
-                    {s.area}
-                  </span>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Spot Content Details Box */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border-4 border-espresso shadow-brutal-lg space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b-2 border-espresso/15">
-            <div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-cobalt">
-                DRESSCODE SPESIFIK • {spot.name}
-              </span>
-              <h3 className="font-editorial text-xl sm:text-2xl font-bold text-espresso">
-                {spot.curatedLook.title}
-              </h3>
-              <p className="text-xs text-espresso-100 mt-1 max-w-xl">
-                📍 <strong>Spot Foto:</strong> {spot.photoSpot}
-              </p>
-            </div>
-
-            <div className="p-3 rounded-xl bg-vanilla border-2 border-espresso text-xs font-bold text-espresso text-right">
-              Total 1 Set: <span className="text-cobalt font-black">{formatRupiah(setTotal)}</span>
-              <span className="block text-[10px] text-espresso/60 font-medium mt-0.5">
-                (Checkout satuan via link di bawah)
-              </span>
-            </div>
-          </div>
-
-          {/* 4 Items Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {spot.curatedLook.items.map((item, idx) => (
-              <div
-                key={idx}
-                className="group relative rounded-2xl border-2 border-espresso bg-vanilla/40 overflow-hidden flex flex-col justify-between hover:shadow-brutal-sm transition-all"
-              >
-                <div className="relative aspect-square w-full overflow-hidden bg-softgray border-b-2 border-espresso">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    sizes="(max-width: 640px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-coral text-espresso text-[9px] font-black border border-espresso">
-                    {item.tag}
-                  </span>
-                </div>
-
-                <div className="p-3 space-y-1.5 flex flex-col justify-between flex-1">
-                  <div>
-                    <h5 className="text-xs font-bold text-espresso line-clamp-2 leading-tight">
-                      {item.name}
-                    </h5>
-                    <p className="text-xs font-black text-cobalt mt-1">
-                      {formatRupiah(item.price)}
-                    </p>
-                  </div>
-
-                  <a
-                    href={item.affiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
-                    className="w-full py-1.5 rounded-xl bg-espresso hover:bg-coral text-vanilla hover:text-espresso font-bold text-[10px] text-center border border-espresso transition-all flex items-center justify-center gap-1 mt-2"
-                  >
-                    <ShoppingBag className="w-3 h-3" />
-                    <span>Beli Item Ini ↗</span>
-                  </a>
-                </div>
+        {/* 4 Items Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {spot.curatedLook.items.map((item, idx) => (
+            <div
+              key={idx}
+              className="group relative rounded-xl border border-white/10 bg-[#12131A] overflow-hidden flex flex-col justify-between hover:border-white/30 transition-all shadow-lg"
+            >
+              <div className="relative aspect-square w-full overflow-hidden bg-zinc-950 border-b border-white/10">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-black/80 backdrop-blur-md text-white text-[9px] font-mono font-bold border border-white/20">
+                  {item.tag}
+                </span>
               </div>
-            ))}
-          </div>
+
+              <div className="p-3 space-y-2 flex flex-col justify-between flex-1">
+                <div>
+                  <h5 className="text-xs font-bold text-white line-clamp-2 leading-tight">
+                    {item.name}
+                  </h5>
+                  <p className="text-xs font-mono font-extrabold text-emerald-400 mt-1">
+                    {formatRupiah(item.price)}
+                  </p>
+                </div>
+
+                <a
+                  href={item.affiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => triggerConfetti(e.clientX, e.clientY)}
+                  className="w-full py-2 rounded-lg bg-white text-black hover:bg-zinc-200 font-bold text-[10px] text-center transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95 mt-2"
+                >
+                  <ShoppingBag className="w-3 h-3 text-black" />
+                  <span>Beli Item Ini ↗</span>
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

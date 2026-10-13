@@ -3,7 +3,7 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
 import { Marketplace } from "@/types";
-import { getMarketplaceMeta, isValidAffiliateUrl } from "@/lib/utils";
+import { getMarketplaceMeta, isValidAffiliateUrl, cn } from "@/lib/utils";
 
 interface MarketplaceButtonProps {
   productId: string;
@@ -47,15 +47,19 @@ export function MarketplaceButton({
   };
 
   const sizeClasses = {
-    sm: "px-3 py-1.5 text-xs",
-    md: "px-4 py-2.5 text-sm",
-    lg: "px-6 py-3.5 text-base font-semibold",
+    sm: "px-3 py-1.5 text-xs font-bold",
+    md: "px-4 py-2.5 text-sm font-bold",
+    lg: "px-6 py-3.5 text-base font-bold",
   }[size];
 
   if (!isValid) {
     return (
       <span
-        className={`inline-flex items-center justify-center gap-1.5 rounded-full bg-softgray text-charcoal-50 cursor-not-allowed ${sizeClasses} ${className}`}
+        className={cn(
+          "inline-flex items-center justify-center gap-1.5 rounded-full bg-white/10 text-zinc-500 cursor-not-allowed",
+          sizeClasses,
+          className
+        )}
       >
         Tautan Belum Tersedia
       </span>
@@ -68,7 +72,12 @@ export function MarketplaceButton({
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className={`inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all shadow-sm active:scale-[0.98] ${meta.colorClass} ${sizeClasses} ${className}`}
+      className={cn(
+        "inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all shadow-md active:scale-[0.98]",
+        meta.colorClass,
+        sizeClasses,
+        className
+      )}
     >
       <span>{customText || meta.cta}</span>
       <ExternalLink className="w-4 h-4 opacity-80" />

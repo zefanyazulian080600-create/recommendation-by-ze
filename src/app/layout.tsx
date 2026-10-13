@@ -110,7 +110,7 @@ export default async function RootLayout({
 
   return (
     <html lang="id" className={`${playfair.variable} ${jakarta.variable}`}>
-      <body className="min-h-screen flex flex-col bg-ivory text-charcoal font-sans antialiased selection:bg-blush-300 selection:text-charcoal">
+      <body className="min-h-screen flex flex-col bg-[#090A0F] text-white font-sans antialiased selection:bg-emerald-500/30 selection:text-white">
         <ToastProvider>
           <WishlistProvider>
             <UserProvider>

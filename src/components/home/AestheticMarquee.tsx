@@ -1,17 +1,18 @@
 "use client";
 
 import React from "react";
-import { Sparkles, Flame, Heart, ShoppingBag, Tag, CheckCircle2 } from "lucide-react";
+import { Sparkles, Flame, Laptop, Home, ShoppingBag, Tag, CheckCircle2, Heart } from "lucide-react";
 
 export function AestheticMarquee() {
   const items = [
-    { text: "SPILL RACUN SHOPEE & TIKTOK SHOP", icon: Flame, color: "text-butter-400" },
-    { text: "VIBE SKENA, KALCER BLOK M, STARBOY & GORPCORE", icon: Sparkles, color: "text-butter-300" },
-    { text: "100% REAL CURATION BY ZE", icon: Sparkles, color: "text-matcha-300" },
-    { text: "VOUCHER GRATIS ONGKIR & DISKON", icon: Tag, color: "text-butter-300" },
-    { text: "OOTD COWOK & CEWEK • STREETWEAR & CLEAN FIT", icon: Heart, color: "text-vanilla" },
-    { text: "RATING 4.9+ TOKO TERVERIFIKASI", icon: CheckCircle2, color: "text-matcha-400" },
-    { text: "ROOM DECOR & GADGET SETUP ESTETIK", icon: ShoppingBag, color: "text-butter-400" },
+    { text: "SPILL RACUN SHOPEE & TIKTOK SHOP", icon: Flame, color: "text-emerald-400" },
+    { text: "TECH & DESK SETUP MINIMALIS", icon: Laptop, color: "text-sky-400" },
+    { text: "KAMAR ESTETIK & PERINTILAN KOST", icon: Home, color: "text-amber-400" },
+    { text: "SKINCARE VIRAL & DAILY GROOMING", icon: Heart, color: "text-rose-400" },
+    { text: "OOTD STREETWEAR & CLEAN FIT", icon: Sparkles, color: "text-emerald-400" },
+    { text: "BARANG UNIK LIFEHACK UNDER 50K", icon: Tag, color: "text-sky-400" },
+    { text: "100% INDEPENDENT CURATION BY ZE", icon: CheckCircle2, color: "text-emerald-400" },
+    { text: "RATING 4.9+ TOKO TERVERIFIKASI", icon: ShoppingBag, color: "text-amber-400" },
   ];
 
   return (

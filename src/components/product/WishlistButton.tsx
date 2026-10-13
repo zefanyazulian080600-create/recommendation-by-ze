@@ -62,8 +62,8 @@ export function WishlistButton({
       <Heart
         className={`${iconSizes} transition-colors ${
           active
-            ? "text-rose fill-rose"
-            : "text-charcoal-100 hover:text-rose fill-transparent"
+            ? "text-rose-500 fill-rose-500"
+            : "text-zinc-600 hover:text-rose-500 fill-transparent"
         }`}
       />
     </button>

@@ -49,12 +49,12 @@ export function Navbar({ categories = [] }: NavbarProps) {
 
   const navLinks = [
     { label: "Semua", href: "/products" },
-    { label: "Outfit Cowok", href: "/products?category=outfit-pria" },
-    { label: "Outfit Cewek", href: "/products?category=outfit-wanita" },
-    { label: "Unisex Streetwear", href: "/products?category=outfit-unisex" },
-    { label: "Skincare", href: "/products?category=skincare-grooming" },
-    { label: "Desk & Room", href: "/products?category=desk-setup-gadget" },
-    { label: "Koleksi Tematik", href: "/collections" },
+    { label: "⚡ Viral Ol Shop", href: "/products?sort=trending" },
+    { label: "🎧 Tech & Setup", href: "/products?category=desk-setup-gadget" },
+    { label: "🏠 Kamar & Kost", href: "/products?category=aesthetic-room" },
+    { label: "🧴 Skincare", href: "/products?category=skincare-grooming" },
+    { label: "👕 Fashion", href: "/products?category=outfit-pria" },
+    { label: "💸 Under 50k", href: "/products?price=under-50k" },
   ];
 
   return (
@@ -173,7 +173,7 @@ export function Navbar({ categories = [] }: NavbarProps) {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Cari outfit, kategori, atau No. Racun Bio (misal: #14 atau 07)..."
+                  placeholder="Cari gadget, kamar estetik, skincare, outfit, atau No. Bio (#07)..."
                   className="w-full pl-10 pr-24 py-2.5 rounded-full bg-[#12131A] border border-white/20 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:border-emerald-400 transition-all"
                   autoFocus
                 />

@@ -47,18 +47,18 @@ export function ShareButton({ title, url, className = "" }: ShareButtonProps) {
     <button
       type="button"
       onClick={handleShare}
-      className={`inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-full border border-softgray-border bg-white text-xs font-medium text-charcoal hover:bg-softgray transition-all shadow-sm ${className}`}
+      className={`inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full border border-white/20 bg-[#12131A] text-xs font-bold text-white hover:bg-white/15 transition-all shadow-sm active:scale-95 ${className}`}
       aria-label="Bagikan produk"
     >
       {copied ? (
         <>
-          <Check className="w-3.5 h-3.5 text-green-600" />
-          <span className="text-green-700">Link Tersalin!</span>
+          <Check className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="text-emerald-400 font-bold">Link Tersalin!</span>
         </>
       ) : (
         <>
-          <Share2 className="w-3.5 h-3.5 text-charcoal-100" />
-          <span>Bagikan</span>
+          <Share2 className="w-3.5 h-3.5 text-zinc-300" />
+          <span className="text-white font-bold">Bagikan</span>
         </>
       )}
     </button>

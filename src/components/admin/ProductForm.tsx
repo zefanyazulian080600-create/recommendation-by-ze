@@ -1058,7 +1058,7 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
                     <label className="text-xs font-mono font-bold uppercase tracking-wider text-white">
-                      Panduan Ukuran (TB / BB)
+                      Panduan Ukuran & Spesifikasi Produk
                     </label>
                     <button
                       type="button"
@@ -1069,14 +1069,14 @@ export function ProductForm({ initialProduct, isEdit = false }: ProductFormProps
                       className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400 hover:underline"
                     >
                       <Sparkles className="w-3 h-3" />
-                      <span>✨ AI Saran TB/BB</span>
+                      <span>✨ AI Saran Spek/Ukuran</span>
                     </button>
                   </div>
                   <input
                     type="text"
                     value={sizeNotes}
                     onChange={(e) => setSizeNotes(e.target.value)}
-                    placeholder="Model TB 173cm BB 63kg pakai size L untuk look relaxed boxy."
+                    placeholder="Contoh: TB 173cm BB 63kg pakai size L / Kompatibel Win & Mac / Dimensi 26cm / 50ml."
                     className="w-full px-4 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                   />
                 </div>

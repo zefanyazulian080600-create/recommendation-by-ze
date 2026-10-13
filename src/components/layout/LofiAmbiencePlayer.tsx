@@ -91,23 +91,23 @@ export function LofiAmbiencePlayer() {
       <button
         type="button"
         onClick={toggleSound}
-        className={`flex items-center gap-2.5 px-3.5 py-2 rounded-full border-2 border-espresso text-espresso text-xs font-bold transition-all shadow-brutal tap-bounce ${
+        className={`flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/15 text-xs font-bold transition-all shadow-2xl tap-bounce ${
           isPlaying
-            ? "bg-butter-400 scale-105"
-            : "bg-vanilla hover:bg-butter-300"
+            ? "bg-emerald-400 text-black scale-105 border-emerald-400 font-extrabold"
+            : "bg-[#12131A] text-white hover:bg-white/10"
         }`}
         title={isPlaying ? "Matikan musik santai" : "Putar musik santai Ze's Lofi"}
       >
         <Disc3
-          className={`w-4 h-4 text-espresso ${
-            isPlaying ? "animate-spin" : ""
+          className={`w-4 h-4 ${
+            isPlaying ? "text-black animate-spin" : "text-emerald-400"
           }`}
         />
         <span>{isPlaying ? "Lofi Room: On 🎵" : "Lofi Ambience 🎧"}</span>
         {isPlaying ? (
-          <Volume2 className="w-3.5 h-3.5 text-espresso" />
+          <Volume2 className="w-3.5 h-3.5 text-black" />
         ) : (
-          <VolumeX className="w-3.5 h-3.5 text-espresso/60" />
+          <VolumeX className="w-3.5 h-3.5 text-zinc-400" />
         )}
       </button>
     </div>

@@ -42,7 +42,7 @@ export interface SocialCaptionBundle {
   twitterHook: string;
 }
 
-// Koleksi preset produk siap pakai 1-klik untuk Admin Ze
+// Koleksi preset produk siap pakai 1-klik untuk Admin Ze (Universal Online Shop)
 export const READY_MADE_PRESETS: {
   id: string;
   label: string;
@@ -51,8 +51,132 @@ export const READY_MADE_PRESETS: {
   data: Partial<AiGeneratedProductDraft>;
 }[] = [
   {
+    id: "preset-wireless-tws",
+    label: "🎧 Hybrid ANC Wireless TWS (Gadget Setup)",
+    category: "cat-gadget-setup",
+    badge: "Best Value Setup",
+    data: {
+      name: "Hybrid ANC Low Latency Wireless TWS Earbuds - Matte Obsidian",
+      slug: "hybrid-anc-wireless-tws-matte-obsidian",
+      categoryId: "cat-gadget-setup",
+      shortDescription:
+        "TWS driver 13mm bass nendang dengan Active Noise Cancelling 35dB. Latency cuma 45ms pas buat gaming & nonton, batre tahan 30 jam.",
+      description: `### Kenapa Ze Rekomendasiin Ini?
+Dupe dari TWS flagship 2 jutaan. ANC-nya beneran kedap untuk harga di bawah 200 ribu, pas banget dipakai saat WFC di cafe bising atau naik KRL.
+
+### ⚡ Spesifikasi & Keunggulan
+* **Driver:** 13mm Titanium Composite Driver (vokal jernih, sub-bass nendang)
+* **Konektivitas:** Bluetooth 5.3 Low Latency 45ms (anti delay untuk game & video)
+* **Baterai:** 6 jam non-stop earbud + 24 jam charging case (total 30 jam)
+* **Mikrofon:** Quad-mic ENC untuk panggilan telepon jernih anti bising`,
+      tags: ["twsmurah", "anc", "gadgetshopee", "desksetup", "audiophile", "racunshopee", "techfinds"],
+      price: 189000,
+      originalPrice: 320000,
+      priceNote: "Garansi resmi toko 12 bulan tukar baru",
+      sizeNotes: "Termasuk 3 pasang eartips silikon (S/M/L) & kabel Type-C braided.",
+      badgeLabel: "Best Value Setup",
+      seoTitle: "Hybrid ANC Low Latency Wireless TWS Earbuds • Rekomendasi Ze",
+      seoDescription: "Rekomendasi TWS ANC murah di bawah 200 ribu dengan suara bass nendang dan delay rendah untuk gaming dan daily listening.",
+      suggestedImageUrl: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=900&auto=format&fit=crop",
+      suggestedVariants: [{ name: "Warna", options: ["Matte Obsidian Black", "Oatmeal Milk White"] }],
+    },
+  },
+  {
+    id: "preset-sunset-lamp",
+    label: "💡 16-Color RGB Sunset Lamp (Kamar Kost Estetik)",
+    category: "cat-aesthetic-room",
+    badge: "Kamar Estetik",
+    data: {
+      name: "16 Colors RGB Sunset Projection Lamp with Remote Control",
+      slug: "16-colors-rgb-sunset-projection-lamp-remote",
+      categoryId: "cat-aesthetic-room",
+      shortDescription:
+        "Lampu proyektor golden hour sunset rotasi 360 derajat. 16 variasi warna via remote, auto bikin konten TikTok kamar kost jadi sinematik.",
+      description: `### Kenapa Ze Rekomendasiin Ini?
+Printilan wajib buat kamar kost estetik atau backdrop live streaming. Lensa kristal HD menghasilkan gradasi warna matahari terbenam yang pekat dan hangat tanpa silau berlebih.
+
+### 🏠 Spesifikasi & Detail
+* **Material:** Aluminium alloy kokoh dengan dasar pemberat anti goyang
+* **Lensa:** Lensa kristal optik cembung tebal dengan pancaran cahaya lebar
+* **Rotasi:** Kepala lampu bisa diputar 360 derajat ke dinding maupun plafon
+* **Daya:** Port USB 5V hemat listrik (bisa colok powerbank / laptop)`,
+      tags: ["sunsetlamp", "kamarestetik", "kostvibes", "dekorasikamar", "ambientlight", "goldenhour", "tiktokviral"],
+      price: 49000,
+      originalPrice: 99000,
+      priceNote: "Pilihan hemat budget di bawah 50k, include remote control",
+      sizeNotes: "Tinggi stand 26cm fleksibel, colokan USB plug-and-play ke powerbank/laptop.",
+      badgeLabel: "Kamar Estetik",
+      seoTitle: "16 Colors RGB Sunset Projection Lamp Remote • Rekomendasi Ze",
+      seoDescription: "Lampu proyektor sunset kamar estetik 16 warna murah meriah di bawah 50 ribu untuk suasana kamar hangat dan estetik.",
+      suggestedImageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=900&auto=format&fit=crop",
+      suggestedVariants: [{ name: "Tipe", options: ["16 Colors RGB + Remote", "Classic Golden Sunset"] }],
+    },
+  },
+  {
+    id: "preset-sunscreen-serum",
+    label: "🧴 Ultralight UV Sunscreen Gel SPF50+ (Skincare Viral)",
+    category: "cat-skincare-grooming",
+    badge: "Holy Grail Skin",
+    data: {
+      name: "Ultralight Hyaluronic Watery Sunscreen Gel SPF 50+ PA++++ (50ml)",
+      slug: "ultralight-hyaluronic-watery-sunscreen-spf50",
+      categoryId: "cat-skincare-grooming",
+      shortDescription:
+        "Sunscreen tekstur gel cair seringan air tanpa whitecast. Cepat meresap, oil control 8 jam, gak bikin kusam atau perih di mata.",
+      description: `### Kenapa Ze Rekomendasiin Ini?
+Sunscreen lokal yang paling nyaman dipakai seharian di cuaca panas. Cowok atau cewek yang benci sunscreen lengket wajib coba, sensasinya seperti pakai moisturizer air yang dingin.
+
+### 🧴 Formulasi & Kandungan
+* **Tekstur:** Watery gel transparan yang langsung lumer saat diusap
+* **Perlindungan:** Broad spectrum SPF 50+ PA++++ teruji uji in-vitro & in-vivo
+* **Kandungan Aktif:** 5X Hyaluronic Acid, Cica Extract & Niacinamide mencerahkan
+* **Sertifikasi:** BPOM certified, Halal, Non-comedogenic`,
+      tags: ["sunscreenviral", "skincareindo", "nowhitecast", "skincarecowok", "skincarecewek", "racuntiktok", "bpom"],
+      price: 79000,
+      originalPrice: 125000,
+      priceNote: "BPOM approved, aman untuk kulit acne-prone & sensitif",
+      sizeNotes: "Botol pump higienis 50ml, praktis dibawa dalam tas kuliah/kerja.",
+      badgeLabel: "Holy Grail Skin",
+      seoTitle: "Ultralight Hyaluronic Watery Sunscreen Gel SPF 50+ • Rekomendasi Ze",
+      seoDescription: "Sunscreen gel ringan seringan air tanpa whitecast dan bebas lengket. Pilihan terbaik untuk cuaca terik Indonesia.",
+      suggestedImageUrl: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=900&auto=format&fit=crop",
+      suggestedVariants: [{ name: "Ukuran", options: ["50ml Reguler Pump", "30ml Travel Tube"] }],
+    },
+  },
+  {
+    id: "preset-tumbler-insulated",
+    label: "☕ Vacuum Insulated Tumbler 900ml (Viral Ol Shop)",
+    category: "cat-aesthetic-room",
+    badge: "Viral Ol Shop",
+    data: {
+      name: "Vacuum Insulated Stainless Steel Tumbler 900ml with Handle & Straw",
+      slug: "vacuum-insulated-stainless-tumbler-900ml",
+      categoryId: "cat-aesthetic-room",
+      shortDescription:
+        "Tumbler stainless SUS304 double-wall penahan es dingin hingga 24 jam. Dilengkapi handle ergonomis dan sedotan anti tumpah.",
+      description: `### Kenapa Ze Rekomendasiin Ini?
+Dupe dari tumbler viral Stanley Cup jutaan rupiah. Menjaga es kopi atau infused water tetap dingin seharian saat kerja di kantor atau kuliah tanpa ada kondensasi air di luar botol.
+
+### ☕ Spesifikasi & Material
+* **Bahan:** Food Grade Stainless Steel SUS304 (anti karat & bebas bau)
+* **Insulasi:** Double-wall vacuum insulation (tahan dingin 24 jam, tahan panas 12 jam)
+* **Kapasitas:** 900 ml (30 oz) pas untuk target hidrasi harian
+* **Tutup:** 3-in-1 lid (bisa pakai sedotan, seruput langsung, atau ditutup rapat)`,
+      tags: ["tumblerviral", "stanleydupe", "aestheticmug", "hematminum", "wfcessential", "shopeehaul"],
+      price: 89000,
+      originalPrice: 175000,
+      priceNote: "Hemat hingga 85% dibanding tumbler hype impor",
+      sizeNotes: "Kapasitas 900ml (30oz), pas masuk cup holder mobil & meja kerja.",
+      badgeLabel: "Viral Ol Shop",
+      seoTitle: "Vacuum Insulated Stainless Steel Tumbler 900ml • Rekomendasi Ze",
+      seoDescription: "Tumbler stainless tahan dingin 24 jam alternatif Stanley Cup. Hemat dan estetik untuk meja kerja dan kuliah.",
+      suggestedImageUrl: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=900&auto=format&fit=crop",
+      suggestedVariants: [{ name: "Warna", options: ["Cream Ivory", "Charcoal Grey", "Matcha Sage", "Dusty Pink"] }],
+    },
+  },
+  {
     id: "preset-boxy-tee",
-    label: "👕 Heavyweight Boxy Tee (Skena Kalcer)",
+    label: "👕 Heavyweight Boxy Tee 24s (Streetwear Kalcer)",
     category: "cat-outfit-unisex",
     badge: "Skena Approved",
     data: {
@@ -68,11 +192,7 @@ Buat yang bosen sama kaos tipis yang gampang melar sehabis dicuci, ini nemu alte
 * **Bahan:** 100% Heavy Cotton 24s (210–220 GSM), adem tapi berstruktur tegas
 * **Fitting:** Boxy Fit with Drop Shoulder (bahu jatuh proporsional)
 * **Kerah:** Rib tebal 3 cm yang rapat, tahan cuci berkali-kali tanpa keriting
-* **Finishing:** Washed vintage texture yang gak gampang luntur
-
-### 🕶️ Formula Styling OOTD
-* **Skena Look:** Padukan dengan Carpenter Pants lecek, sneakers retro, dan sling bag mini.
-* **Clean Look:** Masukkan sebagian (front-tuck) ke dalam celana bahan pleats warna cream/khaki.`,
+* **Finishing:** Washed vintage texture yang gak gampang luntur`,
       tags: ["skena", "kalcer", "boxytee", "heavycotton", "streetwear", "unisex", "shopeehaul", "outfitkuliah"],
       price: 119000,
       originalPrice: 179000,
@@ -87,7 +207,7 @@ Buat yang bosen sama kaos tipis yang gampang melar sehabis dicuci, ini nemu alte
   },
   {
     id: "preset-camp-linen",
-    label: "👔 Camp Collar Linen Shirt (Kalcer Santa)",
+    label: "👔 Camp Collar Relaxed Linen Shirt (Kalcer Santa)",
     category: "cat-outfit-pria",
     badge: "Ze's Pick",
     data: {
@@ -102,11 +222,7 @@ Kemeja wajib punya buat cuaca tropis Jakarta. Potongan camp collar bikin leher k
 ### 🧵 Material & Detail
 * **Bahan:** Premium Linen Cotton Blend (breathable, tekstur serat alami estetik)
 * **Fitting:** Relaxed Casual Cut (bisa dipakai kancing terbuka sebagai outer)
-* **Kancing:** Shell finish tone-on-tone yang minimalis berkelas
-
-### 🕶️ Formula Styling OOTD
-* **Ngopi Santa:** Buka 2 kancing atas, pakai tanktop/inner putih, padukan celana corduroy pendek & loafers kulit.
-* **Semi Formal:** Kancingkan penuh dengan trousers hitam bahan jatuh untuk dinner santai.`,
+* **Kancing:** Shell finish tone-on-tone yang minimalis berkelas`,
       tags: ["kalcer", "linenshirt", "campcollar", "outfitnongkrong", "oldmoney", "wfc", "shopeefinds"],
       price: 165000,
       originalPrice: 245000,
@@ -120,78 +236,14 @@ Kemeja wajib punya buat cuaca tropis Jakarta. Potongan camp collar bikin leher k
     },
   },
   {
-    id: "preset-carpenter-pants",
-    label: "👖 Wide Leg Carpenter Denim (Unisex Drip)",
-    category: "cat-outfit-unisex",
-    badge: "Viral TikTok",
-    data: {
-      name: "Vintage Washed Carpenter Wide Leg Denim - Ash Grey",
-      slug: "vintage-washed-carpenter-wide-leg-denim-ash-grey",
-      categoryId: "cat-outfit-unisex",
-      shortDescription:
-        "Celana denim potongan lebar dengan detail hammer loop & kantong utility kerja. Warna washed pudar natural yang auto bikin jenjang.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
-Alternatif celana Carhartt jutaan rupiah. Potongan celana lurus lebar (wide leg) dengan rise pas di pinggang bikin ilusi kaki jenjang dan nutupi proporsi paha.
-
-### 🧵 Material & Detail
-* **Bahan:** 13.5 oz Non-stretch Denim (kokoh bertekstur, gak kaku dan gak tipis)
-* **Finishing:** Stone wash vintage yang pudar estetik di area paha dan lutut
-* **Detail:** Kantong samping ganda dan hammer loop khas celana tukang kayu workwear
-
-### 🕶️ Formula Styling OOTD
-* **Starboy/Skena:** Padukan dengan cropped sweater hitam dan sepatu sol tebal (chunky sneakers atau Docmart).`,
-      tags: ["carpenterpants", "wideleg", "denimvintage", "streetwear", "unisex", "dupealert", "ootd"],
-      price: 219000,
-      originalPrice: 320000,
-      priceNote: "Dapat gratis sabuk minimalis selama periode promo toko",
-      sizeNotes: "Panjang celana 105 cm. TB 160-168cm disarankan pakai sepatu bersol tebal atau roll-up 1 lipatan.",
-      badgeLabel: "Viral TikTok",
-      seoTitle: "Vintage Washed Carpenter Wide Leg Denim Ash Grey • Rekomendasi Ze",
-      seoDescription: "Celana jeans carpenter lebar kekinian model vintage workwear unisex. Bikin kaki kelihatan jenjang dan proporsional.",
-      suggestedImageUrl: "https://images.unsplash.com/photo-1542272604-780c96856592?q=80&w=900&auto=format&fit=crop",
-      suggestedVariants: [{ name: "Size Celana", options: ["28", "30", "32", "34"] }],
-    },
-  },
-  {
-    id: "preset-detroit-jacket",
-    label: "🧥 Cropped Canvas Work Jacket (Dupe Carhartt)",
-    category: "cat-outfit-unisex",
-    badge: "Dupe Alert",
-    data: {
-      name: "Heavy Canvas Detroit Work Jacket - Vintage Tan Khaki",
-      slug: "heavy-canvas-detroit-work-jacket-vintage-tan",
-      categoryId: "cat-outfit-unisex",
-      shortDescription:
-        "Jaket kanvas potongan boxy cropped dengan kerah corduroy cokelat kontras. Look Carhartt Detroit Rp 3.5M dengan budget cuma 200 ribuan.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
-Dupe Carhartt Detroit paling worth-it di marketplace. Siluet boxy sedikit di atas pinggang bikin postur tubuh keliatan lebih atletis dan gak tenggelam.
-
-### 🧵 Material & Detail
-* **Bahan Luar:** Heavy Cotton Canvas 12 oz kokoh
-* **Kerah:** Corduroy tebal warna cokelat tua bertekstur
-* **Furing:** Poliester adem yang nyaman dipakai siang maupun malam
-* **Zipper:** Metal zipper kuningan vintage kokoh anti seret`,
-      tags: ["dupealert", "carharttdetroit", "canvasjacket", "workwear", "skena", "starboy", "outerwear"],
-      price: 239000,
-      originalPrice: 380000,
-      priceNote: "Hemat hingga 92% dibanding harga retail Carhartt original",
-      sizeNotes: "Potongan cropped boxy. Jika ingin pakai hoodie tebal di dalam, disarankan naik 1 size.",
-      badgeLabel: "Dupe Alert",
-      seoTitle: "Heavy Canvas Detroit Work Jacket Vintage Tan • Rekomendasi Ze",
-      seoDescription: "Jaket kanvas boxy vintage dupe Carhartt Detroit. Look workwear mewah dengan harga ramah kantong mahasiswa.",
-      suggestedImageUrl: "https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=900&auto=format&fit=crop",
-      suggestedVariants: [{ name: "Ukuran", options: ["M", "L", "XL"] }],
-    },
-  },
-  {
     id: "preset-parfum-santal",
-    label: "🧴 Extrait de Parfum Woody Santal (Aroma Skena)",
-    category: "cat-skincare-makeup",
+    label: "🧴 Extrait de Parfum Woody Santal 50ml (Aroma Mahal)",
+    category: "cat-skincare-grooming",
     badge: "Starboy Essential",
     data: {
       name: "Extrait de Parfum Santal & Smoked Papyrus 50ml (Unisex)",
       slug: "extrait-de-parfum-santal-smoked-papyrus-50ml",
-      categoryId: "cat-skincare-makeup",
+      categoryId: "cat-skincare-grooming",
       shortDescription:
         "Parfum lokal konsentrasi extrait dengan aroma kayu cendana hangat, cardamom, dan kulit mewah. Tahan 10-12 jam, aroma khas anak Senopati & SCBD.",
       description: `### Kenapa Ze Rekomendasiin Ini?
@@ -200,11 +252,7 @@ Dupe dari Le Labo Santal 33 yang legendaris. Aromanya mahal, misterius, dan unis
 ### 🪵 Piramida Aroma (Fragrance Notes)
 * **Top Notes:** Violet Leaves, Cardamom, Australian Papyrus
 * **Heart Notes:** Cedarwood Virginia, Iris, Smoked Amber
-* **Base Notes:** Creamy Sandalwood, Cashmere Wood, Warm Leather
-
-### ⏳ Performa & Ketahanan
-* **Longevity:** 10–12 jam di kulit, 24 jam di pakaian
-* **Sillage / Jejak Aroma:** Medium to Strong (meninggalkan aroma harum lembut saat kamu lewat)`,
+* **Base Notes:** Creamy Sandalwood, Cashmere Wood, Warm Leather`,
       tags: ["parfumviral", "santal33", "lelabodupe", "starboy", "skena", "scent", "unisexperfume"],
       price: 189000,
       originalPrice: 285000,
@@ -220,12 +268,12 @@ Dupe dari Le Labo Santal 33 yang legendaris. Aromanya mahal, misterius, dan unis
   {
     id: "preset-retro-sneakers",
     label: "👟 Gum Sole Retro Terrace Sneakers (Samba Look)",
-    category: "cat-sepatu-sandal",
+    category: "cat-bags-shoes",
     badge: "Steal Deal",
     data: {
       name: "Retro Terrace Gum Sole Leather Sneakers - White Core Black",
       slug: "retro-terrace-gum-sole-leather-sneakers-white-black",
-      categoryId: "cat-sepatu-sandal",
+      categoryId: "cat-bags-shoes",
       shortDescription:
         "Sneakers retro siluet rendah dengan sol karet mentah (gum sole) dan aksen suede abu-abu di ujung jari. Versatile dipadukan celana apa pun.",
       description: `### Kenapa Ze Rekomendasiin Ini?
@@ -256,18 +304,100 @@ export function generateProductFromPrompt(
   const kw = input.rawKeyword.trim().toLowerCase();
   const vibe = input.vibe || "skena";
 
-  // Cek kategori berdasarkan kata kunci
+  // Cek kategori berdasarkan kata kunci universal online shop
   let categoryId = input.categoryHint || "cat-outfit-unisex";
-  if (kw.includes("sepatu") || kw.includes("sneaker") || kw.includes("sandal") || kw.includes("loafer") || kw.includes("boots")) {
-    categoryId = "cat-sepatu-sandal";
-  } else if (kw.includes("celana") || kw.includes("pants") || kw.includes("jeans") || kw.includes("trouser") || kw.includes("shorts")) {
+  if (
+    kw.includes("keyboard") ||
+    kw.includes("mouse") ||
+    kw.includes("tws") ||
+    kw.includes("headphone") ||
+    kw.includes("earphone") ||
+    kw.includes("lightbar") ||
+    kw.includes("desk") ||
+    kw.includes("gadget") ||
+    kw.includes("charger") ||
+    kw.includes("kabel") ||
+    kw.includes("setup")
+  ) {
+    categoryId = "cat-gadget-setup";
+  } else if (
+    kw.includes("lampu") ||
+    kw.includes("sunset") ||
+    kw.includes("diffuser") ||
+    kw.includes("cermin") ||
+    kw.includes("sprei") ||
+    kw.includes("kamar") ||
+    kw.includes("kost") ||
+    kw.includes("estetik") ||
+    kw.includes("tumbler") ||
+    kw.includes("botol") ||
+    kw.includes("storage") ||
+    kw.includes("organizer") ||
+    kw.includes("rak") ||
+    kw.includes("home")
+  ) {
+    categoryId = "cat-aesthetic-room";
+  } else if (
+    kw.includes("skincare") ||
+    kw.includes("sunscreen") ||
+    kw.includes("serum") ||
+    kw.includes("moisturizer") ||
+    kw.includes("cleanser") ||
+    kw.includes("toner") ||
+    kw.includes("parfum") ||
+    kw.includes("scent") ||
+    kw.includes("fragrance") ||
+    kw.includes("cushion") ||
+    kw.includes("lip")
+  ) {
+    categoryId = "cat-skincare-grooming";
+  } else if (
+    kw.includes("sepatu") ||
+    kw.includes("sneaker") ||
+    kw.includes("sandal") ||
+    kw.includes("loafer") ||
+    kw.includes("boots") ||
+    kw.includes("tas") ||
+    kw.includes("tote") ||
+    kw.includes("bag") ||
+    kw.includes("backpack") ||
+    kw.includes("kacamata") ||
+    kw.includes("topi") ||
+    kw.includes("aksesoris")
+  ) {
+    categoryId = "cat-bags-shoes";
+  } else if (
+    kw.includes("hijab") ||
+    kw.includes("pashmina") ||
+    kw.includes("tunik") ||
+    kw.includes("gamis")
+  ) {
+    categoryId = "cat-hijab-friendly";
+  } else if (kw.includes("korea") || kw.includes("knit") || kw.includes("cardigan")) {
+    categoryId = "cat-korean-style";
+  } else if (
+    kw.includes("celana") ||
+    kw.includes("pants") ||
+    kw.includes("jeans") ||
+    kw.includes("trouser") ||
+    kw.includes("shorts")
+  ) {
     categoryId = "cat-outfit-unisex";
-  } else if (kw.includes("parfum") || kw.includes("scent") || kw.includes("fragrance") || kw.includes("skincare")) {
-    categoryId = "cat-skincare-makeup";
-  } else if (kw.includes("tas") || kw.includes("tote") || kw.includes("bag") || kw.includes("kacamata") || kw.includes("topi") || kw.includes("aksesoris")) {
-    categoryId = "cat-tas-aksesoris";
-  } else if (kw.includes("kemeja") || kw.includes("shirt") || kw.includes("jaket") || kw.includes("jacket") || kw.includes("outer") || kw.includes("kaos") || kw.includes("tee")) {
-    categoryId = input.gender === "men" ? "cat-outfit-pria" : input.gender === "women" ? "cat-outfit-wanita" : "cat-outfit-unisex";
+  } else if (
+    kw.includes("kemeja") ||
+    kw.includes("shirt") ||
+    kw.includes("jaket") ||
+    kw.includes("jacket") ||
+    kw.includes("outer") ||
+    kw.includes("kaos") ||
+    kw.includes("tee")
+  ) {
+    categoryId =
+      input.gender === "men"
+        ? "cat-outfit-pria"
+        : input.gender === "women"
+        ? "cat-outfit-wanita"
+        : "cat-outfit-unisex";
   }
 
   // Bersihkan dan format nama produk
@@ -288,7 +418,7 @@ export function generateProductFromPrompt(
 
   // Harga estimasi
   const price = input.priceEstimate || guessPrice(kw, categoryId);
-  const originalPrice = Math.round(price * 1.45 / 1000) * 1000;
+  const originalPrice = Math.round((price * 1.45) / 1000) * 1000;
 
   // Catatan harga & size
   const priceNote = generatePriceNote(vibe);
@@ -299,7 +429,7 @@ export function generateProductFromPrompt(
 
   // SEO
   const seoTitle = `${cleanTitle} • Rekomendasi Ze`;
-  const seoDescription = `${shortDescription} Temukan kurasi produk fashion & lifestyle unisex pilihan Ze dengan harga ramah kantong.`;
+  const seoDescription = `${shortDescription} Temukan kurasi produk pilihan online shop terpercaya dengan harga hemat di Rekomendasi by Ze.`;
 
   // Gambar representatif
   const suggestedImageUrl = getFallbackImageByCategory(categoryId);
@@ -326,13 +456,11 @@ export function generateProductFromPrompt(
 // Format Judul Produk Bergaya Editorial & Catchy
 function formatProductTitle(raw: string, vibe: AiVibeTone, catId: string): string {
   let title = raw.trim();
-  // Capitalize kata-kata utama
   title = title
     .split(" ")
     .map((w) => (w.length > 2 ? w.charAt(0).toUpperCase() + w.slice(1) : w))
     .join(" ");
 
-  // Tambahkan aksen style jika judul terlalu pendek
   if (title.length < 25) {
     if (vibe === "skena") {
       title += " (Skena Kalcer Approved)";
@@ -340,8 +468,10 @@ function formatProductTitle(raw: string, vibe: AiVibeTone, catId: string): strin
       title += " - Minimalist Luxury Fit";
     } else if (vibe === "dupe") {
       title += " (Smart Budget Alternative)";
+    } else if (vibe === "viral") {
+      title += " 🔥 Viral Ol Shop";
     } else {
-      title += " - Unisex Relaxed Fit";
+      title += " - Rekomendasi Pilihan Ze";
     }
   }
 
@@ -352,25 +482,25 @@ function formatProductTitle(raw: string, vibe: AiVibeTone, catId: string): strin
 export function generateShortHook(name: string, vibe: AiVibeTone): string {
   const hooksSkena = [
     `Potongan boxy santai dengan material adem yang langsung naikin aura pas diajak nongkrong di Blok M.`,
-    `Alternatif fashion kalcer lokal yang jatuhnya proporsional, gak bikin gerah dan anti mati gaya.`,
+    `Alternatif kalcer lokal yang jatuhnya proporsional, gak bikin gerah dan anti mati gaya.`,
     `Siluet vintage santai dengan tekstur kain premium, bikin OOTD harian kamu keliatan effortless tapi berkelas.`,
   ];
 
   const hooksStarboy = [
     `Sentuhan monokrom clean dengan siluet berstruktur tegas, cocok buat dinner date atau hangout malam di SCBD.`,
-    `Aksen timeless luxury dengan fitting jatuh sempurna, ngasih kesan cowok/cewek mahal tanpa harus keluar budget jutaan.`,
+    `Aksen timeless luxury dengan fitting jatuh sempurna, ngasih kesan mahal tanpa harus keluar budget jutaan.`,
     `Desain sleek dan versatile yang gampang dipadukan dengan trousers bahan atau aksesoris kulit.`,
   ];
 
   const hooksDupe = [
-    `Look & material 90% mirip brand hype jutaan rupiah, tapi bisa kamu amankan dengan harga di bawah 200 ribu!`,
-    `Kenapa harus keluar jutaan kalau alternatif lokal ini punya build quality dan fitting yang sama mewahnya?`,
-    `Solusi tampil stylish tanpa bikin saldo rekening boncos, wajib masuk wishlist sebelum sold out.`,
+    `Look & build quality 90% mirip brand hype jutaan rupiah, tapi bisa kamu amankan dengan harga ramah kantong!`,
+    `Kenapa harus keluar jutaan kalau alternatif online shop ini punya ketahanan dan estetika yang sama mewahnya?`,
+    `Solusi belanja cerdas tanpa bikin saldo rekening boncos, wajib masuk wishlist sebelum sold out.`,
   ];
 
   const hooksDefault = [
-    `Pilihan esensial unisex dengan bahan berkualitas tinggi dan fitting nyaman untuk aktivitas harianmu.`,
-    `Item serbaguna yang gampang di-mix and match untuk berbagai kesempatan, dari kuliah sampai WFC santai.`,
+    `Pilihan esensial dengan build quality tinggi dan fungsi maksimal untuk menunjang aktivitas harianmu.`,
+    `Item serbaguna yang gampang diandalkan untuk berbagai kebutuhan, dari kerja, kuliah, sampai santai di rumah.`,
   ];
 
   const pool =
@@ -385,16 +515,55 @@ export function generateShortHook(name: string, vibe: AiVibeTone): string {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-// Generate Review Lengkap Ala Stylist Ze
+// Generate Review Lengkap Ala Stylist & Curator Ze
 export function generateFullReview(
   name: string,
   categoryId: string,
   vibe: AiVibeTone
 ): string {
+  if (categoryId === "cat-gadget-setup") {
+    return `### Kenapa Ze Rekomendasiin Produk Ini?
+Setelah kurasi beberapa aksesoris desk setup di marketplace, item ini punya build quality paling solid di rentang harganya. Desainnya minimalis clean, kabel rapi, dan fungsinya beneran ningkatin kenyamanan kerja atau gaming harian.
+
+### ⚡ Spesifikasi & Build Quality
+* **Material & Finishing:** Material matte anti-fingerprint dengan build kokoh dan presisi.
+* **Konektivitas & Performa:** Respon cepat minim latency, stabil tanpa gangguan delay.
+* **Kenyamanan Pemakaian:** Ergonomis dan ramah meja kerja, bikin setup keliatan aesthetic ala Pinterest.
+
+### 🖥️ Setup Inspiration
+* Padukan dengan desk mat warna gelap dan lampu ambient warm white untuk vibe WFC malam hari yang fokus dan cozy.`;
+  }
+
+  if (categoryId === "cat-aesthetic-room") {
+    return `### Kenapa Ze Rekomendasiin Produk Ini?
+Barang online shop penyelamat kamar kost atau ruang tidur yang membosankan. Bentuknya estetik, gampang dipasang tanpa bor tembok, dan langsung ngubah mood ruangan seketika jadi ala cafe estetik.
+
+### 🏠 Material & Estetika
+* **Finishing:** Warna netral minimalis yang gampang menyatu dengan dekorasi kayu, putih, atau monokrom.
+* **Kepraktisan:** Mudah dibersihkan, hemat tempat, dan multifungsi.
+* **Build Quality:** Kokoh dan awet untuk pemakaian jangka panjang.
+
+### ✨ Tips Dekorasi Kamar
+* Tempatkan di sudut meja atau samping tempat tidur untuk menciptakan pencahayaan golden hour dan estetika visual yang nyaman.`;
+  }
+
+  if (categoryId === "cat-skincare-grooming") {
+    return `### Kenapa Ze Rekomendasiin Produk Ini?
+Formula ringan yang gampang meresap tanpa rasa lengket atau greasy. Sangat cocok buat cuaca tropis Indonesia, baik untuk cowok yang gak suka ribet maupun cewek yang butuh hasil maksimal.
+
+### 🧴 Tekstur & Bahan Utama
+* **Tekstur:** Ringan, water-based, cepat meresap dan tidak meninggalkan residu putih (no whitecast).
+* **Kenyamanan Kulit:** Tidak menyumbat pori-pori (non-comedogenic) dan aman untuk kulit sensitif.
+* **Hasil Pemakaian:** Kulit terasa terhidrasi sehat, terlindungi, dan tidak mengkilap berlebihan seharian.
+
+### 💡 Cara Pemakaian
+* Aplikasikan secara merata di wajah dan leher setiap pagi sebelum beraktivitas. Ulangi bila banyak terpapar matahari langsung.`;
+  }
+
   return `### Kenapa Ze Rekomendasiin Produk Ini?
 Setelah kurasi beberapa toko online shop lokal, produk ini punya penilaian jahitan, konsistensi bahan, dan siluet fitting paling memuaskan di kelas harganya. Cocok banget buat kamu yang mau upgrade penampilan tanpa ribet.
 
-### 🧵 Material & Detail Finisihing
+### 🧵 Material & Detail Finishing
 * **Karakter Bahan:** Kain bertekstur lembut, adem di kulit, dan tidak mudah kusut setelah dicuci.
 * **Jahitan & Kerutan:** Jahitan rantai ganda di area krusial, rapi tanpa benang sisa berlebih.
 * **Proporsi Potongan:** Dirancang dengan proporsi modern yang menyanjung postur tubuh (mengikuti rumus Rule of Thirds).
@@ -415,7 +584,7 @@ export function generateViralTagsList(
   categoryId: string,
   vibe: AiVibeTone
 ): string[] {
-  const base = ["shopeehaul", "tiktokfinds", "unisex", "ootdindo", "racunshopee"];
+  const base = ["shopeehaul", "tiktokfinds", "olshopfinds", "racunshopee", "racunolshop"];
   if (vibe === "skena") {
     return [...base, "skena", "kalcer", "blokm", "streetwear", "vintagevibe"];
   } else if (vibe === "starboy") {
@@ -423,21 +592,27 @@ export function generateViralTagsList(
   } else if (vibe === "dupe") {
     return [...base, "dupealert", "stealdeal", "hematbudget", "lokalpride", "alternatifmurah"];
   }
-  return [...base, "casualfit", "koreanstyle", "rekomendasize", "minimalist"];
+  return [...base, "kamarestetik", "desksetup", "rekomendasize", "minimalist"];
 }
 
 // Generate Ukuran & Proporsi
 export function generateSizeAdvice(categoryId: string): string {
-  if (categoryId === "cat-sepatu-sandal") {
-    return "True to size. Jika punggung kaki tebal atau telapak lebar (wide feet), disarankan naik 1 nomor (up-size) agar lebih nyaman.";
+  if (categoryId === "cat-gadget-setup") {
+    return "Kompatibel Windows/Mac/iOS/Android via Bluetooth & Type-C kabel fleksibel.";
+  }
+  if (categoryId === "cat-aesthetic-room") {
+    return "Dimensi ringkas hemat ruang, colokan USB plug-and-play mudah ditempatkan di kamar kost.";
+  }
+  if (categoryId === "cat-skincare-grooming") {
+    return "Kemasan travel-friendly, sudah BPOM teruji klinis dan aman untuk semua jenis kulit.";
+  }
+  if (categoryId === "cat-bags-shoes") {
+    return "True to size. Jika kaki lebar (wide feet), disarankan naik 1 nomor (up-size) agar jari leluasa.";
   }
   if (categoryId === "cat-outfit-unisex" || categoryId === "cat-outfit-pria") {
-    return "Model TB 173cm BB 63kg pakai size L untuk look relaxed boxy. Ambil size normal kamu (true-to-size) jika ingin look pas badan.";
+    return "Model TB 173cm BB 63kg pakai size L untuk look relaxed boxy. Ambil size normal kamu jika ingin look pas badan.";
   }
-  if (categoryId === "cat-skincare-makeup") {
-    return "Ukuran botol ringkas travel-friendly, cocok dibawa di dalam tas harian atau pouch nongkrong.";
-  }
-  return "Ukuran all-size fleksibel dengan toleransi ukuran jahitan sekitar 1-2 cm.";
+  return "Ukuran standar fleksibel dengan toleransi dimensi sekitar 1-2 cm.";
 }
 
 // Generate Badge
@@ -452,7 +627,7 @@ export function generateBadge(vibe: AiVibeTone): string {
     case "kalcer":
       return "Ze's Pick ✨";
     case "viral":
-      return "Viral TikTok 🔥";
+      return "Viral Ol Shop 🔥";
     default:
       return "Must Have";
   }
@@ -463,43 +638,56 @@ export function generatePriceNote(vibe: AiVibeTone): string {
   if (vibe === "dupe") {
     return "Hemat ratusan ribu dibanding versi brand luar negeri ternama";
   }
-  return "Harga promo saat flash sale toko, klaim voucher toko sebelum kehabisan";
+  return "Harga promo saat flash sale toko online shop, klaim voucher sebelum kehabisan";
 }
 
 // Tebak harga perkiraan awal
 function guessPrice(kw: string, catId: string): number {
-  if (catId === "cat-sepatu-sandal") return 199000;
-  if (catId === "cat-skincare-makeup") return 145000;
-  if (catId === "cat-tas-aksesoris") return 89000;
+  if (catId === "cat-gadget-setup") return 189000;
+  if (catId === "cat-aesthetic-room") return 65000;
+  if (catId === "cat-skincare-grooming") return 89000;
+  if (catId === "cat-bags-shoes") return 199000;
   if (kw.includes("jaket") || kw.includes("jacket") || kw.includes("blazer")) return 229000;
   if (kw.includes("celana") || kw.includes("pants") || kw.includes("jeans")) return 175000;
   if (kw.includes("kemeja") || kw.includes("shirt")) return 149000;
-  return 109000;
+  return 99000;
 }
 
 function getFallbackImageByCategory(catId: string): string {
   switch (catId) {
-    case "cat-sepatu-sandal":
-      return "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=900&auto=format&fit=crop";
-    case "cat-skincare-makeup":
-      return "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=900&auto=format&fit=crop";
-    case "cat-tas-aksesoris":
-      return "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=900&auto=format&fit=crop";
+    case "cat-gadget-setup":
+      return "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=900&auto=format&fit=crop";
+    case "cat-aesthetic-room":
+      return "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=900&auto=format&fit=crop";
+    case "cat-skincare-grooming":
+      return "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=900&auto=format&fit=crop";
+    case "cat-bags-shoes":
+      return "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=900&auto=format&fit=crop";
     case "cat-outfit-pria":
       return "https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=900&auto=format&fit=crop";
     case "cat-outfit-wanita":
       return "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=900&auto=format&fit=crop";
+    case "cat-korean-style":
+      return "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=900&auto=format&fit=crop";
+    case "cat-hijab-friendly":
+      return "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=900&auto=format&fit=crop";
     default:
       return "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=900&auto=format&fit=crop";
   }
 }
 
 function getVariantsByCategory(catId: string) {
-  if (catId === "cat-sepatu-sandal") {
-    return [{ name: "Ukuran Sepatu", options: ["39", "40", "41", "42", "43"] }];
+  if (catId === "cat-bags-shoes") {
+    return [{ name: "Ukuran", options: ["39", "40", "41", "42", "43"] }];
   }
-  if (catId === "cat-skincare-makeup") {
-    return [{ name: "Varian / Isi", options: ["30ml", "50ml"] }];
+  if (catId === "cat-skincare-grooming") {
+    return [{ name: "Varian / Isi", options: ["30ml Travel", "50ml Reguler"] }];
+  }
+  if (catId === "cat-gadget-setup") {
+    return [{ name: "Warna / Switch", options: ["Matte Black", "White Silver"] }];
+  }
+  if (catId === "cat-aesthetic-room") {
+    return [{ name: "Pilihan Warna / Model", options: ["Warm Sunset", "RGB Multi-Mode"] }];
   }
   return [{ name: "Ukuran", options: ["M", "L", "XL"] }];
 }
@@ -513,28 +701,30 @@ export function generateSocialCaptions(p: {
   badgeLabel?: string;
   affiliateUrl?: string;
 }): SocialCaptionBundle {
-  const name = p.name || "Outfit Rekomendasi Ze";
+  const name = p.name || "Rekomendasi Online Shop Pilihan Ze";
   const priceStr = p.price ? `Rp ${p.price.toLocaleString("id-ID")}` : "Rp 99.000";
-  const originalStr = p.originalPrice ? `Rp ${p.originalPrice.toLocaleString("id-ID")}` : "Rp 189.000";
+  const originalStr = p.originalPrice
+    ? `Rp ${p.originalPrice.toLocaleString("id-ID")}`
+    : "Rp 189.000";
 
   const tiktokScript = `[HOOK 3 DETIK PERTAMA]:
-"Stop scrolling kalau kamu masih bingung cari outfit yang jatuhnya rapi dan gak bikin keliatan bantet!"
+"Stop scrolling kalau kamu lagi cari barang online shop yang beneran berguna dan estetik!"
 
 [BODY KONTEN]:
-Nemu hidden gem satu ini di toko oren/ijo: ${name}.
-Bahannya beneran adem, jahitannya rapat, dan potongannya auto naikin aura. Dari harga normal ${originalStr}, pas promo dapet cuma ${priceStr}!
+Nemu hidden gem satu ini di toko online shop: ${name}.
+Kualitasnya beneran bagus, finishing rapi, dan fungsinya juara. Dari harga normal ${originalStr}, pas promo dapet cuma ${priceStr}!
 
 [CTA PENUTUP]:
-Link checkout udah Ze simpen di Bio profil nomor katalog teratas ya. Jangan sampai kehabisan ukuran! ⚡
-#racunshopee #ootdindo #skenastyle #fashionhack #racunze`;
+Link checkout udah Ze simpen di Bio profil nomor katalog teratas ya. Jangan sampai kehabisan voucher diskonnya! ⚡
+#racunshopee #racunolshop #shopeehaul #tiktokfinds #racunze`;
 
   const igStory = `Spill racun baru yang wajib masuk wishlist kamu hari ini ✨
 
 📦 Item: ${name}
 💸 Damage: Cuma ${priceStr} (hemat bgt dari ${originalStr})
-Rating Ze: 9.8/10 ⭐ (Bahan adem & fitting juara)
+Rating Ze: 9.8/10 ⭐ (Kualitas & fungsi juara)
 
-👉 [KETUK STIKER TAUTAN DI ATAS UNTUK CO SEBELUM SOLD OUT]`;
+👉 [KETUK STIKER TAUTAN DI ATAS UNTUK CHECKOUT SEBELUM PROMO HABIS]`;
 
   const telegramBroadcast = `🔥 RACUN AFFILIATE HARI INI • PILIHAN ZE 🔥
 
@@ -544,17 +734,17 @@ ${name}
 🏷️ Status: ${p.badgeLabel || "Ze's Pick"}
 
 Kenapa wajib punya:
-${p.shortDesc || "Bahan premium adem, jahitan kokoh, fitting proporsional untuk cowok & cewek."}
+${p.shortDesc || "Build quality kokoh, fungsi maksimal, dan harga ramah kantong pilihan Ze."}
 
 🛒 LINK BELANJA RESMI:
 ${p.affiliateUrl || "https://shope.ee/..."}
 
 (Buruan checkout sebelum voucher diskon toko habis ya guys!)`;
 
-  const twitterHook = `nemu racun outfit yang fitting-nya beneran cakepp bgt buat cowok/cewek 😭✋
+  const twitterHook = `nemu racun online shop yang beneran worth it bgt dan kepake sehari-hari 😭✋
 
 ${name}
-harganya cuma ${priceStr}-an tp looknya mirip brand jutaan. 
+harganya cuma ${priceStr}-an tp build quality-nya mirip brand jutaan. 
 
 link shopee nya gue drop di reply ya 👇👇`;
 
