@@ -42,10 +42,27 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
           const supabase = createClient();
           const { data } = await supabase.auth.getSession();
           if (data.session) {
-            setIsAuthenticated(true);
-            setUserEmail(data.session.user.email || "ze@recommendationbyze.com");
-            setIsLoading(false);
-            return;
+            const currentEmail = data.session.user.email?.toLowerCase().trim();
+            const allowedList = [
+              (process.env.NEXT_PUBLIC_ADMIN_ALLOWED_EMAILS || "").toLowerCase(),
+              "ze@recommendationbyze.com",
+              "zefanyazulian080600@gmail.com",
+            ].filter(Boolean);
+
+            const isAuthorized = allowedList.some((allowed) =>
+              allowed.split(",").map((s) => s.trim()).includes(currentEmail || "")
+            );
+
+            if (isAuthorized) {
+              setIsAuthenticated(true);
+              setUserEmail(currentEmail || "ze@recommendationbyze.com");
+              setIsLoading(false);
+              return;
+            } else {
+              // Kick unauthorized emails immediately
+              await supabase.auth.signOut();
+              console.warn("Unauthorized Google/Supabase email attempted to access admin:", currentEmail);
+            }
           }
         } catch (e) {
           console.warn("Supabase auth check error:", e);
