@@ -103,7 +103,7 @@ const ROOM_ITEMS: SetupItem[] = [
     price: 79000,
     image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=500&auto=format&fit=crop",
     marketplace: "Shopee",
-    affiliateUrl: "https://shopee.co.id",
+    affiliateUrl: "https://s.shopee.co.id/4fwwvQJCBE",
     tag: "Vacuum Tumbler",
   },
 ];
