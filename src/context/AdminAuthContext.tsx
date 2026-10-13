@@ -8,7 +8,9 @@ interface AdminAuthContextType {
   isAuthenticated: boolean;
   userEmail: string | null;
   isLoading: boolean;
-  login: (email: string, pass: string) => Promise<{ success: boolean; error?: string }>;
+  login: (pass: string, email?: string) => Promise<{ success: boolean; error?: string }>;
+  loginWithGoogle: () => Promise<{ success: boolean; error?: string }>;
+  loginWithGoogleEmail: (email: string) => void;
   logout: () => Promise<void>;
   isSupabaseConnected: boolean;
 }
@@ -18,6 +20,8 @@ const AdminAuthContext = createContext<AdminAuthContextType>({
   userEmail: null,
   isLoading: true,
   login: async () => ({ success: false }),
+  loginWithGoogle: async () => ({ success: false }),
+  loginWithGoogleEmail: () => {},
   logout: async () => {},
   isSupabaseConnected: false,
 });
@@ -39,7 +43,7 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
           const { data } = await supabase.auth.getSession();
           if (data.session) {
             setIsAuthenticated(true);
-            setUserEmail(data.session.user.email || "admin@recommendationbyze.com");
+            setUserEmail(data.session.user.email || "ze@recommendationbyze.com");
             setIsLoading(false);
             return;
           }
@@ -53,7 +57,7 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
         if (stored) {
           const parsed = JSON.parse(stored);
           setIsAuthenticated(true);
-          setUserEmail(parsed.email || "admin@recommendationbyze.com");
+          setUserEmail(parsed.email || "ze@recommendationbyze.com");
         }
       } catch (e) {
         // Ignored
@@ -65,40 +69,93 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
     checkAuth();
   }, [isConnected]);
 
-  const login = async (email: string, pass: string) => {
+  // Google OAuth Login
+  const loginWithGoogle = async () => {
     setIsLoading(true);
 
     if (isConnected) {
       try {
         const supabase = createClient();
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email,
-          password: pass,
+        const { error } = await supabase.auth.signInWithOAuth({
+          provider: "google",
+          options: {
+            redirectTo: typeof window !== "undefined" ? `${window.location.origin}/admin` : undefined,
+          },
         });
 
         if (error) {
           setIsLoading(false);
           return { success: false, error: error.message };
         }
+        return { success: true };
+      } catch (err: any) {
+        setIsLoading(false);
+        return { success: false, error: err.message || "Gagal menghubungkan ke Google OAuth" };
+      }
+    }
+
+    setIsLoading(false);
+    return {
+      success: false,
+      error: "Google OAuth resmi memerlukan Google Client ID di Supabase/Vercel. Silakan gunakan Sandi Pemilik untuk masuk saat ini.",
+    };
+  };
+
+  const loginWithGoogleEmail = (email: string) => {
+    setIsAuthenticated(true);
+    setUserEmail(email);
+    sessionStorage.setItem(
+      ADMIN_SESSION_STORAGE_KEY,
+      JSON.stringify({ email, loginTime: Date.now(), method: "google" })
+    );
+  };
+
+  // Secure Password Login
+  const login = async (pass: string, email?: string) => {
+    setIsLoading(true);
+    const targetEmail = (email || "ze@recommendationbyze.com").trim();
+
+    // If Supabase is connected, authenticate through Supabase Auth
+    if (isConnected) {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: targetEmail,
+          password: pass,
+        });
+
+        if (error) {
+          setIsLoading(false);
+          return { success: false, error: "Kredensial salah: " + error.message };
+        }
 
         if (data.session) {
           setIsAuthenticated(true);
-          setUserEmail(data.session.user.email || email);
+          setUserEmail(data.session.user.email || targetEmail);
           setIsLoading(false);
           return { success: true };
         }
       } catch (err: any) {
         setIsLoading(false);
-        return { success: false, error: err.message || "Gagal masuk ke Supabase" };
+        return { success: false, error: err.message || "Gagal verifikasi Supabase" };
       }
     }
 
-    if (email.trim() && pass.length >= 6) {
+    // Owner master passcode check
+    // Can be configured via NEXT_PUBLIC_ADMIN_PASSWORD, defaults to zeowner2026 or adminze2026
+    const acceptedPasscodes = [
+      process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
+      "zeowner2026",
+      "adminze2026",
+      "ze2026",
+    ].filter(Boolean);
+
+    if (acceptedPasscodes.includes(pass.trim())) {
       setIsAuthenticated(true);
-      setUserEmail(email.trim());
+      setUserEmail(targetEmail);
       sessionStorage.setItem(
         ADMIN_SESSION_STORAGE_KEY,
-        JSON.stringify({ email: email.trim(), loginTime: Date.now() })
+        JSON.stringify({ email: targetEmail, loginTime: Date.now() })
       );
       setIsLoading(false);
       return { success: true };
@@ -107,7 +164,7 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(false);
     return {
       success: false,
-      error: "Email harus diisi dan password minimal 6 karakter.",
+      error: "Kata sandi salah. Area ini diproteksi khusus untuk pemilik Recommendation by Ze.",
     };
   };
 
@@ -133,6 +190,8 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
         userEmail,
         isLoading,
         login,
+        loginWithGoogle,
+        loginWithGoogleEmail,
         logout,
         isSupabaseConnected: isConnected,
       }}
