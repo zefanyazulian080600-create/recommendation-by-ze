@@ -208,8 +208,8 @@ export default function AiAssistantStudioPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#F2765E]">
               Admin Co-Pilot Suite
             </span>
-            <span className="px-2 py-0.5 rounded-full bg-[#315B8C]/10 text-[#315B8C] text-[10px] font-bold border border-[#315B8C]/20">
-              100% Local AI Offline
+            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-bold border border-emerald-500/20">
+              AI Generator Siap Pakai
             </span>
           </div>
           <h1 className="font-editorial text-2xl sm:text-4xl font-medium text-[#413333]">

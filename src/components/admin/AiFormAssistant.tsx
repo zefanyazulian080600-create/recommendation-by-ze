@@ -122,7 +122,7 @@ export function AiFormAssistant({
                 Ze&apos;s AI Local Co-Pilot
               </h3>
               <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-mono text-[10px] font-bold border border-emerald-500/20">
-                100% Offline & Gratis
+                100% Gratis & Instan
               </span>
             </div>
             <p className="text-[11px] text-white/50">

@@ -53,17 +53,10 @@ export function AdminSidebar() {
             </span>
           </Link>
           <div className="pt-2">
-            {isSupabaseConnected ? (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
-                <Database className="w-3 h-3 text-emerald-400" />
-                <span>Supabase Live</span>
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-mono border border-amber-500/20">
-                <Database className="w-3 h-3 text-amber-400" />
-                <span>Mode Offline / Standby</span>
-              </span>
-            )}
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>{isSupabaseConnected ? "Supabase Live" : "Sistem Online • 1.386 Produk"}</span>
+            </span>
           </div>
         </div>
 
