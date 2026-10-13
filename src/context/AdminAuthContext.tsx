@@ -141,31 +141,37 @@ export function AdminAuthProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    // Owner master passcode check
-    // Can be configured via NEXT_PUBLIC_ADMIN_PASSWORD, defaults to zeowner2026 or adminze2026
-    const acceptedPasscodes = [
-      process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
-      "zeowner2026",
-      "adminze2026",
-      "ze2026",
-    ].filter(Boolean);
+    // Secure server-side owner authentication
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: pass.trim(), email: targetEmail }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setIsAuthenticated(true);
+        setUserEmail(targetEmail);
+        sessionStorage.setItem(
+          ADMIN_SESSION_STORAGE_KEY,
+          JSON.stringify({ email: targetEmail, loginTime: Date.now() })
+        );
+        setIsLoading(false);
+        return { success: true };
+      }
 
-    if (acceptedPasscodes.includes(pass.trim())) {
-      setIsAuthenticated(true);
-      setUserEmail(targetEmail);
-      sessionStorage.setItem(
-        ADMIN_SESSION_STORAGE_KEY,
-        JSON.stringify({ email: targetEmail, loginTime: Date.now() })
-      );
       setIsLoading(false);
-      return { success: true };
+      return {
+        success: false,
+        error: data.error || "Kata sandi salah. Area ini diproteksi khusus untuk pemilik.",
+      };
+    } catch (err: any) {
+      setIsLoading(false);
+      return {
+        success: false,
+        error: "Gagal memverifikasi kata sandi (koneksi terputus).",
+      };
     }
-
-    setIsLoading(false);
-    return {
-      success: false,
-      error: "Kata sandi salah. Area ini diproteksi khusus untuk pemilik Recommendation by Ze.",
-    };
   };
 
   const logout = async () => {
