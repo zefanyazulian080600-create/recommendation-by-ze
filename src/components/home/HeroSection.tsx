@@ -178,22 +178,22 @@ export function HeroSection({ settings }: HeroSectionProps) {
               </div>
 
               {/* Floating Badge Top Right */}
-              <div className="absolute -top-3 -right-3 bg-[#12131A] p-3 rounded-xl shadow-2xl border border-white/15 flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
-                  <Sparkles className="w-4 h-4" />
+              <div className="absolute top-2 right-2 sm:-top-3 sm:-right-3 bg-[#12131A] p-2 sm:p-3 rounded-xl shadow-2xl border border-white/15 flex items-center gap-2 sm:gap-2.5">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+                  <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
                 <div className="text-left">
-                  <p className="text-[10px] text-zinc-400">Kurasi Pilihan</p>
-                  <p className="text-xs font-bold text-white">Anti Zonk ✦</p>
+                  <p className="text-[9px] sm:text-[10px] text-zinc-400">Kurasi Pilihan</p>
+                  <p className="text-[11px] sm:text-xs font-bold text-white">Anti Zonk ✦</p>
                 </div>
               </div>
 
               {/* Floating Badge Bottom Left */}
-              <div className="absolute -bottom-3 -left-3 bg-[#12131A] p-3 rounded-xl shadow-2xl border border-white/15 flex items-center gap-2.5">
-                <span className="text-xl">🎧</span>
+              <div className="absolute bottom-2 left-2 sm:-bottom-3 sm:-left-3 bg-[#12131A] p-2 sm:p-3 rounded-xl shadow-2xl border border-white/15 flex items-center gap-2 sm:gap-2.5">
+                <span className="text-base sm:text-xl">🎧</span>
                 <div className="text-left">
-                  <p className="text-[10px] text-zinc-400">Semua Kategori</p>
-                  <p className="text-xs font-bold text-white">Tech, Room, Care & Style</p>
+                  <p className="text-[9px] sm:text-[10px] text-zinc-400">Semua Kategori</p>
+                  <p className="text-[11px] sm:text-xs font-bold text-white">Tech, Room & Style</p>
                 </div>
               </div>
             </div>

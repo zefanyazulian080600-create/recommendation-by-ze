@@ -90,7 +90,7 @@ export function StoryHighlights() {
   return (
     <section className="py-6 sm:py-8 bg-[#090A0F] border-b border-white/10 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-2 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-2 pt-1 w-full">
           {highlights.map((item) => (
             <Link
               key={item.id}

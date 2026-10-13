@@ -215,7 +215,7 @@ export function HomeFeedInteractive({
         </div>
 
         {/* Dark & Clean Filter Pills Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-8 -mx-4 px-4 sm:mx-0 sm:px-0">
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-8 w-full">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (

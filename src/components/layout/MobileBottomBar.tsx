@@ -10,8 +10,8 @@ export function MobileBottomBar() {
   const pathname = usePathname();
   const { wishlistCount } = useWishlist();
 
-  // Don't show bottom bar inside admin pages
-  if (pathname.startsWith("/admin")) {
+  // Don't show bottom bar inside admin pages or product detail pages (which have dedicated checkout bar)
+  if (pathname.startsWith("/admin") || pathname.startsWith("/product/")) {
     return null;
   }
 

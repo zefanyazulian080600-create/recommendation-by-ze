@@ -119,7 +119,7 @@ export default async function RootLayout({
                 <AnnouncementBar message={settings.announcement_text} />
               )}
               <Navbar categories={categories} />
-              <main className="flex-1 pb-20 lg:pb-0">{children}</main>
+              <main className="flex-1 pb-20 lg:pb-0 w-full max-w-full overflow-x-hidden">{children}</main>
               <Footer />
               <MobileBottomBar />
               <LiveSpillTicker />

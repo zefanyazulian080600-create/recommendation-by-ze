@@ -79,14 +79,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
         {/* Top Badges Row */}
-        <div className="absolute top-3 inset-x-3 flex items-start justify-between pointer-events-none z-10 gap-2">
+        <div className="absolute top-2 inset-x-2 sm:top-3 sm:inset-x-3 flex items-start justify-between pointer-events-none z-10 gap-1.5 sm:gap-2">
           {/* Bio Spill Number + Badge */}
           <div className="flex flex-col gap-1 items-start pointer-events-auto">
             <div className="flex items-center gap-1.5 flex-wrap">
               {product.spill_number && (
                 <span
                   title={`Kode Racun Bio #${product.spill_number}`}
-                  className="px-2.5 py-0.5 rounded-md bg-black/80 backdrop-blur-md text-white font-mono text-[11px] font-bold border border-white/20 flex items-center gap-1 shadow-sm"
+                  className="px-2 sm:px-2.5 py-0.5 rounded-md bg-black/80 backdrop-blur-md text-white font-mono text-[10px] sm:text-[11px] font-bold border border-white/20 flex items-center gap-1 shadow-sm"
                 >
                   <span className="text-emerald-400 font-editorial">№</span>
                   <span>{String(product.spill_number).padStart(2, "0")}</span>
@@ -94,26 +94,26 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               )}
 
               {product.badge_label ? (
-                <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-bold text-[10px] border border-emerald-500/40 shadow-sm flex items-center gap-1">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-bold text-[9px] sm:text-[10px] border border-emerald-500/40 shadow-sm flex items-center gap-1">
                   <Sparkles className="w-2.5 h-2.5 text-emerald-400" />
                   <span>{product.badge_label}</span>
                 </span>
               ) : product.is_featured ? (
-                <span className="px-2 py-0.5 rounded-md bg-sky-500/20 text-sky-300 font-bold text-[10px] border border-sky-500/40 shadow-sm">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-md bg-sky-500/20 text-sky-300 font-bold text-[9px] sm:text-[10px] border border-sky-500/40 shadow-sm">
                   ★ Ze&apos;s Pick
                 </span>
               ) : null}
             </div>
 
             {discount && (
-              <span className="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[10px] font-bold border border-rose-500/40">
+              <span className="px-1.5 sm:px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[9px] sm:text-[10px] font-bold border border-rose-500/40">
                 -{discount}%
               </span>
             )}
           </div>
 
           {/* Top Right Action: Wishlist + Copy */}
-          <div className="pointer-events-auto flex items-center gap-1.5 relative z-20">
+          <div className="pointer-events-auto flex items-center gap-1 sm:gap-1.5 relative z-20">
             <button
               onClick={handleCopySpill}
               title={`Salin tautan spill No. #${product.spill_number || ""}`}
@@ -126,21 +126,21 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         </div>
 
         {/* Bottom Floating Info Over Media */}
-        <div className="absolute bottom-3 inset-x-3 flex items-center justify-between pointer-events-none z-10">
+        <div className="absolute bottom-2 inset-x-2 sm:bottom-3 sm:inset-x-3 flex items-center justify-between pointer-events-none z-10">
           {hasVideo ? (
-            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md text-white text-[10px] font-bold border border-white/20">
+            <div className="flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-black/85 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold border border-white/20">
               <Play className="w-3 h-3 fill-white" />
               <span>Video Try-On</span>
             </div>
           ) : (
-            <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-white text-[10px] font-bold border border-white/20">
+            <div className="flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full bg-black/75 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold border border-white/20">
               <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
               <span>4.9</span>
             </div>
           )}
 
           <span
-            className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${marketplaceMeta.borderClass}`}
+            className={`px-2 sm:px-2.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${marketplaceMeta.borderClass}`}
           >
             {marketplaceMeta.name}
           </span>
@@ -148,7 +148,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       </div>
 
       {/* Info Container */}
-      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3 bg-[#12131A] text-white">
+      <div className="p-3 sm:p-4 md:p-5 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3 bg-[#12131A] text-white">
         <div className="space-y-1.5">
           <div className="flex items-center justify-between gap-2">
             {product.category && (

@@ -24,6 +24,9 @@ html {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -33,7 +36,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
   touch-action: manipulation;
+}
+
+/* Prevent horizontal sway/shake on mobile viewports */
+html,
+body,
+main {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
 }
 
 /* Custom editorial typography utility */

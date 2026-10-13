@@ -105,8 +105,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
         {/* Main Product Showcase Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left: Media Gallery (6 cols on lg) */}
-          <div className="lg:col-span-6 sticky top-24">
+          {/* Left: Media Gallery (6 cols on lg, only sticky on desktop) */}
+          <div className="lg:col-span-6 lg:sticky lg:top-24">
             <MediaGallery media={product.media} productName={product.name} />
           </div>
 
