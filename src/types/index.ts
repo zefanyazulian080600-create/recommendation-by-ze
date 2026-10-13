@@ -16,6 +16,16 @@ export interface ProductMedia {
   sort_order: number;
 }
 
+export interface SubCategory {
+  id: string;
+  name: string;
+  slug: string;
+  parent_category_id: string;
+  icon?: string;
+  description?: string;
+  product_count?: number;
+}
+
 export interface Category {
   id: string;
   name: string;
@@ -26,6 +36,7 @@ export interface Category {
   sort_order: number;
   is_active: boolean;
   product_count?: number;
+  subcategories?: SubCategory[];
 }
 
 export interface Collection {
@@ -53,6 +64,8 @@ export interface Product {
   description: string;
   category_id: string;
   category?: Category;
+  sub_category_id?: string;
+  sub_category_name?: string;
   tags: string[];
   marketplace: Marketplace;
   affiliate_url: string;
@@ -101,6 +114,7 @@ export interface ClickEvent {
 
 export interface ProductFilterParams {
   category?: string;
+  subCategory?: string;
   marketplace?: string;
   search?: string;
   gender?: string;

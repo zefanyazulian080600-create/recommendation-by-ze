@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Metadata } from "next";
 import { FilterSidebar } from "@/components/product/FilterSidebar";
-import { ProductCard } from "@/components/product/ProductCard";
+import { ProductCatalogGrid } from "@/components/product/ProductCatalogGrid";
 import { RetroCatalogHeader } from "@/components/product/RetroCatalogHeader";
 import { MobileFilterButton } from "./MobileFilterButton";
 import { getCategories, getProducts } from "@/lib/data/store";
@@ -22,6 +22,34 @@ interface ProductsPageProps {
     sort?: string;
     price?: string;
   }>;
+}
+
+function toCardProduct(p: Product): Product {
+  return {
+    id: p.id,
+    name: p.name,
+    slug: p.slug,
+    short_description: p.short_description || "",
+    description: "",
+    category_id: p.category_id,
+    tags: p.tags?.slice(0, 3) || [],
+    marketplace: p.marketplace,
+    affiliate_url: p.affiliate_url,
+    price: p.price,
+    original_price: p.original_price,
+    price_note: p.price_note,
+    is_featured: p.is_featured,
+    is_trending: p.is_trending,
+    badge_label: p.badge_label,
+    spill_number: p.spill_number,
+    gender: p.gender,
+    status: p.status,
+    sort_order: p.sort_order,
+    click_count: p.click_count,
+    created_at: p.created_at,
+    updated_at: p.updated_at,
+    media: p.media?.slice(0, 1) || [],
+  };
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
@@ -45,6 +73,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
   const filterParams: ProductFilterParams = {
     category: params.category,
+    subCategory: params.subCategory || params.sub,
     marketplace: params.marketplace,
     search: params.search,
     gender: params.gender,
@@ -53,7 +82,18 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     sort: (params.sort as any) || "newest",
   };
 
-  const products = await getProducts(filterParams);
+  const rawProducts = await getProducts(filterParams);
+  const products = rawProducts.map(toCardProduct);
+
+  const activeSubSlug = (params.subCategory || params.sub)?.toLowerCase();
+  let activeSubObj: any = null;
+  for (const c of categories) {
+    const found = c.subcategories?.find((s) => s.slug === activeSubSlug || s.id === activeSubSlug);
+    if (found) {
+      activeSubObj = found;
+      break;
+    }
+  }
 
   // Active category display name
   const activeCategoryObj = categories.find(
@@ -68,10 +108,12 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           <div className="flex items-center justify-between">
             <div>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
-                Katalog Rekomendasi
+                {activeSubObj ? `Sub-Kategori Terkurasi` : `Katalog Rekomendasi`}
               </span>
               <h1 className="font-sans text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
-                {activeCategoryObj
+                {activeSubObj
+                  ? `${activeSubObj.icon ? activeSubObj.icon + ' ' : ''}${activeSubObj.name}`
+                  : activeCategoryObj
                   ? activeCategoryObj.name
                   : params.gender === "men"
                   ? "Koleksi & Outfit Cowok 🛹"
@@ -117,36 +159,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             </Suspense>
           </div>
 
-          {/* Product Grid Area */}
+          {/* Product Grid Area with Snappy Pagination */}
           <div className="flex-1 w-full">
-            {products.length === 0 ? (
-              <div className="p-12 text-center bg-[#12131A] rounded-2xl border border-white/10 space-y-4 shadow-2xl">
-                <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 text-white flex items-center justify-center mx-auto text-2xl">
-                  🔍
-                </div>
-                <h3 className="font-sans text-xl font-bold text-white">
-                  Tidak Ada Produk Yang Cocok
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-400 max-w-sm mx-auto">
-                  Coba ubah kata kunci pencarian atau sesuaikan filter marketplace dan kategori yang
-                  kamu pilih.
-                </p>
-                <div className="pt-2">
-                  <a
-                    href="/products"
-                    className="inline-block px-6 py-2.5 rounded-full bg-white text-black text-xs font-bold hover:bg-zinc-200 transition-colors shadow-md"
-                  >
-                    Reset Semua Filter
-                  </a>
-                </div>
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            )}
+            <ProductCatalogGrid products={products} />
           </div>
         </div>
       </div>

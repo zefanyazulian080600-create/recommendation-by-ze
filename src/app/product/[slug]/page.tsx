@@ -17,6 +17,7 @@ import { ShareButton } from "@/components/product/ShareButton";
 import { AskBestieButton } from "@/components/product/AskBestieButton";
 import { MobileStickyCheckoutBar } from "@/components/product/MobileStickyCheckoutBar";
 import { ProductCard } from "@/components/product/ProductCard";
+import { ZeCuratorReview } from "@/components/product/ZeCuratorReview";
 import {
   getProductBySlug,
   getRelatedProducts,
@@ -54,9 +55,11 @@ export async function generateMetadata({
   };
 }
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const products = await getProducts({});
-  return products.map((p) => ({ slug: p.slug }));
+  return products.slice(0, 24).map((p) => ({ slug: p.slug }));
 }
 
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
@@ -241,15 +244,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               </div>
             )}
 
-            {/* Full Editorial Description */}
-            <div className="pt-4 space-y-3 border-t border-white/10">
-              <h3 className="font-sans text-lg font-bold text-white">
-                Ulasan & Catatan Kurasi Ze
-              </h3>
-              <div className="text-xs sm:text-sm text-zinc-300 leading-relaxed whitespace-pre-line">
-                {product.description}
-              </div>
-            </div>
+            {/* Full Editorial Description & Curator Review */}
+            <ZeCuratorReview product={product} />
 
             {/* Tags Chips */}
             {product.tags && product.tags.length > 0 && (

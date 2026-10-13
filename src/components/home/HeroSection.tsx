@@ -16,10 +16,10 @@ export function HeroSection({ settings }: HeroSectionProps) {
   const headline = settings?.hero_headline || "Kurasi Racun Belanja Online Shop Paling Worth It.";
   const subheadline =
     settings?.hero_subheadline ||
-    "Rekomendasi terbaik belanja online shop pilihan Ze (Shopee, Tokopedia, TikTok Shop, Lazada): gadget & desk setup, kamar estetik, skincare viral, daily wear, sampai barang unik terkurasi 100% independen.";
+    "Rekomendasi terbaik belanja online shop pilihan Ze: outfit streetwear & kalcer, kemeja boxy, batik modern, tumbler aesthetic, parfum, sampai racun viral Shopee terkurasi 100% independen.";
   const heroImage =
     settings?.hero_image ||
-    "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200&auto=format&fit=crop";
+    "https://down-id.img.susercontent.com/file/id-11134207-7rbke-ma7vs1c79of1c0";
 
   return (
     <section className="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24 bg-[#090A0F] text-white">

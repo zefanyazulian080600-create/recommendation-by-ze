@@ -10,10 +10,10 @@ import {
   Lock,
   ChevronRight,
   Flame,
-  Laptop,
-  Home,
   Tag,
-  Zap,
+  Shirt,
+  Footprints,
+  Sparkle,
 } from "lucide-react";
 import { useWishlist } from "@/context/WishlistContext";
 import { useUser } from "@/context/UserContext";
@@ -38,21 +38,21 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
         onClick={onClose}
       />
 
-      {/* Drawer */}
-      <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#090A0F] border-r border-white/10 shadow-2xl flex flex-col z-10 overflow-y-auto animate-slideRight text-white">
+      {/* Drawer (High Contrast Dark Slate) */}
+      <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#10121C] border-r-2 border-white/20 shadow-2xl flex flex-col z-10 overflow-y-auto animate-slideRight text-white">
         {/* Header */}
-        <div className="p-5 border-b border-white/10 flex items-center justify-between">
+        <div className="p-5 border-b border-white/15 flex items-center justify-between bg-[#151724]">
           <Link href="/" onClick={onClose} className="flex flex-col">
-            <span className="font-editorial text-xl font-medium tracking-tight text-white">
+            <span className="font-editorial text-xl font-bold tracking-tight text-white">
               Recommendation
             </span>
-            <span className="font-mono text-[9px] font-bold tracking-[0.25em] uppercase text-emerald-400">
+            <span className="font-mono text-[10px] font-extrabold tracking-[0.25em] uppercase text-emerald-400">
               by Ze • Curated Archive
             </span>
           </Link>
           <button
             onClick={onClose}
-            className="p-2 -mr-2 rounded-xl text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-2 -mr-2 rounded-xl text-zinc-200 hover:text-white hover:bg-white/10 transition-colors"
             aria-label="Tutup menu"
           >
             <X className="w-5 h-5" />
@@ -62,14 +62,14 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
         {/* Content */}
         <div className="p-5 space-y-6 flex-1">
           {/* User VIP Greeting Card */}
-          <div className="p-3.5 rounded-2xl bg-[#12131A] border border-white/15 flex items-center justify-between shadow-lg">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-bold text-xs text-emerald-400">
+          <div className="p-4 rounded-2xl bg-[#181A28] border-2 border-white/15 flex items-center justify-between shadow-lg">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center font-extrabold text-sm text-emerald-400">
                 {userName ? userName.charAt(0).toUpperCase() : "✨"}
               </div>
               <div>
-                <p className="text-[10px] font-mono font-bold uppercase text-zinc-400">VIP Access</p>
-                <p className="text-xs font-bold text-white truncate max-w-[120px]">
+                <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-400">VIP Access</p>
+                <p className="text-sm font-bold text-white truncate max-w-[130px]">
                   {userName ? `${userName} (${userVibe || "Vibe"})` : "Spill Nama Kamu"}
                 </p>
               </div>
@@ -79,7 +79,7 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
                 onClose();
                 openModal();
               }}
-              className="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 transition-colors underline"
+              className="text-xs font-extrabold text-emerald-400 hover:text-emerald-300 transition-colors underline underline-offset-2"
             >
               {userName ? "Ubah" : "Isi ✨"}
             </button>
@@ -89,7 +89,7 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
           <Link
             href="/wishlist"
             onClick={onClose}
-            className="flex items-center justify-between p-3 rounded-xl bg-[#12131A] border border-white/10 text-white font-medium text-sm transition-all hover:border-white/20"
+            className="flex items-center justify-between p-3.5 rounded-xl bg-[#181A28] border border-white/15 text-white font-bold text-sm transition-all hover:border-white/30"
           >
             <div className="flex items-center gap-2.5">
               <Heart className="w-4 h-4 text-rose-500 fill-rose-500/20" />
@@ -102,139 +102,349 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
 
           {/* Primary Navigation */}
           <div>
-            <h4 className="text-[11px] font-mono font-bold text-zinc-500 uppercase tracking-wider mb-2">
-              Jelajahi Rekomendasi
+            <h4 className="text-xs font-black text-emerald-400 uppercase tracking-wider mb-2.5">
+              Jelajahi Menu Utama
             </h4>
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               <Link
                 href="/products"
                 onClick={onClose}
-                className="flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-semibold text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between py-2.5 px-3.5 rounded-xl bg-white/[0.04] text-sm font-bold text-white hover:bg-white/10 transition-colors border border-white/5"
               >
-                <span>Semua Produk Ol Shop</span>
-                <ChevronRight className="w-4 h-4 text-zinc-500" />
+                <span>Katalog Semua Produk Ol Shop</span>
+                <ChevronRight className="w-4 h-4 text-zinc-300" />
               </Link>
               <Link
                 href="/products?sort=trending"
                 onClick={onClose}
-                className="flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-semibold text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between py-2.5 px-3.5 rounded-xl bg-white/[0.04] text-sm font-bold text-white hover:bg-white/10 transition-colors border border-white/5"
               >
                 <div className="flex items-center gap-2">
                   <Flame className="w-4 h-4 text-[#EE4D2D]" />
                   <span>Viral TikTok & FYP</span>
                 </div>
-                <ChevronRight className="w-4 h-4 text-zinc-500" />
+                <ChevronRight className="w-4 h-4 text-zinc-300" />
               </Link>
               <Link
                 href="/collections"
                 onClick={onClose}
-                className="flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-semibold text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between py-2.5 px-3.5 rounded-xl bg-white/[0.04] text-sm font-bold text-white hover:bg-white/10 transition-colors border border-white/5"
               >
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-emerald-400" />
-                  <span>Koleksi Tematik</span>
+                  <span>Koleksi Tematik Spesial</span>
                 </div>
-                <ChevronRight className="w-4 h-4 text-zinc-500" />
+                <ChevronRight className="w-4 h-4 text-zinc-300" />
               </Link>
             </div>
           </div>
 
-          {/* Universal Categories */}
+          {/* Group 1: Fashion Pria */}
           <div>
-            <h4 className="text-[11px] font-mono font-bold text-zinc-500 uppercase tracking-wider mb-2">
-              Kategori Online Shop
-            </h4>
-            <div className="space-y-1">
-              <Link
-                href="/products?category=desk-setup-gadget"
-                onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
-              >
-                <span>🎧 Desk Setup & Gadget</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+            <h4 className="text-xs font-black text-emerald-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <Shirt className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Outfit Pria</span>
+              </span>
+              <Link href="/products?category=outfit-pria" onClick={onClose} className="text-[10px] text-zinc-300 hover:text-white underline">
+                Semua Pria
               </Link>
+            </h4>
+            <div className="grid grid-cols-2 gap-1.5 text-xs font-bold">
+              <Link
+                href="/products?subCategory=pria-kemeja"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👔 Kemeja Pria
+              </Link>
+              <Link
+                href="/products?subCategory=pria-kaos"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👕 Kaos Pria
+              </Link>
+              <Link
+                href="/products?subCategory=pria-jaket"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🧥 Jaket & Hoodie
+              </Link>
+              <Link
+                href="/products?subCategory=pria-celana"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👖 Celana Pria
+              </Link>
+            </div>
+          </div>
+
+          {/* Group 2: Fashion Wanita */}
+          <div>
+            <h4 className="text-xs font-black text-pink-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <Shirt className="w-3.5 h-3.5 text-pink-400" />
+                <span>Fashion Wanita</span>
+              </span>
+              <Link href="/products?category=outfit-wanita" onClick={onClose} className="text-[10px] text-zinc-300 hover:text-white underline">
+                Semua Cewek
+              </Link>
+            </h4>
+            <div className="grid grid-cols-2 gap-1.5 text-xs font-bold">
+              <Link
+                href="/products?subCategory=wanita-blouse"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👚 Blouse & Kemeja
+              </Link>
+              <Link
+                href="/products?subCategory=wanita-croptop"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👕 Crop Top
+              </Link>
+              <Link
+                href="/products?subCategory=wanita-knitwear"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🧶 Cardigan & Knit
+              </Link>
+              <Link
+                href="/products?subCategory=wanita-dress"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👗 Dress & One Set
+              </Link>
+              <Link
+                href="/products?subCategory=wanita-rok"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👗 Rok & Skirt Cantik
+              </Link>
+              <Link
+                href="/products?subCategory=wanita-celana"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👖 Celana & Kulot
+              </Link>
+            </div>
+          </div>
+
+          {/* Group 3: Muslimah & Sleepwear */}
+          <div>
+            <h4 className="text-xs font-black text-amber-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <Sparkle className="w-3.5 h-3.5 text-amber-400" />
+                <span>Muslimah & Tidur</span>
+              </span>
+            </h4>
+            <div className="grid grid-cols-2 gap-1.5 text-xs font-bold">
+              <Link
+                href="/products?subCategory=muslim-gamis"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🌙 Gamis & Abaya
+              </Link>
+              <Link
+                href="/products?subCategory=muslim-hijab"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🧕 Hijab & Pashmina
+              </Link>
+              <Link
+                href="/products?subCategory=sleep-piyama"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                😴 Piyama Rayon
+              </Link>
+              <Link
+                href="/products?subCategory=sleep-daster"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🩳 Daster Santai
+              </Link>
+            </div>
+          </div>
+
+          {/* Group 4: Tas & Dompet (Dipisah!) */}
+          <div>
+            <h4 className="text-xs font-black text-sky-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <Footprints className="w-3.5 h-3.5 text-sky-400" />
+                <span>Tas & Dompet (Dipisah)</span>
+              </span>
+              <Link href="/products?category=bags-wallets" onClick={onClose} className="text-[10px] text-zinc-300 hover:text-white underline">
+                Semua Tas
+              </Link>
+            </h4>
+            <div className="grid grid-cols-2 gap-1.5 text-xs font-bold">
+              <Link
+                href="/products?subCategory=tas-ransel"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🎒 Ransel Laptop
+              </Link>
+              <Link
+                href="/products?subCategory=tas-sling"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👜 Slingbag
+              </Link>
+              <Link
+                href="/products?subCategory=tas-totebag"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🛍️ Totebag
+              </Link>
+              <Link
+                href="/products?subCategory=tas-dompet"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👛 Dompet Kulit
+              </Link>
+            </div>
+          </div>
+
+          {/* Group 5: Sepatu & Sandal (Dipisah!) */}
+          <div>
+            <h4 className="text-xs font-black text-sky-300 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <Footprints className="w-3.5 h-3.5 text-sky-300" />
+                <span>Sepatu & Sandal (Dipisah)</span>
+              </span>
+              <Link href="/products?category=shoes-footwear" onClick={onClose} className="text-[10px] text-zinc-300 hover:text-white underline">
+                Semua Sepatu
+              </Link>
+            </h4>
+            <div className="grid grid-cols-2 gap-1.5 text-xs font-bold">
+              <Link
+                href="/products?subCategory=sepatu-sneakers"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👟 Sneakers Kasual
+              </Link>
+              <Link
+                href="/products?subCategory=sepatu-sandal"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                🩴 Sandal Slop EVA
+              </Link>
+              <Link
+                href="/products?subCategory=sepatu-formal"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👞 Sepatu Formal
+              </Link>
+              <Link
+                href="/products?subCategory=sepatu-heels"
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                👠 Heels & Flat Shoes
+              </Link>
+            </div>
+          </div>
+
+          {/* Group 6: Ol Shop, Rumah & Lifestyle */}
+          <div>
+            <h4 className="text-xs font-black text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span>🏠 Rumah, Snack & Lifestyle</span>
+            </h4>
+            <div className="space-y-1 text-xs font-bold">
               <Link
                 href="/products?category=aesthetic-room"
                 onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
               >
-                <span>🏠 Kamar & Kost Estetik</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+                <span>🏠 Perlengkapan Rumah & Kost</span>
+                <ChevronRight className="w-4 h-4 text-zinc-400" />
               </Link>
               <Link
-                href="/products?category=skincare-grooming"
+                href="/products?category=food-snack"
                 onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
               >
-                <span>🧴 Skincare & Grooming</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+                <span>🍿 Camilan Pedas & Basreng</span>
+                <ChevronRight className="w-4 h-4 text-zinc-400" />
               </Link>
               <Link
-                href="/products?category=outfit-pria"
+                href="/products?category=accessories-jewelry"
                 onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
               >
-                <span>🛹 Outfit Pria (Bro Look)</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+                <span>💍 Aksesoris & Perhiasan Titanium</span>
+                <ChevronRight className="w-4 h-4 text-zinc-400" />
               </Link>
               <Link
-                href="/products?category=outfit-wanita"
+                href="/products?category=skincare-beauty"
                 onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
               >
-                <span>👗 Outfit Wanita</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+                <span>✨ Skincare & Glowing</span>
+                <ChevronRight className="w-4 h-4 text-zinc-400" />
               </Link>
               <Link
-                href="/products?category=outfit-unisex"
+                href="/products?category=parfum-fragrance"
                 onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-zinc-300 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between p-2 rounded-xl bg-white/[0.04] text-zinc-100 hover:text-white hover:bg-white/10 transition-colors"
               >
-                <span>🧢 Unisex & Streetwear</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
-              </Link>
-              <Link
-                href="/products?price=under-50k"
-                onClick={onClose}
-                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm text-emerald-400 hover:text-emerald-300 hover:bg-white/5 transition-colors font-semibold"
-              >
-                <span>💸 Super Hemat Under 50k</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
+                <span>🌸 Parfum Mewah Tahan Lama</span>
+                <ChevronRight className="w-4 h-4 text-zinc-400" />
               </Link>
             </div>
           </div>
 
           {/* Shop by Marketplace */}
           <div>
-            <h4 className="text-[11px] font-mono font-bold text-zinc-500 uppercase tracking-wider mb-2">
+            <h4 className="text-xs font-black text-emerald-400 uppercase tracking-wider mb-2.5">
               Berdasarkan Marketplace
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <Link
                 href="/products?marketplace=shopee"
                 onClick={onClose}
-                className="p-2.5 rounded-xl border border-[#EE4D2D]/30 bg-[#EE4D2D]/10 text-[#EE4D2D] font-bold text-center hover:bg-[#EE4D2D]/20 transition-colors"
+                className="p-2.5 rounded-xl border border-[#EE4D2D]/40 bg-[#EE4D2D]/15 text-[#EE4D2D] font-bold text-center hover:bg-[#EE4D2D]/25 transition-colors"
               >
                 Shopee Finds
               </Link>
               <Link
                 href="/products?marketplace=tokopedia"
                 onClick={onClose}
-                className="p-2.5 rounded-xl border border-[#03AC0E]/30 bg-[#03AC0E]/10 text-[#03AC0E] font-bold text-center hover:bg-[#03AC0E]/20 transition-colors"
+                className="p-2.5 rounded-xl border border-[#03AC0E]/40 bg-[#03AC0E]/15 text-[#03AC0E] font-bold text-center hover:bg-[#03AC0E]/25 transition-colors"
               >
                 Tokopedia Finds
               </Link>
               <Link
                 href="/products?marketplace=tiktok"
                 onClick={onClose}
-                className="p-2.5 rounded-xl border border-white/20 bg-white/10 text-white font-bold text-center hover:bg-white/15 transition-colors"
+                className="p-2.5 rounded-xl border border-white/30 bg-white/15 text-white font-bold text-center hover:bg-white/25 transition-colors"
               >
                 TikTok Shop
               </Link>
               <Link
                 href="/products?marketplace=lazada"
                 onClick={onClose}
-                className="p-2.5 rounded-xl border border-[#38BDF8]/30 bg-[#38BDF8]/10 text-[#38BDF8] font-bold text-center hover:bg-[#38BDF8]/20 transition-colors"
+                className="p-2.5 rounded-xl border border-[#38BDF8]/40 bg-[#38BDF8]/15 text-[#38BDF8] font-bold text-center hover:bg-[#38BDF8]/25 transition-colors"
               >
                 Lazada Finds
               </Link>
@@ -243,18 +453,18 @@ export function MobileNav({ isOpen, onClose, categories = [] }: MobileNavProps) 
         </div>
 
         {/* Footer info in drawer */}
-        <div className="p-5 border-t border-white/10 bg-[#12131A] space-y-3">
+        <div className="p-5 border-t border-white/15 bg-[#151724] space-y-3">
           <Link
             href="/admin"
             onClick={onClose}
-            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-white text-xs font-bold text-black hover:bg-zinc-200 transition-colors shadow-md"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-white text-xs font-extrabold text-black hover:bg-zinc-200 transition-colors shadow-md"
           >
             <Lock className="w-3.5 h-3.5 text-black" />
             <span>Admin CMS Dashboard</span>
           </Link>
 
-          <p className="text-[10px] text-center text-zinc-500 font-mono">
-            Recommendation by Ze • Curated Online Shop Affiliate
+          <p className="text-[11px] text-center text-zinc-300 font-mono font-medium">
+            Recommendation by Ze • Curated Online Shop Archive
           </p>
         </div>
       </div>

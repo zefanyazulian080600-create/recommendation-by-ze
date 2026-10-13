@@ -81,12 +81,18 @@ export async function getCategories(): Promise<Category[]> {
       console.warn("Supabase categories query fallback:", e);
     }
   }
-  // Attach product counts
+  // Attach product counts to categories and subcategories
   return localCategories.map((cat) => ({
     ...cat,
     product_count: localProducts.filter(
       (p) => p.category_id === cat.id && p.status === "published"
     ).length,
+    subcategories: cat.subcategories?.map((sub) => ({
+      ...sub,
+      product_count: localProducts.filter(
+        (p) => p.sub_category_id === sub.id && p.status === "published"
+      ).length,
+    })),
   }));
 }
 
@@ -169,13 +175,35 @@ export async function getProducts(
     };
   });
 
-  // Category filter
+  // Category filter (handles parent category slug or aliases like 'bags-shoes', 'tas', 'sepatu')
   if (params.category) {
     const catSlug = params.category.toLowerCase();
-    const cat = localCategories.find((c) => c.slug === catSlug || c.id === catSlug);
-    if (cat) {
-      list = list.filter((p) => p.category_id === cat.id);
+    if (catSlug === "bags-shoes") {
+      list = list.filter((p) => p.category_id === "cat-tas-dompet" || p.category_id === "cat-sepatu-sandal");
+    } else if (catSlug === "tas" || catSlug === "tas-dompet" || catSlug === "bags-wallets" || catSlug === "cat-tas-dompet") {
+      list = list.filter((p) => p.category_id === "cat-tas-dompet");
+    } else if (catSlug === "sepatu" || catSlug === "sepatu-sandal" || catSlug === "shoes-footwear" || catSlug === "cat-sepatu-sandal") {
+      list = list.filter((p) => p.category_id === "cat-sepatu-sandal");
+    } else if (catSlug === "rumah" || catSlug === "aesthetic-room" || catSlug === "perlengkapan-rumah" || catSlug === "cat-aesthetic-room") {
+      list = list.filter((p) => p.category_id === "cat-aesthetic-room");
+    } else if (catSlug === "snack" || catSlug === "food-snack" || catSlug === "makanan-snack" || catSlug === "cat-food-snack") {
+      list = list.filter((p) => p.category_id === "cat-food-snack");
+    } else {
+      const cat = localCategories.find((c) => c.slug === catSlug || c.id === catSlug);
+      if (cat) {
+        list = list.filter((p) => p.category_id === cat.id);
+      }
     }
+  }
+
+  // SubCategory filter (e.g. 'pria-kemeja', 'pria-kaos', 'tas-ransel', 'sepatu-sneakers', etc.)
+  if (params.subCategory) {
+    const subSlug = params.subCategory.toLowerCase();
+    list = list.filter(
+      (p) =>
+        (p.sub_category_id && p.sub_category_id.toLowerCase() === subSlug) ||
+        (p.sub_category_name && p.sub_category_name.toLowerCase().includes(subSlug))
+    );
   }
 
   // Marketplace filter
@@ -397,4 +425,24 @@ export async function getAnalyticsSummary() {
     totalClicks,
     topProducts,
   };
+}
+
+export async function addBatchProducts(newProducts: Product[]): Promise<{ added: number; total: number }> {
+  const existingIds = new Set(localProducts.map((p) => p.id));
+  const uniqueNew = newProducts.filter((p) => !existingIds.has(p.id));
+
+  // Prepend new products to memory
+  localProducts = [...uniqueNew, ...localProducts];
+
+  // Persist to Supabase if configured
+  if (isSupabaseConfigured() && uniqueNew.length > 0) {
+    try {
+      const supabase = createClient();
+      await supabase.from("products").upsert(uniqueNew);
+    } catch (e) {
+      console.warn("Supabase batch insert fallback:", e);
+    }
+  }
+
+  return { added: uniqueNew.length, total: localProducts.length };
 }

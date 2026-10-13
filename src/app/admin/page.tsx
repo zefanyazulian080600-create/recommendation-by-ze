@@ -16,11 +16,21 @@ import {
   Share2,
 } from "lucide-react";
 import { getAnalyticsSummary, getProducts } from "@/lib/data/store";
+import { getVisitorAnalytics } from "@/lib/data/visitor-store";
 import { formatRupiah, getMarketplaceMeta } from "@/lib/utils";
 
 export default async function AdminDashboardPage() {
-  const analytics = await getAnalyticsSummary();
-  const allProducts = await getProducts({}, true);
+  const [analytics, allProducts, visitorAnalytics] = await Promise.all([
+    getAnalyticsSummary(),
+    getProducts({}, true),
+    getVisitorAnalytics(),
+  ]);
+
+  // Randomize preview items across all categories instead of only newly uploaded batch
+  const previewProducts =
+    analytics.topProducts.some((p) => (p.click_count || 0) > 0)
+      ? analytics.topProducts
+      : [...allProducts].sort(() => 0.5 - Math.random()).slice(0, 8);
 
   const stats = [
     {
@@ -74,11 +84,18 @@ export default async function AdminDashboardPage() {
 
         <div className="flex items-center gap-2.5 flex-wrap">
           <Link
+            href="/admin/import"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 text-black text-xs sm:text-sm font-bold hover:bg-emerald-400 transition-all shadow-md active:scale-95"
+          >
+            <Sparkles className="w-4 h-4" />
+            <span>Import CSV/Excel Shopee</span>
+          </Link>
+          <Link
             href="/admin/products/new"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black text-xs sm:text-sm font-bold hover:bg-zinc-200 transition-all shadow-md active:scale-95"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black text-xs sm:text-sm font-bold hover:bg-zinc-200 transition-all shadow-md active:scale-95"
           >
             <PlusCircle className="w-4 h-4 text-emerald-600" />
-            <span>+ Tambah Produk Baru</span>
+            <span>+ Tambah Manual</span>
           </Link>
           <Link
             href="/"
@@ -163,6 +180,69 @@ export default async function AdminDashboardPage() {
         </Link>
       </div>
 
+      {/* Real-time Visitor Location Snapshot Card */}
+      <div className="p-6 rounded-2xl bg-gradient-to-r from-[#141724] via-[#12141F] to-[#141724] border border-white/10 shadow-2xl space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold text-base">
+              📍
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="font-sans text-base font-bold text-white">
+                  Lokasi Pengunjung Website Terkini
+                </h3>
+                <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-bold animate-pulse">
+                  ● LIVE TRACKING
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                Pengunjung aktif saat ini tersebar dari berbagai kota di Indonesia.
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/admin/analytics"
+            className="text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-1.5 self-start sm:self-auto underline underline-offset-4"
+          >
+            <span>Buka Pantauan Lokasi Lengkap</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        {/* Quick Location Pills */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          {visitorAnalytics.topCities.slice(0, 4).map((c, idx) => (
+            <div key={idx} className="p-3 rounded-xl bg-white/[0.03] border border-white/5 space-y-0.5">
+              <span className="text-[10px] text-zinc-400 font-mono block">Kota #{idx + 1}</span>
+              <span className="font-bold text-white text-xs block truncate">{c.city}</span>
+              <span className="text-[10px] text-emerald-400 font-mono">{c.percentage}% traffic ({c.count}x)</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Recent 3 visits stream */}
+        <div className="space-y-1.5 pt-1">
+          {visitorAnalytics.recentLogs.slice(0, 3).map((log) => (
+            <div
+              key={log.id}
+              className="flex items-center justify-between p-2.5 rounded-xl bg-black/40 border border-white/5 text-xs text-zinc-300"
+            >
+              <div className="flex items-center gap-2 truncate">
+                <span>{log.flag}</span>
+                <span className="font-bold text-white">{log.city}</span>
+                <span className="text-zinc-500 text-[11px] hidden sm:inline">• {log.device}</span>
+                <span className="text-zinc-500 text-[11px] truncate max-w-[200px]">sedang melihat {log.page}</span>
+              </div>
+              <span className="text-[10px] text-emerald-400 font-mono shrink-0">
+                {new Date(log.timestamp).toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" })}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Top Clicked Products Table with Bio Spill Numbers */}
       <div className="p-6 sm:p-8 rounded-2xl bg-[#12131A] border border-white/10 shadow-2xl space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -201,7 +281,7 @@ export default async function AdminDashboardPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
-              {analytics.topProducts.map((p, idx) => {
+              {previewProducts.map((p, idx) => {
                 const mpMeta = getMarketplaceMeta(p.marketplace);
                 const cover = p.media?.find((m) => m.is_cover) || p.media?.[0];
                 return (

@@ -19,7 +19,7 @@ export function AnnouncementBar({
   if (!isVisible || !message) return null;
 
   return (
-    <div className="bg-[#12131A] text-zinc-300 text-xs font-medium py-2 px-4 border-b border-white/10 transition-all">
+    <div className="bg-[#141624] text-zinc-100 text-xs sm:text-sm font-semibold py-2 px-4 border-b border-white/15 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
         <div className="flex-1 flex items-center justify-center gap-2 text-center flex-wrap">
           <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse flex-shrink-0" />

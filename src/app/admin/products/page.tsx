@@ -123,13 +123,22 @@ export default function AdminProductsPage() {
           </p>
         </div>
 
-        <Link
-          href="/admin/products/new"
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-black text-xs sm:text-sm font-bold hover:bg-emerald-400 hover:text-black transition-all shadow-md self-start sm:self-auto"
-        >
-          <PlusCircle className="w-4 h-4" />
-          <span>Tambah Produk Baru</span>
-        </Link>
+        <div className="flex items-center gap-3 flex-wrap">
+          <Link
+            href="/admin/import"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-emerald-500 text-black text-xs sm:text-sm font-bold hover:bg-emerald-400 transition-all shadow-md self-start sm:self-auto"
+          >
+            <Sparkles className="w-4 h-4" />
+            <span>Import Otomatis CSV/Excel</span>
+          </Link>
+          <Link
+            href="/admin/products/new"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-black text-xs sm:text-sm font-bold hover:bg-zinc-200 transition-all shadow-md self-start sm:self-auto"
+          >
+            <PlusCircle className="w-4 h-4" />
+            <span>Tambah Manual</span>
+          </Link>
+        </div>
       </div>
 
       {/* Filter and Search Bar */}
@@ -247,8 +256,15 @@ export default function AdminProductsPage() {
                         </div>
                       </td>
 
-                      {/* Category */}
-                      <td className="py-3.5 px-3 text-white/70">{categoryName}</td>
+                      {/* Category & Sub-Category */}
+                      <td className="py-3.5 px-3">
+                        <span className="text-white/80 font-medium block text-xs">{categoryName}</span>
+                        {p.sub_category_name && (
+                          <span className="text-[10px] text-emerald-400 font-mono block mt-0.5">
+                            ↳ {p.sub_category_name}
+                          </span>
+                        )}
+                      </td>
 
                       {/* Marketplace */}
                       <td className="py-3.5 px-3">

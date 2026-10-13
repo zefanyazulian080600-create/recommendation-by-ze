@@ -10,8 +10,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
 import { LiveSpillTicker } from "@/components/layout/LiveSpillTicker";
-import { LofiAmbiencePlayer } from "@/components/layout/LofiAmbiencePlayer";
+import { Suspense } from "react";
 import { getCategories, getSiteSettings } from "@/lib/data/store";
+import { VisitorTracker } from "@/components/analytics/VisitorTracker";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -122,8 +123,10 @@ export default async function RootLayout({
               <Footer />
               <MobileBottomBar />
               <LiveSpillTicker />
-              <LofiAmbiencePlayer />
               <WelcomeOnboardingModal />
+              <Suspense fallback={null}>
+                <VisitorTracker />
+              </Suspense>
             </UserProvider>
           </WishlistProvider>
         </ToastProvider>

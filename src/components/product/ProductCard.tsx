@@ -23,7 +23,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
     product.media?.find((m) => m.is_cover) ||
     product.media?.[0] || {
       public_url:
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://down-id.img.susercontent.com/file/id-11134207-7rbke-ma7vs1c79of1c0",
       alt_text: product.name,
       media_type: "image",
     };
@@ -49,10 +49,18 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   };
 
   return (
-    <div className="group relative bg-[#12131A] rounded-2xl border border-white/10 hover:border-white/30 overflow-hidden shadow-2xl hover:shadow-[0_16px_36px_rgba(0,0,0,0.8)] hover:-translate-y-1 transition-all duration-300 flex flex-col h-full tap-bounce">
+    <div className="group relative bg-[#12131A] rounded-2xl border border-white/10 hover:border-white/30 overflow-hidden shadow-2xl hover:shadow-[0_16px_36px_rgba(0,0,0,0.8)] hover:-translate-y-1 transition-all duration-300 flex flex-col h-full tap-bounce cursor-pointer">
+      {/* Invisible stretched full-card clickable overlay for instant response */}
+      <Link
+        href={`/product/${product.slug}`}
+        prefetch={true}
+        className="absolute inset-0 z-0"
+        aria-label={product.name}
+      />
+
       {/* Media Container with 4:5 aspect ratio */}
-      <div className="relative aspect-[4/5] bg-zinc-950 overflow-hidden w-full border-b border-white/10">
-        <Link href={`/product/${product.slug}`} className="block w-full h-full">
+      <div className="relative aspect-[4/5] bg-zinc-950 overflow-hidden w-full border-b border-white/10 pointer-events-none">
+        <div className="block w-full h-full relative">
           <Image
             src={
               coverMedia.media_type === "video"
@@ -65,7 +73,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
           />
-        </Link>
+        </div>
 
         {/* Soft hover gradient vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -105,7 +113,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </div>
 
           {/* Top Right Action: Wishlist + Copy */}
-          <div className="pointer-events-auto flex items-center gap-1.5">
+          <div className="pointer-events-auto flex items-center gap-1.5 relative z-20">
             <button
               onClick={handleCopySpill}
               title={`Salin tautan spill No. #${product.spill_number || ""}`}
@@ -155,11 +163,11 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             )}
           </div>
 
-          <Link href={`/product/${product.slug}`} className="block group-hover:text-emerald-400 transition-colors">
+          <div className="block group-hover:text-emerald-400 transition-colors">
             <h3 className="font-sans text-sm sm:text-base font-bold text-white line-clamp-2 leading-snug">
               {product.name}
             </h3>
-          </Link>
+          </div>
 
           <p className="text-xs text-zinc-400 line-clamp-1">
             {product.short_description}
@@ -192,7 +200,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             affiliateUrl={product.affiliate_url}
             size="sm"
             customText="Spill 🛍️"
-            className="w-full sm:w-auto font-bold bg-white text-black hover:bg-zinc-200 border-none shadow-md"
+            className="relative z-20 w-full sm:w-auto font-bold bg-white text-black hover:bg-zinc-200 border-none shadow-md"
           />
         </div>
 

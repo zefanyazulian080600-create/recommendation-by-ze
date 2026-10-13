@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   Package,
   PlusCircle,
+  FileSpreadsheet,
   FolderTree,
   Sparkles,
   Settings,
@@ -29,7 +30,8 @@ export function AdminSidebar() {
   const navItems = [
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { label: "Semua Produk", href: "/admin/products", icon: Package },
-    { label: "Tambah Produk", href: "/admin/products/new", icon: PlusCircle },
+    { label: "Import CSV / Excel", href: "/admin/import", icon: FileSpreadsheet },
+    { label: "Tambah Produk Manual", href: "/admin/products/new", icon: PlusCircle },
     { label: "AI Copywriter Studio", href: "/admin/ai-assistant", icon: Wand2 },
     { label: "Kategori", href: "/admin/categories", icon: FolderTree },
     { label: "Koleksi Tematik", href: "/admin/collections", icon: Sparkles },

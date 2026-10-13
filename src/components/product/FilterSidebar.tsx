@@ -22,6 +22,7 @@ export function FilterSidebar({
   const searchParams = useSearchParams();
 
   const currentCategory = searchParams.get("category") || "";
+  const currentSubCategory = searchParams.get("subCategory") || searchParams.get("sub") || "";
   const currentMarketplace = searchParams.get("marketplace") || "";
   const currentSort = searchParams.get("sort") || "newest";
   const currentSearch = searchParams.get("search") || "";
@@ -37,12 +38,29 @@ export function FilterSidebar({
     } else {
       params.delete(key);
     }
-    router.push(`/products?${params.toString()}`);
+    if (key === "category") {
+      params.delete("subCategory");
+      params.delete("sub");
+    }
+    router.push(`/products?${params.toString()}`, { scroll: false });
+  };
+
+  const selectSubCategory = (subSlug: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (params.get("subCategory") === subSlug || params.get("sub") === subSlug) {
+      params.delete("subCategory");
+      params.delete("sub");
+    } else {
+      params.set("subCategory", subSlug);
+      params.delete("sub");
+      params.delete("category");
+    }
+    router.push(`/products?${params.toString()}`, { scroll: false });
   };
 
   const resetFilters = () => {
     setLocalSearch("");
-    router.push("/products");
+    router.push("/products", { scroll: false });
     onClose?.();
   };
 
@@ -83,7 +101,7 @@ export function FilterSidebar({
           <SlidersHorizontal className="w-4 h-4 text-emerald-400" />
           <h3 className="font-mono text-sm font-bold uppercase tracking-wider text-white">Filter Produk</h3>
         </div>
-        {(currentCategory || currentMarketplace || currentSearch || currentPriceRange || currentSort !== "newest") && (
+        {(currentCategory || currentSubCategory || currentMarketplace || currentSearch || currentPriceRange || currentSort !== "newest") && (
           <button
             type="button"
             onClick={resetFilters}
@@ -165,41 +183,92 @@ export function FilterSidebar({
       {/* Category Filter */}
       <div>
         <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
-          Kategori
+          Kategori & Sub-Kategori
         </label>
-        <div className="space-y-1 max-h-56 overflow-y-auto pr-1 no-scrollbar">
+        <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1 no-scrollbar">
           <button
             type="button"
-            onClick={() => updateParam("category", "")}
+            onClick={() => {
+              updateParam("category", "");
+              updateParam("subCategory", "");
+            }}
             className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
-              !currentCategory
+              !currentCategory && !currentSubCategory
                 ? "bg-white text-black font-bold shadow-md"
                 : "text-zinc-400 hover:text-white hover:bg-white/5"
             }`}
           >
             <span>Semua Kategori</span>
-            {!currentCategory && <Check className="w-3.5 h-3.5 text-black" />}
+            {!currentCategory && !currentSubCategory && <Check className="w-3.5 h-3.5 text-black" />}
           </button>
           {categories.map((cat) => {
-            const isActive = currentCategory.toLowerCase() === cat.slug.toLowerCase();
+            const isCatActive = currentCategory.toLowerCase() === cat.slug.toLowerCase();
+            const hasActiveSub = cat.subcategories?.some(
+              (s) =>
+                s.slug.toLowerCase() === currentSubCategory.toLowerCase() ||
+                s.id.toLowerCase() === currentSubCategory.toLowerCase()
+            );
+
             return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => updateParam("category", cat.slug)}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
-                  isActive
-                    ? "bg-white text-black font-bold shadow-md"
-                    : "text-zinc-400 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                <span>{cat.name}</span>
-                {cat.product_count !== undefined && (
-                  <span className={`text-[10px] font-mono ${isActive ? "text-black/70" : "text-zinc-500"}`}>
-                    ({cat.product_count})
-                  </span>
+              <div key={cat.id} className="space-y-1">
+                <button
+                  type="button"
+                  onClick={() => updateParam("category", cat.slug)}
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
+                    isCatActive
+                      ? "bg-white text-black font-bold shadow-md"
+                      : hasActiveSub
+                      ? "text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20"
+                      : "text-zinc-300 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  <span className="truncate">{cat.name}</span>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {cat.product_count !== undefined && (
+                      <span className={`text-[10px] font-mono ${isCatActive ? "text-black/70" : "text-zinc-500"}`}>
+                        ({cat.product_count})
+                      </span>
+                    )}
+                    {isCatActive && <Check className="w-3.5 h-3.5 text-black" />}
+                  </div>
+                </button>
+
+                {/* Subcategories */}
+                {cat.subcategories && cat.subcategories.length > 0 && (
+                  <div className="pl-3.5 pr-1 py-1 space-y-1 border-l-2 border-white/10 ml-2">
+                    {cat.subcategories.map((sub) => {
+                      const isSubActive =
+                        currentSubCategory.toLowerCase() === sub.slug.toLowerCase() ||
+                        currentSubCategory.toLowerCase() === sub.id.toLowerCase();
+                      return (
+                        <button
+                          key={sub.id}
+                          type="button"
+                          onClick={() => selectSubCategory(sub.slug)}
+                          className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] transition-all text-left ${
+                            isSubActive
+                              ? "bg-emerald-400 text-black font-extrabold shadow-sm"
+                              : "text-zinc-400 hover:text-white hover:bg-white/5"
+                          }`}
+                        >
+                          <span className="truncate">
+                            <span className="mr-1">{sub.icon || "•"}</span>
+                            {sub.name}
+                          </span>
+                          <div className="flex items-center gap-1 shrink-0">
+                            {sub.product_count !== undefined && (
+                              <span className={`text-[9px] font-mono ${isSubActive ? "text-black/80 font-bold" : "text-zinc-500"}`}>
+                                ({sub.product_count})
+                              </span>
+                            )}
+                            {isSubActive && <Check className="w-3 h-3 text-black" />}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
                 )}
-              </button>
+              </div>
             );
           })}
         </div>

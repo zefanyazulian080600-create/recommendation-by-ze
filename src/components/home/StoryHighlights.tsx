@@ -16,79 +16,74 @@ interface HighlightItem {
 export function StoryHighlights() {
   const highlights: HighlightItem[] = [
     {
-      id: "viral",
-      label: "Viral TikTok",
-      tag: "⚡ Racun FYP",
-      href: "/products?sort=trending",
-      imageUrl: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400&auto=format&fit=crop",
+      id: "piyama",
+      label: "Piyama Adem",
+      tag: "😴 Sleepwear",
+      href: "/products?category=piyama-sleepwear",
+      imageUrl: "https://down-id.img.susercontent.com/file/91f5d9bd6f645c992910082c5739553c",
       isNew: true,
     },
     {
-      id: "desk",
-      label: "Tech & Setup",
-      tag: "🎧 Gadget WFH",
-      href: "/products?category=desk-setup-gadget",
-      imageUrl: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=400&auto=format&fit=crop",
-      isNew: true,
-    },
-    {
-      id: "room",
-      label: "Kamar & Kost",
-      tag: "🏠 Estetik",
-      href: "/products?category=aesthetic-room",
-      imageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=400&auto=format&fit=crop",
+      id: "gamis",
+      label: "Gamis & Abaya",
+      tag: "🌙 Muslimah",
+      href: "/products?category=gamis-muslimah",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-81ztm-ms2dzsj9dkw62c",
       isNew: true,
     },
     {
       id: "skincare",
-      label: "Skin & Care",
-      tag: "🧴 Holy Grail",
-      href: "/products?category=skincare-grooming",
-      imageUrl: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=400&auto=format&fit=crop",
+      label: "Skincare Glowing",
+      tag: "✨ Perawatan",
+      href: "/products?category=skincare-beauty",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mq8fw3fafbws46",
       isNew: true,
     },
     {
-      id: "outfit",
-      label: "Daily Wear",
-      tag: "👕 Fashion Fit",
+      id: "parfum",
+      label: "Parfum Mewah",
+      tag: "🌸 Extrait",
+      href: "/products?category=parfum-fragrance",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-822wi-mnfy30pupsshee",
+    },
+    {
+      id: "gorpcore",
+      label: "Gorpcore Kalcer",
+      tag: "🏔️ Jaket Gunung",
       href: "/products?category=outfit-pria",
-      imageUrl: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=400&auto=format&fit=crop",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-7rbke-ma7vs1c79of1c0",
+      isNew: true,
+    },
+    {
+      id: "wanita",
+      label: "Korean Chic",
+      tag: "👗 Blouse & Rajut",
+      href: "/products?category=outfit-wanita",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-81ztg-mffgl05qebk9b1",
+      isNew: true,
+    },
+    {
+      id: "sneakers",
+      label: "Sepatu & Sandal",
+      tag: "👟 Kicks Empuk",
+      href: "/products?category=bags-shoes",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-8224x-mieiiunmfklge8",
+      isNew: true,
+    },
+    {
+      id: "tumbler",
+      label: "Tumbler 24 Jam",
+      tag: "❄️ Stainless",
+      href: "/products?category=aesthetic-room",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-822wo-mo56kw6syiva82",
     },
     {
       id: "cheap",
-      label: "Under 50k",
+      label: "Di Bawah 50k",
       tag: "💸 Hemat Banget",
       href: "/products?price=under-50k",
-      imageUrl: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=400&auto=format&fit=crop",
+      imageUrl: "https://down-id.img.susercontent.com/file/id-11134207-81zte-mrmobyywim0x8d",
       isNew: true,
-    },
-    {
-      id: "shopee",
-      label: "Spill Shopee",
-      tag: "🧡 Free Ongkir",
-      href: "/products?marketplace=shopee",
-      imageUrl: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=400&auto=format&fit=crop",
-    },
-    {
-      id: "tokopedia",
-      label: "Tokopedia",
-      tag: "💚 Official",
-      href: "/products?marketplace=tokopedia",
-      imageUrl: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=400&auto=format&fit=crop",
-    },
-    {
-      id: "tiktok",
-      label: "TikTok Shop",
-      tag: "🖤 Live Racun",
-      href: "/products?marketplace=tiktok",
-      imageUrl: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=400&auto=format&fit=crop",
-    },
-    {
-      id: "picks",
-      label: "Pilihan Ze",
-      tag: "⭐ Best Curated",
-      href: "/products?sort=featured",
-      imageUrl: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=400&auto=format&fit=crop",
     },
   ];
 
@@ -107,36 +102,36 @@ export function StoryHighlights() {
                 {/* Gradient Ring */}
                 <div className="w-[68px] h-[68px] sm:w-[76px] sm:h-[76px] rounded-full p-[2.5px] bg-gradient-to-tr from-emerald-500 via-sky-400 to-amber-300 group-hover:scale-105 transition-transform duration-300 shadow-md">
                   {/* Inner Dark Border */}
-                  <div className="w-full h-full rounded-full bg-[#090A0F] p-[2px]">
-                    {/* Story Circle Image */}
-                    <div className="relative w-full h-full rounded-full overflow-hidden bg-[#12131A]">
+                  <div className="w-full h-full rounded-full p-[2px] bg-[#090A0F]">
+                    {/* Image Container */}
+                    <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-900">
                       <Image
                         src={item.imageUrl}
                         alt={item.label}
                         fill
                         sizes="76px"
-                        className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Optional "NEW" or "HOT" micro badge */}
+                {/* Badge if NEW */}
                 {item.isNew && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-emerald-400 text-black font-mono text-[8px] font-black uppercase px-1.5 py-0.2 rounded-full tracking-wider border border-[#090A0F] shadow-sm">
-                    SPILL
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-1.5 py-0.2 rounded-full bg-emerald-500 text-black text-[9px] font-mono font-black uppercase tracking-wider shadow">
+                    NEW
                   </span>
                 )}
               </div>
 
-              {/* Story Title & Tiny Tag */}
-              <div className="text-center w-20 sm:w-24">
-                <span className="block text-xs font-bold text-white group-hover:text-emerald-400 transition-colors truncate">
+              {/* Label & Micro Tag */}
+              <div className="text-center max-w-[80px]">
+                <p className="font-sans text-xs font-bold text-white group-hover:text-emerald-400 transition-colors truncate">
                   {item.label}
-                </span>
-                <span className="block text-[10px] text-zinc-400 truncate">
+                </p>
+                <p className="text-[10px] text-zinc-400 font-mono tracking-tight truncate">
                   {item.tag}
-                </span>
+                </p>
               </div>
             </Link>
           ))}

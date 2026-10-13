@@ -61,14 +61,14 @@ export const READY_MADE_PRESETS: {
       categoryId: "cat-gadget-setup",
       shortDescription:
         "TWS driver 13mm bass nendang dengan Active Noise Cancelling 35dB. Latency cuma 45ms pas buat gaming & nonton, batre tahan 30 jam.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Dupe dari TWS flagship 2 jutaan. ANC-nya beneran kedap untuk harga di bawah 200 ribu, pas banget dipakai saat WFC di cafe bising atau naik KRL.
 
-### ⚡ Spesifikasi & Keunggulan
-* **Driver:** 13mm Titanium Composite Driver (vokal jernih, sub-bass nendang)
-* **Konektivitas:** Bluetooth 5.3 Low Latency 45ms (anti delay untuk game & video)
-* **Baterai:** 6 jam non-stop earbud + 24 jam charging case (total 30 jam)
-* **Mikrofon:** Quad-mic ENC untuk panggilan telepon jernih anti bising`,
+⚡ Spesifikasi & Keunggulan
+• Driver: 13mm Titanium Composite Driver (vokal jernih, sub-bass nendang)
+• Konektivitas: Bluetooth 5.3 Low Latency 45ms (anti delay untuk game & video)
+• Baterai: 6 jam non-stop earbud + 24 jam charging case (total 30 jam)
+• Mikrofon: Quad-mic ENC untuk panggilan telepon jernih anti bising`,
       tags: ["twsmurah", "anc", "gadgetshopee", "desksetup", "audiophile", "racunshopee", "techfinds"],
       price: 189000,
       originalPrice: 320000,
@@ -92,14 +92,14 @@ Dupe dari TWS flagship 2 jutaan. ANC-nya beneran kedap untuk harga di bawah 200 
       categoryId: "cat-aesthetic-room",
       shortDescription:
         "Lampu proyektor golden hour sunset rotasi 360 derajat. 16 variasi warna via remote, auto bikin konten TikTok kamar kost jadi sinematik.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Printilan wajib buat kamar kost estetik atau backdrop live streaming. Lensa kristal HD menghasilkan gradasi warna matahari terbenam yang pekat dan hangat tanpa silau berlebih.
 
-### 🏠 Spesifikasi & Detail
-* **Material:** Aluminium alloy kokoh dengan dasar pemberat anti goyang
-* **Lensa:** Lensa kristal optik cembung tebal dengan pancaran cahaya lebar
-* **Rotasi:** Kepala lampu bisa diputar 360 derajat ke dinding maupun plafon
-* **Daya:** Port USB 5V hemat listrik (bisa colok powerbank / laptop)`,
+🏠 Spesifikasi & Detail
+• Material: Aluminium alloy kokoh dengan dasar pemberat anti goyang
+• Lensa: Lensa kristal optik cembung tebal dengan pancaran cahaya lebar
+• Rotasi: Kepala lampu bisa diputar 360 derajat ke dinding maupun plafon
+• Daya: Port USB 5V hemat listrik (bisa colok powerbank / laptop)`,
       tags: ["sunsetlamp", "kamarestetik", "kostvibes", "dekorasikamar", "ambientlight", "goldenhour", "tiktokviral"],
       price: 49000,
       originalPrice: 99000,
@@ -123,14 +123,14 @@ Printilan wajib buat kamar kost estetik atau backdrop live streaming. Lensa kris
       categoryId: "cat-skincare-grooming",
       shortDescription:
         "Sunscreen tekstur gel cair seringan air tanpa whitecast. Cepat meresap, oil control 8 jam, gak bikin kusam atau perih di mata.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Sunscreen lokal yang paling nyaman dipakai seharian di cuaca panas. Cowok atau cewek yang benci sunscreen lengket wajib coba, sensasinya seperti pakai moisturizer air yang dingin.
 
-### 🧴 Formulasi & Kandungan
-* **Tekstur:** Watery gel transparan yang langsung lumer saat diusap
-* **Perlindungan:** Broad spectrum SPF 50+ PA++++ teruji uji in-vitro & in-vivo
-* **Kandungan Aktif:** 5X Hyaluronic Acid, Cica Extract & Niacinamide mencerahkan
-* **Sertifikasi:** BPOM certified, Halal, Non-comedogenic`,
+🧴 Formulasi & Kandungan
+• Tekstur: Watery gel transparan yang langsung lumer saat diusap
+• Perlindungan: Broad spectrum SPF 50+ PA++++ teruji uji in-vitro & in-vivo
+• Kandungan Aktif: 5X Hyaluronic Acid, Cica Extract & Niacinamide mencerahkan
+• Sertifikasi: BPOM certified, Halal, Non-comedogenic`,
       tags: ["sunscreenviral", "skincareindo", "nowhitecast", "skincarecowok", "skincarecewek", "racuntiktok", "bpom"],
       price: 79000,
       originalPrice: 125000,
@@ -154,14 +154,14 @@ Sunscreen lokal yang paling nyaman dipakai seharian di cuaca panas. Cowok atau c
       categoryId: "cat-aesthetic-room",
       shortDescription:
         "Tumbler stainless SUS304 double-wall penahan es dingin hingga 24 jam. Dilengkapi handle ergonomis dan sedotan anti tumpah.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Dupe dari tumbler viral Stanley Cup jutaan rupiah. Menjaga es kopi atau infused water tetap dingin seharian saat kerja di kantor atau kuliah tanpa ada kondensasi air di luar botol.
 
-### ☕ Spesifikasi & Material
-* **Bahan:** Food Grade Stainless Steel SUS304 (anti karat & bebas bau)
-* **Insulasi:** Double-wall vacuum insulation (tahan dingin 24 jam, tahan panas 12 jam)
-* **Kapasitas:** 900 ml (30 oz) pas untuk target hidrasi harian
-* **Tutup:** 3-in-1 lid (bisa pakai sedotan, seruput langsung, atau ditutup rapat)`,
+☕ Spesifikasi & Material
+• Bahan: Food Grade Stainless Steel SUS304 (anti karat & bebas bau)
+• Insulasi: Double-wall vacuum insulation (tahan dingin 24 jam, tahan panas 12 jam)
+• Kapasitas: 900 ml (30 oz) pas untuk target hidrasi harian
+• Tutup: 3-in-1 lid (bisa pakai sedotan, seruput langsung, atau ditutup rapat)`,
       tags: ["tumblerviral", "stanleydupe", "aestheticmug", "hematminum", "wfcessential", "shopeehaul"],
       price: 89000,
       originalPrice: 175000,
@@ -185,14 +185,14 @@ Dupe dari tumbler viral Stanley Cup jutaan rupiah. Menjaga es kopi atau infused 
       categoryId: "cat-outfit-unisex",
       shortDescription:
         "Kaos katun tebal 24s dengan potongan boxy cropped. Kerah rapat anti kendor, auto bikin siluet pundak tegap dan aesthetic.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Buat yang bosen sama kaos tipis yang gampang melar sehabis dicuci, ini nemu alternatif local pride yang fitting-nya beneran setara brand streetwear luar negeri.
 
-### 🧵 Material & Detail
-* **Bahan:** 100% Heavy Cotton 24s (210–220 GSM), adem tapi berstruktur tegas
-* **Fitting:** Boxy Fit with Drop Shoulder (bahu jatuh proporsional)
-* **Kerah:** Rib tebal 3 cm yang rapat, tahan cuci berkali-kali tanpa keriting
-* **Finishing:** Washed vintage texture yang gak gampang luntur`,
+🧵 Material & Detail
+• Bahan: 100% Heavy Cotton 24s (210–220 GSM), adem tapi berstruktur tegas
+• Fitting: Boxy Fit with Drop Shoulder (bahu jatuh proporsional)
+• Kerah: Rib tebal 3 cm yang rapat, tahan cuci berkali-kali tanpa keriting
+• Finishing: Washed vintage texture yang gak gampang luntur`,
       tags: ["skena", "kalcer", "boxytee", "heavycotton", "streetwear", "unisex", "shopeehaul", "outfitkuliah"],
       price: 119000,
       originalPrice: 179000,
@@ -216,13 +216,13 @@ Buat yang bosen sama kaos tipis yang gampang melar sehabis dicuci, ini nemu alte
       categoryId: "cat-outfit-pria",
       shortDescription:
         "Kemeja santai bahan linen blend breathable dengan kerah liburan retro. Jatuh bahan flowy, adem parah buat WFC atau ngopi sore.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Kemeja wajib punya buat cuaca tropis Jakarta. Potongan camp collar bikin leher keliatan jenjang dan ngasih kesan effortless chic tanpa keliatan kaku.
 
-### 🧵 Material & Detail
-* **Bahan:** Premium Linen Cotton Blend (breathable, tekstur serat alami estetik)
-* **Fitting:** Relaxed Casual Cut (bisa dipakai kancing terbuka sebagai outer)
-* **Kancing:** Shell finish tone-on-tone yang minimalis berkelas`,
+🧵 Material & Detail
+• Bahan: Premium Linen Cotton Blend (breathable, tekstur serat alami estetik)
+• Fitting: Relaxed Casual Cut (bisa dipakai kancing terbuka sebagai outer)
+• Kancing: Shell finish tone-on-tone yang minimalis berkelas`,
       tags: ["kalcer", "linenshirt", "campcollar", "outfitnongkrong", "oldmoney", "wfc", "shopeefinds"],
       price: 165000,
       originalPrice: 245000,
@@ -246,13 +246,13 @@ Kemeja wajib punya buat cuaca tropis Jakarta. Potongan camp collar bikin leher k
       categoryId: "cat-skincare-grooming",
       shortDescription:
         "Parfum lokal konsentrasi extrait dengan aroma kayu cendana hangat, cardamom, dan kulit mewah. Tahan 10-12 jam, aroma khas anak Senopati & SCBD.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Dupe dari Le Labo Santal 33 yang legendaris. Aromanya mahal, misterius, dan unisex banget. Gak manis eneg, melainkan clean woody spicy yang langsung naikin aura seketika.
 
-### 🪵 Piramida Aroma (Fragrance Notes)
-* **Top Notes:** Violet Leaves, Cardamom, Australian Papyrus
-* **Heart Notes:** Cedarwood Virginia, Iris, Smoked Amber
-* **Base Notes:** Creamy Sandalwood, Cashmere Wood, Warm Leather`,
+🪵 Piramida Aroma (Fragrance Notes)
+• Top Notes: Violet Leaves, Cardamom, Australian Papyrus
+• Heart Notes: Cedarwood Virginia, Iris, Smoked Amber
+• Base Notes: Creamy Sandalwood, Cashmere Wood, Warm Leather`,
       tags: ["parfumviral", "santal33", "lelabodupe", "starboy", "skena", "scent", "unisexperfume"],
       price: 189000,
       originalPrice: 285000,
@@ -276,13 +276,13 @@ Dupe dari Le Labo Santal 33 yang legendaris. Aromanya mahal, misterius, dan unis
       categoryId: "cat-bags-shoes",
       shortDescription:
         "Sneakers retro siluet rendah dengan sol karet mentah (gum sole) dan aksen suede abu-abu di ujung jari. Versatile dipadukan celana apa pun.",
-      description: `### Kenapa Ze Rekomendasiin Ini?
+      description: `Kenapa Ze Rekomendasiin Ini?
 Solusi buat yang pengen siluet Adidas Samba OG tapi gak mau keluar budget Rp 2.2 juta. Insole-nya empuk dengan busa cloudfoam lokal yang gak bikin lecet di tumit sehabis jalan seharian.
 
-### 👟 Spesifikasi
-* **Upper:** Faux Leather lembut dikombinasikan Suede toe cap
-* **Outsole:** 100% Karet mentah (Vulcanized Gum Sole) anti licin
-* **Insole:** Eva sponge empuk berpori udara`,
+👟 Spesifikasi
+• Upper: Faux Leather lembut dikombinasikan Suede toe cap
+• Outsole: 100% Karet mentah (Vulcanized Gum Sole) anti licin
+• Insole: Eva sponge empuk berpori udara`,
       tags: ["sambadupe", "retrosneakers", "gumsole", "sepatukalcer", "unisexshoes", "shopeefinds"],
       price: 219000,
       originalPrice: 349000,
@@ -522,60 +522,60 @@ export function generateFullReview(
   vibe: AiVibeTone
 ): string {
   if (categoryId === "cat-gadget-setup") {
-    return `### Kenapa Ze Rekomendasiin Produk Ini?
+    return `Kenapa Ze Rekomendasiin Produk Ini?
 Setelah kurasi beberapa aksesoris desk setup di marketplace, item ini punya build quality paling solid di rentang harganya. Desainnya minimalis clean, kabel rapi, dan fungsinya beneran ningkatin kenyamanan kerja atau gaming harian.
 
-### ⚡ Spesifikasi & Build Quality
-* **Material & Finishing:** Material matte anti-fingerprint dengan build kokoh dan presisi.
-* **Konektivitas & Performa:** Respon cepat minim latency, stabil tanpa gangguan delay.
-* **Kenyamanan Pemakaian:** Ergonomis dan ramah meja kerja, bikin setup keliatan aesthetic ala Pinterest.
+⚡ Spesifikasi & Build Quality
+• Material & Finishing: Material matte anti-fingerprint dengan build kokoh dan presisi.
+• Konektivitas & Performa: Respon cepat minim latency, stabil tanpa gangguan delay.
+• Kenyamanan Pemakaian: Ergonomis dan ramah meja kerja, bikin setup keliatan aesthetic ala Pinterest.
 
-### 🖥️ Setup Inspiration
-* Padukan dengan desk mat warna gelap dan lampu ambient warm white untuk vibe WFC malam hari yang fokus dan cozy.`;
+🖥️ Setup Inspiration
+• Padukan dengan desk mat warna gelap dan lampu ambient warm white untuk vibe WFC malam hari yang fokus dan cozy.`;
   }
 
   if (categoryId === "cat-aesthetic-room") {
-    return `### Kenapa Ze Rekomendasiin Produk Ini?
+    return `Kenapa Ze Rekomendasiin Produk Ini?
 Barang online shop penyelamat kamar kost atau ruang tidur yang membosankan. Bentuknya estetik, gampang dipasang tanpa bor tembok, dan langsung ngubah mood ruangan seketika jadi ala cafe estetik.
 
-### 🏠 Material & Estetika
-* **Finishing:** Warna netral minimalis yang gampang menyatu dengan dekorasi kayu, putih, atau monokrom.
-* **Kepraktisan:** Mudah dibersihkan, hemat tempat, dan multifungsi.
-* **Build Quality:** Kokoh dan awet untuk pemakaian jangka panjang.
+🏠 Material & Estetika
+• Finishing: Warna netral minimalis yang gampang menyatu dengan dekorasi kayu, putih, atau monokrom.
+• Kepraktisan: Mudah dibersihkan, hemat tempat, dan multifungsi.
+• Build Quality: Kokoh dan awet untuk pemakaian jangka panjang.
 
-### ✨ Tips Dekorasi Kamar
-* Tempatkan di sudut meja atau samping tempat tidur untuk menciptakan pencahayaan golden hour dan estetika visual yang nyaman.`;
+✨ Tips Dekorasi Kamar
+• Tempatkan di sudut meja atau samping tempat tidur untuk menciptakan pencahayaan golden hour dan estetika visual yang nyaman.`;
   }
 
   if (categoryId === "cat-skincare-grooming") {
-    return `### Kenapa Ze Rekomendasiin Produk Ini?
+    return `Kenapa Ze Rekomendasiin Produk Ini?
 Formula ringan yang gampang meresap tanpa rasa lengket atau greasy. Sangat cocok buat cuaca tropis Indonesia, baik untuk cowok yang gak suka ribet maupun cewek yang butuh hasil maksimal.
 
-### 🧴 Tekstur & Bahan Utama
-* **Tekstur:** Ringan, water-based, cepat meresap dan tidak meninggalkan residu putih (no whitecast).
-* **Kenyamanan Kulit:** Tidak menyumbat pori-pori (non-comedogenic) dan aman untuk kulit sensitif.
-* **Hasil Pemakaian:** Kulit terasa terhidrasi sehat, terlindungi, dan tidak mengkilap berlebihan seharian.
+🧴 Tekstur & Bahan Utama
+• Tekstur: Ringan, water-based, cepat meresap dan tidak meninggalkan residu putih (no whitecast).
+• Kenyamanan Kulit: Tidak menyumbat pori-pori (non-comedogenic) dan aman untuk kulit sensitif.
+• Hasil Pemakaian: Kulit terasa terhidrasi sehat, terlindungi, dan tidak mengkilap berlebihan seharian.
 
-### 💡 Cara Pemakaian
-* Aplikasikan secara merata di wajah dan leher setiap pagi sebelum beraktivitas. Ulangi bila banyak terpapar matahari langsung.`;
+💡 Cara Pemakaian
+• Aplikasikan secara merata di wajah dan leher setiap pagi sebelum beraktivitas. Ulangi bila banyak terpapar matahari langsung.`;
   }
 
-  return `### Kenapa Ze Rekomendasiin Produk Ini?
+  return `Kenapa Ze Rekomendasiin Produk Ini?
 Setelah kurasi beberapa toko online shop lokal, produk ini punya penilaian jahitan, konsistensi bahan, dan siluet fitting paling memuaskan di kelas harganya. Cocok banget buat kamu yang mau upgrade penampilan tanpa ribet.
 
-### 🧵 Material & Detail Finishing
-* **Karakter Bahan:** Kain bertekstur lembut, adem di kulit, dan tidak mudah kusut setelah dicuci.
-* **Jahitan & Kerutan:** Jahitan rantai ganda di area krusial, rapi tanpa benang sisa berlebih.
-* **Proporsi Potongan:** Dirancang dengan proporsi modern yang menyanjung postur tubuh (mengikuti rumus Rule of Thirds).
+🧵 Material & Detail Finishing
+• Karakter Bahan: Kain bertekstur lembut, adem di kulit, dan tidak mudah kusut setelah dicuci.
+• Jahitan & Kerutan: Jahitan rantai ganda di area krusial, rapi tanpa benang sisa berlebih.
+• Proporsi Potongan: Dirancang dengan proporsi modern yang menyanjung postur tubuh (mengikuti rumus Rule of Thirds).
 
-### 🕶️ Formula Styling OOTD
-* **Casual Nongkrong:** Padukan dengan celana bahan rileks (relaxed trousers) dan sepatu ber-sol datar vintage.
-* **Semi Formal / Kuliah:** Padukan dengan inner kaos polos rapi dan tas selempang minimalis.
-* **Aksesoris:** Tambahkan kacamata frame tipis atau jam tangan simpel untuk melengkapi aura aesthetic.
+🕶️ Formula Styling OOTD
+• Casual Nongkrong: Padukan dengan celana bahan rileks (relaxed trousers) dan sepatu ber-sol datar vintage.
+• Semi Formal / Kuliah: Padukan dengan inner kaos polos rapi dan tas selempang minimalis.
+• Aksesoris: Tambahkan kacamata frame tipis atau jam tangan simpel untuk melengkapi aura aesthetic.
 
-### 💡 Tips Perawatan
-* Cuci dengan putaran lembut atau cuci tangan untuk menjaga serat kain dan kepekatan warna.
-* Hindari jemur di bawah terik matahari langsung agar warna tidak cepat pudar.`;
+💡 Tips Perawatan
+• Cuci dengan putaran lembut atau cuci tangan untuk menjaga serat kain dan kepekatan warna.
+• Hindari jemur di bawah terik matahari langsung agar warna tidak cepat pudar.`;
 }
 
 // Generate Tags Viral

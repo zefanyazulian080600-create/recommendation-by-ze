@@ -20,21 +20,31 @@ export function RetroCatalogHeader({
   const [searchInput, setSearchInput] = useState(currentSearch);
 
   const activeCategory = searchParams.get("category") || "";
+  const activeSubCategory = searchParams.get("subCategory") || searchParams.get("sub") || "";
   const activeGender = searchParams.get("gender") || "";
   const activePrice = searchParams.get("price") || "";
   const activeSort = searchParams.get("sort") || "";
 
-  // Universal Filter Pills
   const filterPills = [
     { id: "all", label: "Semua Produk", icon: "✦", type: "all" },
-    { id: "desk-setup-gadget", label: "Tech & Setup", icon: "🎧", type: "category", value: "desk-setup-gadget" },
-    { id: "aesthetic-room", label: "Kamar & Kost", icon: "🏠", type: "category", value: "aesthetic-room" },
-    { id: "skincare-grooming", label: "Skincare", icon: "🧴", type: "category", value: "skincare-grooming" },
-    { id: "men", label: "Fashion Cowok", icon: "🛹", type: "gender", value: "men" },
-    { id: "women", label: "Fashion Cewek", icon: "👗", type: "gender", value: "women" },
-    { id: "unisex", label: "Streetwear", icon: "🧢", type: "gender", value: "unisex" },
+    { id: "pria-celana", label: "Celana Pria", icon: "👖", type: "subCategory", value: "pria-celana" },
+    { id: "pria-kemeja", label: "Kemeja Pria", icon: "👔", type: "subCategory", value: "pria-kemeja" },
+    { id: "pria-kaos", label: "Kaos Pria", icon: "👕", type: "subCategory", value: "pria-kaos" },
+    { id: "wanita-rok", label: "Rok & Skirt", icon: "👗", type: "subCategory", value: "wanita-rok" },
+    { id: "wanita-celana", label: "Celana Wanita", icon: "👖", type: "subCategory", value: "wanita-celana" },
+    { id: "bags-wallets", label: "Tas & Ransel", icon: "🎒", type: "category", value: "bags-wallets" },
+    { id: "shoes-footwear", label: "Sepatu & Sandal", icon: "👟", type: "category", value: "shoes-footwear" },
+    { id: "sepatu-heels", label: "Heels & Flat Shoes", icon: "👠", type: "subCategory", value: "sepatu-heels" },
+    { id: "wanita-blouse", label: "Blouse Cewek", icon: "👚", type: "subCategory", value: "wanita-blouse" },
+    { id: "gamis-muslimah", label: "Gamis Muslimah", icon: "🌙", type: "category", value: "gamis-muslimah" },
+    { id: "piyama-sleepwear", label: "Piyama Adem", icon: "😴", type: "category", value: "piyama-sleepwear" },
+    { id: "aesthetic-room", label: "Perlengkapan Rumah", icon: "🏠", type: "category", value: "aesthetic-room" },
+    { id: "food-snack", label: "Camilan & Snack", icon: "🍿", type: "category", value: "food-snack" },
+    { id: "skincare-beauty", label: "Skincare", icon: "✨", type: "category", value: "skincare-beauty" },
+    { id: "parfum-fragrance", label: "Parfum", icon: "🌸", type: "category", value: "parfum-fragrance" },
+    { id: "accessories-jewelry", label: "Aksesoris", icon: "💍", type: "category", value: "accessories-jewelry" },
     { id: "under-50k", label: "Under 50k", icon: "💸", type: "price", value: "under-50k" },
-    { id: "trending", label: "Viral TikTok", icon: "🔥", type: "sort", value: "trending" },
+    { id: "trending", label: "Viral Shopee", icon: "🔥", type: "sort", value: "trending" },
   ];
 
   const handlePillClick = (pill: typeof filterPills[0]) => {
@@ -42,14 +52,28 @@ export function RetroCatalogHeader({
 
     if (pill.type === "all") {
       params.delete("category");
+      params.delete("subCategory");
+      params.delete("sub");
       params.delete("gender");
       params.delete("price");
       params.delete("sort");
+    } else if (pill.type === "subCategory") {
+      if (params.get("subCategory") === pill.value || params.get("sub") === pill.value) {
+        params.delete("subCategory");
+        params.delete("sub");
+      } else {
+        params.set("subCategory", pill.value!);
+        params.delete("sub");
+        params.delete("category");
+        params.delete("gender");
+      }
     } else if (pill.type === "category") {
       if (params.get("category") === pill.value) {
         params.delete("category");
       } else {
         params.set("category", pill.value!);
+        params.delete("subCategory");
+        params.delete("sub");
         params.delete("gender");
       }
     } else if (pill.type === "gender") {
@@ -58,6 +82,8 @@ export function RetroCatalogHeader({
       } else {
         params.set("gender", pill.value!);
         params.delete("category");
+        params.delete("subCategory");
+        params.delete("sub");
       }
     } else if (pill.type === "price") {
       if (params.get("price") === pill.value) {
@@ -74,7 +100,7 @@ export function RetroCatalogHeader({
     }
 
     const queryStr = params.toString();
-    router.push(queryStr ? `/products?${queryStr}` : "/products");
+    router.push(queryStr ? `/products?${queryStr}` : "/products", { scroll: false });
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -86,20 +112,21 @@ export function RetroCatalogHeader({
       params.delete("search");
     }
     const queryStr = params.toString();
-    router.push(queryStr ? `/products?${queryStr}` : "/products");
+    router.push(queryStr ? `/products?${queryStr}` : "/products", { scroll: false });
   };
 
   const handleQuickNumberClick = (numStr: string) => {
     setSearchInput(numStr);
     const params = new URLSearchParams(searchParams.toString());
     params.set("search", numStr);
-    router.push(`/products?${params.toString()}`);
+    router.push(`/products?${params.toString()}`, { scroll: false });
   };
 
   const isPillActive = (pill: typeof filterPills[0]) => {
     if (pill.type === "all") {
-      return !activeCategory && !activeGender && !activePrice && !activeSort;
+      return !activeCategory && !activeSubCategory && !activeGender && !activePrice && !activeSort;
     }
+    if (pill.type === "subCategory") return activeSubCategory === pill.value;
     if (pill.type === "category") return activeCategory === pill.value;
     if (pill.type === "gender") return activeGender === pill.value;
     if (pill.type === "price") return activePrice === pill.value;
@@ -159,7 +186,7 @@ export function RetroCatalogHeader({
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap border ${
                 active
                   ? "bg-white text-black border-white shadow-md font-extrabold"
-                  : "bg-[#12131A] text-zinc-300 border-white/10 hover:border-white/20 hover:text-white"
+                  : "bg-[#151724] text-zinc-100 border-white/15 hover:border-white/30 hover:text-white"
               }`}
             >
               <span>{pill.icon}</span>

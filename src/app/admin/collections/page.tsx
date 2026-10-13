@@ -38,7 +38,7 @@ export default function AdminCollectionsPage() {
       badge_text: badge.trim(),
       cover_image:
         cover.trim() ||
-        "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=900&auto=format&fit=crop",
+        "https://down-id.img.susercontent.com/file/id-11134207-7rbke-ma7vs1c79of1c0",
       is_published: true,
       sort_order: collections.length + 1,
     };
@@ -180,7 +180,7 @@ export default function AdminCollectionsPage() {
                   type="url"
                   value={cover}
                   onChange={(e) => setCover(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
+                  placeholder="https://down-id.img.susercontent.com/file/..."
                   className="w-full px-3 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                 />
               </div>

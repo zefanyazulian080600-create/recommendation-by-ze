@@ -19,7 +19,7 @@ export function MobileStickyCheckoutBar({ product }: MobileStickyCheckoutBarProp
     product.media?.find((m) => m.is_cover) ||
     product.media?.[0] || {
       public_url:
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://down-id.img.susercontent.com/file/id-11134207-7rbke-ma7vs1c79of1c0",
       alt_text: product.name,
     };
 

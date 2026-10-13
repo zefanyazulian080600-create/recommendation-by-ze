@@ -45,7 +45,7 @@ export default function AdminCategoriesPage() {
       description: desc.trim(),
       cover_image:
         cover.trim() ||
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
+        "https://down-id.img.susercontent.com/file/id-11134207-7rbke-ma7vs1c79of1c0",
       sort_order: categories.length + 1,
       is_active: true,
       product_count: 0,
@@ -123,6 +123,26 @@ export default function AdminCategoriesPage() {
 
             {c.description && (
               <p className="text-xs text-white/60 line-clamp-2">{c.description}</p>
+            )}
+
+            {c.subcategories && c.subcategories.length > 0 && (
+              <div className="pt-2 border-t border-white/5 space-y-1">
+                <span className="text-[10px] font-mono uppercase text-zinc-400 font-bold block">
+                  Sub-Kategori ({c.subcategories.length}):
+                </span>
+                <div className="flex flex-wrap gap-1">
+                  {c.subcategories.map((sub) => (
+                    <span
+                      key={sub.id}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/5 text-[10px] text-zinc-300 font-mono"
+                    >
+                      <span>{sub.icon}</span>
+                      <span>{sub.name}</span>
+                      <span className="text-emerald-400/80">({sub.product_count || 0})</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
             )}
 
             <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
@@ -203,7 +223,7 @@ export default function AdminCategoriesPage() {
                   type="url"
                   value={cover}
                   onChange={(e) => setCover(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
+                  placeholder="https://down-id.img.susercontent.com/file/..."
                   className="w-full px-3 py-2.5 rounded-xl bg-[#090A0F] border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-emerald-500/50"
                 />
               </div>

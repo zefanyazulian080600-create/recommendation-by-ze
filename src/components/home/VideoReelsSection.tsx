@@ -79,7 +79,7 @@ export function VideoReelsSection({ products }: VideoReelsSectionProps) {
             const coverMedia =
               videoMedia?.thumbnail_url ||
               product.media?.[0]?.public_url ||
-              "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop";
+              "https://down-id.img.susercontent.com/file/id-11134207-7rbke-ma7vs1c79of1c0";
             const marketplaceMeta = getMarketplaceMeta(product.marketplace);
             const views = ["142.5k", "98.2k", "215.8k", "76.4k"][idx % 4];
 
